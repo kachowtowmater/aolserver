@@ -16,7 +16,10 @@ for c in json.load(sys.stdin):
     if c["class"]=="waol.exe":
         try: env=open("/proc/%d/environ" % c["pid"],"rb").read()
         except OSError: continue
-        if pre.encode() in env and c["workspace"]["name"]!="10": print(c["address"])' | head -1)
-     [ -n "$A" ] && hyprctl dispatch "hl.dsp.window.move({window = \"address:$A\", workspace = \"10\", follow = false})" >/dev/null && break
-   done) &
+        if pre.encode() in env: print(c["address"], c["workspace"]["name"])' | head -1)
+     case "$A" in
+       *" 10") break ;;  # already there
+       ?*) hyprctl dispatch "hl.dsp.window.move({window = \"address:${A% *}\", workspace = \"10\", follow = false})"; break ;;
+     esac
+   done) >/dev/null 2>&1 </dev/null &
 fi
