@@ -107,7 +107,10 @@ def crashed(before: int = 0) -> bool:
 def restart(name):
     for pid in subprocess.run(["pgrep", "-x", "winedbg.exe"], capture_output=True, text=True).stdout.split():
         subprocess.run(["kill", pid])
-    subprocess.run([str(ROOT / "run" / "signon4.sh"), "0", PASSWORD], capture_output=True, timeout=180)
+    try:
+        subprocess.run([str(ROOT / "run" / "signon4.sh"), "0", PASSWORD], capture_output=True, timeout=300)
+    except subprocess.TimeoutExpired:
+        print("  (test client restart slow; carrying on)", flush=True)
     time.sleep(8)  # art preload
 
 

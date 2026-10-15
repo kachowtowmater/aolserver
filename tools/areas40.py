@@ -54,6 +54,7 @@ def main():
         if only not in area:
             continue
         sw.wctl("dismiss"); sw.wctl("closeall")
+        time.sleep(2)  # let a dismissed message box actually close before the next request
         before = item_seq()
         problems, _ = step(f"sm_send_k1 <{gid}>")
         opened = windows()
