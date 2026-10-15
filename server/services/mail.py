@@ -95,4 +95,6 @@ def open_message(link, mid: int):
         store.mark_read(mid)
 
 
-TOKENS = {b"m4": compose_packet, b"eL": read_new_mail}
+TOKENS = {b"m4": compose_packet, b"eL": read_new_mail,
+          b"eO": lambda link, sid, body: read_new_mail(link, sid, body, "old"),
+          b"oL": lambda link, sid, body: read_new_mail(link, sid, body, "sent")}

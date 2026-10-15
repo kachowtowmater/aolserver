@@ -22,6 +22,9 @@ GID_AREAS = {
     "17-35044": "find", "3-4604": "what's hot", "19-7766": "www",
     "8-62": "room:Center Stage", "8-20": "room:PC Studio",
     "8-11975": "file search", "8-63415": "finance", "8-16035": "clock", "": "what's hot",
+    "40-25172": "member directory", "40-4391": "mail", "8-53727": "news search", "32-322": "find",
+    "2-15919": "parental control", "32-1163": "internet mail", "2-43263": "internet mail", "2-1921": "news",
+    "32-384": "screen names",
 }
 
 NEWS_AREAS = {  # area -> (window title, intro, feed topic)
@@ -176,6 +179,16 @@ def clock(link, rid=None):
 
 
 INFO = {
+    "parental control": ("Parental Controls", [
+        "Parental Controls let you decide where your family can go online.", "",
+        "On this host every member is a grown-up, so there is nothing to set.  "
+        "Chat regulars in the People Connection are computer-generated."]),
+    "internet mail": ("Internet Mail", [
+        "Mail between members works right now: just address it to a screen name.", "",
+        "Sending mail to Internet addresses (name@domain.com) is coming soon."]),
+    "screen names": ("Screen Names", [
+        "To create a new screen name, sign off, choose New User on the Welcome screen and sign on.  "
+        "You'll be asked to pick your screen name and password."]),
     "member services": ("Member Services", [
         "Welcome to Member Services.", "",
         "This America Online host was rebuilt from scratch in 2026 for the original AOL 3.0 for Windows 95 "
@@ -214,6 +227,11 @@ def ask(link, title, prompt, button, token, intro, rid=None):
 
 
 def open_area(link, area: str, rid=None):
+    if area == "member directory":
+        from . import members
+        return members.directory(link, rid)
+    if area == "news search":
+        return ask(link, "Search Today's News", "Search for:", "Search", "zN", "Search today's headlines.", rid)
     if area == "mail":
         from . import mail
         return mail.read_new_mail(link, 0)
@@ -294,6 +312,9 @@ def item(link, stream_id, body):
     elif kind == "mail":
         from . import mail
         mail.open_message(link, payload[1])
+    elif kind == "profile":
+        from . import members
+        members.get_profile(link, 0, payload[1].encode("latin1"))
     elif kind == "mailbox":
         from . import mail
         mail.read_new_mail(link, 0, b"", payload[1])
@@ -355,5 +376,25 @@ def files(link, stream_id, body):
     run_bg(lambda: content.archive_software(q), done)
 
 
-TOKENS = {b"zU": web, b"zR": reference, b"zF": files, b"Kk": keyword, b"K1": by_gid, b"k1": by_gid, b"f1": by_gid,
+def news_search(link, stream_id, body):
+    q = (request(body)["texts"] or [""])[0].strip().lower()
+
+    def work():
+        hits = []
+        for topic in ("top", "us", "world", "business", "tech", "sports", "entertainment", "health", "science"):
+            hits += [h for h in content.headlines(topic, 30) if q in (h["title"] + " " + h["summary"]).lower()]
+        seen, out = set(), []
+        for h in hits:
+            if h["title"] not in seen:
+                seen.add(h["title"])
+                out.append(h)
+        return out[:30]
+
+    def done(hits):
+        rows = [(h["title"], _item(link, ("article", h))) for h in hits]
+        link.send_stream(screens.list_window(f"News Search: {q}", f"{len(rows)} stories found.", rows))
+    run_bg(work, done)
+
+
+TOKENS = {b"zN": news_search, b"zU": web, b"zR": reference, b"zF": files, b"Kk": keyword, b"K1": by_gid, b"k1": by_gid, b"f1": by_gid,
           b"zA": item, b"zQ": get_quote, b"zW": get_weather}

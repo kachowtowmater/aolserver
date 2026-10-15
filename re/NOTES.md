@@ -24,3 +24,20 @@ disc/client/AOLP3.AOL -o re/codemap/aolp3.c`.
 ## Next
 - Decompile AOL.EXE / AOLATOM / AOLMAN to map sign-on DATA tokens.
 - Extract MAIN.IDX records (built-in FDO forms, INIT packet).
+
+## Sign-on, accounts, sign-off (2026-10-15)
+- Dd = Welcome form: de_data screen name, de_data password. "New User" -> sign-up form.
+- 3.0 has no async_storename (async atoms stop at 39). Screen-name list = IDB record
+  20-0-16: count, then <name padded to 10>\0<10 digits>\0 per entry; host rewrites it.
+- Sign Off menu sends pE; host shows the client's Goodbye form 32-5438.
+  `**` with data "DISCONNECT" makes AOLASYNC stop P3 (ToolSendMsg 1,0x23,4).
+- KNOWN ISSUE: after sign-off, SIGN ON AGAIN in the same process never opens a new
+  TCP connection (shows "Checking password..." forever) under Wine; exit + relaunch works.
+
+## Chat / IM / mail / areas
+- AOLCHAT tokens: AB <name:10><sep><text> line, CA <slot><name> arrive, CB <slot> leave.
+- Aa (chat send) and iS (IM) are de_data streams. IM window = client form 32-223 (object id 223).
+- Mail send: m4 MIP streams; reply mip_header_accepted + mip_message_accepted.
+  Feeding mip_display_mail_form a synthetic message crashes WAOL -- don't.
+- K1 from toolbar carries uni_data <3-byte gid>; f1/k1 carry de_data <4-byte gid>.
+- Text in views: CR LF (client drops the byte after a bare CR).
