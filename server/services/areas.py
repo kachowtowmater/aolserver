@@ -389,6 +389,29 @@ def files(link, stream_id, body):
     run_bg(lambda: content.archive_software(q), done)
 
 
+def url_request(link, stream_id, body):
+    """ur/UR (AOL 4.0): aol:// links and Web addresses from the keyword bar or forms."""
+    from .util import atoms as _atoms
+    url = ""
+    for a in _atoms(body):
+        if a.name in ("uni_data", "de_data") and a.args and all(32 <= c < 127 for c in a.args.rstrip(b"\0")):
+            url = a.args.rstrip(b"\0").decode("latin1").strip()
+    print(f"      url: {url!r}")
+    low = url.lower()
+    if low.startswith(("http://", "https://", "www.")):
+        return show_page(link, url)
+    if low.startswith("aol://"):
+        target = url.split(":", 2)[-1] if url.count(":") >= 2 else url[6:]
+        word = _norm(target.replace("_", " ").replace("%20", " "))
+        area = KEYWORDS.get(word) or KEYWORDS.get(word.replace(" ", ""))
+        if area:
+            return open_area(link, area)
+        if word in ("learnkeywords", "learn keywords", "keywordlist"):
+            return info_area(link, "member services")
+    link.send_stream(stream(atom("uni_wait_off")))
+    alert(link, f"{url or 'That location'} is not currently available.")
+
+
 def news_search(link, stream_id, body):
     q = (request(body)["texts"] or [""])[0].strip().lower()
 
@@ -409,5 +432,5 @@ def news_search(link, stream_id, body):
     run_bg(work, done)
 
 
-TOKENS = {b"zN": news_search, b"zU": web, b"zR": reference, b"zF": files, b"Kk": keyword, b"K1": by_gid, b"k1": by_gid, b"f1": by_gid,
+TOKENS = {b"ur": url_request, b"UR": url_request, b"zN": news_search, b"zU": web, b"zR": reference, b"zF": files, b"Kk": keyword, b"K1": by_gid, b"k1": by_gid, b"f1": by_gid,
           b"zA": item, b"zQ": get_quote, b"zW": get_weather}
