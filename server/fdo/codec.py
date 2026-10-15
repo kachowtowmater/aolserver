@@ -30,12 +30,21 @@ class Atom:
 
 
 def decode(data: bytes) -> list[Atom]:
+    return [a for _, a in decode_offsets(data)]
+
+
+def decode_offsets(data: bytes) -> list[tuple[int, Atom]]:
+    """Like decode() but also returns each atom's starting byte offset
+    (a prefix byte counts as part of the atom it modifies)."""
     out, i, cur_proto = [], 0, 0
+    start = None
     p_off = a_off = 0
     keep = False
     while i < len(data):
         b = data[i]
         style, low = b >> 5, b & 0x1F
+        if start is None:
+            start = i
         if style == 7:
             p_off, a_off, keep = (b & 0x18) << 2, (b & 0x06) << 4, bool(b & 1)
             i += 1
@@ -70,8 +79,22 @@ def decode(data: bytes) -> list[Atom]:
         if not keep:
             p_off = a_off = 0
         cur_proto = proto
-        out.append(Atom(proto, num, bytes(args)))
+        out.append((start, Atom(proto, num, bytes(args))))
+        start = None
     return out
+
+
+def split(data: bytes, limit: int) -> list[bytes]:
+    """Cut an atom stream into chunks of whole atoms, each <= limit bytes when
+    possible (the client runs each P3 packet as a unit; context carries over)."""
+    starts = [o for o, _ in decode_offsets(data)] + [len(data)]
+    chunks, cur = [], 0
+    for a, b in zip(starts, starts[1:]):
+        if b - cur > limit and a > cur:
+            chunks.append(data[cur:a])
+            cur = a
+    chunks.append(data[cur:])
+    return chunks
 
 
 def atom(name: str, args: bytes = b"") -> bytes:

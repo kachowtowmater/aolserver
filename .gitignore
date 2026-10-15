@@ -18,3 +18,4 @@ server/captures/
 # third-party reference repos (cloned separately, see README)
 .venv/
 wiretap/
+server/art/

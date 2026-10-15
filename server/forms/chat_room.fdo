@@ -1,0 +1,9 @@
+uni_start_stream <00x>
+  man_preset_title <"{{room}}">
+  uni_invoke_local <32-117>
+  var_number_set <A, 1>
+  var_number_save <A, 65537>
+  man_update_display
+  chat_room_open
+{{users}}
+uni_end_stream <00x>

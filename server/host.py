@@ -1,10 +1,21 @@
-"""Service logic: what the host does with each DATA token from the client.
+"""Token dispatcher. Hot-reloaded (with services/*) by server.py on change."""
+import importlib
+import pkgutil
 
-Hot-reloaded by server.py on change. `link` is the server.Link for the
-connection; keep per-connection state in link.session.
-"""
-from fdo.codec import atom, gid, s, stream, u8, u16, u32  # noqa: F401
-from fdo.compiler import render
+import services
+
+MODULES = []
+HANDLERS = {}
+
+
+def load():
+    MODULES.clear()
+    HANDLERS.clear()
+    for info in pkgutil.iter_modules(services.__path__):
+        mod = importlib.import_module(f"services.{info.name}")
+        mod = importlib.reload(mod)
+        MODULES.append(mod)
+        HANDLERS.update(getattr(mod, "TOKENS", {}))
 
 
 def on_data(link, token: bytes, stream_id: int, body: bytes):
@@ -15,30 +26,11 @@ def on_data(link, token: bytes, stream_id: int, body: bytes):
         print(f"      (no handler for token {token!r})")
 
 
-def screen_name(body: bytes) -> str:
-    """First de_data in the sign-on form stream is the screen name."""
-    from fdo import codec
-    for a in codec.decode(body):
-        if a.name == "de_data":
-            return a.args.decode("latin1").strip()
-    return "Guest"
+def on_disconnect(link):
+    for mod in MODULES:
+        hook = getattr(mod, "on_disconnect", None)
+        if hook:
+            hook(link)
 
 
-def sign_on(link, stream_id, body):
-    """Dd: the Welcome form's screen name (and password) - accept everyone for now.
-
-    Success = tell every client tool we're online (async_online, which the FDO
-    manual says belongs on the Welcome form) and run the client's own
-    "went online" script 32-296 (enables Sign Off, toolbar, Welcome sound).
-    """
-    name = link.session["name"] = screen_name(body)
-    link.send_stream(stream(
-        atom("async_online"),
-        atom("uni_invoke_local", gid("32-296")),
-    ))
-    link.send_stream(render("welcome", name=name))
-
-
-HANDLERS = {
-    b"Dd": sign_on,
-}
+load()

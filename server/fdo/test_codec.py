@@ -19,3 +19,11 @@ def test_compact_styles():
     # 0x72 = style 3 (atom), num 18, protocol carried over from previous atom
     atoms = codec.decode(bytes.fromhex("015A0161") + b"\x72")
     assert atoms[1].proto == 1 and atoms[1].num == 18 and atoms[1].args == b""
+
+
+def test_split_on_atom_boundaries():
+    data = codec.stream(*[codec.atom("idb_append_data", bytes(300)) for _ in range(5)])
+    parts = codec.split(data, 700)
+    assert b"".join(parts) == data and len(parts) > 1
+    for p in parts:
+        assert codec.decode(p)  # every chunk is whole atoms

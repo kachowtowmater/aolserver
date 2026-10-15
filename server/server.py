@@ -21,12 +21,18 @@ import p3
 from fdo import codec
 
 LINKS: list["Link"] = []
-_host_mtime = Path(host.__file__).stat().st_mtime
+CHUNK = 900  # atom bytes per DATA packet (client accepts frames up to 0x3fa)
+def _mtime():
+    here = Path(host.__file__).parent
+    return max(p.stat().st_mtime for p in [here / "host.py", *here.glob("services/*.py")])
+
+
+_host_mtime = _mtime()
 
 
 def current_host():
     global _host_mtime
-    m = Path(host.__file__).stat().st_mtime
+    m = _mtime()
     if m != _host_mtime:
         _host_mtime = m
         try:
@@ -47,6 +53,7 @@ class Link:
         self.peer = "%s:%d" % writer.get_extra_info("peername")[:2]
         self.tx = self.rx = p3.SEQ_MAX  # last seq we sent / last seq we accepted
         self.session = {}  # per-connection state owned by host.py
+        self.stream_seq = 0
         self.log = (LOG / f"{time.strftime('%Y%m%d-%H%M%S')}-{self.peer.replace(':', '_')}.jsonl").open("w")
 
     def record(self, direction, f: p3.Frame, raw: bytes):
@@ -57,9 +64,10 @@ class Link:
         if f.name in ("ACK", "HBEAT"):
             return
         print(f"  {direction} {f.name:6} tx={f.tx:3} rx={f.rx:3} tok={tok} stream={f.stream}")
-        if tok and len(f.payload) > 4:
+        skip = {"aT": 2, "at": 6, "At": 5}.get(tok, 4)
+        if tok and len(f.payload) > skip and (direction == "C->S" or tok == "aT"):
             try:
-                for a in codec.decode(f.payload[4:]):
+                for a in codec.decode(f.payload[skip:]):
                     print(f"      {a!r}")
             except Exception:
                 print(f"      raw {f.payload[4:80].hex(' ')}")
@@ -72,13 +80,23 @@ class Link:
         self.record("S->C", f, raw)
         self.writer.write(raw)
 
+    def send_data_raw(self, token: bytes, body: bytes = b""):
+        """DATA packet whose payload is just token + body (no stream id)."""
+        self.send(p3.DATA, token + body)
+
     def send_data(self, token: bytes, stream: int, body: bytes = b""):
         self.send(p3.DATA, token + stream.to_bytes(2, "big") + body)
 
     def send_stream(self, atoms: bytes):
         """Run an atom stream on the client. 'aT' carries no stream id; the
-        2-byte-id 'AT' form is silently ignored by the 3.0 client."""
-        self.send(p3.DATA, b"aT" + atoms)
+        2-byte-id 'AT' form is silently ignored by the 3.0 client. Streams too
+        big for one packet go out as 'at' chunks sharing a 4-byte stream id."""
+        if len(atoms) <= CHUNK:
+            return self.send(p3.DATA, b"aT" + atoms)
+        self.stream_seq += 1
+        sid = self.stream_seq.to_bytes(4, "big")
+        for chunk in codec.split(atoms, CHUNK):
+            self.send(p3.DATA, b"at" + sid + chunk)
 
     def on_frame(self, f: p3.Frame):
         if not f.crc_ok:
@@ -123,6 +141,10 @@ class Link:
         finally:
             print(f"[-] {self.peer} disconnected")
             LINKS.remove(self)
+            try:
+                current_host().on_disconnect(self)
+            except Exception:
+                traceback.print_exc()
             self.log.close()
             self.writer.close()
 

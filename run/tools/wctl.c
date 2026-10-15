@@ -12,9 +12,9 @@
 static const char *want; static HWND found;
 
 static BOOL CALLBACK child_list(HWND h, LPARAM lp) {
-    char cls[64], txt[256];
-    GetClassNameA(h, cls, sizeof cls); GetWindowTextA(h, txt, sizeof txt);
-    printf("    %p %-14s vis=%d en=%d \"%s\"\n", (void *)h, cls, IsWindowVisible(h), IsWindowEnabled(h), txt);
+    char cls[64], txt[256]; RECT r;
+    GetClassNameA(h, cls, sizeof cls); GetWindowTextA(h, txt, sizeof txt); GetWindowRect(h, &r);
+    printf("    %p %-14s vis=%d en=%d @%ld,%ld \"%s\"\n", (void *)h, cls, IsWindowVisible(h), IsWindowEnabled(h), r.left, r.top, txt);
     return TRUE;
 }
 

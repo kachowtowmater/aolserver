@@ -1,0 +1,83 @@
+"""People Connection chat rooms.
+
+Client -> host:  CJ  enter People Connection (we place you in a lobby)
+                 Aa  chat line typed in the room window (raw text)
+Host -> client (AOLCHAT tool tokens, decoded from AOLCHAT.AOL):
+                 AB  <screen name, 10 bytes><sep><text>   chat line
+                 CA  <slot><screen name>                   member arrived
+                 CB  <slot>                                member left
+The room window itself is the client's own form 32-117 with the title preset.
+"""
+import state
+
+from . import art
+from .util import compile_fdo, fdo_text, FORMS_DIR, name_of
+
+ROOM_SIZE = 23  # AOL lobbies held 23 people
+
+
+def _room_of(link):
+    return state.ROOMS.get(link.session.get("room"))
+
+
+def _slot(room, link) -> int:
+    return room["slots"][link]
+
+
+def _send_line(link, who: str, text: str):
+    name = who.encode("latin1")[:10].ljust(10, b" ")
+    link.send_data_raw(b"AB", name + b"\x00" + text.encode("latin1", "replace") + b"\x00")
+
+
+def broadcast_line(room, who: str, text: str):
+    for member in room["slots"]:
+        _send_line(member, who, text)
+
+
+def join(link, room_name: str):
+    leave(link)
+    room = state.ROOMS.setdefault(room_name, {"slots": {}, "next": 1})
+    slot = room["next"]
+    room["next"] += 1
+    room["slots"][link] = slot
+    link.session["room"] = room_name
+    me = name_of(link)
+    users = "\n".join(f'  chat_add_user <"{fdo_text(name_of(m))}">' for m in room["slots"])
+    src = (FORMS_DIR / "chat_room.fdo").read_text().replace("{{room}}", fdo_text(room_name)).replace("{{users}}", users)
+    art.ensure_form(link, "32-117")
+    link.send_stream(compile_fdo(src))
+    for other in room["slots"]:
+        if other is not link:
+            other.send_data_raw(b"CA", bytes([slot]) + me.encode("latin1") + b"\x00")
+    _send_line(link, "OnlineHost", f"*** You are in \"{room_name}\". ***")
+
+
+def leave(link):
+    room = _room_of(link)
+    if not room:
+        return
+    slot = room["slots"].pop(link, None)
+    link.session.pop("room", None)
+    for other in room["slots"]:
+        other.send_data_raw(b"CB", bytes([slot]))
+
+
+def enter_people_connection(link, stream_id, body):
+    n = 1
+    while len(state.ROOMS.get(f"Lobby {n}", {}).get("slots", {})) >= ROOM_SIZE:
+        n += 1
+    join(link, f"Lobby {n}")
+
+
+def chat_line(link, stream_id, body):
+    room = _room_of(link)
+    text = body.split(b"\x00")[0].decode("latin1").strip()
+    if room and text:
+        broadcast_line(room, name_of(link), text)
+
+
+def on_disconnect(link):
+    leave(link)
+
+
+TOKENS = {b"CJ": enter_people_connection, b"Aa": chat_line}
