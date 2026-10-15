@@ -111,12 +111,9 @@ def sign_off(link, stream_id, body):
     whose async_offline hangs up the way 1997 did."""
     from . import art
     art.ensure_form(link, "32-5438")
-    link.send_stream(stream(atom("uni_invoke_local", gid("32-5438")), atom("uni_wait_off")))
-    # `**` "DISCONNECT" makes AOLASYNC stop P3 and run the CCL hang-up (found in
-    # AOLASYNC's token handler); just closing the socket leaves AOLTCPIP wedged.
-    link.send_data_raw(b"**", b"DISCONNECT\0")
-    import asyncio
-    asyncio.get_running_loop().call_later(2.0, link.writer.close)
+    # ccl_hang_up runs the CCL hang-up section (NetDisc), which is the only thing
+    # that resets AOLTCPIP's connection flag -- without it SIGN ON AGAIN is dead.
+    link.send_stream(stream(atom("uni_invoke_local", gid("32-5438")), atom("uni_wait_off"), atom("ccl_hang_up")))
 
 
 def on_disconnect(link):
