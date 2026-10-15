@@ -3,6 +3,7 @@ member-to-member mail -- against a temporary database and local stand-in servers
 mail account or network mail is used.   Run:  cd server && python3 test_gateway.py
 """
 import asyncio
+import os
 import email
 import email.policy
 import smtplib
@@ -106,7 +107,7 @@ def test_dkim_dns_record():
     k = dkim.ensure_key()
     rec = dkim.dns_record(k)
     assert rec.startswith("v=DKIM1; k=rsa; p=MII") and k["n"].bit_length() == 2048
-    assert oct(dkim.KEY.stat().st_mode)[-3:] == "600"
+    assert os.name == "nt" or oct(dkim.KEY.stat().st_mode)[-3:] == "600"  # Windows has no Unix modes
 
 
 def test_send_error_messages():
