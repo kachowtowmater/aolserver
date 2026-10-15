@@ -377,6 +377,36 @@
 "flags": 2,
 "argtype": 0
 },
+"app_command": {
+"proto": 40,
+"atom": 4,
+"flags": 2,
+"argtype": 0
+},
+"artexp_get_num_assets": {
+"proto": 62,
+"atom": 1,
+"flags": 2,
+"argtype": 0
+},
+"artexp_set_context": {
+"proto": 62,
+"atom": 3,
+"flags": 2,
+"argtype": 0
+},
+"artexp_show_asset": {
+"proto": 62,
+"atom": 2,
+"flags": 1,
+"argtype": 0
+},
+"artexp_version": {
+"proto": 62,
+"atom": 0,
+"flags": 1,
+"argtype": 0
+},
 "async_alert": {
 "proto": 13,
 "atom": 7,
@@ -727,6 +757,36 @@
 "proto": 13,
 "atom": 57,
 "flags": 2,
+"argtype": 0
+},
+"blank_get_form": {
+"proto": 52,
+"atom": 1,
+"flags": 5,
+"argtype": 0
+},
+"blank_get_ver": {
+"proto": 52,
+"atom": 2,
+"flags": 1,
+"argtype": 0
+},
+"blank_test": {
+"proto": 52,
+"atom": 0,
+"flags": 1,
+"argtype": 0
+},
+"buddy_action_command": {
+"proto": 73,
+"atom": 0,
+"flags": 1,
+"argtype": 0
+},
+"buddy_connect_string": {
+"proto": 73,
+"atom": 1,
+"flags": 3,
 "argtype": 0
 },
 "buf_add_atom_data": {
@@ -2313,6 +2373,144 @@
 "flags": 2,
 "argtype": 0
 },
+"comit_add_version_file": {
+"proto": 74,
+"atom": 11,
+"flags": 3,
+"argtype": 0
+},
+"comit_begin": {
+"proto": 74,
+"atom": 0,
+"flags": 1,
+"argtype": 0
+},
+"comit_comment": {
+"proto": 74,
+"atom": 19,
+"flags": 3,
+"argtype": 0
+},
+"comit_cswitch_disksize": {
+"proto": 74,
+"atom": 16,
+"flags": 2,
+"argtype": 0
+},
+"comit_cswitch_dnloadsize": {
+"proto": 74,
+"atom": 15,
+"flags": 2,
+"argtype": 0
+},
+"comit_cswitch_id": {
+"proto": 74,
+"atom": 14,
+"flags": 2,
+"argtype": 0
+},
+"comit_cswitch_version": {
+"proto": 74,
+"atom": 17,
+"flags": 3,
+"argtype": 0
+},
+"comit_end": {
+"proto": 74,
+"atom": 12,
+"flags": 1,
+"argtype": 0
+},
+"comit_id": {
+"proto": 74,
+"atom": 1,
+"flags": 2,
+"argtype": 0
+},
+"comit_reboot": {
+"proto": 74,
+"atom": 9,
+"flags": 21,
+"argtype": 0
+},
+"comit_restart": {
+"proto": 74,
+"atom": 10,
+"flags": 21,
+"argtype": 0
+},
+"comit_setup_authcode": {
+"proto": 74,
+"atom": 8,
+"flags": 3,
+"argtype": 0
+},
+"comit_setup_cmdline": {
+"proto": 74,
+"atom": 5,
+"flags": 3,
+"argtype": 0
+},
+"comit_setup_description": {
+"proto": 74,
+"atom": 22,
+"flags": 2,
+"argtype": 0
+},
+"comit_setup_disksize": {
+"proto": 74,
+"atom": 7,
+"flags": 2,
+"argtype": 0
+},
+"comit_setup_dnloadsize": {
+"proto": 74,
+"atom": 6,
+"flags": 2,
+"argtype": 0
+},
+"comit_setup_fileid": {
+"proto": 74,
+"atom": 4,
+"flags": 2,
+"argtype": 0
+},
+"comit_setup_filename": {
+"proto": 74,
+"atom": 2,
+"flags": 3,
+"argtype": 0
+},
+"comit_setup_fileversion": {
+"proto": 74,
+"atom": 3,
+"flags": 3,
+"argtype": 0
+},
+"comit_setup_installsize": {
+"proto": 74,
+"atom": 20,
+"flags": 2,
+"argtype": 0
+},
+"comit_setup_library": {
+"proto": 74,
+"atom": 21,
+"flags": 2,
+"argtype": 0
+},
+"comit_start": {
+"proto": 74,
+"atom": 13,
+"flags": 1,
+"argtype": 0
+},
+"comit_stat_token": {
+"proto": 74,
+"atom": 18,
+"flags": 3,
+"argtype": 0
+},
 "de_custom_data": {
 "proto": 3,
 "atom": 11,
@@ -2887,6 +3085,12 @@
 "proto": 27,
 "atom": 1,
 "flags": 2,
+"argtype": 0
+},
+"dpc_exchange_account_info": {
+"proto": 76,
+"atom": 0,
+"flags": 3,
 "argtype": 0
 },
 "exapi_app_terminate": {
@@ -4017,6 +4221,12 @@
 "flags": 3,
 "argtype": 0
 },
+"htmlview_manage": {
+"proto": 75,
+"atom": 0,
+"flags": 1,
+"argtype": 0
+},
 "idb_append_data": {
 "proto": 5,
 "atom": 11,
@@ -4819,6 +5029,60 @@
 "proto": 21,
 "atom": 2,
 "flags": 1,
+"argtype": 0
+},
+"irc_create": {
+"proto": 30,
+"atom": 3,
+"flags": 2,
+"argtype": 0
+},
+"irc_enter": {
+"proto": 30,
+"atom": 1,
+"flags": 2,
+"argtype": 0
+},
+"irc_join": {
+"proto": 30,
+"atom": 2,
+"flags": 2,
+"argtype": 0
+},
+"irc_manage": {
+"proto": 30,
+"atom": 0,
+"flags": 1,
+"argtype": 0
+},
+"irc_user_info": {
+"proto": 30,
+"atom": 4,
+"flags": 2,
+"argtype": 0
+},
+"java_args": {
+"proto": 49,
+"atom": 3,
+"flags": 3,
+"argtype": 0
+},
+"java_execute": {
+"proto": 49,
+"atom": 1,
+"flags": 1,
+"argtype": 0
+},
+"java_manage": {
+"proto": 49,
+"atom": 0,
+"flags": 20,
+"argtype": 0
+},
+"java_mimetype": {
+"proto": 49,
+"atom": 2,
+"flags": 3,
 "argtype": 0
 },
 "lm_add_entry_date_time": {
@@ -5647,6 +5911,150 @@
 "proto": 1,
 "atom": 100,
 "flags": 1,
+"argtype": 0
+},
+"map_pbm_canyoncreate": {
+"proto": 69,
+"atom": 100,
+"flags": 1,
+"argtype": 0
+},
+"map_pbm_doaction": {
+"proto": 69,
+"atom": 104,
+"flags": 1,
+"argtype": 0
+},
+"map_pbm_edit": {
+"proto": 69,
+"atom": 102,
+"flags": 3,
+"argtype": 0
+},
+"map_pbm_fastcreate": {
+"proto": 69,
+"atom": 101,
+"flags": 1,
+"argtype": 0
+},
+"map_pbm_menulaunch": {
+"proto": 69,
+"atom": 103,
+"flags": 1,
+"argtype": 0
+},
+"map_pp3_art_url": {
+"proto": 69,
+"atom": 2,
+"flags": 3,
+"argtype": 0
+},
+"map_pp3_doaction": {
+"proto": 69,
+"atom": 4,
+"flags": 2,
+"argtype": 0
+},
+"map_pp3_entry_form": {
+"proto": 69,
+"atom": 7,
+"flags": 3,
+"argtype": 0
+},
+"map_pp3_get_url": {
+"proto": 69,
+"atom": 3,
+"flags": 1,
+"argtype": 0
+},
+"map_pp3_menustart": {
+"proto": 69,
+"atom": 5,
+"flags": 1,
+"argtype": 0
+},
+"map_pp3_mywebpage": {
+"proto": 69,
+"atom": 6,
+"flags": 1,
+"argtype": 0
+},
+"map_pp3_open_site_mgr": {
+"proto": 69,
+"atom": 1,
+"flags": 1,
+"argtype": 0
+},
+"map_pp3_open_url": {
+"proto": 69,
+"atom": 0,
+"flags": 3,
+"argtype": 0
+},
+"map_pp3_register_url": {
+"proto": 69,
+"atom": 9,
+"flags": 3,
+"argtype": 0
+},
+"map_pp3_selection_form": {
+"proto": 69,
+"atom": 8,
+"flags": 3,
+"argtype": 0
+},
+"map_ygp_doaction": {
+"proto": 69,
+"atom": 150,
+"flags": 2,
+"argtype": 0
+},
+"map_ygp_doaction_arg": {
+"proto": 69,
+"atom": 159,
+"flags": 18,
+"argtype": 0
+},
+"map_ygp_form_up": {
+"proto": 69,
+"atom": 152,
+"flags": 2,
+"argtype": 0
+},
+"map_ygp_get_info": {
+"proto": 69,
+"atom": 154,
+"flags": 2,
+"argtype": 0
+},
+"map_ygp_get_url": {
+"proto": 69,
+"atom": 151,
+"flags": 2,
+"argtype": 0
+},
+"map_ygp_info_ready": {
+"proto": 69,
+"atom": 153,
+"flags": 2,
+"argtype": 0
+},
+"map_ygp_set_encoded_data": {
+"proto": 69,
+"atom": 156,
+"flags": 3,
+"argtype": 0
+},
+"map_ygp_stream": {
+"proto": 69,
+"atom": 157,
+"flags": 6,
+"argtype": 0
+},
+"map_ygp_stream_id": {
+"proto": 69,
+"atom": 158,
+"flags": 5,
 "argtype": 0
 },
 "mat_art_animation_rate": {
@@ -6825,6 +7233,66 @@
 "flags": 2,
 "argtype": 0
 },
+"merc_about": {
+"proto": 43,
+"atom": 4,
+"flags": 1,
+"argtype": 0
+},
+"merc_close": {
+"proto": 43,
+"atom": 5,
+"flags": 1,
+"argtype": 0
+},
+"merc_help": {
+"proto": 43,
+"atom": 3,
+"flags": 1,
+"argtype": 0
+},
+"merc_manage": {
+"proto": 43,
+"atom": 0,
+"flags": 1,
+"argtype": 0
+},
+"merc_select_bank": {
+"proto": 43,
+"atom": 1,
+"flags": 3,
+"argtype": 0
+},
+"merc_settings": {
+"proto": 43,
+"atom": 2,
+"flags": 1,
+"argtype": 0
+},
+"mf_add_condition": {
+"proto": 63,
+"atom": 2,
+"flags": 1,
+"argtype": 0
+},
+"mf_add_filter": {
+"proto": 63,
+"atom": 1,
+"flags": 1,
+"argtype": 0
+},
+"mf_modify_object": {
+"proto": 63,
+"atom": 3,
+"flags": 1,
+"argtype": 0
+},
+"mf_save_object": {
+"proto": 63,
+"atom": 4,
+"flags": 1,
+"argtype": 0
+},
 "mip_abort": {
 "proto": 17,
 "atom": 6,
@@ -7971,6 +8439,384 @@
 "flags": 1,
 "argtype": 0
 },
+"phone_accept_call": {
+"proto": 60,
+"atom": 0,
+"flags": 20,
+"argtype": 0
+},
+"phone_caller": {
+"proto": 60,
+"atom": 2,
+"flags": 3,
+"argtype": 0
+},
+"phone_caller_ip_address": {
+"proto": 60,
+"atom": 3,
+"flags": 3,
+"argtype": 0
+},
+"phone_cancel_call": {
+"proto": 60,
+"atom": 1,
+"flags": 20,
+"argtype": 0
+},
+"phone_decline_call": {
+"proto": 60,
+"atom": 4,
+"flags": 20,
+"argtype": 0
+},
+"phone_form_id": {
+"proto": 60,
+"atom": 23,
+"flags": 2,
+"argtype": 0
+},
+"phone_gain_focus": {
+"proto": 60,
+"atom": 33,
+"flags": 1,
+"argtype": 0
+},
+"phone_get_ip_address": {
+"proto": 60,
+"atom": 20,
+"flags": 1,
+"argtype": 0
+},
+"phone_ip_address": {
+"proto": 60,
+"atom": 21,
+"flags": 3,
+"argtype": 0
+},
+"phone_manage": {
+"proto": 60,
+"atom": 57,
+"flags": 1,
+"argtype": 0
+},
+"phone_msg_complete": {
+"proto": 60,
+"atom": 22,
+"flags": 1,
+"argtype": 0
+},
+"phone_place_call": {
+"proto": 60,
+"atom": 5,
+"flags": 20,
+"argtype": 0
+},
+"phone_port_list": {
+"proto": 60,
+"atom": 53,
+"flags": 21,
+"argtype": 0
+},
+"phone_ready_to_connect": {
+"proto": 60,
+"atom": 54,
+"flags": 21,
+"argtype": 0
+},
+"phone_recipient": {
+"proto": 60,
+"atom": 6,
+"flags": 3,
+"argtype": 0
+},
+"phone_recipient_ip_address": {
+"proto": 60,
+"atom": 7,
+"flags": 3,
+"argtype": 0
+},
+"phone_ringing": {
+"proto": 60,
+"atom": 8,
+"flags": 20,
+"argtype": 0
+},
+"phone_set_context": {
+"proto": 60,
+"atom": 19,
+"flags": 3,
+"argtype": 0
+},
+"phone_set_response_token": {
+"proto": 60,
+"atom": 9,
+"flags": 20,
+"argtype": 0
+},
+"phone_stats": {
+"proto": 60,
+"atom": 52,
+"flags": 3,
+"argtype": 0
+},
+"phone_stats_client_version": {
+"proto": 60,
+"atom": 47,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_duration": {
+"proto": 60,
+"atom": 45,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_late_packets": {
+"proto": 60,
+"atom": 41,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_lost_packets": {
+"proto": 60,
+"atom": 43,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_max_backlog": {
+"proto": 60,
+"atom": 36,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_min_backlog": {
+"proto": 60,
+"atom": 35,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_out_of_order_packets": {
+"proto": 60,
+"atom": 42,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_overflows": {
+"proto": 60,
+"atom": 38,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_packets_in": {
+"proto": 60,
+"atom": 39,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_packets_out": {
+"proto": 60,
+"atom": 40,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_played_packets": {
+"proto": 60,
+"atom": 44,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_speech_bytes_in": {
+"proto": 60,
+"atom": 51,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_speech_bytes_out": {
+"proto": 60,
+"atom": 49,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_time_of_day": {
+"proto": 60,
+"atom": 46,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_total_bytes_in": {
+"proto": 60,
+"atom": 50,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_total_bytes_out": {
+"proto": 60,
+"atom": 48,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_transmissions": {
+"proto": 60,
+"atom": 34,
+"flags": 2,
+"argtype": 0
+},
+"phone_stats_underflows": {
+"proto": 60,
+"atom": 37,
+"flags": 2,
+"argtype": 0
+},
+"phone_t_ui_set_screen_name": {
+"proto": 60,
+"atom": 128,
+"flags": 3,
+"argtype": 0
+},
+"phone_tool_version": {
+"proto": 60,
+"atom": 10,
+"flags": 2,
+"argtype": 0
+},
+"phone_ui_accept_call": {
+"proto": 60,
+"atom": 11,
+"flags": 3,
+"argtype": 0
+},
+"phone_ui_cancel_call": {
+"proto": 60,
+"atom": 12,
+"flags": 3,
+"argtype": 0
+},
+"phone_ui_decline_call": {
+"proto": 60,
+"atom": 13,
+"flags": 3,
+"argtype": 0
+},
+"phone_ui_hang_up": {
+"proto": 60,
+"atom": 14,
+"flags": 1,
+"argtype": 0
+},
+"phone_ui_listen": {
+"proto": 60,
+"atom": 15,
+"flags": 1,
+"argtype": 0
+},
+"phone_ui_mute": {
+"proto": 60,
+"atom": 16,
+"flags": 4,
+"argtype": 0
+},
+"phone_ui_place_call": {
+"proto": 60,
+"atom": 17,
+"flags": 3,
+"argtype": 0
+},
+"phone_ui_status_hangup": {
+"proto": 60,
+"atom": 56,
+"flags": 1,
+"argtype": 0
+},
+"phone_ui_status_ok": {
+"proto": 60,
+"atom": 55,
+"flags": 1,
+"argtype": 0
+},
+"phone_ui_talk": {
+"proto": 60,
+"atom": 18,
+"flags": 1,
+"argtype": 0
+},
+"phone_wiz_can_setvolume": {
+"proto": 60,
+"atom": 30,
+"flags": 1,
+"argtype": 0
+},
+"phone_wiz_play_buffer": {
+"proto": 60,
+"atom": 25,
+"flags": 2,
+"argtype": 0
+},
+"phone_wiz_playback_volume": {
+"proto": 60,
+"atom": 32,
+"flags": 1,
+"argtype": 0
+},
+"phone_wiz_refresh_prefs": {
+"proto": 60,
+"atom": 31,
+"flags": 2,
+"argtype": 0
+},
+"phone_wiz_set_playback_volume": {
+"proto": 60,
+"atom": 24,
+"flags": 2,
+"argtype": 0
+},
+"phone_wiz_start_automiclevel": {
+"proto": 60,
+"atom": 27,
+"flags": 1,
+"argtype": 0
+},
+"phone_wiz_start_recording": {
+"proto": 60,
+"atom": 28,
+"flags": 1,
+"argtype": 0
+},
+"phone_wiz_stop_playing": {
+"proto": 60,
+"atom": 26,
+"flags": 1,
+"argtype": 0
+},
+"phone_wiz_stop_recording": {
+"proto": 60,
+"atom": 29,
+"flags": 1,
+"argtype": 0
+},
+"phone_wizard_begin": {
+"proto": 60,
+"atom": 59,
+"flags": 1,
+"argtype": 0
+},
+"phone_wizard_end": {
+"proto": 60,
+"atom": 61,
+"flags": 1,
+"argtype": 0
+},
+"phone_wizard_object_type": {
+"proto": 60,
+"atom": 58,
+"flags": 19,
+"argtype": 0
+},
+"phone_wizard_store_levels": {
+"proto": 60,
+"atom": 60,
+"flags": 1,
+"argtype": 0
+},
 "pictalk_ad_manage": {
 "proto": 29,
 "atom": 12,
@@ -8047,6 +8893,36 @@
 "proto": 29,
 "atom": 10,
 "flags": 1,
+"argtype": 0
+},
+"plugin_args": {
+"proto": 64,
+"atom": 4,
+"flags": 3,
+"argtype": 0
+},
+"plugin_execute": {
+"proto": 64,
+"atom": 1,
+"flags": 1,
+"argtype": 0
+},
+"plugin_fileextents": {
+"proto": 64,
+"atom": 3,
+"flags": 3,
+"argtype": 0
+},
+"plugin_manage": {
+"proto": 64,
+"atom": 0,
+"flags": 20,
+"argtype": 0
+},
+"plugin_mimetype": {
+"proto": 64,
+"atom": 2,
+"flags": 3,
 "argtype": 0
 },
 "radio_atr_caption": {
@@ -8497,6 +9373,108 @@
 "proto": 25,
 "atom": 11,
 "flags": 1,
+"argtype": 0
+},
+"sage_set_play": {
+"proto": 70,
+"atom": 6,
+"flags": 4,
+"argtype": 0
+},
+"sage_set_position_gid": {
+"proto": 70,
+"atom": 3,
+"flags": 5,
+"argtype": 0
+},
+"sage_set_position_rid": {
+"proto": 70,
+"atom": 4,
+"flags": 2,
+"argtype": 0
+},
+"sage_set_style": {
+"proto": 70,
+"atom": 2,
+"flags": 2,
+"argtype": 0
+},
+"sage_set_text": {
+"proto": 70,
+"atom": 5,
+"flags": 3,
+"argtype": 0
+},
+"sage_showme_end": {
+"proto": 70,
+"atom": 1,
+"flags": 1,
+"argtype": 0
+},
+"sage_showme_start": {
+"proto": 70,
+"atom": 0,
+"flags": 3,
+"argtype": 0
+},
+"sec_ip_error": {
+"proto": 55,
+"atom": 3,
+"flags": 1,
+"argtype": 0
+},
+"sec_ip_handshake_to_client": {
+"proto": 55,
+"atom": 2,
+"flags": 1,
+"argtype": 0
+},
+"sec_ip_handshake_to_host": {
+"proto": 55,
+"atom": 1,
+"flags": 1,
+"argtype": 0
+},
+"slider_get_max_range": {
+"proto": 65,
+"atom": 4,
+"flags": 1,
+"argtype": 0
+},
+"slider_get_min_range": {
+"proto": 65,
+"atom": 6,
+"flags": 1,
+"argtype": 0
+},
+"slider_get_position": {
+"proto": 65,
+"atom": 1,
+"flags": 1,
+"argtype": 0
+},
+"slider_manage": {
+"proto": 65,
+"atom": 0,
+"flags": 1,
+"argtype": 0
+},
+"slider_set_max_range": {
+"proto": 65,
+"atom": 3,
+"flags": 2,
+"argtype": 0
+},
+"slider_set_min_range": {
+"proto": 65,
+"atom": 5,
+"flags": 2,
+"argtype": 0
+},
+"slider_set_position": {
+"proto": 65,
+"atom": 2,
+"flags": 2,
 "argtype": 0
 },
 "sm_check_domain": {

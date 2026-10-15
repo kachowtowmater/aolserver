@@ -1,0 +1,552 @@
+{
+"num_width": {
+"mat_size:2": 2
+},
+"words": {
+"act_do_action": {
+"0:close": "02",
+"0:gain_focus": "04",
+"0:select": "01",
+"0:void": "00"
+},
+"act_set_criterion": {
+"0:close": "02",
+"0:gain_focus": "04",
+"0:lose_focus": "05",
+"0:select": "01",
+"0:void": "00"
+},
+"async_alert": {
+"0:error": "02",
+"0:info": "01",
+"0:pop_warning": "06",
+"0:yes_no": "07"
+},
+"buf_start_buffer": {
+"0:clear_buffer": "00000200",
+"0:data_included": "00000020",
+"0:end_stream_trailer": "00000010",
+"0:host_bound": "00000004",
+"0:leave_buffer_open": "00000040",
+"0:pointer_included": "00000100",
+"0:response_id_header": "00000080",
+"0:start_stream_header": "00000008",
+"0:stream_id_header": "00000002",
+"0:token_header": "00000001"
+},
+"buf_use_buffer": {
+"0:end_stream_trailer": "00000010",
+"0:host_bound": "00000004",
+"0:response_id_header": "00000080",
+"0:start_stream_header": "00000008",
+"0:stream_id_header": "00000002",
+"0:token_header": "00000001"
+},
+"chart_bool_show_tools": {
+"0:yes": "01"
+},
+"chart_bool_vert_grid": {
+"0:yes": "01"
+},
+"chat_bool_announce": {
+"0:yes": "01"
+},
+"cm_set_to_restart": {
+"0:yes": "01"
+},
+"de_get_data": {
+"0:current_object": "01"
+},
+"de_get_data_pointer": {
+"0:current_object": "01",
+"0:default": "00",
+"0:selected_children": "02"
+},
+"de_get_data_value": {
+"0:current_object": "01",
+"0:current_object_all_children": "05",
+"0:default": "00",
+"0:selected_children": "02"
+},
+"de_set_data_type": {
+"0:child_count": "07",
+"0:default": "00",
+"0:global_id": "04",
+"0:index": "06",
+"0:relative_id": "05",
+"0:text": "01",
+"0:var": "02"
+},
+"de_set_extraction_type": {
+"0:current_object": "01",
+"0:default": "00"
+},
+"de_validate": {
+"0:display_msg": "01",
+"0:terminate": "02"
+},
+"doc_bool_read_only": {
+"0:yes": "01"
+},
+"fm_handle_error": {
+"0:display_msg": "01",
+"0:terminate": "02"
+},
+"fm_item_get": {
+"0:broadcast_return_value": "15",
+"0:error_code": "0a",
+"0:file_type_id": "01",
+"0:filename": "06",
+"0:filespec": "08",
+"0:path": "07"
+},
+"fm_item_type": {
+"0:file_type_desc": "04",
+"0:file_type_ext": "03",
+"0:file_type_id": "01",
+"0:filename": "06",
+"0:ini_data_type": "25",
+"0:ini_file": "22",
+"0:ini_group": "23",
+"0:ini_key": "24",
+"0:ini_section_size": "29",
+"0:persistent_path": "28",
+"0:xor_mask": "12"
+},
+"image_attr_fit_to_view": {
+"0:no": "00",
+"0:yes": "01"
+},
+"image_attr_scale_best_fit": {
+"0:yes": "01"
+},
+"image_attr_thumbnail": {
+"0:yes": "01"
+},
+"imgxfer_attr_wait_active": {
+"0:yes": "01"
+},
+"man_force_old_style_dod": {
+"0:yes": "01"
+},
+"man_get_display_characteristics": {
+"0:height": "01",
+"0:horzres": "02",
+"0:width": "00"
+},
+"man_start_first": {
+"0:trigger": "06"
+},
+"man_start_object": {
+"0:bad_object": "0f",
+"0:boolean": "0a",
+"0:dms_list": "02",
+"0:dss_list": "04",
+"0:edit_view": "09",
+"0:ind_group": "01",
+"0:org_group": "00",
+"0:ornament": "07",
+"0:range": "0c",
+"0:root": "10",
+"0:select_boolean": "0b",
+"0:select_range": "0d",
+"0:sms_list": "03",
+"0:sss_list": "05",
+"0:tab_group": "12",
+"0:tab_page": "13",
+"0:tool_group": "11",
+"0:trigger": "06",
+"0:variable": "0e",
+"0:view": "08"
+},
+"man_start_sibling": {
+"0:dss_list": "04",
+"0:edit_view": "09",
+"0:org_group": "00",
+"0:ornament": "07",
+"0:select_range": "0d",
+"0:sms_list": "03",
+"0:sss_list": "05",
+"0:tool_group": "11",
+"0:trigger": "06",
+"0:view": "08"
+},
+"mat_bool_active_offline": {
+"0:no": "00"
+},
+"mat_bool_active_online": {
+"0:yes": "01"
+},
+"mat_bool_auto_closeable": {
+"0:no": "00"
+},
+"mat_bool_background_flood": {
+"0:yes": "01"
+},
+"mat_bool_background_pic": {
+"0:yes": "01"
+},
+"mat_bool_background_tile": {
+"0:yes": "01"
+},
+"mat_bool_child_line_feed": {
+"0:yes": "01"
+},
+"mat_bool_child_movable": {
+"0:no": "00"
+},
+"mat_bool_child_removable": {
+"0:no": "00"
+},
+"mat_bool_children_movable": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_default": {
+"0:yes": "01"
+},
+"mat_bool_default_send": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_disabled": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_dock_horizontal": {
+"0:yes": "01"
+},
+"mat_bool_dock_vertical": {
+"0:no": "00"
+},
+"mat_bool_draw_focus": {
+"0:yes": "01"
+},
+"mat_bool_drop_at_top": {
+"0:yes": "01"
+},
+"mat_bool_dropdown_button": {
+"0:yes": "01"
+},
+"mat_bool_expand_to_fit": {
+"0:yes": "01"
+},
+"mat_bool_exportable": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_first_script": {
+"0:no": "00"
+},
+"mat_bool_force_scroll": {
+"0:yes": "01"
+},
+"mat_bool_gradual_shadow": {
+"0:yes": "01"
+},
+"mat_bool_graphic_view": {
+"0:yes": "01"
+},
+"mat_bool_hidden": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_horizontal_scroll": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_ignore_url": {
+"0:yes": "01"
+},
+"mat_bool_importable": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_inactive_for_guest": {
+"0:yes": "01"
+},
+"mat_bool_invert": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_invisible": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_list_allow_entry": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_list_icons": {
+"0:yes": "01"
+},
+"mat_bool_modal": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_no_border": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_non_closeable": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_palette": {
+"0:yes": "01"
+},
+"mat_bool_palette_art": {
+"0:yes": "01"
+},
+"mat_bool_popup_menu": {
+"0:yes": "01"
+},
+"mat_bool_precise": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_protected_input": {
+"0:yes": "01"
+},
+"mat_bool_repeat_animation": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_resize_horizontal": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_resize_vertical": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_sane": {
+"0:yes": "01"
+},
+"mat_bool_savable_to_pfc": {
+"0:yes": "01"
+},
+"mat_bool_signoff_menu": {
+"0:yes": "01"
+},
+"mat_bool_small_icon": {
+"0:yes": "01"
+},
+"mat_bool_spinner": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_tool_group": {
+"0:yes": "01"
+},
+"mat_bool_vertical_scroll": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_bool_writeable": {
+"0:no": "00",
+"0:yes": "01"
+},
+"mat_dirty_query": {
+"0:yes": "01"
+},
+"mat_field_script": {
+"0:any": "80",
+"0:default": "ff",
+"0:latin": "00"
+},
+"mat_font_id": {
+"0:arial": "00",
+"0:ms_gothic": "0b",
+"0:ms_sans_serif": "06",
+"0:small_fonts": "07",
+"0:system": "03",
+"0:times_roman": "02"
+},
+"mat_font_sis": {
+"0:arial": "00",
+"0:small_fonts": "07",
+"0:system": "03",
+"2:bold": "01",
+"2:italic": "02",
+"2:normal": "00"
+},
+"mat_font_style": {
+"0:bold": "01",
+"0:italic": "02"
+},
+"mat_frame_style": {
+"0:double_line": "0005",
+"0:pop_in": "0003",
+"0:single_line_pop_in": "0002",
+"0:single_line_pop_out": "0001"
+},
+"mat_log_object": {
+"0:chat_log": "01",
+"0:im_log": "02",
+"0:no_log": "03"
+},
+"mat_object_type": {
+"0:dss_list": "04",
+"0:org_group": "00",
+"0:select_range": "0d",
+"0:trigger": "06"
+},
+"mat_orientation": {
+"0:hcb": "02",
+"0:hcc": "00",
+"0:hce": "04",
+"0:hcf": "03",
+"0:hct": "01",
+"0:hec": "20",
+"0:hee": "24",
+"0:hef": "23",
+"0:het": "21",
+"0:hfb": "1a",
+"0:hfc": "18",
+"0:hfe": "1c",
+"0:hff": "1b",
+"0:hft": "19",
+"0:hlb": "0a",
+"0:hlc": "08",
+"0:hle": "0c",
+"0:hlf": "0b",
+"0:hlt": "09",
+"0:hrc": "10",
+"0:hre": "14",
+"0:hrf": "13",
+"0:hrt": "11",
+"0:vcc": "40",
+"0:vce": "44",
+"0:vcf": "43",
+"0:vct": "41",
+"0:vec": "60",
+"0:vee": "64",
+"0:vef": "63",
+"0:vet": "61",
+"0:vfb": "5a",
+"0:vfc": "58",
+"0:vfe": "5c",
+"0:vff": "5b",
+"0:vft": "59",
+"0:vlb": "4a",
+"0:vlc": "48",
+"0:vle": "4c",
+"0:vlf": "4b",
+"0:vlt": "49",
+"0:vrb": "52",
+"0:vrc": "50",
+"0:vrf": "53"
+},
+"mat_paragraph": {
+"0:yes": "01"
+},
+"mat_position": {
+"0:bottom_center": "08",
+"0:bottom_left": "07",
+"0:bottom_right": "09",
+"0:cascade": "00",
+"0:center_center": "05",
+"0:center_left": "04",
+"0:top_center": "02",
+"0:top_left": "01",
+"0:top_right": "03"
+},
+"mat_sort_order": {
+"0:alphabetical": "02",
+"0:normal": "00",
+"0:reverse": "01"
+},
+"mat_text_on_picture_pos": {
+"0:art_middle_center": "00",
+"0:title_lower_center": "07",
+"0:title_middle_center": "00"
+},
+"mat_title_append_screen_name": {
+"0:prepend_with_s": "10"
+},
+"mat_title_pos": {
+"0:above": "40",
+"0:below": "c0",
+"0:bottom_or_right": "02",
+"0:center": "00",
+"0:left": "00",
+"0:right": "80",
+"0:top_or_left": "01"
+},
+"mat_trigger_style": {
+"0:bottom_tab": "0005",
+"0:default": "0000",
+"0:framed": "0004",
+"0:group_state": "0007",
+"0:picture": "0003",
+"0:place": "0001",
+"0:plain_picture": "0006",
+"0:rectangle": "0002"
+},
+"mat_unfocused": {
+"0:yes": "01"
+},
+"mat_url_list": {
+"0:history": "02",
+"0:mru": "01"
+},
+"mmi_atr_toolbar": {
+"0:no": "00",
+"0:yes": "01"
+},
+"morg_view_allow_delete_key": {
+"0:no": "00"
+},
+"morg_view_allow_multi_select": {
+"0:no": "00"
+},
+"morg_view_highlight_full_line": {
+"0:yes": "01"
+},
+"morg_view_include_root": {
+"0:no": "00",
+"0:yes": "01"
+},
+"rich_allow_backcolor": {
+"0:yes": "01"
+},
+"rich_allow_embeds": {
+"0:no": "00",
+"0:yes": "01"
+},
+"rich_allow_fontsize": {
+"0:yes": "01"
+},
+"rich_allow_fontwindow": {
+"0:yes": "01"
+},
+"rich_allow_justify": {
+"0:no": "00"
+},
+"rich_bool_read_only": {
+"0:yes": "01"
+},
+"rich_ignore_tabs": {
+"0:no": "00",
+"0:yes": "01"
+},
+"rich_scale_images": {
+"0:no": "00",
+"0:yes": "01"
+},
+"sage_set_play": {
+"0:yes": "01"
+},
+"uni_next_atom_typed": {
+"0:ascii": "0000"
+},
+"uni_start_typed_data": {
+"0:ascii": "0000",
+"0:latin1": "0104"
+},
+"var_string_save": {
+"0:\u00c3\u00bf": "5e"
+}
+}
+}

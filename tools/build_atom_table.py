@@ -6,7 +6,9 @@ PREFIX = {"act": 2, "activex": 54, "ad": 39, "doc": 31, "mat": 16, "async": 13, 
           "chart": 23, "chat": 11, "cm": 10, "ccl": 34, "if": 15, "de": 3, "idb": 5, "dice": 57, "man": 1,
           "exapi": 26, "fm": 8, "xfer": 7, "gallery": 56, "hfs": 51, "image": 22, "imgxfer": 21, "lm": 9,
           "mip": 17, "morg": 24, "mmi": 20, "pictalk": 29, "p3": 35, "dod": 27, "radio": 28, "rich": 25,
-          "sm": 14, "spell": 61, "mt": 42, "uni": 0, "var": 12, "vid": 53, "vrm": 47, "www": 48}
+          "sm": 14, "spell": 61, "mt": 42, "uni": 0, "var": 12, "vid": 53, "vrm": 47, "www": 48,
+          # learned from Ada32 itself (they aren't in the FDO91 manual):
+          "app": 40, "artexp": 62, "blank": 52, "buddy": 73, "comit": 74, "dpc": 76, "htmlview": 75, "irc": 30, "java": 49, "map": 69, "merc": 43, "mf": 63, "phone": 60, "plugin": 64, "sage": 70, "sec": 55, "slider": 65}
 HEAD = re.compile(r"^\s*atom\$([a-z0-9_]+)\s*\n\s*(\d+)\s*\(\$([0-9A-Fa-f]+)\)", re.M)
 
 

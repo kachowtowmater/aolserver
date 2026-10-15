@@ -1,25 +1,31 @@
-"""Compile FDO91 source with AOL's own compiler (Ada32.dll) via the FDO daemon.
+"""Compile FDO91 source to the atom stream the AOL client runs.
 
-The daemon is run/fdod.sh (fdo_daemon.exe under Wine) on 127.0.0.1:8099.
-Forms live in server/forms/*.fdo; {{var}} placeholders are filled with
-FDO-safe text before compiling. Results are cached by source text.
+By default this is fdo/pycompiler.py, a pure-Python compiler that produces the same bytes
+as AOL's own compiler (Ada32.dll) -- checked against it on every client form and every
+window the server builds (tools/fdo_corpus.py, server/test_fdo_compiler.py).  So the server
+needs no Wine and runs on Windows, macOS and Linux.
+
+AOL_FDO_DAEMON=1 compiles with the real Ada32 instead, through run/fdod.sh (fdo_daemon.exe
+under Wine on 127.0.0.1:8099); AOL_FDO_DAEMON=verify uses Python but logs any difference
+from Ada32.  Forms live in server/forms/*.fdo; {{var}} placeholders are filled with
+FDO-safe text before compiling.  Results are cached by source text.
 """
 import functools
+import os
 import re
 import urllib.request
 from pathlib import Path
 
+from . import pycompiler
+from .pycompiler import CompileError  # noqa: F401  (callers catch it from here)
+
 DAEMON = "http://127.0.0.1:8099"
 FORMS = Path(__file__).resolve().parent.parent / "forms"
+MODE = os.environ.get("AOL_FDO_DAEMON", "").lower()   # "", "1" (Ada32 via Wine) or "verify"
 
 
-class CompileError(Exception):
-    pass
-
-
-@functools.lru_cache(maxsize=512)
-def compile_fdo(source: str) -> bytes:
-    req = urllib.request.Request(DAEMON + "/compile", data=source.encode("latin1"),
+def compile_with_daemon(source: str) -> bytes:
+    req = urllib.request.Request(DAEMON + "/compile", data=source.encode("latin1", "replace"),
                                  headers={"Content-Type": "text/plain"})
     try:
         with urllib.request.urlopen(req, timeout=10) as r:
@@ -28,6 +34,21 @@ def compile_fdo(source: str) -> bytes:
         raise CompileError(e.read().decode("latin1", "replace")) from None
     if not data:
         raise CompileError("empty output")
+    return data
+
+
+@functools.lru_cache(maxsize=512)
+def compile_fdo(source: str) -> bytes:
+    if MODE in ("1", "yes", "true"):
+        return compile_with_daemon(source)
+    data = pycompiler.compile_source(source)
+    if MODE == "verify":
+        try:
+            ada = compile_with_daemon(source)
+            if ada != data:
+                print(f"      FDO compiler differs from Ada32 ({len(data)} vs {len(ada)} bytes):\n{source[:400]}")
+        except Exception as e:  # daemon down: Python output stands
+            print(f"      FDO verify skipped: {e}")
     return data
 
 
