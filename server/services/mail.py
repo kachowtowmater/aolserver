@@ -24,8 +24,21 @@ def _flush_draft(link):
     if not d:
         return
     sender = name_of(link)
-    to, cc = d["to"], d["cc"]
-    owners = store.deliver(sender, to, cc, d["subject"], "".join(d["text"]))
+    from . import gateway
+    from .util import run_bg
+    to = [r for r in d["to"] if not gateway.is_internet(r)]
+    cc = [r for r in d["cc"] if not gateway.is_internet(r)]
+    net_to = [r for r in d["to"] if gateway.is_internet(r)]
+    net_cc = [r for r in d["cc"] if gateway.is_internet(r)]
+    body = "".join(d["text"])
+    owners = store.deliver(sender, to or net_to, cc or net_cc, d["subject"], body) if (to or cc) else []
+    if net_to or net_cc:
+        def sent(err):
+            if err:
+                alert(link, err + "  Your message to " + ", ".join(net_to + net_cc) + " was not sent.")
+        run_bg(lambda: gateway.send(sender, net_to, net_cc, d["subject"], body), sent)
+        if not (to or cc):  # keep a copy in Mail You've Sent
+            store.deliver(sender, [], [], d["subject"], body)
     link.send_stream(stream(atom("mip_header_accepted"), atom("mip_message_accepted"), atom("uni_wait_off")))
     for k in owners:
         target = state.ONLINE.get(k)

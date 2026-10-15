@@ -36,7 +36,8 @@ def go_online(link, name: str):
     link.session["name"] = name
     link.session["signed_on"] = time.time()
     state.ONLINE[store.key(name)] = link
-    from . import buddy
+    from . import buddy, gateway
+    gateway.ensure_polling()
     if name.lower() != NEW_USER:
         buddy.announce(name, True)
     link.send_stream(stream(atom("async_online"), atom("uni_invoke_local", gid("32-296"))))

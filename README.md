@@ -12,6 +12,7 @@ Works with the real **AOL 3.0** (1996-98) and **AOL 4.0** (1998-99) Windows clie
 - [x] People Connection: lobbies, room list, Center Stage, LLM-driven chat regulars
 - [x] Instant Messages (3.0 and 4.0 windows), Buddy List with live buddy in/out
 - [x] E-mail: send, New/Old/Sent mailboxes, You've Got Mail
+- [x] Internet mail gateway (needs server/var/gateway.json with an SMTP/IMAP account, see services/gateway.py)
 - [x] Keywords + every Channels/toolbar area with live 2026 content: news,
       quotes, weather, the Web (as text), Wikipedia, files (Internet Archive), deals
 - [x] Profiles, Locate Member, Member Directory, Message Boards, Stock Portfolios
