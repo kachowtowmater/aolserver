@@ -2,7 +2,7 @@
 
 Two bot members sign on; A sends mail (3.0-style, and 4.0-style rich text split across two
 packets in one large atom) to B plus a name that doesn't exist; B must hear "You've Got
-Mail", see it in New Mail (eL and 4.0's m7), open it, then find it in Old Mail; A must find
+Mail", see it in New Mail (eL; and 4.0's m7, which fills the client's own mailbox list), open it, then find it in Old Mail; A must find
 it in Sent Mail.  The bots and their mail are removed afterwards.
 usage: python3 tools/mail_e2e.py        (host on 127.0.0.1:5190, admin console on :5191)
 """
@@ -94,7 +94,8 @@ def main():
         mark = len(b.frames)
         b.data(tok, stream(atom("uni_start_stream"), atom("uni_end_stream")))
         b.pump(2)
-        check(seen(b, SUBJ.encode(), mark) and seen(b, b"New Mail", mark), f"{tok.decode()} lists the new mail")
+        title = b"New Mail" if tok == b"eL" else b"%newmail"  # 4.0: the client's own Online Mailbox list
+        check(seen(b, SUBJ.encode(), mark) and seen(b, title, mark), f"{tok.decode()} lists the new mail")
     rows = admin(f'[ (r["id"], r["subject"], r["body"]) for r in __import__("services.store",fromlist=["x"])'
                  f'.mailbox("{B}") ]')
     check("rich part one, part two\\ndone" in rows, "4.0 rich text arrives as plain text (split packets joined)")

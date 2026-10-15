@@ -82,6 +82,39 @@ def mark_read(mid: int):
         con.execute("UPDATE mail SET read=1, folder='old' WHERE id=?", (mid,))
 
 
+def keep_as_new(mid: int):
+    with db() as con:
+        con.execute("UPDATE mail SET read=0, folder='new' WHERE id=? AND folder!='sent'", (mid,))
+
+
+def delete_mail(mid: int):
+    with db() as con:
+        con.execute("DELETE FROM mail WHERE id=?", (mid,))
+
+
+def unsend(sent_mid: int) -> int:
+    """Take back a sent message from recipients who haven't read it yet; returns how many."""
+    with db() as con:
+        m = con.execute("SELECT * FROM mail WHERE id=?", (sent_mid,)).fetchone()
+        if not m:
+            return 0
+        n = con.execute("DELETE FROM mail WHERE sender=? AND subject=? AND sent=? AND folder='new' AND id!=?",
+                        (m["sender"], m["subject"], m["sent"], sent_mid)).rowcount
+        con.execute("DELETE FROM mail WHERE id=?", (sent_mid,))
+        return n
+
+
+def read_status(sent_mid: int) -> list[tuple[str, bool]]:
+    """For a sent message: each recipient copy's owner and whether it's been read."""
+    with db() as con:
+        m = con.execute("SELECT * FROM mail WHERE id=?", (sent_mid,)).fetchone()
+        if not m:
+            return []
+        rows = con.execute("SELECT owner, read FROM mail WHERE sender=? AND subject=? AND sent=? AND id!=?",
+                           (m["sender"], m["subject"], m["sent"], sent_mid)).fetchall()
+        return [(r["owner"], bool(r["read"])) for r in rows]
+
+
 def _hash(name: str, pw: str) -> str:
     import hashlib
     return hashlib.pbkdf2_hmac("sha256", pw.encode(), key(name).encode(), 100_000).hex()

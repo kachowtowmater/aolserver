@@ -99,6 +99,10 @@ def _items(link):
 
 
 def read_new_mail(link, stream_id, body=b"", folder="new"):
+    from . import art
+    if art.version(link) == "40":  # 4.0 has its own Online Mailbox (services/mailbox40.py fills it)
+        from . import mailbox40
+        return mailbox40.open_mailbox(link)
     rows = store.mailbox(name_of(link), folder)
     item = _items(link)
     title = {"new": "New Mail", "old": "Mail You've Read", "sent": "Mail You've Sent"}[folder]
@@ -132,12 +136,5 @@ def open_message(link, mid: int):
         store.mark_read(mid)
 
 
-def mailbox_request(link, stream_id, body):
-    """m7: AOL 4.0's Read Mail (mip_action_command 0x1d) asks for the online mailbox list.
-    We answer with our own New Mail window (the client's native list is not filled in)."""
-    read_new_mail(link, stream_id, body)
-
-
-TOKENS = {b"m4": compose_packet, b"eL": read_new_mail, b"m7": mailbox_request,
-          b"eO": lambda link, sid, body: read_new_mail(link, sid, body, "old"),
+TOKENS = {b"m4": compose_packet, b"eL": read_new_mail, b"eO": lambda link, sid, body: read_new_mail(link, sid, body, "old"),
           b"oL": lambda link, sid, body: read_new_mail(link, sid, body, "sent")}

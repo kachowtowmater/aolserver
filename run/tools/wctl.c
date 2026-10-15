@@ -10,7 +10,8 @@
  *   wctl dismiss                  press OK on every message box (#32770); prints how many
  *   wctl enter <hwnd>             press Enter in a control
  *   wctl clickat <hwnd> <x> <y>   real mouse click at (x,y) inside a window's client area (SendInput)
- *   wctl wheel <hwnd> <x> <y> <n> real mouse-wheel scroll, n notches (negative = down) */
+ *   wctl wheel <hwnd> <x> <y> <n> real mouse-wheel scroll, n notches (negative = down)
+ *   wctl postat <hwnd> <x> <y> [2] post a click (or double-click with 2) at client (x,y) of a control */
 #include <windows.h>
 #include <stdio.h>
 #include <string.h>
@@ -90,6 +91,15 @@ int main(int argc, char **argv) {
             in[0].mi.dwFlags = MOUSEEVENTF_WHEEL; in[0].mi.mouseData = (DWORD)(atoi(argv[5]) * WHEEL_DELTA); SendInput(1, in, sizeof(INPUT));
         }
         printf("%s %p at %ld,%ld\n", argv[1], (void *)h, pt.x, pt.y); return 0;
+    }
+    if (argc >= 5 && !strcmp(argv[1], "postat")) {
+        HWND h = (HWND)(ULONG_PTR)strtoull(argv[2], NULL, 16);
+        LPARAM pt = MAKELPARAM(atoi(argv[3]), atoi(argv[4]));
+        PostMessageA(h, WM_LBUTTONDOWN, MK_LBUTTON, pt); PostMessageA(h, WM_LBUTTONUP, 0, pt);
+        if (argc >= 6 && atoi(argv[5]) == 2) {
+            PostMessageA(h, WM_LBUTTONDBLCLK, MK_LBUTTON, pt); PostMessageA(h, WM_LBUTTONUP, 0, pt);
+        }
+        printf("postat %p %s,%s\n", (void *)h, argv[3], argv[4]); return 0;
     }
     if (argc >= 3 && !strcmp(argv[1], "enter")) {
         HWND h = (HWND)(ULONG_PTR)strtoull(argv[2], NULL, 16);
