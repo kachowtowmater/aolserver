@@ -9,6 +9,7 @@ Host -> client (AOLCHAT tool tokens, decoded from AOLCHAT.AOL):
 The room window itself is the client's own form 32-117 with the title preset.
 """
 import state
+from fdo.codec import atom, stream
 
 from . import art
 from .util import compile_fdo, fdo_text, FORMS_DIR, name_of
@@ -49,6 +50,7 @@ def join(link, room_name: str):
     for other in room["slots"]:
         if other is not link:
             other.send_data_raw(b"CA", bytes([slot]) + me.encode("latin1") + b"\x00")
+    link.send_stream(stream(atom("uni_wait_off")))
     _send_line(link, "OnlineHost", f"*** You are in \"{room_name}\". ***")
 
 
@@ -76,8 +78,19 @@ def chat_line(link, stream_id, body):
         broadcast_line(room, name_of(link), text)
 
 
+def list_rooms(link, stream_id, body):
+    """LP: People Connection room list (public rooms + who's in them)."""
+    from . import areas, screens
+    for name in ("Lobby 1", "Romance", "Thirtysomething", "Nineties Kids", "Tech Talk", "News Talk", "Sports Arena"):
+        state.ROOMS.setdefault(name, {"slots": {}, "next": 1})
+    rows = [(f"{name:<24}{len(r['slots']):>3}", areas._item(link, ("room", name)))
+            for name, r in sorted(state.ROOMS.items(), key=lambda kv: (not kv[0].startswith("Lobby"), kv[0]))]
+    link.send_stream(screens.list_window("Public Rooms", "Double-click a room to go there.  Number of people in each room is shown.",
+                                         rows, width=34))
+
+
 def on_disconnect(link):
     leave(link)
 
 
-TOKENS = {b"CJ": enter_people_connection, b"Aa": chat_line}
+TOKENS = {b"CJ": enter_people_connection, b"Aa": chat_line, b"LP": list_rooms}

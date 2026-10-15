@@ -8,7 +8,8 @@ Embedded *.IDX zip entries are carved out in memory (validated by CRC); with
 --keep they are also saved under DIR for later re-harvesting.
 
 Each art body is written to server/art/<gid>.bin.  The first copy found wins
-unless a later one is larger.  Provenance goes to server/art/SOURCES.tsv:
+unless a later one is larger (and is a recognised image type).  Databases stored
+uncompressed inside raw disk images are found via their AOLDB header.  Provenance goes to server/art/SOURCES.tsv:
 gid, item, size, image type, file.
 
 Pure stdlib; treats every input as untrusted data (never executed).
@@ -34,14 +35,18 @@ def gid_str(g: int) -> str:
 
 
 def records(d: bytes):
-    """Yield (gid, flags, body) for every self-consistent R2D2 record."""
+    """Yield (gid, flags, body, base, end) for every self-consistent R2D2 record
+    (base = offset of the database file inside d, end = offset past the record)."""
     i = d.find(b"R2D2")
     while i >= 0:
         if i + 26 <= len(d):
             g, n, flags = struct.unpack_from("<III", d, i + 4)
             self_off, = struct.unpack_from("<I", d, i + 22)
-            if self_off == i and i + 26 + n <= len(d):
-                yield g, flags, d[i + 26:i + 26 + n]
+            # self_off is relative to the IDX file; inside a disk image the file starts
+            # at i - self_off, which must hold the "AOLDB-25" database header
+            if (self_off == i or (0 <= i - self_off and d.startswith(b"AOLDB", i - self_off))) \
+                    and i + 26 + n <= len(d):
+                yield g, flags, d[i + 26:i + 26 + n], i - self_off, i + 26 + n
         i = d.find(b"R2D2", i + 4)
 
 
@@ -119,14 +124,15 @@ class Store:
     def add(self, gid, body, item, fname):
         size = len(body)
         cur = self.rows.get(gid)
-        if cur and int(cur[2]) >= size:
+        kind = image_type(body)
+        if cur and (int(cur[2]) >= size or (kind == "unknown" and cur[3] != "unknown")):
             return
         (ART / f"{gid}.bin").write_bytes(body)
         if cur:
             self.bigger += 1
         else:
             self.new += 1
-        self.rows[gid] = [gid, item, str(size), image_type(body), fname]
+        self.rows[gid] = [gid, item, str(size), kind, fname]
 
     def save(self):
         def key(g):
@@ -142,10 +148,19 @@ class Store:
 def harvest_blob(store, d, item, fname, keep):
     n = 0
     if b"R2D2" in d:
-        for g, flags, body in records(d):
+        ends = {}
+        for g, flags, body, base, end in records(d):
+            ends[base] = max(ends.get(base, 0), end)
             if g >> 24 == 1 and body:
-                store.add(gid_str(g), body, item, fname)
+                where = fname if base == 0 else f"{fname}@{base:#x}"
+                store.add(gid_str(g), body, item, where)
                 n += 1
+        if keep:                        # save databases found loose inside disk images
+            for base, end in ends.items():
+                if base:
+                    dst = Path(keep) / f"{Path(fname).name}@{base:#x}.IDX"
+                    dst.parent.mkdir(parents=True, exist_ok=True)
+                    dst.write_bytes(d[base:end])
     if b"PK\x03\x04" in d:
         for name, raw in zip_entries(d):
             if not name.upper().endswith(".IDX") or b"R2D2" not in raw:

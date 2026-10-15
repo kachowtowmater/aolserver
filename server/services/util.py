@@ -27,3 +27,34 @@ def alert(link, text: str):
 
 def name_of(link) -> str:
     return link.session.get("name", "Guest")
+
+
+def run_bg(work, done):
+    """Run blocking work (network) in a thread, then done(result) on the event loop."""
+    import asyncio
+    import traceback
+    loop = asyncio.get_running_loop()
+    fut = loop.run_in_executor(None, work)
+
+    def finish(f):
+        try:
+            done(f.result())
+        except Exception:
+            traceback.print_exc()
+    fut.add_done_callback(finish)
+
+
+def request(body: bytes) -> dict:
+    """Common request fields: response id, GID (4-byte de_data) and text de_data."""
+    out = {"response_id": None, "gid": None, "texts": []}
+    for a in atoms(body):
+        if a.name == "man_set_response_id":
+            out["response_id"] = a.args
+        elif a.name == "de_data":
+            if len(a.args) == 4 and not all(32 <= c < 127 for c in a.args):
+                out["gid"] = gid_arg(a.args)
+            else:
+                out["texts"].append(a.args.rstrip(b"\0").decode("latin1"))
+    if not out["texts"] and body and all(32 <= c < 127 or c in (0, 13) for c in body):
+        out["texts"] = [body.strip(b"\0\r").decode("latin1")]
+    return out

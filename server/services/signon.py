@@ -9,6 +9,7 @@ def sign_on(link, stream_id, body):
     fields = de_strings(body)
     name = (fields[0].strip() if fields else "") or "Guest"
     link.session["name"] = name
+    link.session["signed_on"] = __import__("time").time()
     state.ONLINE[name.lower().replace(" ", "")] = link
     # async_online flips every client tool to "online"; 32-296 is the client's
     # own went-online script (Sign Off menu, toolbar, Welcome sound).

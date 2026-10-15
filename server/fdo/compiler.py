@@ -31,9 +31,27 @@ def compile_fdo(source: str) -> bytes:
     return data
 
 
+ASCII = str.maketrans({"\u2018": "'", "\u2019": "'", "\u201c": '"', "\u201d": '"', "\u2013": "-",
+                       "\u2014": "--", "\u2026": "...", "\u00a0": " ", "\u2022": "*", "\u2122": "(TM)"})
+
+
+def plain(value) -> str:
+    """Modern text -> what a 1997 Win95 client can show (Latin-1)."""
+    text = str(value).translate(ASCII)
+    return text.encode("latin1", "replace").decode("latin1")
+
+
 def fdo_text(value) -> str:
-    """Make a value safe inside an FDO "string" (no quotes / angle brackets)."""
-    return re.sub(r'["<>\r\n]', " ", str(value))
+    """Escape a value for use inside an FDO "string" (\\xNN escapes, like AOL's own forms)."""
+    out = []
+    for ch in plain(value):
+        if ch in '"<>\\' or ord(ch) < 32 and ch != "\r":
+            out.append(f"\\x{ord(ch):02x}")
+        elif ch == "\r":
+            out.append("\\x0d")
+        else:
+            out.append(ch)
+    return "".join(out)
 
 
 def render(form: str, **values) -> bytes:

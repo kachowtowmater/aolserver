@@ -18,4 +18,5 @@ uni_start_stream <00x>
   man_end_context
   man_end_context
   man_update_display
+  uni_wait_off
 uni_end_stream <00x>

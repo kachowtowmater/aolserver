@@ -24,7 +24,7 @@ LINKS: list["Link"] = []
 CHUNK = 900  # atom bytes per DATA packet (client accepts frames up to 0x3fa)
 def _mtime():
     here = Path(host.__file__).parent
-    return max(p.stat().st_mtime for p in [here / "host.py", *here.glob("services/*.py")])
+    return max(p.stat().st_mtime for p in [here / "host.py", here / "fdo" / "compiler.py", *here.glob("services/*.py")])
 
 
 _host_mtime = _mtime()
