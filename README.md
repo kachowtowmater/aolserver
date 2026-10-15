@@ -1,6 +1,6 @@
 # aolserver
 
-A from-scratch host for the original **AOL 3.0 for Windows 95** client. AOL's
+A from-scratch host for the original **AOL 4.0** (and 3.0) for Windows clients. AOL's
 real servers were never released, so this one is rebuilt by reverse-engineering
 the client from its 1997 install CD.
 
@@ -66,10 +66,14 @@ Tests: `cd server && python3 test_gateway.py` (local stand-ins, no real mail);
 `python3 tools/mail_e2e.py` checks member mail end to end against the running host.
 
 ## AOL 4.0
-Install from the 4.0 CD into its own prefix (`run/wine-aol4`), set `csl/tcp.csl`
-to `EXTERN CONNECT localhost 5190` (a dotted IP gets mangled), Expert Setup ->
-TCP/IP, and run `client40/patch-aolsec.sh` (turns off the RSA session handshake
-that only AOL's servers could answer).
+**Full setup for Windows, macOS and Linux is in [SETUP.md](SETUP.md).** In short:
+`python start.py` runs the host (stdlib Python, no Wine: forms are compiled by
+`server/fdo/pycompiler.py`, byte-identical to AOL's own Ada32 compiler), and
+`python client40/aol40_client.py fetch` / `configure <AOL dir> --host <name>` gets the
+original 4.0 client from archive.org and points it at your host (sets `csl/tcp.csl` --
+use a host name, a dotted IP gets mangled -- and turns off the RSA session handshake that
+only AOL's servers could answer). AOL 4.0's World Wide Web window shows 2026 sites through
+WRP (a headless Chrome that renders pages as clickable pictures), see SETUP.md.
 
 ## Running the 3.0 client
 1. Get the AOL 3.0 CD (archive.org item
