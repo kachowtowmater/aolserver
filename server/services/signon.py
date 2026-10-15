@@ -41,6 +41,9 @@ def go_online(link, name: str):
     if name.lower() != NEW_USER:
         buddy.announce(name, True)
     link.send_stream(stream(atom("async_online"), atom("uni_invoke_local", gid("32-296"))))
+    if name.lower() != NEW_USER:
+        from . import art
+        art.preload(link)
 
 
 def sign_on(link, stream_id, body):

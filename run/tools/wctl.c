@@ -4,7 +4,11 @@
  *   wctl clickh <hwnd>            click a control by handle (for unlabeled AOL icons)
  *   wctl items <hwnd> / select <hwnd> <prefix|#index>   read / pick a combobox entry
  *   wctl settext <class#n> <text> set text of nth child of class in foreground-most dialog
- *   wctl key <vk>                 post WM_KEYDOWN/UP to the topmost visible window */
+ *   wctl key <vk>                 post WM_KEYDOWN/UP to the topmost visible window
+ *   wctl close <hwnd>             close a window (AOL child windows go through the MDI client)
+ *   wctl closeall                 close every AOL child window (MDI children of the AOL frame)
+ *   wctl dismiss                  press OK on every message box (#32770); prints how many
+ *   wctl enter <hwnd>             press Enter in a control */
 #include <windows.h>
 #include <stdio.h>
 #include <string.h>
@@ -43,7 +47,41 @@ static BOOL CALLBACK top_find(HWND h, LPARAM lp) {
     return found == NULL;
 }
 
+static int n_closed;
+static BOOL CALLBACK mdi_close(HWND h, LPARAM lp) {
+    char cls[64]; GetClassNameA(h, cls, sizeof cls);
+    if (!strcmp(cls, "AOL Child") && IsWindowVisible(h)) {
+        SendMessageA(GetParent(h), WM_MDIDESTROY, (WPARAM)h, 0); n_closed++;
+    }
+    return TRUE;
+}
+static BOOL CALLBACK frame_close(HWND h, LPARAM lp) {
+    char cls[64]; GetClassNameA(h, cls, sizeof cls);
+    if (!strcmp(cls, "AOL Frame25")) EnumChildWindows(h, mdi_close, 0);
+    return TRUE;
+}
+static BOOL CALLBACK box_ok(HWND h, LPARAM lp) {
+    char cls[64]; GetClassNameA(h, cls, sizeof cls);
+    if (!strcmp(cls, "#32770") && IsWindowVisible(h)) {
+        PostMessageA(h, WM_COMMAND, MAKEWPARAM(IDOK, BN_CLICKED), 0); n_closed++;
+    }
+    return TRUE;
+}
+
 int main(int argc, char **argv) {
+    if (argc >= 3 && !strcmp(argv[1], "close")) {
+        HWND h = (HWND)(ULONG_PTR)strtoull(argv[2], NULL, 16); char cls[64]; GetClassNameA(h, cls, sizeof cls);
+        if (!strcmp(cls, "AOL Child")) SendMessageA(GetParent(h), WM_MDIDESTROY, (WPARAM)h, 0);
+        else PostMessageA(h, WM_CLOSE, 0, 0);
+        printf("closed %p\n", (void *)h); return 0;
+    }
+    if (argc >= 2 && !strcmp(argv[1], "closeall")) { EnumWindows(frame_close, 0); printf("closed %d\n", n_closed); return 0; }
+    if (argc >= 2 && !strcmp(argv[1], "dismiss")) { EnumWindows(box_ok, 0); printf("dismissed %d\n", n_closed); return 0; }
+    if (argc >= 3 && !strcmp(argv[1], "enter")) {
+        HWND h = (HWND)(ULONG_PTR)strtoull(argv[2], NULL, 16);
+        PostMessageA(h, WM_KEYDOWN, VK_RETURN, 0x001C0001); PostMessageA(h, WM_CHAR, '\r', 0x001C0001);
+        PostMessageA(h, WM_KEYUP, VK_RETURN, 0xC01C0001); printf("enter %p\n", (void *)h); return 0;
+    }
     if (argc >= 2 && !strcmp(argv[1], "list")) { EnumWindows(top_list, 0); return 0; }
     if (argc >= 3 && !strcmp(argv[1], "click")) {
         static char w[256]; strip_amp(argv[2], w); want = _strlwr(w);

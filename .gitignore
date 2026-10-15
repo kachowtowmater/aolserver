@@ -28,3 +28,6 @@ tools/__pycache__/
 re/idb40/
 vendor/
 run/wrp-profile/
+run/unmapped.log
+run/sweep40.json
+run/sweep40.log

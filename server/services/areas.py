@@ -46,7 +46,8 @@ GID_AREAS = {
     "8-49074": "member services", "8-50600": "member services", "8-50934": "member services",
     # 4.0 Welcome screen (32-6442) promo spots: today's stories
     "17-65227": "what's hot", "17-35040": "what's hot", "32-6450": "news", "32-6451": "entertainment",
-    "32-6452": "finance", "32-6454": "sports", "32-4724": "browser", "32-5846": "browser",  # Go to the Web: the client opens its own browser right after
+    "32-6452": "finance", "32-6454": "sports", "40-47287": "finance", "32-222": "channels", "40-4979": "member services",  # 4.0 forms AOL's host sent (f2)
+    "32-4724": "browser", "32-5846": "browser",  # Go to the Web: the client opens its own browser right after
 }
 
 import json as _json
@@ -356,8 +357,19 @@ def open_area(link, area: str, rid=None):
     if area == "welcome":
         from . import signon
         return signon.welcome(link)
-    link.send_stream(stream(atom("uni_wait_off")))
-    alert(link, f"{area.title()} is not currently available.  Please try again later.")
+    _note_unmapped("area name", area)
+    news_area(link, "what's hot", rid)
+
+
+def _note_unmapped(kind, what):
+    """Remember buttons/keywords that fell through, so they can be wired up properly."""
+    from pathlib import Path
+    print(f"      UNMAPPED {kind}: {what}")
+    try:
+        with open(Path(__file__).resolve().parent.parent.parent / "run" / "unmapped.log", "a") as f:
+            f.write(f"{datetime.now():%Y-%m-%d %H:%M} {kind} {what}\n")
+    except OSError:
+        pass
 
 
 def _module_areas():
@@ -382,8 +394,9 @@ def keyword(link, stream_id, body):
         return open_area(link, area)
     if looks_like_url(raw):
         return open_url(link, raw)
-    link.send_stream(stream(atom("uni_wait_off")))
-    alert(link, f'"{word}" is not a valid keyword.  Please check the spelling and try again.')
+    _note_unmapped("keyword", word)
+    # no dead ends: an unknown keyword is a search
+    return web(link, stream_id, atom("de_data", raw.encode("latin1", "replace")))
 
 
 def by_gid(link, stream_id, body):
@@ -392,8 +405,9 @@ def by_gid(link, stream_id, body):
     area = GID_AREAS.get(req["gid"] or "")  # K1 with no gid = What's Hot (magic-token button)
     if area:
         return open_area(link, area, req["response_id"])
-    link.send_stream(stream(atom("uni_wait_off")))
-    alert(link, "This area is not currently available.  Please try again later.")
+    # no dead ends: an area this host doesn't have yet shows today's top stories
+    _note_unmapped("area", req["gid"])
+    open_area(link, "what's hot", req["response_id"])
 
 
 def item(link, stream_id, body):
@@ -569,8 +583,8 @@ def url_request(link, stream_id, body):
             return open_area(link, area)
         if word in ("learnkeywords", "learn keywords", "keywordlist"):
             return info_area(link, "member services")
-    link.send_stream(stream(atom("uni_wait_off")))
-    alert(link, f"{url or 'That location'} is not currently available.")
+    _note_unmapped("aol link", url)
+    news_area(link, "what's hot")
 
 
 def news_search(link, stream_id, body):

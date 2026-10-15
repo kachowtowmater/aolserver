@@ -69,6 +69,15 @@ def ensure_art(link, gids):
             push(link, name)
 
 
+_PRELOAD = json.loads((HERE / "data" / "preload_art.json").read_text())
+
+
+def preload(link):
+    """At sign-on, send every picture the client's own forms use but its database lacks
+    (tools/make_missing_art40.py), so no window ever stalls asking for one."""
+    ensure_art(link, _PRELOAD.get(version(link), []))
+
+
 def ensure_form(link, form_gid: str):
     """Push the art a local client form references before it is invoked."""
     ensure_art(link, FORM[version(link)].get(form_gid, []))
