@@ -1,8 +1,8 @@
 #!/bin/bash
-# (Re)start the AOL 3.0 client in the ~/.wine-aol prefix.
-# AOL_DIAG=1: diagnostics mode (WAOL -D) with the client's debug strings in run/waol.log
+# (Re)start the AOL 3.0 client in the ~/.wine-aol prefix (other prefixes' clients are left alone).
 W="$HOME/aol-revival/run/wine-aol"
-pkill -f "WAOL.EXE" 2>/dev/null; sleep 1
-args=() dbg="${WINEDEBUG:-err+all}"
-[ -n "$AOL_DIAG" ] && args=(-D) dbg="err+all,+debugstr"
-cd "$HOME/.wine-aol/drive_c/aol30" && WINEDEBUG="$dbg" setsid "$W" WAOL.EXE "${args[@]}" > "$HOME/aol-revival/run/waol.log" 2>&1 &
+for p in $(pgrep -x WAOL.EXE); do
+  tr '\0' '\n' < /proc/$p/environ 2>/dev/null | grep -qx "WINEPREFIX=$HOME/.wine-aol" && kill "$p"
+done
+sleep 1
+cd "$HOME/.wine-aol/drive_c/aol30" && setsid "$W" WAOL.EXE > "$HOME/aol-revival/run/waol.log" 2>&1 &
