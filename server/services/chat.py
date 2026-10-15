@@ -51,8 +51,10 @@ def join(link, room_name: str):
     link.session["room"] = room_name
     me = name_of(link)
     users = "\n".join(f'  chat_add_user <"{fdo_text(name_of(m))}">' for m in room["slots"])
-    src = (FORMS_DIR / "chat_room.fdo").read_text().replace("{{room}}", fdo_text(room_name)).replace("{{users}}", users)
-    art.ensure_form(link, "32-117")
+    form = "43-22783" if art.version(link) == "40" else "32-117"
+    src = (FORMS_DIR / "chat_room.fdo").read_text().replace("{{room}}", fdo_text(room_name)).replace(
+        "{{users}}", users).replace("{{form}}", form)
+    art.ensure_form(link, form)
     link.send_stream(compile_fdo(src))
     for other in room["slots"]:
         if other is not link:

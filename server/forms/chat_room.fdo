@@ -7,7 +7,7 @@ uni_start_stream <00x>
   uni_sync_skip <2>
   man_preset_title <"{{room}}">
   man_preset_gid <51-0-1>
-  uni_invoke_local <32-117>
+  uni_invoke_local <{{form}}>
   var_number_set <A, 1>
   var_number_save <A, 65537>
   man_update_display

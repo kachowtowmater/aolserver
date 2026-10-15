@@ -19,9 +19,15 @@ from .util import atoms, gid_arg
 
 HERE = Path(__file__).resolve().parent.parent
 ART = HERE / "art"
-CLIENT = json.loads((HERE / "data" / "client_art.json").read_text())
-LOCAL_ART = set(CLIENT["local_art"])
-FORM_ART = CLIENT["forms"]
+_CLIENTS = {v: json.loads((HERE / "data" / f).read_text())
+            for v, f in (("30", "client_art.json"), ("40", "client_art40.json"))}
+LOCAL = {v: set(c["local_art"]) for v, c in _CLIENTS.items()}
+FORM = {v: c["forms"] for v, c in _CLIENTS.items()}
+
+
+def version(link) -> str:
+    """'40' for AOL 4.0 (sends '**' instead of CRCs over TCP), else '30'."""
+    return "40" if getattr(link, "no_crc", False) else "30"
 CHUNK = 700
 
 
@@ -35,7 +41,7 @@ def art_record(image: bytes, fmt: int) -> bytes:
     total = 40 + len(image)
     head = (b"\x01\x00\x01\x00\x01\x00" + (total - 4).to_bytes(4, "little") + b"\x01\x00\x00\x00"
             + bytes([fmt, 2]) + bytes(6) + len(image).to_bytes(4, "little") + (0x24).to_bytes(4, "little")
-            + bytes(8) + b"\x80\x00\x00\x00")
+            + bytes(6) + b"\x80\x00\x00\x00")
     return head + image
 
 
@@ -57,14 +63,15 @@ def push(link, name: str):
 
 def ensure_art(link, gids):
     sent = link.session.setdefault("art_sent", set())
+    local = LOCAL[version(link)]
     for name in gids:
-        if name not in LOCAL_ART and name not in sent:
+        if name and name not in local and name not in sent:
             push(link, name)
 
 
 def ensure_form(link, form_gid: str):
     """Push the art a local client form references before it is invoked."""
-    ensure_art(link, FORM_ART.get(form_gid, []))
+    ensure_art(link, FORM[version(link)].get(form_gid, []))
 
 
 def dod_request(link, stream_id, body):

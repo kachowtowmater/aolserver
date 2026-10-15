@@ -1,6 +1,6 @@
 """Helpers shared by services."""
 from fdo import codec
-from fdo.compiler import FORMS as FORMS_DIR, compile_fdo, fdo_text, render  # noqa: F401
+from fdo.compiler import FORMS as FORMS_DIR, compile_fdo, fdo_text, plain, render  # noqa: F401
 
 
 def atoms(body: bytes):
@@ -22,7 +22,8 @@ def gid_arg(raw: bytes) -> str:
 
 
 def alert(link, text: str):
-    link.send_stream(codec.stream(codec.atom("async_alert", b"\x01" + fdo_text(text).encode("latin1"))))
+    # raw atom (not FDO source), so plain Latin-1 text -- no \x escapes
+    link.send_stream(codec.stream(codec.atom("async_alert", b"\x01" + plain(text).encode("latin1"))))
 
 
 def name_of(link) -> str:

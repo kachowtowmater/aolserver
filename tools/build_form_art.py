@@ -29,17 +29,23 @@ def art_refs(data: bytes, out: set):
             art_refs(a.args, out)
 
 
-local_art, forms = set(), {}
-for g, flags, body in records(Path(sys.argv[1]).read_bytes()):
+def main():
+  local_art, forms = set(), {}
+  for g, flags, body in records(Path(sys.argv[1]).read_bytes()):
     name = gid_str(g)
     if name.startswith("1-"):
-        local_art.add(name)
+        if flags & 0x2000:  # without it the client treats the record as stale and DODs it
+            local_art.add(name)
         continue
     refs = set()
     art_refs(body, refs)
     if refs:
         forms[name] = sorted(refs)
-out = Path(__file__).resolve().parent.parent / "server" / "data" / "client_art.json"
-out.write_text(json.dumps({"local_art": sorted(local_art), "forms": forms}, indent=0))
-missing = {a for v in forms.values() for a in v} - local_art
-print(f"{len(forms)} forms reference art; {len(local_art)} art local; {len(missing)} referenced art missing -> {out}")
+  out = Path(__file__).resolve().parent.parent / "server" / "data" / "client_art.json"
+  out.write_text(json.dumps({"local_art": sorted(local_art), "forms": forms}, indent=0))
+  missing = {a for v in forms.values() for a in v} - local_art
+  print(f"{len(forms)} forms reference art; {len(local_art)} art local; {len(missing)} referenced art missing -> {out}")
+
+
+if __name__ == "__main__":
+    main()

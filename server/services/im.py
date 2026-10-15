@@ -31,8 +31,14 @@ def deliver(sender: str, recipient: str, text: str) -> bool:
     target = state.ONLINE.get(recipient.lower().replace(" ", ""))
     if not target:
         return False
-    target.send_stream(render("im", gid=_conversation_gid(target, sender), sender=sender, text=text))
+    target.send_stream(_im_stream(target, sender, text))
     return True
+
+
+def _im_stream(link, sender, text):
+    from . import art
+    form = "im40" if art.version(link) == "40" else "im"
+    return render(form, gid=_conversation_gid(link, sender), sender=sender, text=text)
 
 
 def send_im(link, stream_id, body):
@@ -48,7 +54,7 @@ def send_im(link, stream_id, body):
     # echo into the sender's own conversation window, like AOL 3.0
     deliver_to_self = state.ONLINE.get(me.lower().replace(" ", ""))
     if deliver_to_self is link:
-        link.send_stream(render("im", gid=_conversation_gid(link, to), sender=me, text=text))
+        link.send_stream(_im_stream(link, me, text))
 
 
 def available(link, stream_id, body):
@@ -59,4 +65,4 @@ def available(link, stream_id, body):
           else f"{who} is not currently signed on.")
 
 
-TOKENS = {b"iS": send_im, b"iO": available}
+TOKENS = {b"iS": send_im, b"iO": available, b"is": send_im}  # 'is' = AOL 4.0
