@@ -229,9 +229,6 @@ INFO = {
         "Parental Controls let you decide where your family can go online.", "",
         "On this host every member is a grown-up, so there is nothing to set.  "
         "Chat regulars in the People Connection are computer-generated."]),
-    "internet mail": ("Internet Mail", [
-        "Mail between members works right now: just address it to a screen name.", "",
-        "Sending mail to Internet addresses (name@domain.com) is coming soon."]),
     "screen names": ("Screen Names", [
         "To create a new screen name, sign off, choose New User on the Welcome screen and sign on.  "
         "You'll be asked to pick your screen name and password."]),
@@ -310,6 +307,10 @@ def open_area(link, area: str, rid=None):
     if area == "mail":
         from . import mail
         return mail.read_new_mail(link, 0)
+    if area == "internet mail":  # says whether the host's operator has turned it on
+        from . import gateway
+        return link.send_stream(screens.text_window("Internet Mail", "\r".join(gateway.info_lines()), rid,
+                                                    width=60, height=14))
     if area in INFO:
         return info_area(link, area, rid)
     if area == "my aol":

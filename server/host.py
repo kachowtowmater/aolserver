@@ -26,6 +26,19 @@ def load():
     MODULES[:] = mods
     HANDLERS.clear()
     HANDLERS.update(handlers)
+    start_services()
+
+
+def start_services():
+    """Let services start background work (mail receiver/poller...): each may define start(),
+    which must be idempotent -- it runs at server start and after every hot reload."""
+    for mod in MODULES:
+        hook = getattr(mod, "start", None)
+        if hook:
+            try:
+                hook()
+            except Exception as e:
+                print(f"      {mod.__name__}.start failed: {e!r}")
 
 
 PRE_SIGNON = {b"Dd", b"zS", b"fh", b"Wh"}

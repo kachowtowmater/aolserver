@@ -9,7 +9,7 @@ Host -> client:  mip_header_accepted / mip_message_accepted finish a send (the
                  client then shows its own confirmation if that pref is on);
                  mailbox and messages use AOL-style windows built here.
 """
-import time
+import re
 from datetime import datetime
 
 import state
@@ -19,6 +19,15 @@ from . import screens, store
 from .util import alert, atoms, name_of, request
 
 
+def _body_text(parts: list[str]) -> str:
+    """Compose text as typed: AOL 4.0 sends rich text as HTML, 3.0 plain text."""
+    text = "".join(parts)
+    if text.lstrip()[:6].upper() == "<HTML>" or re.search(r"(?i)<br>|<font", text):
+        from .gateway import html_to_text
+        text = html_to_text(text)
+    return text
+
+
 def _flush_draft(link):
     d = link.session.pop("draft", None)
     if not d:
@@ -26,27 +35,39 @@ def _flush_draft(link):
     sender = name_of(link)
     from . import gateway
     from .util import run_bg
-    to = [r for r in d["to"] if not gateway.is_internet(r)]
-    cc = [r for r in d["cc"] if not gateway.is_internet(r)]
-    net_to = [r for r in d["to"] if gateway.is_internet(r)]
-    net_cc = [r for r in d["cc"] if gateway.is_internet(r)]
-    body = "".join(d["text"])
-    owners = store.deliver(sender, to or net_to, cc or net_cc, d["subject"], body) if (to or cc) else []
-    if net_to or net_cc:
+    cfg = gateway.settings()
+    body = _body_text(d["text"])
+    to = [r.strip() for r in d["to"] if r.strip()]
+    cc = [r.strip() for r in d["cc"] if r.strip()]
+    members, internet, unknown = [], [], []
+    for r in to + cc:
+        if gateway.is_internet(r):
+            k = gateway.owner_for(cfg, r) if cfg else None  # name@our-own-domain is a member
+            (members if k else internet).append(k or r)
+        elif store.account(r):
+            members.append(r)
+        else:
+            unknown.append(r)
+    owners = store.deliver(sender, to, cc, d["subject"], body, local=members)
+    link.send_stream(stream(atom("mip_header_accepted"), atom("mip_message_accepted"), atom("uni_wait_off")))
+    if internet:
         def sent(err):
             if err:
-                alert(link, err + "  Your message to " + ", ".join(net_to + net_cc) + " was not sent.")
-        run_bg(lambda: gateway.send(sender, net_to, net_cc, d["subject"], body), sent)
-        if not (to or cc):  # keep a copy in Mail You've Sent
-            store.deliver(sender, [], [], d["subject"], body)
-    link.send_stream(stream(atom("mip_header_accepted"), atom("mip_message_accepted"), atom("uni_wait_off")))
+                alert(link, err + "  Your message to " + ", ".join(internet) + " was not sent.")
+        if cfg:
+            net_to = [r for r in to if r in internet]
+            net_cc = [r for r in cc if r in internet]
+            run_bg(lambda: gateway.send(sender, net_to or net_cc, net_cc if net_to else [], d["subject"], body), sent)
+        else:
+            sent("Internet mail is not set up on this host.")
+    if unknown:
+        alert(link, f"{', '.join(unknown)} {'is' if len(unknown) == 1 else 'are'} not "
+                    f"{'a known member' if len(unknown) == 1 else 'known members'}; "
+                    "your message was not delivered there.")
     for k in owners:
         target = state.ONLINE.get(k)
         if target:
             got_mail(target)
-    unknown = [r for r in to + cc if r.strip() and store.key(r) not in state.ONLINE and not store.mailbox(r, "old")
-               and False]
-    del unknown
 
 
 def compose_packet(link, stream_id, body):
@@ -111,6 +132,12 @@ def open_message(link, mid: int):
         store.mark_read(mid)
 
 
-TOKENS = {b"m4": compose_packet, b"eL": read_new_mail,
+def mailbox_request(link, stream_id, body):
+    """m7: AOL 4.0's Read Mail (mip_action_command 0x1d) asks for the online mailbox list.
+    We answer with our own New Mail window (the client's native list is not filled in)."""
+    read_new_mail(link, stream_id, body)
+
+
+TOKENS = {b"m4": compose_packet, b"eL": read_new_mail, b"m7": mailbox_request,
           b"eO": lambda link, sid, body: read_new_mail(link, sid, body, "old"),
           b"oL": lambda link, sid, body: read_new_mail(link, sid, body, "sent")}

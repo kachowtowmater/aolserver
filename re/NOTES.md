@@ -40,6 +40,12 @@ disc/client/AOLP3.AOL -o re/codemap/aolp3.c`.
 ## Chat / IM / mail / areas
 - AOLCHAT tokens: AB <name:10><sep><text> line, CA <slot><name> arrive, CB <slot> leave.
 - Aa (chat send) and iS (IM) are de_data streams. IM window = client form 32-223 (object id 223).
+- Mail send m4 = MIP stream (mip_text, mip_attr_addressee_type 0 To/1 CC + mip_addressee, mip_subject,
+  mip_end_message); 3.0 splits it into separate m4 streams, 4.0 puts rich text (HTML) in a large atom
+  (uni_start_large_atom <17 11> + segments) spread over several packets of one stream.
+- 4.0 Read/Old/Sent Mail menu items run mip_action_command 0x1d/0x1e/... in AOLMIP.AOL, which sends
+  m7 (empty) for the online mailbox (other MIP tokens there: eD, m3, SF; native mailbox form 41-5271
+  uses oR, m2, oS). The list reply format is not decoded yet; the host answers m7 with its own window.
 - Mail send: m4 MIP streams; reply mip_header_accepted + mip_message_accepted.
   Feeding mip_display_mail_form a synthetic message crashes WAOL -- don't.
 - K1 from toolbar carries uni_data <3-byte gid>; f1/k1 carry de_data <4-byte gid>.

@@ -1,0 +1,3 @@
+#!/bin/bash
+# Turn on Internet mail for the AOL host (see server/mailsetup.py or: run/mail-setup --help).
+exec python3 "$HOME/aol-revival/server/mailsetup.py" "$@"

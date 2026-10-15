@@ -19,6 +19,8 @@ from fdo import codec  # noqa: E402
 class Bot:
     def __init__(self, name, host="127.0.0.1", port=5190):
         self.name, self.tx, self.buf = name, p3.SEQ_MAX, bytearray()
+        self.frames = []  # (token, payload) the host sent, for scripted checks
+        self.quiet = False
         self.sock = socket.create_connection((host, port))
         self.sock.settimeout(0.2)
         self.raw(p3.INIT, 127, b"\x00" * 4)
@@ -52,7 +54,9 @@ class Bot:
                     break
                 del self.buf[:n]
                 if f and f.token:
-                    print(f"[{self.name}] <- {f.token.decode('latin1')} {f.payload[2:80]!r}")
+                    self.frames.append((f.token, bytes(f.payload)))
+                    if not self.quiet:
+                        print(f"[{self.name}] <- {f.token.decode('latin1')} {f.payload[2:80]!r}")
 
 
 def main():

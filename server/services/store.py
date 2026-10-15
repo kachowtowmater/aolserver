@@ -32,13 +32,15 @@ def key(name: str) -> str:
     return name.lower().replace(" ", "")
 
 
-def deliver(sender, to: list[str], cc: list[str], subject, body) -> list[str]:
-    """Store one copy per recipient plus the sender's 'Mail You've Sent'. Returns recipient keys."""
+def deliver(sender, to: list[str], cc: list[str], subject, body, local: list[str] | None = None) -> list[str]:
+    """Store one copy per member recipient plus the sender's 'Mail You've Sent'. `to`/`cc` are
+    the headers as addressed (may include Internet addresses); `local` (default: every name in
+    to+cc) are the members who get a copy. Returns their keys."""
     now = time.time()
     with db() as con:
         owners = []
-        for r in to + cc:
-            if r.strip():
+        for r in (to + cc if local is None else local):
+            if r.strip() and key(r) not in owners:
                 con.execute("INSERT INTO mail(owner,sender,recipients,cc,subject,body,sent) VALUES(?,?,?,?,?,?,?)",
                             (key(r), sender, ", ".join(to), ", ".join(cc), subject, body, now))
                 owners.append(key(r))
@@ -46,6 +48,15 @@ def deliver(sender, to: list[str], cc: list[str], subject, body) -> list[str]:
                     "VALUES(?,?,?,?,?,?,?,1,'sent')", (key(sender), sender, ", ".join(to), ", ".join(cc),
                                                         subject, body, now))
     return owners
+
+
+def deliver_incoming(owner: str, sender: str, to: str, cc: str, subject: str, body: str) -> str:
+    """Mail from outside AOL (the Internet gateway): one copy in the member's New Mail, no
+    'sent' copy for the outside sender.  Returns the owner key."""
+    with db() as con:
+        con.execute("INSERT INTO mail(owner,sender,recipients,cc,subject,body,sent) VALUES(?,?,?,?,?,?,?)",
+                    (key(owner), sender, to, cc, subject, body, time.time()))
+    return key(owner)
 
 
 def mailbox(owner: str, folder: str = "new"):

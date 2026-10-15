@@ -177,6 +177,7 @@ async def main(port: int = 5190):
     srv = await asyncio.start_server(lambda r, w: Link(r, w).run(), "0.0.0.0", port)
     adm = await asyncio.start_server(admin, "127.0.0.1", port + 1)
     print(f"AOL host listening on :{port} (admin on 127.0.0.1:{port + 1})")
+    current_host().start_services()  # background services (mail gateway) need the running loop
     async with srv, adm:
         await asyncio.gather(srv.serve_forever(), adm.serve_forever())
 
