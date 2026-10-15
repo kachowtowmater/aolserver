@@ -14,6 +14,7 @@
  *   wctl postat <hwnd> <x> <y> [2] post a click (or double-click with 2) at client (x,y) of a control */
 #include <windows.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 static const char *want; static HWND found;
@@ -100,6 +101,19 @@ int main(int argc, char **argv) {
             PostMessageA(h, WM_LBUTTONDBLCLK, MK_LBUTTON, pt); PostMessageA(h, WM_LBUTTONUP, 0, pt);
         }
         printf("postat %p %s,%s\n", (void *)h, argv[3], argv[4]); return 0;
+    }
+    if (argc >= 4 && !strcmp(argv[1], "shot")) {
+        HWND h = (HWND)(ULONG_PTR)strtoull(argv[2], NULL, 16); RECT r; GetWindowRect(h, &r);
+        int w = r.right - r.left, ht = r.bottom - r.top;
+        HDC sdc = GetDC(NULL), dc = CreateCompatibleDC(sdc); HBITMAP bmp = CreateCompatibleBitmap(sdc, w, ht);
+        SelectObject(dc, bmp);
+        if (!PrintWindow(h, dc, 0)) BitBlt(dc, 0, 0, w, ht, sdc, r.left, r.top, SRCCOPY);
+        BITMAPINFOHEADER bi = { sizeof bi, w, -ht, 1, 24, BI_RGB };
+        int stride = (w * 3 + 3) & ~3; DWORD size = stride * ht; BYTE *px = malloc(size);
+        GetDIBits(dc, bmp, 0, ht, px, (BITMAPINFO *)&bi, DIB_RGB_COLORS);
+        BITMAPFILEHEADER fh = { 0x4D42, sizeof fh + sizeof bi + size, 0, 0, sizeof fh + sizeof bi };
+        FILE *f = fopen(argv[3], "wb"); fwrite(&fh, sizeof fh, 1, f); fwrite(&bi, sizeof bi, 1, f);
+        fwrite(px, size, 1, f); fclose(f); printf("saved %dx%d %s\n", w, ht, argv[3]); return 0;
     }
     if (argc >= 3 && !strcmp(argv[1], "enter")) {
         HWND h = (HWND)(ULONG_PTR)strtoull(argv[2], NULL, 16);

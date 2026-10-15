@@ -71,7 +71,7 @@ def sign_on(link, stream_id, body):
     welcome(link)
 
 
-NATIVE_WELCOME_TRIAL = {"Tester98"}  # 4.0's own Welcome screen: on for the test account while verifying
+NATIVE_WELCOME_TRIAL = set()  # 4.0 own Welcome (32-6442): the form opens Channels but never draws itself yet
 
 
 def welcome(link):
