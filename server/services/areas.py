@@ -45,7 +45,8 @@ GID_AREAS = {
     "19-2226": "reference", "2-23810": "member services", "40-22494": "billing", "32-377": "what's hot",
     "8-49074": "member services", "8-50600": "member services", "8-50934": "member services",
     # 4.0 Welcome screen (32-6442) promo spots: today's stories
-    "17-65227": "what's hot", "17-35040": "what's hot", "32-6450": "news", "32-6451": "entertainment",
+    "14-8785": "private chat", "17-42646": "chat prefs", "43-16776": "aol live",
+    "17-65227": "welcome content", "17-35040": "mail", "32-6450": "news", "32-6451": "entertainment",
     "32-6452": "finance", "32-6454": "sports", "40-47287": "finance", "32-222": "channels", "40-4979": "member services",  # 4.0 forms AOL's host sent (f2)
     "32-4724": "browser", "32-5846": "browser",  # Go to the Web: the client opens its own browser right after
 }
@@ -266,6 +267,13 @@ INFO = {
         "Your Setup should use the TCP/IP connection."]),
     "billing": ("Accounts and Billing", [
         "Your account is free.  No hourly charges, no monthly fee, and no surprise bill."]),
+    "chat prefs": ("Chat Preferences", [
+        "Chat Preferences", "",
+        "  Notify me when members arrive / leave: on in every room.",
+        "  Double-space incoming messages: off.",
+        "  Alphabetize the member list: the People Here list shows who arrived first.",
+        "  Enable chat room sounds: on.", "",
+        "Double-click a name in People Here to see that member's profile."]),
     "aol live": ("AOL Live!", [
         "AOL Live! -- events in the People Connection auditoriums.", "",
         "Center Stage: open chat all day.  Go there from any chat room with the Center Stage button.",
@@ -316,6 +324,11 @@ def open_area(link, area: str, rid=None):
         return info_area(link, area, rid)
     if area == "my aol":
         return my_aol(link, rid)
+    if area == "private chat":
+        return chat.private_room_form(link, rid)
+    if area == "welcome content":  # AOL 4.0's own Welcome screen asking for today's content
+        from . import welcome40
+        return welcome40.fill(link, rid)
     if area == "browser":
         return link.send_stream(stream(atom("uni_wait_off")))
     if area == "room list":

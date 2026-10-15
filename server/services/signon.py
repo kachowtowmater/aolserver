@@ -71,9 +71,17 @@ def sign_on(link, stream_id, body):
     welcome(link)
 
 
+NATIVE_WELCOME_TRIAL = {"Tester98"}  # 4.0's own Welcome screen: on for the test account while verifying
+
+
 def welcome(link):
     from . import areas, art, content, mail
     from .util import run_bg
+    if art.version(link) == "40" and link.session.get("name") in NATIVE_WELCOME_TRIAL:
+        # 4.0 draws its own Welcome screen and asks us for the content
+        from . import welcome40
+        welcome40.open_window(link)
+        return mail.got_mail(link)
 
     def done(heads):
         rows = [(h["title"], areas._item(link, ("article", h))) for h in (heads or [])[:6]]

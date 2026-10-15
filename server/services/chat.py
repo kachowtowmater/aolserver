@@ -98,7 +98,8 @@ def list_rooms(link, stream_id, body):
     for name in ("Lobby 1", "Romance", "Thirtysomething", "Nineties Kids", "Tech Talk", "News Talk", "Sports Arena"):
         state.ROOMS.setdefault(name, {"slots": {}, "next": 1})
     rows = [(f"{len(r['slots'])}\t{name}", areas._item(link, ("room", name)))
-            for name, r in sorted(state.ROOMS.items(), key=lambda kv: (not kv[0].startswith("Lobby"), kv[0]))]
+            for name, r in sorted(state.ROOMS.items(), key=lambda kv: (not kv[0].startswith("Lobby"), kv[0]))
+            if not r.get("private")]
     link.send_stream(screens.list_window(
         "Public Rooms", "Double-click a room to go there.  Number of people in each room is shown.", rows,
         buttons=[("Create Room", '          sm_send_token_arg <"zA", %d>' % areas._item(link, ("create_room",)))],
@@ -110,6 +111,23 @@ def create_room_form(link):
     link.send_stream(screens.form_window("Create a Member Room", "Name your room (up to 20 characters).  "
                                          "Anyone can join it from the room list.", [("Room Name:", 20, "")],
                                          "Create", "zC", window="createroom"))
+
+
+def private_room_form(link, rid=None):
+    """The room's Private Chat button: a room only people who know its name can find."""
+    from . import screens
+    link.send_stream(screens.input_window("Private Chat", "Room name:", "Go Chat", "zV",
+                                          "Enter the name of a private room to create or enter.  "
+                                          "Private rooms aren't listed anywhere.", response_id=rid))
+
+
+def private_room(link, stream_id, body):
+    from .util import request
+    name = " ".join((request(body)["texts"] or [""])[0].split())[:20]
+    if not name:
+        return
+    state.ROOMS.setdefault(name, {"slots": {}, "next": 1, "regulars": [], "private": True})
+    join(link, name)
 
 
 def create_room(link, stream_id, body):
@@ -125,4 +143,5 @@ def on_disconnect(link):
     leave(link)
 
 
-TOKENS = {b"CJ": enter_people_connection, b"Aa": chat_line, b"LP": list_rooms, b"zC": create_room}
+TOKENS = {b"CJ": enter_people_connection, b"Aa": chat_line, b"LP": list_rooms, b"zC": create_room,
+          b"zV": private_room}
