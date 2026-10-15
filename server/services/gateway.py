@@ -53,8 +53,10 @@ def send(sender: str, to: list[str], cc: list[str], subject: str, body: str) -> 
     msg.set_content(body.replace("\r\n", "\n").replace("\r", "\n"))
     try:
         with smtplib.SMTP(cfg["smtp_host"], cfg.get("smtp_port", 587), timeout=30) as s:
-            s.starttls()
-            s.login(cfg["user"], cfg["password"])
+            if cfg.get("starttls", True):
+                s.starttls()
+            if cfg.get("password"):
+                s.login(cfg["user"], cfg["password"])
             s.send_message(msg)
     except Exception as e:
         return f"Internet mail could not be delivered ({e.__class__.__name__})."
@@ -77,7 +79,8 @@ def poll_once():
         return []
     local = cfg["user"].split("@")[0].lower()
     delivered = []
-    with imaplib.IMAP4_SSL(cfg["imap_host"]) as im:
+    imap_cls = imaplib.IMAP4_SSL if cfg.get("imap_ssl", True) else imaplib.IMAP4
+    with imap_cls(cfg["imap_host"], cfg.get("imap_port", 993 if cfg.get("imap_ssl", True) else 143)) as im:
         im.login(cfg["user"], cfg["password"])
         im.select("INBOX")
         _, ids = im.search(None, "UNSEEN")
