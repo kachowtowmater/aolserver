@@ -36,6 +36,9 @@ def go_online(link, name: str):
     link.session["name"] = name
     link.session["signed_on"] = time.time()
     state.ONLINE[store.key(name)] = link
+    from . import buddy
+    if name.lower() != NEW_USER:
+        buddy.announce(name, True)
     link.send_stream(stream(atom("async_online"), atom("uni_invoke_local", gid("32-296"))))
 
 
@@ -120,6 +123,8 @@ def on_disconnect(link):
     name = link.session.get("name")
     if name and state.ONLINE.get(store.key(name)) is link:
         del state.ONLINE[store.key(name)]
+        from . import buddy
+        buddy.announce(name, False)
 
 
 TOKENS = {b"Dd": sign_on, b"zS": register, b"pE": sign_off}

@@ -16,6 +16,7 @@ def db():
     CREATE INDEX IF NOT EXISTS mail_owner ON mail(owner, folder);
     CREATE TABLE IF NOT EXISTS account(
         key TEXT PRIMARY KEY, name TEXT, pwhash TEXT, created REAL, last_on REAL);
+    CREATE TABLE IF NOT EXISTS buddy(owner TEXT, buddy TEXT, PRIMARY KEY(owner, buddy));
     CREATE TABLE IF NOT EXISTS profile(
         key TEXT PRIMARY KEY, realname TEXT, location TEXT, birthday TEXT, sex TEXT,
         marital TEXT, hobbies TEXT, computers TEXT, occupation TEXT, quote TEXT);
@@ -115,3 +116,24 @@ def search_profiles(q: str):
                            "lower(a.name) LIKE ? OR lower(coalesce(p.hobbies,'')) LIKE ? OR "
                            "lower(coalesce(p.location,'')) LIKE ? OR lower(coalesce(p.occupation,'')) LIKE ? "
                            "ORDER BY a.name LIMIT 50", (like,) * 4).fetchall()
+
+
+def buddies(owner: str) -> list[str]:
+    with db() as con:
+        return [r[0] for r in con.execute("SELECT buddy FROM buddy WHERE owner=? ORDER BY lower(buddy)", (key(owner),))]
+
+
+def add_buddy(owner: str, name: str):
+    with db() as con:
+        con.execute("INSERT OR IGNORE INTO buddy(owner,buddy) VALUES(?,?)", (key(owner), name))
+
+
+def remove_buddy(owner: str, name: str):
+    with db() as con:
+        con.execute("DELETE FROM buddy WHERE owner=? AND lower(buddy)=?", (key(owner), name.lower()))
+
+
+def watchers(name: str) -> list[str]:
+    """Owners whose Buddy List includes `name`."""
+    with db() as con:
+        return [r[0] for r in con.execute("SELECT owner FROM buddy WHERE lower(buddy)=?", (name.lower(),))]

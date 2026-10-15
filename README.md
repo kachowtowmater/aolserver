@@ -5,10 +5,18 @@ real servers were never released, so this one is rebuilt by reverse-engineering
 the client from its 1997 install CD.
 
 ## Status
-- [x] P3 link layer: framing, CRC-16/ARC, sequencing, INIT -> ACK handshake
-- [x] Real client runs on Linux/aarch64 (Wine + FEX) and connects
-- [ ] Sign-on (`Dd`) -> Welcome screen
-- [ ] Forms (FDO atom streams), keywords, chat, IM, mail
+Works with the real **AOL 3.0** (1996-98) and **AOL 4.0** (1998-99) Windows clients.
+- [x] P3 link layer (CRC-16/ARC; 4.0's '**' no-CRC TCP mode), sequencing, handshake
+- [x] Sign-on, New Member sign-up, screen names + passwords, Goodbye/sign-off
+- [x] Welcome screen with mail + today's top news
+- [x] People Connection: lobbies, room list, Center Stage, LLM-driven chat regulars
+- [x] Instant Messages (3.0 and 4.0 windows), Buddy List with live buddy in/out
+- [x] E-mail: send, New/Old/Sent mailboxes, You've Got Mail
+- [x] Keywords + every Channels/toolbar area with live 2026 content: news,
+      quotes, weather, the Web (as text), Wikipedia, files (Internet Archive), deals
+- [x] Profiles, Locate Member, Member Directory
+- [x] 16k original AOL art records harvested from 73 AOL CD images
+- [ ] 3.0: SIGN ON AGAIN after sign-off doesn't reconnect (exit + relaunch works)
 
 ## Layout
 - `server/` Python asyncio host on TCP 5190 (`python3 server.py`); `test_p3.py`
@@ -18,7 +26,13 @@ the client from its 1997 install CD.
 - `run/tools/wctl.c` drives the client's dialogs from the shell
   (build: `aarch64-w64-mingw32-clang -O1 -o wctl.exe wctl.c -luser32`)
 
-## Running the client
+## AOL 4.0
+Install from the 4.0 CD into its own prefix (`run/wine-aol4`), set `csl/tcp.csl`
+to `EXTERN CONNECT localhost 5190` (a dotted IP gets mangled), Expert Setup ->
+TCP/IP, and run `client40/patch-aolsec.sh` (turns off the RSA session handshake
+that only AOL's servers could answer).
+
+## Running the 3.0 client
 1. Get the AOL 3.0 CD (archive.org item
    `Proven_Faster_Internet_Experience_AOL_Version_3.0_PA1097R23`) and run
    `AOL95/SETUP95.EXE` with the Wine version set to `win95`.

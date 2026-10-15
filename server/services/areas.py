@@ -21,6 +21,7 @@ GID_AREAS = {
     "17-35059": "presenting", "40-4218": "member services", "40-3760": "aol live", "40-4408": "my aol",
     "17-35044": "find", "3-4604": "what's hot", "19-7766": "www",
     "8-62": "room:Center Stage", "8-20": "room:PC Studio",
+    "17-22746": "buddy list", "17-21293": "buddy setup",
     "8-11975": "file search", "8-63415": "finance", "8-16035": "clock", "": "what's hot",
     "40-25172": "member directory", "40-4391": "mail", "8-53727": "news search", "32-322": "find",
     "2-15919": "parental control", "32-1163": "internet mail", "2-43263": "internet mail", "2-1921": "news",
@@ -74,6 +75,7 @@ KEYWORDS = {  # keyword -> area (case/space-insensitive)
     "file search": "file search", "software": "file search", "download": "file search", "shopping": "marketplace",
     "deals": "marketplace", "my aol": "my aol", "aol live": "aol live", "live": "aol live",
     "mail": "mail", "read mail": "mail", "mailbox": "mail", "new mail": "mail",
+    "buddy": "buddy list", "buddies": "buddy list", "buddy list": "buddy list", "buddy view": "buddy list",
 }
 
 
@@ -240,6 +242,9 @@ def ask(link, title, prompt, button, token, intro, rid=None):
 
 
 def open_area(link, area: str, rid=None):
+    if area in ("buddy list", "buddy setup"):
+        from . import buddy
+        return buddy.show(link, rid) if area == "buddy list" else buddy.setup(link, rid)
     if area == "member directory":
         from . import members
         return members.directory(link, rid)
@@ -331,6 +336,12 @@ def item(link, stream_id, body):
     elif kind == "mailbox":
         from . import mail
         mail.read_new_mail(link, 0, b"", payload[1])
+    elif kind == "buddy":
+        from . import buddy
+        buddy.buddy_im(link, payload[1])
+    elif kind == "buddy_setup":
+        from . import buddy
+        buddy.setup(link)
     elif kind == "web":
         show_page(link, payload[1])
     elif kind == "wiki":
