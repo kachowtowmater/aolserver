@@ -129,7 +129,7 @@ def form_window(title: str, intro: str, fields: list[tuple[str, int, str]], butt
         lines += [f'    man_start_sibling <edit_view, "{fdo_text(label)}">', f"      mat_size <{width}, 1, 120>",
                   f"      mat_relative_tag <{i}>", "      mat_title_pos <left | center>", "      mat_bool_writeable <yes>"]
         if "password" in label.lower():
-            lines.append("      mat_bool_hidden <yes>")
+            lines.append("      mat_bool_protected_input <yes>")  # masks typing (hidden hides the box)
         if preset:
             lines.append(f'      man_append_data <"{fdo_text(preset)}">')
     gets = "\n".join(f"            man_set_context_relative <{i}>\n            de_get_data\n            man_end_context"

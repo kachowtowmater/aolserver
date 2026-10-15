@@ -1,0 +1,26 @@
+man_start_object <org_group, "\x01\x00">
+  man_close_children <0>
+  act_set_criterion
+  uni_void
+  uni_end_loop <00x, 00x>
+  uni_void
+the_unknown <0, 128, 00x, 00x>
+  buf_start_buffer
+  uni_void
+  uni_void
+  uni_void
+  uni_void
+  cm_inquire <02x>
+  buf_add_atom_pointer_filter
+  uni_void
+  uni_save_result <00x, 00x, 0ex, 00x, 37x, 00x, 23x, 05x, a0x, 88x, 01x, 00x, b7x, 37x, 3ex, 08x, b6x, 3fx, f9x, c4x, 4dx, 0dx>
+the_unknown <16, 209, 0dx, 3fx, fex, b7x, 57x, 3ax, 88x, efx, dfx, 67x, 75x, bbx, e4x, d6x, 67x, 16x, 9cx>
+  buf_add_data <2>
+  mip_message_date <45x, 44x, 14x, 48x, ffx, fdx, 40x, 35x, 44x, 43x, 54x, 35x, 45x, 3fx, fex, c5x, 6bx, f4x, c4x, 6ax, edx, 77x, eex, a6x, aax, e2x, 79x, 9ex, 5bx, cfx, 71x, f6x, d6x, ccx, c0x, 26x, d7x, c0x, c2x, 7cx, b5x, 74x, 40x, 02x, 33x, ffx, fax, 80x, 6ax, 88x, 86x, a8x, 6ax, 8ax, 7fx, fdx, 8ax, d7x, e9x, 88x, d5x, dax, efx, ddx>
+  async_stat_collection_state <02x>
+  async_online <01x>
+the_unknown <92, 55, 9ex, e3x, edx, adx, 99x>
+the_unknown <92, 32, afx, 81x, 84x, f9x, 6ax, e8x, 80x, 04x, 64x, 84x, 1cx, 01x, 55x, 24x, 6dx, 8cx, 1dx, 00x, 01x, 0ex, 00x, 0dx, 00x, 23x, 05x, a0x, 88x, 01x, 00x, a4x, 1ex, f2x, 2cx, 9dx, ddx, 2fx, c2x, 76x, f7x, 2ax, 76x, 99x, 7bx, ddx, 0bx, dcx, 51x, 5fx, 0cx, bex, 1ax, 2ax, d1x, dbx, 3cx, fdx, cdx, fcx, a0x, d5x, a2x, ecx, 79x, 72x, 2cx, 3bx, d2x, a9x, 1fx, 0dx, cbx, 0ex, 22x, 83x, 70x, b9x, 55x>
+the_unknown <102, 34>
+the_unknown <6, 25, 01x>
+  chart_set_ylegend_gap <-2049370418>

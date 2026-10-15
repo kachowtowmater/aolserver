@@ -1,0 +1,22 @@
+uni_start_stream <00x>
+uni_end_stream
+uni_wait_on <00x>
+uni_void <00x>
+uni_end_stream <01x, 01x, 00x>
+man_close_children <4>
+uni_void
+the_unknown <109, 96, 03x>
+the_unknown <110, 96, 86x>
+the_unknown <111, 96, eex>
+the_unknown <120, 96, 04x, 0ax>
+the_unknown <123, 96, 00x, 00x, 00x, 01x>
+the_unknown <127, 96, 00x, 00x, 00x, 00x, 00x, 00x, 00x, 00x, 00x, 00x>
+the_unknown <124, 96, 00x, 00x, 00x, 04x>
+the_unknown <119, 96, 00x, 00x, 00x, 00x>
+the_unknown <99, 96, 14x>
+the_unknown <100, 96, 54x, 43x, 50x, 2fx, 49x, 50x, 3ax, 20x, 20x, 4ex, 65x, 74x, 77x, 6fx, 72x, 6bx, 20x, 6fx, 72x, 20x, 6fx, 74x, 68x, 65x, 72x, 20x, 43x, 6fx, 6ex, 6ex, 65x, 63x, 74x, 69x, 6fx, 6ex>
+the_unknown <101, 96, 44x, 69x, 72x, 65x, 63x, 74x, 20x, 54x, 43x, 50x, 2fx, 49x, 50x, 20x, 43x, 6fx, 6ex, 6ex, 65x, 63x, 74x, 69x, 6fx, 6ex>
+the_unknown <122, 96, 01x>
+the_unknown <112, 96, ffx>
+the_unknown <112, 100>
+the_unknown <100, 96, 17x, 71x, 71x, 00x, 02x, 00x, 00x, 72x, 00x, 02x, 00x, 00x, 73x, 00x, 02x, 00x, 00x, 85x, 00x, 05x, 39x, 39x, 36x, 30x, 30x, 00x, 00x, 00x, 00x, 18x, 00x, 0cx>

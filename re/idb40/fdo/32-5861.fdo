@@ -1,0 +1,51 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "America Online">
+    mat_object_id <32-5861>
+    mat_style_id <32-5861>
+    mat_orientation <vff>
+    mat_color_face <255, 251, 240>
+    mat_position <center_center>
+    mat_bool_modal <yes>
+    mat_bool_background_flood <yes>
+    man_start_object <ornament, "">
+      mat_size <35, 6>
+      mat_font_sis <arial, 8, normal>
+      man_append_data <"America Online has detected that your hard drive is low on free space.  You may want to make more space available before continuing to use America Online for Windows.">
+    man_start_sibling <org_group, "">
+      mat_orientation <hff>
+      man_start_object <trigger, "Continue">
+        mat_font_sis <arial, 8, normal>
+        mat_color_text <255, 255, 255>
+        mat_precise_height <24>
+        mat_precise_width <100>
+        mat_trigger_style <rectangle>
+        mat_color_top_edge <145, 182, 255>
+        mat_color_bottom_edge <1, 1, 1>
+        mat_color_face <1, 109, 170>
+        mat_bool_default <yes>
+        act_replace_select_action
+            <
+            uni_start_stream <00x>
+              man_close_update
+            uni_end_stream <00x>
+            >
+        man_start_sibling <trigger, "Exit America Online">
+          mat_font_sis <arial, 8, normal>
+          mat_color_text <255, 255, 255>
+          mat_precise_height <24>
+          mat_precise_width <125>
+          mat_trigger_style <rectangle>
+          mat_color_top_edge <145, 182, 255>
+          mat_color_bottom_edge <1, 1, 1>
+          mat_color_face <1, 109, 170>
+          act_replace_select_action
+              <
+              uni_start_stream
+                async_exit
+              uni_end_stream
+              >
+          man_end_object
+        man_end_object
+        man_update_display
+        uni_wait_off
+      uni_end_stream <00x>

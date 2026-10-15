@@ -1,0 +1,10 @@
+man_start_object <org_group, "">
+  act_set_criterion <67108865>
+the_unknown <8, 182, 30x, 00x, 47x, fcx, 82x, 08x, 31x, 04x, 46x, 11x, 08x, d2x, 4dx, 11x, 1ax, 24x, d4x, 9dx, 58x, 38x, 20x, 88x, 24x, 7fx, fex, f9x, 2ex, efx, 4dx, dcx, ecx, bbx>
+  fm_close_file
+  pictalk_ad_manage <05x>
+the_unknown <29, 23, 46x, 12x, ebx, 58x, 46x, 24x, 99x, 11x, 18x, 92x, 64x, a3x, 55x, 01x, 82x, 20x, 45x, ffx, 53x, ffx, a9x, fdx, d4x, fdx, ebx, 7ex, 7dx, 4fx, bcx, 9fx, 58x, f9x, cbx, 7cx, 6dx, 3dx, eax, 7bx, 53x, d6x, b4x, 92x, d4x, a5x, 2bx, 49x, 2dx, 14x, c0x, 84x, 1cx, 01x, fex, ffx, ffx, 0dx, 00x, 21x, 00x, 43x, 0ax, 00x, 0fx, 00x, 23x, 05x, a0x, 88x, 01x, 00x, 05x, 00x, 25x, 01x, fex, ffx, ffx, 2dx, 00x, 22x, 1cx, 08x, b6x, 38x, 30x, 45x, 10x, 08x, ffx, c6x, 85x, a4x, 96x, bbx, cdx, 23x, bfx, 01x, 82x, 20x, 45x, fex, 31x>
+  mmi_atr_loop <-792007561>
+the_unknown <18, 0, 04x>
+the_unknown <18, 1, 01x>
+  mat_bool_protected_input <yes>

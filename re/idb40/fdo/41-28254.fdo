@@ -1,0 +1,69 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "AOL Setup">
+    mat_object_id <41-28254>
+    mat_style_id <41-28254>
+    mat_orientation <vff>
+    mat_color_face <255, 251, 240>
+    mat_bool_background_flood <yes>
+    mat_position <center_center>
+    mat_bool_modal <yes>
+    mat_bool_background_flood <yes>
+    man_start_object <org_group, "">
+      mat_orientation <hlc>
+      man_start_object <ornament, "">
+        mat_art_id <1-1-22358>
+        mat_bool_disabled <yes>
+      man_start_sibling <org_group, "">
+        mat_orientation <vlc>
+        man_start_object <ornament, "You've Only Selected One Number">
+          mat_size <23, 1, 128>
+          mat_font_id <arial>
+          mat_font_size <14>
+          mat_font_style <bold>
+        man_start_sibling <org_group, "">
+          mat_orientation <vff>
+          mat_precise_width <400>
+          mat_precise_height <2>
+          mat_color_face <1, 1, 1>
+          mat_bool_background_flood <yes>
+          mat_bool_precise <yes>
+        man_end_object
+      man_end_object
+    man_start_sibling <view, "">
+      rich_manage
+      rich_set_static
+      mat_size <47, 5>
+      mat_bool_vertical_scroll <no>
+      mat_bool_resize_vertical <no>
+      mat_bool_resize_horizontal <no>
+      mat_bool_exportable <no>
+      man_append_data <"We strongly recommend that you select more than one access phone number.  That way, if there's a problem connecting with the first one, the modem will have an alternate number to try -- and you'll have a better chance of connecting to the AOL service.">
+    man_start_sibling <org_group, "">
+      mat_orientation <hcc>
+      man_start_object <trigger, "OK">
+        mat_title_width <6>
+        mat_relative_tag <1>
+        mat_color_face <0, 109, 170>
+        mat_color_text <255, 255, 255>
+        mat_color_top_edge <145, 182, 255>
+        mat_color_bottom_edge <1, 1, 1>
+        mat_trigger_style <rectangle>
+        mat_font_sis <arial, 8, normal>
+        mat_bool_draw_focus <yes>
+        mat_bool_default <yes>
+        mat_command_key <0cx, 00x>
+        act_replace_select_action
+            <
+            uni_start_stream <00x>
+              man_close_update
+            uni_end_stream <00x>
+            >
+        man_end_object
+      man_end_object
+      man_update_display
+      man_set_context_relative <1>
+      man_make_focus
+      man_end_context
+      man_update_display
+      uni_wait_off
+    uni_end_stream <00x>

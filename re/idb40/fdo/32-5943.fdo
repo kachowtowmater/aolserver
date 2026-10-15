@@ -1,0 +1,324 @@
+uni_start_stream
+  idb_set_context <20-0-16>
+  idb_atr_offset <1>
+  idb_get_string
+  var_string_set_from_atom <A>
+  var_string_set <B,"New User  ">
+  idb_end_context
+  if_stra_eq_strb_then <10, 99>
+  async_error_box <"Please register an account first.">
+  uni_sync_skip <10>
+  lm_table_use_table <20-0-50>
+  man_start_object <ind_group, "">
+    mat_bool_modal <yes>
+    mat_orientation <vef>
+    mat_object_id <32-242>
+    mat_bool_background_flood <yes>
+    mat_color_face <255, 251, 240>
+    mat_title <"Password Store Information Box">
+    man_start_object <org_group, "">
+      mat_orientation <hlb>
+      man_start_object <ornament, "">
+        mat_art_animation_rate <200>
+        mat_bool_repeat_animation <no>
+        mat_art_id <1-1-29923>
+        mat_bool_disabled <yes>
+        mat_vertical_spacing <0>
+      man_end_object
+      man_start_object <ornament, "">
+        mat_font_sis <arial, 8, normal>
+        mat_height <5>
+        mat_width <34>
+        mat_vertical_spacing <0>
+        man_append_data <"You may store your password so that you don't need to type it each time you sign on to AOL. To store your password, type it in the box below, then click OK.">
+      man_end_object
+    man_end_object
+    man_start_object <org_group, "">
+      mat_orientation <vce>
+      man_start_object <ornament, "">
+        mat_font_sis <arial, 8, normal>
+        mat_height <8>
+        mat_width <39>
+        man_append_data <"Note: Once you store your password anyone with access to your computer can sign on to your AOL account.  Storing your password is not recommended if others (co-workers, your children, etc.) have access to your computer. To unstore your password, sign on to AOL, then go to Keyword: Preferences. To change your password, sign on to AOL, then go to Keyword: Password.">
+      man_end_object
+      man_start_object <org_group, "">
+        mat_orientation <vef>
+        man_start_object <org_group, "">
+          mat_orientation <hft>
+          man_start_object <ornament, "">
+            mat_font_sis <arial, 9, bold>
+            mat_title <"Screen Name">
+          man_end_object
+          man_start_object <ornament, "">
+            mat_title <"Password">
+            mat_font_sis <arial, 9, bold>
+          man_end_object
+        man_end_object
+        man_start_object <org_group, "">
+          mat_orientation <hef>
+          man_start_object <ornament, "">
+            mat_height <1>
+            mat_width <16>
+            mat_relative_tag <1>
+            mat_bool_invisible <yes>
+          man_end_object
+          man_start_object <edit_view, "">
+            mat_height <1>
+            mat_width <16>
+            mat_capacity <16>
+            mat_bool_protected_input <yes>
+            mat_relative_tag <2>
+            man_make_focus
+            mat_bool_invisible <yes>
+          man_end_object
+        man_end_object
+        man_start_object <org_group, "">
+          mat_orientation <hef>
+          man_start_object <ornament, "">
+            mat_height <1>
+            mat_width <16>
+            mat_relative_tag <3>
+            mat_bool_invisible <yes>
+          man_end_object
+          man_start_object <edit_view, "">
+            mat_height <1>
+            mat_width <16>
+            mat_relative_tag <4>
+            mat_capacity <16>
+            mat_bool_protected_input <yes>
+            mat_bool_invisible <yes>
+          man_end_object
+        man_end_object
+        man_start_object <org_group, "">
+          mat_orientation <hef>
+          man_start_object <ornament, "">
+            mat_height <1>
+            mat_width <16>
+            mat_relative_tag <5>
+            mat_bool_invisible <yes>
+          man_end_object
+          man_start_object <edit_view, "">
+            mat_height <1>
+            mat_width <16>
+            mat_relative_tag <6>
+            mat_capacity <16>
+            mat_bool_protected_input <yes>
+            mat_bool_invisible <yes>
+          man_end_object
+        man_end_object
+        man_start_object <org_group, "">
+          mat_orientation <hef>
+          man_start_object <ornament, "">
+            mat_height <1>
+            mat_width <16>
+            mat_relative_tag <7>
+            mat_bool_invisible <yes>
+          man_end_object
+          man_start_object <edit_view, "">
+            mat_height <1>
+            mat_width <16>
+            mat_relative_tag <8>
+            mat_capacity <16>
+            mat_bool_protected_input <yes>
+            mat_bool_invisible <yes>
+          man_end_object
+        man_end_object
+        man_start_object <org_group, "">
+          mat_orientation <hef>
+          man_start_object <ornament, "">
+            mat_height <1>
+            mat_width <16>
+            mat_relative_tag <9>
+            mat_bool_invisible <yes>
+          man_end_object
+          man_start_object <edit_view, "">
+            mat_height <1>
+            mat_width <16>
+            mat_relative_tag <10>
+            mat_capacity <16>
+            mat_bool_protected_input <yes>
+            mat_bool_invisible <yes>
+          man_end_object
+        man_end_object
+        man_start_object <ornament, "">
+          mat_width <10>
+          mat_height <1>
+        man_end_object
+        man_start_object <org_group, "">
+          mat_orientation <hef>
+          man_start_object <trigger, "">
+            mat_bool_default <yes>
+            mat_title <"OK">
+            mat_trigger_style <rectangle>
+            mat_color_face <0, 109, 170>
+            mat_color_top_edge <145, 182, 255>
+            mat_color_frame_shadow <1, 1, 1>
+            mat_font_sis <arial, 8, normal>
+            mat_color_text <255, 255, 255>
+            mat_precise_width <70>
+            mat_precise_height <23>
+            act_set_criterion <select>
+            act_append_action
+              <
+              uni_start_stream
+                lm_table_use_table <20-0-50>
+                lm_table_encrypt_table <14x, 00x, 00x, 32x>
+                de_start_extraction <0>
+                var_number_set <A, 1>
+                var_number_set <B, 10>
+                uni_start_loop
+                var_number_get <A>
+                uni_use_last_atom_value <man_set_context_relative>
+                man_get_attribute <mat_bool_invisible>
+                if_last_return_true_then <7>
+                var_number_set <C, 0>
+                if_last_return_true_then <15>
+                uni_sync_skip <7>
+                de_get_data_pointer
+                uni_use_last_atom_string <lm_table_use_key>
+                man_end_context
+                var_number_increment <A>
+                var_number_get <A>
+                uni_use_last_atom_value <man_set_context_relative>
+                man_get_attribute <mat_bool_invisible>
+                if_last_return_false_then <15>
+                de_get_data_pointer
+                uni_save_result
+                var_string_set_from_atom <A>
+                if_stra_eq_null_then <14>
+                async_error_box <"To save your password, type it in the input field, then click OK. If you do not wish to store your password, click Cancel.">
+              uni_abort_stream
+              uni_sync_skip <14>
+              uni_get_result
+              uni_use_last_atom_string <lm_table_set_item>
+              uni_sync_skip <15>
+              man_end_context
+              var_number_increment <A>
+              if_numa_lt_numb_then <20>
+              uni_end_loop
+              uni_sync_skip <20>
+              de_end_extraction
+              man_close
+              man_update_display
+              man_set_context_globalid <32-221>
+              act_do_action <gain_focus>
+              man_end_context
+            uni_end_stream
+            >
+        man_end_object
+        man_start_object <trigger, "">
+          mat_title <"Cancel">
+          mat_trigger_style <rectangle>
+          mat_color_face <0, 109, 170>
+          mat_color_top_edge <145, 182, 255>
+          mat_color_frame_shadow <1, 1, 1>
+          mat_font_sis <arial, 8, normal>
+          mat_color_text <255, 255, 255>
+          mat_precise_width <70>
+          mat_precise_height <23>
+          act_set_criterion <select>
+          act_append_action
+            <
+            uni_start_stream
+              lm_table_use_table <20-0-304>
+              de_start_extraction <0>
+              var_number_set <A, 1>
+              var_number_set <B, 10>
+              uni_start_loop
+              var_number_get <A>
+              uni_use_last_atom_value <man_set_context_relative>
+              man_get_attribute <mat_bool_invisible>
+              if_last_return_true_then <7>
+              man_end_context
+              var_number_set <C, 0>
+              if_last_return_true_then <9>
+              uni_sync_skip <7>
+              de_get_data_pointer
+              uni_use_last_atom_string <lm_table_use_key>
+              man_end_context
+              lm_table_set_item <"1">
+              uni_sync_skip <9>
+              var_number_increment <A>
+              if_numa_lt_numb_then <20>
+              uni_end_loop
+              uni_sync_skip <20>
+              de_end_extraction
+              man_close
+              man_update_display
+            uni_end_stream
+            >
+        man_end_object
+      man_end_object
+      man_update_display
+    man_end_object
+    man_set_context_globalid <32-242>
+    idb_set_context <20-3-26>
+    idb_atr_offset <0>
+    idb_get_string
+    var_string_set_from_atom <D>
+    idb_end_context
+    var_number_set <A, 6>
+    idb_set_context <20-0-16>
+    idb_atr_offset <0>
+    idb_get_value
+    var_number_set_from_atom <B>
+    if_numa_lte_numb_then <1>
+    var_number_set <B, 5>
+    uni_sync_skip <1>
+    var_number_set <C, 0>
+    var_number_set <D, 0>
+    var_string_set <B,"Guest     ">
+    var_number_set <A, 1>
+    uni_start_loop
+    uni_use_last_atom_value <idb_atr_offset>
+    var_number_increment <C>
+    var_number_get <C>
+    uni_use_last_atom_value <man_set_context_relative>
+    idb_get_string
+    var_string_set_from_atom <A>
+    if_stra_eq_strb_then <5, 6>
+    var_number_set <D, 1>
+    uni_sync_skip <5>
+    var_number_set <D, 0>
+    uni_sync_skip <6>
+    var_string_swap_between_regs <B, D>
+    var_string_get <A>
+    uni_use_last_atom_string <mat_title>
+    if_stra_eq_strb_then <19, 21>
+    var_number_get <D>
+    uni_use_last_atom_value <mat_bool_invisible>
+    uni_sync_skip <19>
+    var_number_set <D, 1>
+    uni_sync_skip <21>
+    man_end_context
+    var_number_increment <C>
+    var_number_get <C>
+    uni_use_last_atom_value <man_set_context_relative>
+    var_string_get <A>
+    uni_use_last_atom_string <lm_table_get_item>
+    uni_save_result
+    if_last_return_true_then <15>
+    uni_get_result
+    uni_use_last_atom_string <man_replace_data>
+    uni_sync_skip <15>
+    var_number_get <D>
+    if_last_return_false_then <5, 6>
+    mat_bool_invisible <no>
+    mat_bool_default <yes>
+    man_make_focus
+    uni_sync_skip <5>
+    mat_bool_invisible <yes>
+    uni_sync_skip <6>
+    var_string_swap_between_regs <B, D>
+    man_end_context
+    var_number_decrement <B>
+    if_numb_true_then <2>
+    var_number_add <22>
+    uni_end_loop
+    uni_sync_skip <2>
+    man_update_display
+    man_end_context
+    idb_end_context
+    uni_sync_skip <99>
+    uni_wait_off
+  uni_end_stream

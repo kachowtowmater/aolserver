@@ -1,0 +1,180 @@
+uni_start_stream <00x>
+  man_set_context_globalid <1>
+  man_start_object <ind_group, "Switch Screen Name">
+    mat_object_id <32-6095>
+    mat_style_id <32-6095>
+    mat_orientation <vff>
+    mat_precise_width <355>
+    mat_precise_height <210>
+    mat_art_id <1-1-8832>
+    mat_position <center_center>
+    mat_bool_resize_vertical <no>
+    mat_bool_modal <yes>
+    mat_bool_precise <yes>
+    mat_bool_background_tile <yes>
+    man_start_object <ornament, "">
+      mat_precise_x <10>
+      mat_precise_y <6>
+      mat_precise_width <330>
+      mat_precise_height <29>
+      mat_font_size <8>
+      mat_vertical_spacing <3>
+      mat_font_id <arial>
+      man_append_data <"To switch to another Screen Name, select the name in the list, enter your password and click Switch.">
+    man_start_sibling <ornament, "">
+      mat_precise_x <23>
+      mat_precise_y <52>
+      mat_size <5, 1>
+      mat_font_size <9>
+      mat_font_id <arial>
+      mat_font_style <bold>
+      man_append_data <"Mail">
+    man_start_sibling <ornament, "">
+      mat_precise_x <75>
+      mat_precise_y <52>
+      mat_size <15, 1>
+      mat_font_size <9>
+      mat_font_id <arial>
+      mat_font_style <bold>
+      man_append_data <"Screen Name">
+    man_start_sibling <ornament, "">
+      mat_precise_x <222>
+      mat_precise_y <52>
+      mat_size <15, 1>
+      mat_font_size <9>
+      mat_font_id <arial>
+      mat_font_style <bold>
+      man_append_data <"Parental Controls">
+    man_start_sibling <dss_list, "">
+      mat_orientation <vff>
+      mat_precise_x <19>
+      mat_precise_y <69>
+      mat_precise_width <321>
+      mat_precise_height <90>
+      mat_relative_tag <1>
+      mat_ruler <5, 42>
+      act_replace_select_action
+          <
+          uni_start_stream
+            man_set_context_relative <1>
+            de_start_extraction <0>
+            de_set_data_type <text>
+            de_set_text_column <2>
+            de_get_data_pointer
+            uni_use_last_atom_string <async_storename>
+            uni_save_result
+            man_end_context
+            de_end_extraction
+            uni_get_result
+            if_last_return_false_then <2>
+            man_close
+            uni_invoke_no_context <32-6109>
+          uni_abort_stream
+          uni_sync_skip <2>
+          man_close
+        sm_send_token_raw <"UR">
+        >
+    man_start_sibling <view, "">
+      rich_manage
+      rich_set_static
+      mat_size <60, 1>
+      mat_relative_tag <2>
+      mat_font_size <8>
+      mat_vertical_spacing <4>
+      mat_bool_vertical_scroll <no>
+      mat_bool_resize_vertical <no>
+      mat_bool_resize_horizontal <no>
+      mat_bool_invisible <yes>
+      mat_bool_exportable <no>
+      mat_font_id <arial>
+      mat_font_style <bold>
+    man_start_sibling <trigger, "">
+      mat_title_width <8>
+      mat_precise_x <19>
+      mat_precise_y <178>
+      mat_color_face <0, 109, 170>
+      mat_color_text <254, 255, 255>
+      mat_color_top_edge <150, 200, 255>
+      mat_trigger_style <rectangle>
+      mat_font_size <8>
+      mat_title <"Switch">
+      mat_horizontal_spacing <15>
+      mat_bool_default <yes>
+      mat_font_id <arial>
+      act_replace_select_action
+          <
+          uni_start_stream
+            man_set_context_relative <1>
+            de_start_extraction <0>
+            de_set_data_type <text>
+            de_set_text_column <2>
+            de_get_data_pointer
+            uni_use_last_atom_string <async_storename>
+            uni_save_result
+            man_end_context
+            de_end_extraction
+            async_relogon_init
+            man_close_update
+            buf_start_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+            buf_set_token <"UR">
+            buf_add_atom_data <0>
+            buf_close_buffer
+          uni_end_stream
+          >
+      man_start_sibling <trigger, "">
+        mat_title_width <8>
+        mat_precise_x <145>
+        mat_precise_y <178>
+        mat_color_face <0, 109, 170>
+        mat_color_text <254, 255, 255>
+        mat_color_top_edge <150, 200, 255>
+        mat_trigger_style <rectangle>
+        mat_font_size <8>
+        mat_title <"Cancel">
+        mat_horizontal_spacing <15>
+        mat_font_id <arial>
+        act_replace_select_action
+            <
+            uni_start_stream <00x>
+              man_close_update
+            uni_end_stream <00x>
+            >
+        man_start_sibling <trigger, "">
+          mat_title_width <8>
+          mat_precise_x <271>
+          mat_precise_y <178>
+          mat_color_face <0, 109, 170>
+          mat_color_text <254, 255, 255>
+          mat_color_top_edge <150, 200, 255>
+          mat_trigger_style <rectangle>
+          mat_font_size <8>
+          mat_title <"Help">
+          mat_horizontal_spacing <15>
+          mat_font_id <arial>
+          act_replace_select_action
+              <
+              uni_start_stream
+                man_set_context_relative <1>
+                de_start_extraction <0>
+                de_set_data_type <text>
+                de_set_text_column <2>
+                de_get_data_pointer
+                uni_use_last_atom_string <async_storename>
+                uni_save_result
+                man_end_context
+                de_end_extraction
+                uni_get_result
+                if_last_return_false_then <2>
+                man_close_update
+                uni_invoke_no_context <32-6109>
+              uni_abort_stream
+              uni_sync_skip <2>
+              man_close_update
+              buf_start_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+              buf_set_token <"UR">
+              buf_add_atom_data <0>
+              buf_close_buffer
+            uni_end_stream
+            >
+        man_end_object
+      uni_end_stream <00x>

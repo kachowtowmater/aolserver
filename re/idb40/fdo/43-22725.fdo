@@ -1,0 +1,527 @@
+uni_start_stream
+  man_start_object <ind_group, "Form">
+    mat_style_id <43-22725>
+    mat_orientation <hff>
+    mat_color_face <255, 251, 240>
+    mat_bool_background_flood <yes>
+    mat_style_id <43-22725>
+    mat_bool_auto_closeable <no>
+    act_set_criterion <210>
+    act_replace_action
+        <
+        uni_start_stream
+          man_set_context_relative <108>
+          rich_get_font
+          var_string_set_from_atom <A>
+          man_end_context
+          man_set_context_relative <22>
+          var_string_get <A>
+          uni_use_last_atom_string <man_get_index_by_title>
+          uni_use_last_atom_value <mat_value>
+          man_end_context
+          man_set_context_relative <108>
+          rich_get_text_style
+          var_number_set_from_atom <A>
+          man_change_context_relative <42>
+          var_number_get <A>
+          var_number_set <B, 1>
+          if_numa_and_numb_then <1, 2>
+          mat_value <1>
+          uni_sync_skip <1>
+          mat_value <0>
+          uni_sync_skip <2>
+          man_change_context_relative <43>
+          var_number_get <A>
+          var_number_set <B, 2>
+          if_numa_and_numb_then <1, 2>
+          mat_value <1>
+          uni_sync_skip <1>
+          mat_value <0>
+          uni_sync_skip <2>
+          man_change_context_relative <44>
+          var_number_get <A>
+          var_number_set <B, 4>
+          if_numa_and_numb_then <1, 2>
+          mat_value <1>
+          uni_sync_skip <1>
+          mat_value <0>
+          uni_sync_skip <2>
+          man_end_context
+          man_update_display
+        uni_end_stream
+        >
+      man_start_object <org_group, "">
+        mat_orientation <vff>
+        mat_bool_resize_vertical <yes>
+        mat_bool_resize_horizontal <yes>
+        man_start_object <org_group, "">
+          mat_orientation <vft>
+          mat_bool_resize_vertical <yes>
+          mat_bool_resize_horizontal <yes>
+          man_start_object <view, "">
+            rich_manage
+            rich_ignore_tabs <no>
+            mat_log_object <chat_log>
+            mat_bool_writeable <yes>
+            mat_width <43>
+            mat_height <15>
+            mat_vertical_spacing <0>
+            mat_font_sis <arial, 10, normal>
+            mat_bool_vertical_scroll <yes>
+            mat_relative_tag <256>
+            rich_bool_read_only <yes>
+            mat_paragraph <yes>
+            mat_bool_force_scroll <yes>
+            mat_capacity <8192>
+            mat_scroll_threshold <4096>
+            mat_ruler <15, 45>
+          man_start_sibling <org_group, "">
+            mat_orientation <hlf>
+            mat_bool_resize_vertical <yes>
+            mat_bool_resize_horizontal <yes>
+            mat_art_id <1-1-23886>
+            mat_bool_background_tile <yes>
+            mat_bool_tool_group <yes>
+            man_start_object <dss_list, "">
+              mat_relative_tag <22>
+              mat_width <23>
+              mat_height <1>
+              mat_horizontal_spacing <2>
+              mat_font_sis <arial, 9, normal>
+              mat_sort_order <normal>
+              mat_title_pos <left | center>
+              mat_horizontal_spacing <0>
+              man_build_font_list
+              mat_sort_order <reverse>
+              act_replace_select_action
+                  <
+                  uni_start_stream
+                    man_set_context_relative <22>
+                    de_start_extraction <0>
+                    de_get_data_pointer
+                    uni_save_result
+                    man_set_context_relative <108>
+                    man_make_focus
+                    man_update_display
+                    uni_get_result
+                    uni_use_last_atom_string <rich_font_select_face>
+                    de_end_extraction
+                    man_end_context
+                  uni_end_stream
+                  >
+              man_end_object
+              idb_set_context <20-0-137>
+              idb_atr_offset <28>
+              man_set_context_relative <22>
+              idb_get_string
+              uni_use_last_atom_string <man_get_index_by_title>
+              uni_use_last_atom_value <mat_value>
+              man_end_context
+              man_start_object <trigger, "">
+                mat_relative_tag <60>
+                mat_context_help <"Text Color">
+                act_replace_select_action
+                    <
+                    uni_start_stream
+                      man_set_context_relative <108>
+                      man_make_focus
+                      man_end_context
+                      man_update_display
+                      rich_text_color
+                    uni_end_stream
+                    >
+                  mat_font_sis <small_fonts, 7, normal>
+                  mat_bool_small_icon <yes>
+                  mat_art_id <1-1-23941>
+                  mat_color_top_edge <255, 255, 255>
+                  mat_color_bottom_edge <150, 150, 150>
+                man_start_sibling <sms_list, "">
+                  mat_orientation <hlt>
+                  mat_bool_list_icons <yes>
+                  man_start_object <trigger, "">
+                    mat_relative_tag <42>
+                    mat_context_help <"Bold">
+                    act_replace_select_action
+                        <
+                        uni_start_stream
+                          man_set_context_relative <108>
+                          man_make_focus
+                          man_end_context
+                          man_update_display
+                          rich_font_attribute <1>
+                        uni_end_stream
+                        >
+                      act_set_criterion <23>
+                      act_replace_action
+                          <
+                          uni_start_stream
+                            rich_font_attribute <1>
+                          uni_end_stream
+                          >
+                        mat_font_sis <small_fonts, 7, normal>
+                        mat_bool_small_icon <yes>
+                        mat_art_id <1-1-23940>
+                        mat_trigger_style <group_state>
+                        act_set_criterion <23>
+                        act_replace_action
+                            <
+                            uni_start_stream
+                              man_set_context_relative <108>
+                              man_make_focus
+                              man_end_context
+                              man_update_display
+                              rich_font_attribute <1>
+                            uni_end_stream
+                            >
+                        man_start_sibling <trigger, "">
+                          mat_relative_tag <43>
+                          mat_context_help <"Italics">
+                          act_replace_select_action
+                              <
+                              uni_start_stream
+                                man_set_context_relative <108>
+                                man_make_focus
+                                man_end_context
+                                man_update_display
+                                rich_font_attribute <2>
+                              uni_end_stream
+                              >
+                            act_set_criterion <23>
+                            act_replace_action
+                                <
+                                uni_start_stream
+                                  rich_font_attribute <2>
+                                uni_end_stream
+                                >
+                              mat_font_sis <small_fonts, 7, normal>
+                              mat_bool_small_icon <yes>
+                              mat_art_id <1-1-23942>
+                              mat_trigger_style <group_state>
+                              act_set_criterion <23>
+                              act_replace_action
+                                  <
+                                  uni_start_stream
+                                    man_set_context_relative <108>
+                                    man_make_focus
+                                    man_end_context
+                                    man_update_display
+                                    rich_font_attribute <2>
+                                  uni_end_stream
+                                  >
+                              man_start_sibling <trigger, "">
+                                mat_relative_tag <44>
+                                mat_context_help <"Underline">
+                                act_replace_select_action
+                                    <
+                                    uni_start_stream
+                                      man_set_context_relative <108>
+                                      man_make_focus
+                                      man_end_context
+                                      man_update_display
+                                      rich_font_attribute <4>
+                                    uni_end_stream
+                                    >
+                                  act_set_criterion <23>
+                                  act_replace_action
+                                      <
+                                      uni_start_stream
+                                        rich_font_attribute <4>
+                                      uni_end_stream
+                                      >
+                                    mat_font_sis <small_fonts, 7, normal>
+                                    mat_bool_small_icon <yes>
+                                    mat_art_id <1-1-23943>
+                                    mat_trigger_style <group_state>
+                                    act_set_criterion <23>
+                                    act_replace_action
+                                        <
+                                        uni_start_stream
+                                          man_set_context_relative <108>
+                                          man_make_focus
+                                          man_end_context
+                                          man_update_display
+                                          rich_font_attribute <4>
+                                        uni_end_stream
+                                        >
+                                    man_end_object
+                                  man_end_object
+                                man_start_sibling <org_group, "">
+                                  mat_orientation <hlf>
+                                  mat_bool_resize_horizontal <yes>
+                                  man_start_object <edit_view, "">
+                                    mat_bool_importable <yes>
+                                    mat_precise_width <353>
+                                    mat_precise_height <25>
+                                    mat_bool_resize_vertical <no>
+                                    mat_font_sis <arial, 8, normal>
+                                    mat_bool_vertical_scroll <no>
+                                    mat_capacity <92>
+                                    mat_relative_tag <108>
+                                    rich_manage
+                                    mat_bool_horizontal_scroll <no>
+                                    mat_bool_vertical_scroll <no>
+                                    mat_size <92, 1>
+                                    mat_field_script <latin>
+                                    mat_bool_writeable <yes>
+                                  man_start_sibling <trigger, "">
+                                    act_replace_select_action
+                                        <
+                                        uni_start_stream_wait_on
+                                          buf_start_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+                                          de_start_extraction <0>
+                                          buf_set_token <"AE">
+                                          var_number_set_id_one_value <00x, 00x, 00x, 01x>
+                                          man_set_context_relative <108>
+                                          de_get_data
+                                          man_end_context
+                                          de_set_data_type <var>
+                                          de_set_variable_id <1>
+                                          de_get_data <current_object>
+                                          de_end_extraction
+                                          buf_close_buffer
+                                          man_set_context_relative <108>
+                                          man_replace_data
+                                          man_make_focus
+                                          man_end_context
+                                          man_update_display
+                                        uni_wait_off_end_stream
+                                        >
+                                      mat_font_sis <small_fonts, 7, normal>
+                                      mat_precise_width <50>
+                                      mat_precise_height <26>
+                                      mat_art_id <1-1-50113>
+                                      mat_trigger_style <plain_picture>
+                                      mat_bool_default <yes>
+                                    man_end_object
+                                  man_end_object
+                                man_end_object
+                              man_start_sibling <org_group, "">
+                                mat_orientation <vct>
+                                mat_bool_resize_vertical <yes>
+                                man_start_object <view, "">
+                                  mat_bool_graphic_view <yes>
+                                  mat_width <180>
+                                  mat_height <45>
+                                  mat_bool_resize_vertical <no>
+                                  mat_bool_resize_horizontal <no>
+                                  mat_bool_vertical_scroll <no>
+                                  mat_bool_hidden <yes>
+                                  mat_relative_tag <270>
+                                man_start_sibling <org_group, "">
+                                  mat_orientation <hlf>
+                                  man_start_object <ornament, "">
+                                    mat_relative_tag <262>
+                                    mat_precise_width <17>
+                                    mat_precise_height <16>
+                                    mat_font_sis <arial, 9, bold>
+                                    mat_orientation <hlf>
+                                  man_start_sibling <ornament, "">
+                                    mat_art_id <1-1-50763>
+                                    mat_font_sis <small_fonts, 7, normal>
+                                  man_end_object
+                                man_start_sibling <dss_list, "">
+                                  mat_relative_tag <107>
+                                  act_replace_select_action
+                                      <
+                                      uni_start_stream_wait_on <00x>
+                                        uni_wait_on
+                                        buf_start_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+                                        de_validate <display_msg | terminate>
+                                        var_number_set_id_one_value <02x>
+                                        de_start_extraction <0>
+                                        uni_next_atom_typed <ascii>
+                                        buf_set_token <"AE">
+                                        man_set_context_relative <107>
+                                        de_get_data
+                                        man_end_context
+                                        de_set_data_type <var>
+                                        de_set_variable_id <1>
+                                        de_get_data <current_object>
+                                        de_end_extraction
+                                        buf_close_buffer
+                                      uni_end_stream
+                                      >
+                                    mat_width <21>
+                                    mat_height <6>
+                                    mat_bool_resize_horizontal <no>
+                                    mat_font_sis <arial, 9, normal>
+                                    mat_sort_order <normal>
+                                  man_start_sibling <ornament, "">
+                                    mat_font_sis <small_fonts, 7, normal>
+                                    man_append_data <"double click on name for more info">
+                                    man_end_data
+                                    mat_orientation <hlf>
+                                  man_start_sibling <org_group, "">
+                                    mat_orientation <vff>
+                                    mat_precise_width <180>
+                                    mat_precise_height <116>
+                                    mat_precise_x <0>
+                                    mat_precise_y <0>
+                                    mat_bool_precise <yes>
+                                    man_start_object <trigger, "">
+                                      mat_relative_tag <261>
+                                      act_replace_select_action
+                                          <
+                                          uni_start_stream_wait_on <00x>
+                                          sm_send_token_raw <"LB">
+                                          >
+                                        mat_font_sis <small_fonts, 7, normal>
+                                        mat_precise_width <82>
+                                        mat_precise_height <18>
+                                        mat_precise_x <0>
+                                        mat_precise_y <1>
+                                        mat_art_id <1-1-50121>
+                                        mat_trigger_style <plain_picture>
+                                      man_start_sibling <trigger, "">
+                                        mat_bool_hidden <yes>
+                                        mat_relative_tag <260>
+                                        mat_font_sis <small_fonts, 7, normal>
+                                        mat_precise_width <15>
+                                        mat_precise_height <15>
+                                        mat_precise_x <99>
+                                        mat_precise_y <2>
+                                        mat_art_id <1-0-64171>
+                                        mat_trigger_style <plain_picture>
+                                      man_start_sibling <ornament, "">
+                                        mat_bool_hidden <yes>
+                                        mat_relative_tag <272>
+                                        mat_precise_width <65>
+                                        mat_precise_height <16>
+                                        mat_precise_x <115>
+                                        mat_precise_y <2>
+                                        mat_font_sis <arial, 8, normal>
+                                        mat_orientation <hlf>
+                                      man_start_sibling <trigger, "">
+                                        mat_relative_tag <263>
+                                        act_replace_select_action
+                                            <
+                                            uni_start_stream
+                                            sm_send_token_arg <"L1", 28>
+                                          uni_end_stream
+                                          >
+                                        mat_font_sis <small_fonts, 7, normal>
+                                        mat_precise_width <82>
+                                        mat_precise_height <18>
+                                        mat_precise_x <0>
+                                        mat_precise_y <23>
+                                        mat_art_id <1-1-50106>
+                                        mat_trigger_style <plain_picture>
+                                      man_start_sibling <trigger, "">
+                                        mat_relative_tag <264>
+                                        sm_set_object_domain <00x>
+                                        act_replace_select_action
+                                            <
+                                            uni_start_stream_wait_on <00x>
+                                            sm_send_k1 <17-42646>
+                                          uni_end_stream
+                                          >
+                                        mat_font_sis <small_fonts, 7, normal>
+                                        mat_precise_width <82>
+                                        mat_precise_height <18>
+                                        mat_precise_x <98>
+                                        mat_precise_y <23>
+                                        mat_art_id <1-1-50104>
+                                        mat_trigger_style <plain_picture>
+                                      man_start_sibling <trigger, "">
+                                        act_replace_select_action
+                                            <
+                                            uni_start_stream
+                                              man_preset_gid <32-245>
+                                              if_last_return_true_then <1, 2>
+                                              man_make_focus
+                                              man_update_display
+                                              uni_sync_skip <1>
+                                              uni_wait_on
+                                              uni_invoke_no_context <32-245>
+                                              uni_sync_skip <2>
+                                            uni_end_stream
+                                            >
+                                          mat_font_sis <small_fonts, 7, normal>
+                                          mat_precise_width <82>
+                                          mat_precise_height <26>
+                                          mat_precise_x <0>
+                                          mat_precise_y <48>
+                                          mat_art_id <1-1-50105>
+                                          mat_trigger_style <plain_picture>
+                                        man_start_sibling <trigger, "">
+                                          mat_relative_tag <265>
+                                          sm_set_object_domain <00x>
+                                          act_replace_select_action
+                                              <
+                                              uni_start_stream_wait_on <00x>
+                                              sm_send_k1 <8-17767>
+                                            uni_end_stream
+                                            >
+                                          mat_font_sis <small_fonts, 7, normal>
+                                          mat_precise_width <82>
+                                          mat_precise_height <26>
+                                          mat_precise_x <98>
+                                          mat_precise_y <48>
+                                          mat_art_id <1-1-50103>
+                                          mat_trigger_style <plain_picture>
+                                        man_start_sibling <trigger, "">
+                                          mat_relative_tag <266>
+                                          act_replace_select_action
+                                              <
+                                              uni_start_stream
+                                                man_preset_gid <43-10029>
+                                                if_last_return_true_then <1, 2>
+                                                man_make_focus
+                                                man_update_display
+                                                uni_sync_skip <1>
+                                                uni_start_stream
+                                                  uni_wait_on
+                                                  uni_invoke_no_context <43-10029>
+                                                sm_send_token_arg <"CJ", 2>
+                                              uni_end_stream
+                                              uni_sync_skip <2>
+                                              >
+                                            mat_font_sis <small_fonts, 7, normal>
+                                            mat_precise_width <54>
+                                            mat_precise_height <35>
+                                            mat_precise_x <18>
+                                            mat_precise_y <86>
+                                            mat_art_id <1-1-50108>
+                                            mat_trigger_style <plain_picture>
+                                          man_start_sibling <trigger, "">
+                                            mat_relative_tag <259>
+                                            mat_font_sis <small_fonts, 7, normal>
+                                            mat_precise_width <68>
+                                            mat_precise_height <35>
+                                            mat_precise_x <100>
+                                            mat_precise_y <86>
+                                            mat_art_id <1-1-50107>
+                                            mat_trigger_style <plain_picture>
+                                          man_start_sibling <trigger, "">
+                                            mat_bool_hidden <yes>
+                                            mat_relative_tag <271>
+                                            sm_set_object_domain <00x>
+                                            act_replace_select_action
+                                                <
+                                                uni_start_stream_wait_on <00x>
+                                                sm_send_f1 <41-10753>
+                                              uni_end_stream
+                                              >
+                                            mat_font_sis <small_fonts, 7, normal>
+                                            mat_precise_width <82>
+                                            mat_precise_height <18>
+                                            mat_precise_x <98>
+                                            mat_precise_y <23>
+                                            mat_art_id <1-1-50104>
+                                            mat_trigger_style <plain_picture>
+                                          man_end_object
+                                        man_end_object
+                                      man_end_object
+                                      man_update_display
+                                      p3_interleaved_mode <01x>
+                                      act_set_criterion <7>
+                                      act_replace_action
+                                          <
+                                          uni_start_stream
+                                            man_set_context_globalid <19-0-0>
+                                            act_do_action <close>
+                                            man_end_context
+                                            man_close <19-0-0>
+                                          uni_end_stream
+                                          >
+                                      man_update_woff_end_stream

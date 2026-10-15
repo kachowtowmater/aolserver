@@ -1,0 +1,50 @@
+uni_start_stream
+  man_set_context_globalid <20-0-41>
+  man_set_context_relative <9>
+  mat_bool_disabled <no>
+  man_end_context
+  man_update_display
+  man_end_context
+  man_set_context_globalid <20-0-42>
+  man_set_context_relative <1>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_set_context_relative <2>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_set_context_relative <3>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_set_context_relative <4>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_set_context_relative <5>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_set_context_relative <6>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_set_context_relative <13>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_set_context_relative <11>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_set_context_relative <12>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_set_context_relative <14>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_set_context_relative <15>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_set_context_relative <50>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_set_context_relative <51>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_update_display
+  man_end_context
+uni_end_stream

@@ -1,0 +1,10 @@
+buf_clear_buffer <03x>
+buf_add_atom_data_trim <03x>
+buf_add_atom_pointer
+buf_add_atom_pointer
+buf_add_atom_pointer
+buf_add_atom_data_trim
+buf_add_atom_pointer_filter
+mat_bool_resize_horizontal <yes>
+mat_bool_resize_vertical
+uni_void <2ex, 31x, 34x, 00x, 00x, 90x, 6ex, 4fx, 00x, 04x, 00x, 08x, 00x, 01x, 00x, 75x, 80x, 75x, 6ex, 69x, 5fx, 76x, 6fx, 69x, 64x, 00x, 00x, 00x, 00x, 00x, 00x, 00x, 00x, 6ax, 99x, c3x, 02x, 9cx, 6ex, 4fx, 00x, 04x, 00x, 00x, 00x, 02x, 00x, 46x, 81x, 00x, 78x>

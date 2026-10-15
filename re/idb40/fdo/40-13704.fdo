@@ -1,0 +1,33 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "America Online">
+    mat_object_id <40-13704>
+    mat_style_id <40-13704>
+    mat_orientation <vcf>
+    mat_position <center_center>
+    mat_bool_background_flood <yes>
+    mat_color_face <255, 251, 240>
+    mat_bool_modal <yes>
+    man_start_object <ornament, "">
+      mat_size <30, 2, 40>
+      mat_font_sis <arial, 8, normal>
+      mat_relative_tag <1>
+      man_append_data <"You have not completely filled out this form.">
+    man_start_sibling <trigger, "OK">
+      mat_bool_default <yes>
+      mat_trigger_style <rectangle>
+      mat_color_face <0, 109, 170>
+      mat_color_top_edge <145, 182, 255>
+      mat_color_frame_shadow <1, 1, 1>
+      mat_font_sis <arial, 8, normal>
+      mat_color_text <255, 255, 255>
+      mat_width <50>
+      act_replace_select_action
+          <
+          uni_start_stream <00x>
+            man_close_update
+          uni_end_stream
+          >
+      man_end_object
+      man_update_display
+      uni_wait_off
+    uni_end_stream

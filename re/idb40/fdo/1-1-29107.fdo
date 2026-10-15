@@ -1,0 +1,10 @@
+man_start_object <org_group, "">
+  man_start_object <59, "\x00\x00\x00\x00\x00\x00\t\x02\x00\x00\x00\x00\x00\x00P;\x00\x00$\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00JG\x04\x0e\x00\x00\x00\x00\x16\x00\x00@\x01\t\x01#\x05 \x01\x00WF\x08¶8°A\x15DþI¡\x01e ÈdÑÞ1ÿÃ½»Ô\x06\t\t\x07þî÷ûÿ«?õfó9ï3òÕ­/tÎR±º½">
+    image_make_gray_scale <05x>
+    image_invert
+    mip_folder_name <"R">
+    mip_set_calling_form_id <94x, 9cx, 46x, 1ex, cdx, 68x, c8x, b4x, 7bx, 29x, 46x, b2x, 50x, e4x, ccx, 6bx, 1cx, eax, 0cx, 02x, 2ax, 2cx, 11x, 33x, 12x, 1fx, f4x, 4bx, 7ax, e7x, b5x, acx, 6bx, 3ax, d6x, 5dx, 67x, 0dx, 4bx, 63x, 60x, abx, 5ax, b5x, d5x, 2ex, 01x, 69x, 49x, eex, 8cx, 10x, 30x, 8cx, b5x, 35x, a1x, 90x, 90x, b4x, 85x, 83x, f8x, 47x, 41x, 08x, 84x, 1cx, 01x, ffx, ffx, ffx, 8cx, 1dx, 00x, 01x, 50x, 00x, 42x, 00x, 23x, 05x, a0x, 88x, 01x, 00x, bbx, 1ex, c8x, c0x, 2cx, aax, eex, 97x, c4x, 2fx, 85x, b9x, 42x, f6x, 9ex, d1x, 5ex, e7x, e4x, dbx, dcx, 9dx, 0bx, dcx, e8x, efx, 72x, 0ax, f9x, cdx, a5x, dbx, c9x, 6ax, 0ax, 02x, dex, c8x, 3ex, 10x, f9x, 1cx, 0ex, d8x, 2ex, 23x, edx, a7x, 9bx, 87x, 7bx, 3cx, 0ax, 6dx, 14x, 47x, fex, 6ax, cfx, 41x, 80x, 8cx, 3fx, 0fx, e4x, 54x, 8cx, 72x, d3x, ccx, 6dx, 87x, b3x, a2x, 76x, 28x, 52x, 18x, 04x, edx, 10x, 9bx, 6dx, 36x, d4x, 5ax, 52x, 24x, 1fx, 10x, 9bx, 97x, adx, cbx, eax, 69x, e9x, c0x, aex, bax, afx, c4x, 71x, 5dx, 9bx, f2x, 5cx, 3cx, 9dx, d7x, 91x, 25x, a3x, 88x, 36x, e3x, c2x, 41x, 6cx, 81x, 0fx, 12x, b2x, 2bx, 97x>
+    mip_message_datestr <00x>
+the_unknown <17, 196, ccx, 84x, 8fx>
+    mip_addressee_comment <01x>
+    mat_bool_force_scroll <yes>

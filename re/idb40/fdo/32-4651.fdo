@@ -1,0 +1,350 @@
+uni_start_stream <00x>
+  man_preset_gid <32-4651>
+  man_start_object <ind_group, "Mail Preferences">
+    mat_style_id <32-4651>
+    mat_orientation <vff>
+    mat_color_face <255, 251, 240>
+    var_number_set <A, 0>
+    act_set_criterion <11>
+    act_replace_action
+        <
+        uni_start_stream
+          var_number_get <A>
+          if_last_return_true_then <10>
+          var_number_set <A, 1>
+          man_set_context_relative <21>
+          mat_bool_invisible <no>
+          man_change_context_relative <10>
+          mat_bool_invisible <yes>
+          man_change_context_relative <20>
+          mat_bool_invisible <yes>
+          man_end_context
+          man_update_display
+          uni_sync_skip <10>
+        uni_end_stream
+        >
+      mat_position <center_center>
+      mat_bool_resize_vertical <no>
+      mat_bool_modal <yes>
+      mat_bool_background_flood <yes>
+      man_start_object <sms_list, "">
+        mat_orientation <hff>
+        man_start_object <trigger, "Confirm mail after it has been sent">
+          mat_relative_tag <1>
+          mat_vertical_spacing <0>
+          mat_bool_default_send <no>
+          mat_value <1>
+        man_end_object
+      man_start_sibling <sms_list, "">
+        mat_orientation <hff>
+        man_start_object <trigger, "Close mail after it has been sent">
+          mat_relative_tag <3>
+          mat_vertical_spacing <0>
+          mat_bool_default_send <no>
+        man_end_object
+      man_start_sibling <sms_list, "">
+        mat_orientation <hff>
+        man_start_object <trigger, "Confirm when mail is marked to send later">
+          mat_relative_tag <6>
+          async_is_known_subaccount
+          if_last_return_false_then <1>
+          mat_bool_invisible <yes>
+          uni_sync_skip <1>
+          mat_vertical_spacing <0>
+          mat_bool_default_send <no>
+          mat_value <1>
+        man_end_object
+      man_start_sibling <sms_list, "">
+        mat_orientation <hff>
+        man_start_object <trigger, "Retain all mail I send in my Personal Filing Cabinet">
+          mat_relative_tag <4>
+          async_is_known_subaccount
+          if_last_return_false_then <1>
+          mat_bool_invisible <yes>
+          uni_sync_skip <1>
+          mat_vertical_spacing <0>
+          mat_bool_default_send <no>
+          mat_value <1>
+        man_end_object
+      man_start_sibling <sms_list, "">
+        mat_orientation <hff>
+        man_start_object <trigger, "Retain all mail I read in my Personal Filing Cabinet">
+          mat_relative_tag <2>
+          async_is_known_subaccount
+          if_last_return_false_then <1>
+          mat_bool_invisible <yes>
+          uni_sync_skip <1>
+          mat_vertical_spacing <0>
+          mat_bool_default_send <no>
+          mat_value <1>
+        man_end_object
+      man_start_sibling <sms_list, "">
+        mat_orientation <hff>
+        man_start_object <trigger, "Perform a spell check before sending mail">
+          mat_relative_tag <7>
+          mat_vertical_spacing <0>
+          mat_bool_default_send <no>
+        man_end_object
+      man_start_sibling <sms_list, "">
+        mat_orientation <hff>
+        man_start_object <trigger, "Use white mail headers">
+          mat_relative_tag <8>
+          mat_vertical_spacing <0>
+          mat_bool_default_send <no>
+        man_end_object
+      man_start_sibling <sms_list, "">
+        mat_orientation <hff>
+        man_start_object <trigger, "Show addresses as hyperlinks">
+          mat_relative_tag <9>
+          mat_vertical_spacing <0>
+          mat_bool_default_send <no>
+          mat_value <1>
+        man_end_object
+      man_start_sibling <sss_list, "">
+        mat_orientation <hff>
+        mat_relative_tag <5>
+        mat_vertical_spacing <0>
+        man_start_object <trigger, "Use AOL style quoting:">
+          mat_relative_tag <51>
+          mat_vertical_spacing <0>
+          mat_bool_default_send <no>
+        man_start_sibling <trigger, "Use internet style quoting:">
+          mat_relative_tag <52>
+          mat_vertical_spacing <0>
+          mat_bool_default_send <no>
+        man_end_object
+      man_start_sibling <org_group, "">
+        mat_orientation <hff>
+        man_start_object <ornament, "">
+          mat_size <1, 1>
+          mat_bool_hidden <yes>
+        man_start_sibling <ornament, "">
+          mat_size <20, 2>
+          mat_font_style <bold>
+          man_append_data <"  <<This is an example\x7f of AOL style quoting>>\x7f">
+        man_start_sibling <ornament, "">
+          mat_size <22, 2>
+          mat_font_style <bold>
+          man_append_data <">This is an example\x7f>of internet style quoting\x7f">
+        man_end_object
+      man_end_object
+      man_start_object <org_group, "">
+        mat_orientation <hlc>
+        man_start_object <ornament, "">
+          mat_bool_invisible <yes>
+          mat_width <2>
+          mat_height <1>
+          mat_orientation <hlf>
+          mat_font_sis <arial, 9, normal>
+        man_end_object
+        man_start_object <ornament, "Keep my old mail online">
+          mat_relative_tag <20>
+          mat_bool_invisible <yes>
+          mat_width <19>
+          mat_height <1>
+          mat_orientation <hlf>
+          mat_font_sis <arial, 10, bold>
+        man_end_object
+        man_start_object <select_range, " days after I read it">
+          mat_bool_invisible <yes>
+          mat_width <2>
+          mat_height <1>
+          mat_relative_tag <10>
+          mat_title_pos <right | center>
+          mat_value <2>
+          mat_maximum <7>
+          mat_minimum <1>
+          mat_increment <10>
+          mat_font_sis <system, 12, normal>
+          mat_increment <1>
+        man_end_object
+        man_start_object <ornament, "You must be online to change ">
+          man_append_data <"your \"old mail\" preferences.">
+          mat_relative_tag <21>
+          mat_bool_invisible <yes>
+          mat_width <45>
+          mat_height <1>
+          mat_orientation <hlf>
+          mat_font_sis <arial, 10, bold>
+          mat_color_text <180, 180, 180>
+        man_end_object
+      man_end_object
+      uni_wait_off
+      man_start_object <org_group, "">
+        mat_orientation <hce>
+        man_start_object <trigger, "OK">
+          mat_color_face <1, 109, 170>
+          mat_color_text <255, 255, 255>
+          mat_color_top_edge <145, 182, 255>
+          mat_color_bottom_edge <1, 1, 1>
+          mat_trigger_style <rectangle>
+          mat_precise_height <23>
+          mat_precise_width <70>
+          mat_font_sis <arial, 8, normal>
+          mat_horizontal_spacing <4>
+          mat_bool_default <yes>
+          act_replace_select_action
+              <
+              uni_start_stream
+                de_start_extraction
+                man_set_context_relative <3>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-41>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <1>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-75>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <2>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-76>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <4>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-77>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <8>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-323>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <9>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-324>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <5>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-100>
+                de_get_data_value
+                var_number_set_from_atom <B>
+                var_number_set <A, 2>
+                if_numa_eq_numb_then <1>
+                var_number_set <B, 0>
+                uni_sync_skip <1>
+                var_number_get <B>
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <6>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-111>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <7>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-112>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                de_end_extraction
+                if_online_then <10>
+                de_start_extraction <0>
+                man_set_context_relative <10>
+                buf_start_buffer
+                buf_set_token <"p$">
+                de_get_data
+                man_end_context
+                de_end_extraction
+                buf_close_buffer
+                uni_sync_skip <10>
+                man_close
+                man_update_display
+              uni_end_stream
+              >
+          man_start_sibling <trigger, "Cancel">
+            mat_color_face <1, 109, 170>
+            mat_color_text <255, 255, 255>
+            mat_color_top_edge <145, 182, 255>
+            mat_color_bottom_edge <1, 1, 1>
+            mat_trigger_style <rectangle>
+            mat_precise_height <23>
+            mat_precise_width <70>
+            mat_font_sis <arial, 8, normal>
+            act_replace_select_action
+                <
+                uni_start_stream <00x>
+                  man_close_update
+                uni_end_stream <00x>
+                >
+            man_end_object
+          man_end_object
+          if_online_then <1, 2>
+          man_set_context_relative <20>
+          mat_bool_invisible <no>
+          man_change_context_relative <10>
+          mat_bool_invisible <no>
+          man_end_context
+          uni_sync_skip <1>
+          man_set_context_relative <21>
+          mat_bool_invisible <no>
+          man_end_context
+          uni_sync_skip <2>
+          man_set_context_relative <3>
+          act_get_db_value <14x, 00x, 00x, 29x>
+          uni_use_last_atom_value <mat_value>
+          man_end_context
+          man_set_context_relative <1>
+          act_get_db_value <14x, 00x, 00x, 4bx>
+          uni_use_last_atom_value <mat_value>
+          man_end_context
+          man_set_context_relative <2>
+          act_get_db_value <14x, 00x, 00x, 4cx>
+          uni_use_last_atom_value <mat_value>
+          man_end_context
+          man_set_context_relative <4>
+          act_get_db_value <14x, 00x, 00x, 4dx>
+          uni_use_last_atom_value <mat_value>
+          man_end_context
+          man_set_context_relative <8>
+          act_get_db_value <14x, 00x, 01x, 43x>
+          uni_use_last_atom_value <mat_value>
+          man_end_context
+          man_set_context_relative <9>
+          act_get_db_value <14x, 00x, 01x, 44x>
+          uni_use_last_atom_value <mat_value>
+          man_end_context
+          man_set_context_relative <5>
+          act_get_db_value <14x, 00x, 00x, 64x>
+          var_number_set_from_atom <B>
+          var_number_set <A, 0>
+          if_numa_eq_numb_then <11>
+          man_change_context_relative <52>
+          mat_value <1>
+          man_end_context
+          uni_sync_skip <11>
+          man_set_context_relative <6>
+          act_get_db_value <14x, 00x, 00x, 6fx>
+          uni_use_last_atom_value <mat_value>
+          man_end_context
+          man_set_context_relative <7>
+          act_get_db_value <14x, 00x, 00x, 70x>
+          uni_use_last_atom_value <mat_value>
+          man_end_context
+          man_end_context
+          if_online_then <3, 4>
+          uni_start_stream
+          sm_send_token_raw <"p#">
+          uni_sync_skip <3>
+          man_update_display
+          uni_sync_skip <4>
+        uni_wait_off_end_stream

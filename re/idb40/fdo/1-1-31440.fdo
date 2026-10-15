@@ -1,0 +1,24 @@
+man_start_object <org_group, "">
+  man_start_object <sms_list, "\x00\x00\x00\x00\x00\x00\t\x02\x00\x00\x00\x00\x00\x00I\x03\x00\x00$\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x06\x00JG\x04\x0e\x00\x00\x00\x00\x16\x00\x00 \x00 \x00#\x05 \x01\x00wq\x08¶?Ü@M\x11\x15U?ûvíÛ·¿_÷çÙû~é\"DD\x19T12¼Mò[ä5Òq¦\x06²-çïy">
+    lm_get_selected_item_id <2ax, aax, a2x, 8fx, fbx, dex, efx, b9x, edx, fbx, 5ex, e7x, b3x, eex, 17x, 18x, f6x, a1x, 80x, 66x, f8x, b8x, 30x, 2cx, c9x, 08x, 10x, 81x, 08x, 0bx, 03x, 1ex, 2ex, 8cx, 70x, 42x, 04x, 20x, 14x, c8x, b4x, 2fx>
+    lm_end_list <01x>
+    lm_display_list <01x>
+    lm_attr_list_entry_id <edx, 4bx, 57x, 05x, 6dx, 6dx, c9x, e2x, 80x, afx, a9x, cax, c6x, c5x, 05x, 4fx, 4cx, 14x, 00x, f7x, 69x, dex, b8x, 9ax, ffx, b4x, bcx, fbx, a4x, 8cx, a5x, 2dx, edx, 17x, 0cx, cdx, 40x, 60x, 81x, 10x, ffx, ddx, f6x, fdx, 9fx, 5fx, d5x, f4x, 2dx, 3fx, 3ex, fax, 3ex, 6cx, a0x, 26x, 4fx, 38x, 4ax, 70x, 00x, 00x, 04x, c1x, 00x, 24x, b8x, 00x, 00x, 01x, 21x, c0x, 00x, 94x, 20x, 00x, 47x, 50x, 00x, 90x, 20x, 08x, cax, 00x, 22x, a8x, 02x, 30x, 80x, 08x, 86x, 28x, 80x, 11x, 0cx, 01x, 0cx, c4x, 10x, 02x, 11x, 86x, 20x, 01x, 04x, a1x, 1dx, 08x, 40x, 08x, 21x, 80x, 84x, 1cx, 01x, ffx, ffx, ffx, 8bx, 38x, d8x, 40x, 2bx, 26x, c6x, b1x, 1fx, 20x, a9x, 0fx>
+the_unknown <13, 252, 3fx, cbx, 33x, 07x, 2ax, 13x, 71x, a1x, a1x, a0x, cex, 0fx, b3x, 13x, 41x, 63x, 4ex, e3x, 38x, 1bx, 9ex, f8x, 19x, 50x, b2x, bcx, 31x, c0x, 69x, 89x, a3x, ecx, a4x, 71x, 97x, cbx, 39x, 65x, d2x, 5ex, abx, 44x, 36x, b5x, 9dx, 60x, f4x, 7cx, 81x, a1x, a7x, 60x, eax, 59x, cbx, d6x, 70x, b3x, 83x, d5x, c3x, b6x, bbx, 79x, 0fx, ddx, 7fx, c2x, 3fx, 9ax, fbx, dbx, afx, fex, c1x, ebx, fax, 6fx, 76x, 6dx, c8x, fax, 02x, 70x, e2x, 44x>
+    async_online <4dx, bdx, c9x, 81x, bbx, 91x, 27x, 81x, 8dx, 8bx, 85x, 0ex, 0bx, edx, 4fx, e8x, 7ax, fdx, 38x, b8x, 7cx, 6ex, bfx, 87x, 3fx, 3bx, 27x, 87x, 89x, 16x, 0dx, 19x, fbx, d1x, fdx, fcx, 4dx, efx, 07x, a9x, a2x, a9x, c7x, 47x, efx, 73x, 38x, 9bx, e8x, 70x, 2fx, afx, 58x, 83x, 0bx, 06x, 4ex, 5ex, 83x, 08x, 6ax, d0x, 67x, adx, 93x, 91x, 21x, 37x, d7x, 8cx, 40x, 4ex, 36x, 27x, 27x, b7x, 39x, 14x, a5x, b3x, 2dx, 23x, 9cx, 7ax, 32x, f9x, 78x, f1x, a0x, dcx, 13x, 11x, 64x, 63x, e6x, f9x, 52x, 74x, cax, 81x, 28x, 2bx, 30x, 72x, bdx, cex, 87x, 16x, 90x, 5dx, 62x, 1ex, 16x, 36x, 67x, 8ex, 53x, 89x, 43x, 30x, afx, 62x, c9x, 21x, e6x, e9x, 91x, b8x, 3ex, f8x, 18x, 11x, b1x, 72x, bbx, acx, bax, 8fx, 3cx, fbx, 0dx, 82x, 7ax, 09x, 77x, fax, 3cx, 8dx, fdx, acx, 26x, 4cx, 70x, bbx, 19x, eex, d1x>
+    async_dump_diag <1fx, 1ax, 0ex, 55x, 23x, b3x, 79x, b9x, 14x, 91x, fdx, acx, 79x, d5x, 74x, c2x, e1x, b0x, 7ax, 9ex, e1x, b8x, 47x, c9x, d2x, e5x, 13x, 10x, b7x, 92x, 72x, b4x, 25x, b8x, 56x, 61x, b6x, 0cx, 19x, 13x, 6bx, a6x, 32x, 73x, 1dx, aex, 75x, fcx, 5cx, 3ex, 3fx, 67x, 49x, 17x, 73x, 45x, 6bx, 00x, 51x, 72x, c2x, a7x, c1x, 59x, dax, 1ex, 2cx, c0x, 96x, 79x, 0fx, 8dx, 27x, abx, a3x, 1dx, c3x, 2bx, 6dx, e0x, 43x, 22x, 75x, 9cx, bax, c1x, 9ax, 74x, 7cx, eex, 7fx, 81x, 82x, 61x, a3x, 36x, f0x, d1x, 13x, 47x, d5x, 76x, 85x, b2x, 88x, 8ex, d2x, 65x, 14x, a7x, b9x, b0x, 15x, c8x, 9bx, 2ex, b2x, e1x, d8x, 28x, 13x, 08x, eax, 46x, b8x, 36x, 0ax, 58x, c0x, 09x, aax, afx, ebx, ffx, 63x, 58x, 38x, e4x, 26x, 5bx, 28x, f1x, b9x, 28x, dax, 3ex, e2x, 9ax, e8x, eax, 2ax, 2bx, 6ex, 41x, 47x, a9x, f5x, c5x, b2x, e7x, 37x, 4ax, cbx, 12x, e6x, d7x, 78x, 33x, 2ex, 42x, 0ax, efx, 10x, a8x, e9x, 8ax, 85x, 62x, efx, 05x, 10x, ccx, b4x, e9x, 4ex, 99x, 50x, f6x, 85x, f7x, bbx, 66x, 8cx, 40x, 34x, bax, fax, 63x, 3dx, 66x, 5ax, fdx, 61x, 5dx, 60x, ebx, 3dx, 62x, 62x, 6bx, bbx, b7x, 56x, 00x, 9ax, 30x, 0fx, 36x, bbx, 63x, 1ex, a9x, c8x, 4dx, fcx, e3x, dax, 73x, 65x, ecx, 8bx, 61x, 0cx, d6x, cex, 49x, 4bx, acx, 28x, 03x>
+    cm_use_proto <1448876789>
+the_unknown <31, 19, 02x>
+the_unknown <6, 29, 18x, b0x, 28x>
+the_unknown <6, 29, 00x>
+    xfer_atr_file_size
+the_unknown <7, 13, 01x>
+the_unknown <115, 24, 04x>
+the_unknown <115, 23, 00x>
+    chat_is_new_chat_room <7>
+    chat_link_count_to_list <1>
+    chat_refresh_pref <01x>
+    chat_screen_name_back_color
+the_unknown <6, 12, 04x>
+    chart_set_dataset_bkcolor <0>
+    chart_set_dataset_color <d4x, 58x, 3cx, 84x, 2fx, 6ax, 51x, e1x, fcx, 40x, cfx, c7x, afx, 14x, ffx, ffx, ffx, ffx, 00x, 28x, 63x, 29x, 20x, 31x, 39x, 39x, 36x, 20x, 78x, 78x, 78x, 78x, 78x, 2cx, 20x, 49x, 6ex, 63x, 2ex, 0dx, 0ax, 41x, 6cx, 6cx, 20x, 52x, 69x, 67x, 68x, 74x, 73x, 20x, 52x, 65x, 73x, 65x, 72x, 76x, 65x, 64x, 2ex, cbx, 00x, 00x, 00x, 14x, 00x, 46x, 01x, 03x, 00x, 00x, 00x, 14x, 00x, 46x, 01x, 40x, c6x, d4x, 00x, c8x, 00x, d4x, 00x, 00x, 00x, 00x, 00x, 40x, a3x, c7x, 02x, bdx, 00x, 00x, 00x, 14x, 00x, 75x, 82x>

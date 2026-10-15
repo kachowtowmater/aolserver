@@ -1,0 +1,22 @@
+man_start_object <org_group, "">
+  man_start_object <dms_list, "\x00\x00\x00\x00\x00\x00\t\x02\x00\x00\x00\x00\x00\x00M\x02\x00\x00$\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00JG\x04\x0e\x00\x00\x00\x00\x16\x00\x00\x19\x00\x19\x00#\x05 \x01\x00W>\x08¶?ñLM\rU\x10ÿê·»×Û7éR¨\x02pBZ¡v±[\"¬\x18^>90ÏÏèS!\x13CU/ûU@/=Ï¬Öþ×Ù">
+    man_set_domain_type <30x, 02x, 78x, 42x, 6ax, a1x, bax, b1x, 5dx, 22x, acx, 18x, 6fx, 3fx, 9ex, 9cx, 77x, c7x, e1x, 6ax, 11x, 12x, aax, aax, 07x, fax, d9x, fex, e7x, 67x, bfx, d7x, eax, f3x, 37x, 22x, 5cx, cbx, 24x, 92x, e9x, 6ax, 00x, abx, aex, 87x, 02x, 56x, b8x, c0x, 3fx, b6x, d2x, 80x, d2x, cdx, 29x, 00x, 59x, ecx, a3x, 00x, f0x, 83x, bcx, 0cx, 7ex, 10x, fbx, cax, 84x, 1cx, 01x, 00x, 00x, 00x, b5x, 18x, f8x, 2bx, 36x, aax, 77x, 89x, bfx, c9x, 5cx, 6ex, 5ex, 77x, 95x, 51x, 4ex, a0x, 69x, abx, cax, 4ax, 99x, 2fx, 3ax, e2x, bfx, 92x, cax, dfx, c3x, e7x, 24x, a1x, e6x, 8cx, 87x, acx, 3cx, fcx, b4x, 36x, 07x, a2x, dcx, 0dx, e0x, 34x, 7bx, 0bx, 40x, d0x, d9x, 0dx, a0x, 82x, 79x, 0fx, 1fx, e0x, 11x, 83x, 07x, a5x, c2x, 08x, bex, 6fx, c5x, f4x, 02x>
+    man_replace_data
+    man_do_magic_token_arg <"°´", 49x, f3x, 7ex, 4ax, 4bx, 33x, 21x, 5dx, 13x, 0bx, 9bx, bcx, eex, dbx, 82x, 76x, 82x, bax, 48x, ffx, b6x, f8x, 9fx, 78x, 06x, 1fx, 50x, 6fx, 8fx, e9x, 33x, 61x, e0x, 17x, 64x, b5x, 7fx, 4ax, 2cx, 7cx, 0ex, 86x, 67x, fex, 5fx, e5x, cex, a1x, 89x, 97x, 49x, 3fx, 0fx, cbx, 9fx, 50x, aex, 4ex, b1x, 6fx, b1x, 91x, f2x, 07x, bfx, 7bx, eex, b5x, 16x, 9dx, 32x, c3x, a0x, 0cx, 1dx, 38x, f2x, c1x, 4fx, 2ex, 6bx, f5x, 21x, 55x, 15x, 3ax, e5x, 8bx, 4bx, 81x, 58x, 98x, 69x, d7x, e3x, 2ax, 8cx, 92x, 14x, 18x, e3x, bax, 48x, 5ex, 73x, 18x, 56x, 05x, d9x, 6bx, 37x, 6ex, ffx, 74x, d3x, 04x, 98x, 4dx, d9x, a1x, cfx, 5bx, 03x, 8ex, 1dx, bdx, 56x, 6fx, 4bx, bbx, 5cx, 9ex, dbx, 4cx, 59x, d7x, f1x, c4x, 03x, 38x, 71x, 62x, 5ex, 0dx, d6x, 4bx, 24x, 2fx, c1x, 17x, 7ex, d8x, bdx, 8cx, bdx, 60x, 04x, fbx, 0bx, e5x, acx, 57x, 1cx, 7dx, 9ax, 33x, 3cx, 54x, 78x, 77x, fbx, f2x, 59x, 9cx, 00x, bex, 39x, 08x, 0dx, 96x, 46x, 89x, 63x, 51x, 3cx, 32x, 46x, e4x, f9x, cdx, cfx, 54x>
+    man_set_domain_info
+    chat_is_room_being_logged <208>
+    rich_set_static <c3x, 34x, 1bx, 65x>
+    rich_open_file
+    rich_font_size <0>
+    radio_atr_wave_file_name <88x, a4x, b7x, 29x, 5cx, cdx, 84x, dcx, 37x, 03x, fcx, d1x, 41x, fcx, 0cx, dax, 79x, 0bx, a9x, 1fx, 4bx, 4dx, 34x, 27x, 3dx, 4ax, aax, e2x, c8x, d5x, c8x, 1cx, b5x, 81x, 0dx, 88x, dbx, 79x, 36x, bax, 6ax, abx, dcx, b7x, c8x, aex, d4x, 54x, cbx, dax, 03x, b0x, 4dx, 67x, d6x, 68x, a1x, 6bx, cbx, 70x, 3fx, 1ax, e6x, 96x, 38x, 00x, c8x, ebx, f1x, 52x, a4x, 1fx, d1x, e2x, 74x, 2ax, d6x, 87x, 4ex, 60x, 19x, eax, cax, f4x, eax, d7x, f6x, d9x, 5ax, 84x, 5ax, 5cx, c6x, 3fx, e0x, 40x, cfx, c7x, afx, 14x, ffx, ffx, ffx, ffx, 00x, 28x, 63x, 29x, 20x>
+    mip_attr_message_type <39x>
+    image_set_file_name <"x">
+    image_delete_hotspot
+    image_delete_hotspot
+    image_delete_hotspot
+    image_delete_hotspot
+    var_number_save <>
+    var_data_save
+    var_number_get
+the_unknown <14, 13>
+    cm_missing_protocol <1814057577>

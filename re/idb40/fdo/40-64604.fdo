@@ -1,0 +1,131 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Capture Picture">
+    mat_object_id <40-64604>
+    mat_style_id <40-64604>
+    mat_orientation <vcf>
+    mat_color_face <255, 251, 240>
+    mat_position <bottom_left>
+    mat_position <center_center>
+    mat_bool_background_flood <yes>
+    man_start_object <org_group, "">
+      mat_orientation <hff>
+      man_start_object <edit_view, "">
+        mat_size <60, 14>
+        mat_relative_tag <2>
+        vid_manage
+        vid_activate_capture <01x, 03x>
+        mat_width <320>
+        mat_height <240>
+        mat_bool_exportable <yes>
+        mat_bool_writeable <yes>
+        mat_bool_vertical_scroll <no>
+      man_end_object
+    man_start_sibling <org_group, "">
+      mat_orientation <hfc>
+      man_start_object <ornament, "">
+        mat_size <12, 1>
+        mat_relative_tag <3>
+        mat_title_pos <left | center>
+        mat_bool_disabled <yes>
+        mat_bool_invisible <yes>
+      man_start_sibling <trigger, "Capture">
+        mat_title_width <9>
+        mat_relative_tag <1>
+        mat_color_face <0, 109, 170>
+        mat_color_text <255, 255, 255>
+        mat_color_top_edge <145, 182, 255>
+        mat_color_bottom_edge <1, 1, 1>
+        mat_trigger_style <rectangle>
+        mat_font_sis <arial, 8, normal>
+        mat_bool_default <yes>
+        mat_font_id <arial>
+        var_number_set <A, 0>
+        var_number_save <A, 142>
+        act_replace_select_action
+            <
+            uni_start_stream
+              man_set_context_relative <2>
+              vid_can_preview <00x>
+              var_number_set_from_atom <B>
+              man_end_context
+              man_set_context_relative <1>
+              if_numb_eq_one_then <3, 4>
+              var_lookup_by_id <A, 142>
+              if_numa_false_then <1, 2>
+              var_number_set <A, 1>
+              var_number_save <A, 142>
+              mat_title <"Preview">
+              man_update_display
+              man_set_context_relative <2>
+              vid_can_preview
+              vid_capture
+              vid_preview <0>
+              vid_can_preview
+              man_end_context
+              uni_sync_skip <1>
+              var_number_set <A, 0>
+              var_number_save <A, 142>
+              mat_title <"Capture">
+              man_update_display
+              man_set_context_relative <2>
+              vid_preview <132>
+              man_end_context
+              uni_sync_skip <2>
+              var_number_set <B, 0>
+              if_numb_eq_one_then <4>
+              uni_sync_skip <3>
+              man_set_context_relative <2>
+              vid_capture
+              vid_preview <0>
+              man_end_context
+              uni_sync_skip <4>
+            uni_end_stream
+            >
+        man_end_object
+        uni_start_stream <00x>
+          var_number_set <A, 0>
+        uni_end_stream
+        man_start_object <trigger, "Settings">
+          mat_title_width <9>
+          mat_relative_tag <5>
+          mat_color_face <0, 109, 170>
+          mat_color_text <255, 255, 255>
+          mat_color_top_edge <145, 182, 255>
+          mat_color_bottom_edge <1, 1, 1>
+          mat_trigger_style <rectangle>
+          mat_font_sis <arial, 8, normal>
+          mat_font_id <arial>
+          act_replace_select_action
+              <
+              uni_start_stream
+                man_set_context_relative <2>
+                vid_setup_popup <5>
+                man_end_context
+              uni_end_stream
+              >
+          man_start_sibling <trigger, "Help">
+            mat_title_width <9>
+            mat_color_face <0, 109, 170>
+            mat_color_text <255, 255, 255>
+            mat_color_top_edge <145, 182, 255>
+            mat_color_bottom_edge <1, 1, 1>
+            mat_trigger_style <rectangle>
+            mat_font_sis <arial, 8, normal>
+            mat_font_id <arial>
+            act_replace_select_action
+                <
+                uni_start_stream_wait_on
+                  async_exec_context_help <63x, 61x, 70x, 74x, 75x, 72x, 65x>
+                uni_wait_off_end_stream
+                >
+            man_end_object
+          man_end_object
+          man_update_display
+          man_set_context_relative <2>
+          vid_can_preview
+          if_last_return_true_then <1>
+          vid_preview <66>
+          uni_sync_skip <1>
+          man_end_context
+          uni_wait_off
+        uni_end_stream <00x>

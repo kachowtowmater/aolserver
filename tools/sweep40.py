@@ -8,15 +8,21 @@ happened: art the window had to ask for (DOD = a stalled window), "not available
 tokens the server ignored, server tracebacks, a client that stops answering, or a crash.
 Windows it opened are closed before the next one.
 
-usage: sweep40.py [screen name=Surfer98] [--only substring]   (4.0 client must be signed on)
+Runs against the TEST client (AOL4_PREFIX, default ~/.wine-aol4-test, signed on as Tester98)
+so it never disturbs someone using the real one.
+usage: sweep40.py [screen name=Tester98] [--only substring]
 """
 import glob
 import json
 import re
 import subprocess
 import sys
+import os
 import time
 from pathlib import Path
+
+os.environ.setdefault("AOL4_PREFIX", str(Path.home() / ".wine-aol4-test"))
+PASSWORD = os.environ.get("AOL4_PASSWORD", "test1998")
 
 ROOT = Path(__file__).resolve().parent.parent
 LOG = ROOT / "run" / "server.log"
@@ -58,7 +64,7 @@ def wctl(*args, timeout=15):
 
 
 def run_action(name, action):
-    fdo = f"uni_start_stream <00x>\\n  {action}\\nuni_end_stream <00x>"
+    fdo = f"uni_start_stream <00x>\\n  {action}\\nuni_end_stream <00x>".replace('"', '\\"')
     return admin(f'next(l for l in links if l.session.get("name")=={name!r}).send_stream('
                  f'__import__("services.util",fromlist=["x"]).compile_fdo("{fdo}"))')
 
@@ -79,27 +85,40 @@ def judge(new_log, listing):
     return problems
 
 
-def crashed() -> bool:
-    dbg = subprocess.run(["pgrep", "-x", "winedbg.exe"], capture_output=True, text=True).stdout.split()
-    gone = subprocess.run(["pgrep", "-x", "waol.exe"], capture_output=True).returncode != 0
-    return bool(dbg) or gone
+def name_link_missing(name="Tester98") -> bool:
+    """The test client crashed or hung if its session is gone from the server."""
+    return name not in admin('[l.session.get("name") for l in links]')
+
+
+CLIENT_LOG = ROOT / "run" / f"waol4-{Path(os.environ['AOL4_PREFIX']).name}.log"
+
+
+def faults() -> int:
+    try:
+        return CLIENT_LOG.read_text(errors="replace").count("page fault")
+    except OSError:
+        return 0
+
+
+def crashed(before: int = 0) -> bool:
+    return name_link_missing() or faults() > before
 
 
 def restart(name):
     for pid in subprocess.run(["pgrep", "-x", "winedbg.exe"], capture_output=True, text=True).stdout.split():
         subprocess.run(["kill", pid])
-    subprocess.run([str(ROOT / "run" / "signon4.sh"), "0", "aol1998"], capture_output=True, timeout=180)
+    subprocess.run([str(ROOT / "run" / "signon4.sh"), "0", PASSWORD], capture_output=True, timeout=180)
     time.sleep(8)  # art preload
 
 
 def main():
-    name = sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith("--") else "Surfer98"
+    name = sys.argv[1] if len(sys.argv) > 1 and not sys.argv[1].startswith("--") else "Tester98"
     only = sys.argv[sys.argv.index("--only") + 1] if "--only" in sys.argv else ""
     results = []
     todo = [a for a in actions() if only in " ".join(a)]
     print(f"{len(todo)} actions")
     for form, label, action in todo:
-        start = LOG.stat().st_size
+        start, f0 = LOG.stat().st_size, faults()
         run_action(name, action)
         time.sleep(5)
         new = LOG.read_bytes()[start:].decode("latin1", "replace")
@@ -115,7 +134,7 @@ def main():
         for b in boxes:
             wctl("close", b.split()[0])
         wctl("closeall")
-        if crashed():
+        if crashed(f0):
             problems.append("CLIENT CRASHED")
             restart(name)
         status = "OK " if not problems else "BAD"

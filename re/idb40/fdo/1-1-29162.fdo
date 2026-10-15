@@ -1,0 +1,27 @@
+man_start_object <org_group, "\x01">
+the_unknown <0, 98, 00x, 00x>
+  uni_void
+  uni_end_loop <00x, 00x>
+  uni_void
+  uni_command <00x, 00x>
+  buf_start_buffer
+  uni_void
+  uni_void
+man_update_woff_end_stream <2>
+mmi_open_file <"\x00">
+uni_void <47x, 04x, 0ex, 00x, 00x, 00x, 00x, 8cx, 16x, 00x, 00x, 10x, 00x, 5ex, 00x, 23x, 05x, a0x, 88x, 01x, 00x, acx, 17x, 16x, 08x, b6x, 30x, 25x, 4cx, 80x, 8cx, bfx, eex, 80x, e0x, bex, 68x, 34x, 41x, 58x, 89x, 81x, 99x, ffx, f7x, f2x, 21x, 25x, b8x, 01x, 21x, 2ax, 66x, 06x, 63x, ffx, d6x, e5x, 99x, 81x, 4ex, 54x, 86x, fcx, e8x, 12x, 20x, 84x, 1cx, 01x, ffx, dax, dax, 8cx>
+pictalk_manage <08x>
+uni_start_typed_data
+de_set_text_column
+de_set_extraction_type <default>
+de_get_data_value <default>
+de_set_data_type <default>
+the_unknown <30, 216, 31x, eax, eax, 97x, ebx, 7dx, a1x, 7bx>
+the_unknown <30, 18, 00x>
+the_unknown <30, 5, 28x, 3bx, dcx, afx, 8cx, 67x, f4x, ecx, e3x, 9ax, 1cx, 55x, 0bx, 6ex, d2x, b8x, 16x, 8bx, 44x, 2dx, 69x, 77x, a6x, 1fx, 07x, 95x, bdx, 47x, 90x, f8x, e2x, afx, 8cx, 39x, 3cx, d7x, b0x, 85x, 22x, 33x, cdx, ddx, aax, 36x, 5dx, fbx, 8fx, 87x, 14x, abx, 75x, 95x, 76x, c5x, a2x, 26x, f5x, 9fx, e0x, 52x, b7x, a0x, c7x, afx, 18x, eax, 2bx, 5bx, 35x, 11x, f2x, 24x, acx, a8x, 9ex, a1x, 89x, 8dx, 47x, 1cx, f4x, 69x, 12x, a1x, 53x, 8ex, 69x, 37x, 8ax, 34x, d9x, 3ax, ccx, b2x, cex, 2ex, 24x, 6cx, 0fx, 9fx, 4cx, 2ax, e7x, 90x, cbx, 2ex, 4bx, 06x, e7x, 5ex, 58x, 60x, a3x, b9x, 0fx, 0fx, 48x, 80x, 72x, 40x, 06x, 11x, e6x, f4x, 72x, 40x, 53x, 07x, 37x, 9ax, 01x, 9ex, a4x, e6x, 77x, e8x, 13x, 3ex, 7ex, 41x, 27x, 51x, b8x, 14x, 41x, fdx, eex, b7x, f9x, 50x, 48x, cfx, 04x, 3dx, 1fx, c9x, 61x, 01x, cex, 47x, e8x, ddx, b2x, 4ex, ffx, ddx, ecx, f0x, 61x, eex, 7dx, 35x, 39x, 05x, 6bx, cfx, bax, 73x, 12x, 5ex, 7ex, 08x, 5dx, 6fx, fdx, 0bx, b9x, 7fx, 11x, d8x, 77x, 26x, 55x, 12x, 52x, 56x, 82x, 26x, b2x, c2x, 09x, 29x, 5ax, a5x, 6cx, 21x, 29x, 32x, c2x, c8x, 96x, 92x, 03x, 2cx, a3x, 04x, cax, a2x, 48x, 46x, 4dx, 8bx, e7x, dbx, ffx, 63x, e3x, fbx, 7ax, b1x, 63x, 75x, fax, 89x, 4dx, 09x, 86x, 02x>
+buf_send_buffer_to_host <04x>
+buf_add_string_raw
+buf_close_buffer <00x>
+dod_hints_mismatch <2>
+dod_data <01x>
+cm_bounce_tool <1618015154>

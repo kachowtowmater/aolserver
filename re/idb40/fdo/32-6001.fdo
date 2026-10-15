@@ -1,0 +1,145 @@
+uni_start_stream
+  man_preset_gid <32-6001>
+  if_last_return_true_then <5>
+  man_close_update
+  uni_sync_skip <5>
+  man_set_context_globalid <52>
+  man_start_object <ind_group, "">
+    mat_bool_modal <yes>
+    mat_object_id <32-6001>
+    mat_bool_background_flood <yes>
+    mat_color_face <255, 251, 240>
+    var_number_set <A, 0>
+    act_set_criterion <gain_focus>
+    act_replace_action
+        <
+        uni_start_stream
+          man_set_context_relative <5>
+          man_make_focus
+          man_end_context
+          man_update_display
+        uni_end_stream
+        >
+      act_set_criterion <131>
+      act_append_action
+        <
+        uni_start_stream
+          man_set_context_relative <1>
+          mat_art_id <1-1-13986>
+          man_end_context
+        uni_end_stream
+        >
+      act_set_criterion <132>
+      act_append_action
+        <
+        uni_start_stream
+          man_set_context_relative <1>
+          mat_art_id <1-1-13983>
+          man_end_context
+        uni_end_stream
+        >
+      act_set_criterion <133>
+      act_append_action
+        <
+        uni_start_stream
+          man_set_context_relative <2>
+          mat_art_id <1-1-13986>
+          man_end_context
+        uni_end_stream
+        >
+      act_set_criterion <134>
+      act_append_action
+        <
+        uni_start_stream
+          man_set_context_relative <2>
+          mat_art_id <1-1-13984>
+          man_end_context
+        uni_end_stream
+        >
+      act_set_criterion <135>
+      act_append_action
+        <
+        uni_start_stream
+          man_set_context_relative <3>
+          mat_art_id <1-1-13985>
+          man_end_context
+        uni_end_stream
+        >
+      act_set_criterion <136>
+      act_append_action
+        <
+        uni_start_stream
+          man_set_context_relative <3>
+          mat_art_id <1-1-13982>
+          man_end_context
+        uni_end_stream
+        >
+      man_start_object <org_group, "">
+        mat_orientation <vcc>
+        man_start_object <ornament, "">
+          mat_art_id <1-1-14109>
+        man_end_object
+        man_start_object <org_group, "">
+          mat_orientation <hcc>
+          man_start_object <ornament, "">
+            mat_frame_style <single_line_pop_out>
+            mat_art_id <1-1-13986>
+            mat_relative_tag <1>
+          man_end_object
+          man_start_object <ornament, "">
+            mat_frame_style <single_line_pop_out>
+            mat_art_id <1-1-13986>
+            mat_relative_tag <2>
+          man_end_object
+          man_start_object <ornament, "">
+            mat_frame_style <single_line_pop_out>
+            mat_art_id <1-1-13985>
+            mat_relative_tag <3>
+          man_end_object
+        man_end_object
+        man_start_object <ornament, "">
+          mat_relative_tag <4>
+          mat_height <1>
+          mat_width <45>
+          mat_orientation <hcc>
+          mat_title <" ">
+        man_end_object
+        man_start_object <ornament, "">
+          mat_art_id <1-0-1363>
+        man_end_object
+        man_start_object <trigger, "">
+          mat_title <"Cancel">
+          mat_relative_tag <5>
+          mat_title_width <10>
+          mat_font_sis <arial, 10, bold>
+          mat_trigger_style <rectangle>
+          mat_bool_gradual_shadow <yes>
+          mat_color_face <0, 109, 170>
+          mat_color_text <255, 255, 255>
+          mat_color_top_edge <145, 182, 255>
+          mat_color_bottom_edge <1, 1, 1>
+          act_set_criterion <select>
+          act_append_action
+            <
+            uni_start_stream
+              man_close_update
+              man_preset_gid <32-221>
+              if_last_return_true_then <1, 2>
+              mat_bool_invisible <no>
+              man_update_display
+              act_do_action <gain_focus>
+              uni_sync_skip <1>
+              if_offline_then <2>
+              uni_invoke_no_context <32-221>
+              uni_sync_skip <2>
+              dice_disconnect
+              mip_action_command <0ax>
+            uni_end_stream
+            >
+        man_end_object
+      man_end_object
+      man_update_display
+    man_end_object
+    dice_connect
+    man_end_context
+  uni_end_stream

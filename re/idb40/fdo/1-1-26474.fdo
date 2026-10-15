@@ -1,0 +1,41 @@
+man_start_object <org_group, "">
+  man_start_object <dms_list, "\x00\x00\x00\x00\x00">
+    uni_end_loop <00x, 00x>
+    uni_void
+the_unknown <0, 226, 00x>
+    uni_diagnostic_msg
+    uni_void
+    uni_void
+    uni_void
+    uni_start_stream
+      cm_inquire <02x>
+      buf_add_atom_pointer_filter
+      uni_void
+      uni_save_result <00x, 00x, 19x, 00x, 19x, 00x, 23x, 05x, a0x, 88x, 01x, 00x, b4x, 37x, 3dx, 08x, b6x, 3fx, f8x, 48x, 45x, 0cx>
+the_unknown <0, 13, 01x>
+      mip_message_date <02x>
+the_unknown <70, 46, ccx, 21x, 01x, 00x, 82x, a8x, 28x>
+the_unknown <70, 56, 01x>
+the_unknown <70, 30>
+the_unknown <70, 20, 00x>
+the_unknown <70, 10, 00x>
+      chart_bool_stacked <yes>
+the_unknown <12, 58, 01x>
+      chart_bool_bars_together <yes>
+      chart_set_line_width <2080343236>
+      chart_bool_vert_grid <yes>
+the_unknown <20, 61, afx>
+the_unknown <8, 51, 99x, 05x, 8cx, 0bx, 69x, 9dx, 18x>
+the_unknown <8, 53>
+the_unknown <8, 56, 54x, d7x, 44x, 9bx, 3dx, 46x, efx, fcx, 1ax, 46x, fcx, c4x, 00x, 96x, 39x, 08x, 22x, 2cx, 56x, bfx, c7x, fcx, 34x, a6x, 30x, 8ex, 62x, 0ax, b6x, edx, cbx, b4x, 59x, abx, 47x, 7cx, 09x, 35x, 25x, dcx, 75x, e7x, e1x, 86x, edx, 5fx, aex, e6x, 93x, 02x, 79x, 3dx, 45x, dbx, a6x, edx, 87x, 9ex, dfx, 02x, f1x, 1ex, 92x, bcx, edx, d2x, a5x, 51x, dbx, 92x, 5ex, 02x, e9x, 59x, c9x, cfx, e5x, e6x, 69x, cax, dfx, a1x, b7x, 39x, 88x, f4x, 27x, 28x, b3x, 75x, 24x, 0fx, cfx, 78x, 1ax, 2bx, 50x, 90x, 38x, 01x, 00x, cfx, c7x, afx, 14x, ffx, ffx, ffx, ffx, 00x, 28x, 63x, 29x, 20x, 31x, 39x>
+the_unknown <25, 54, 20x>
+the_unknown <25, 56>
+the_unknown <25, 56>
+the_unknown <25, 56>
+the_unknown <25, 56>
+the_unknown <25, 56>
+      var_number_increment_save <>
+      var_number_clear_id
+      var_number_ones_save
+the_unknown <14, 45>
+the_unknown <10, 97, 6cx, 20x, 52x, 69x, 67x, 68x, 74x, 73x, 20x, 52x, 65x, 73x, 65x, 72x, 76x, 65x, 64x, 2ex, cbx, 3dx, cex, c2x, 51x, d0x, d3x, 0cx, 00x, 00x, 00x, 2ax, 00x, 46x, 01x, 48x, 01x, d4x, 00x, 38x, 01x, d4x, 00x, 47x, 61x, fcx, e7x, bex, e5x, f6x, 00x, cfx, c7x, afx, 14x, ffx, ffx, ffx, ffx, 00x, 28x, 63x, 29x, 20x, 31x, 39x, 39x, 36x, 20x, 78x, 78x, 78x, 78x, 78x, 2cx, 20x, 49x, 6ex, 63x, 2ex, 0dx, 0ax, 41x, 6cx, 6cx, 20x, 52x, 69x, 67x, 68x, 74x, 73x, 20x, 52x, 65x, 73x, 65x, 72x, 76x, 65x, 64x, 2ex, cbx, 65x, 73x, 65x, 72x, 76x, 65x, 64x>

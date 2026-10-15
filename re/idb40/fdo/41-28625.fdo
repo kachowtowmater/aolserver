@@ -1,0 +1,280 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Toolbar Preferences">
+    mat_object_id <41-28625>
+    mat_style_id <41-28625>
+    mat_orientation <vff>
+    mat_precise_width <286>
+    mat_precise_height <320>
+    mat_color_face <255, 251, 240>
+    mat_position <center_center>
+    mat_bool_modal <yes>
+    mat_bool_precise <yes>
+    mat_bool_background_flood <yes>
+    man_start_object <ornament, "">
+      mat_precise_x <8>
+      mat_precise_y <8>
+      mat_size <20, 1>
+      mat_font_id <arial>
+      mat_font_size <9>
+      mat_font_style <bold>
+      man_append_data <"Appearance:">
+    man_start_sibling <org_group, "">
+      mat_orientation <hlf>
+      mat_precise_width <200>
+      mat_precise_height <45>
+      mat_bool_precise <yes>
+      man_start_object <sss_list, "Appearance:">
+        mat_orientation <vff>
+        man_start_object <trigger, "Icons and Text">
+          mat_precise_x <21>
+          mat_precise_y <28>
+          mat_font_sis <arial, 8, normal>
+          mat_bool_default_send <no>
+        man_start_sibling <trigger, "Text Only">
+          mat_precise_x <21>
+          mat_precise_y <48>
+          mat_relative_tag <1>
+          mat_font_sis <arial, 8, normal>
+          mat_bool_default_send <no>
+        man_end_object
+      man_end_object
+    man_end_object
+    man_set_context_relative <1>
+    act_get_db_value <14x, 00x, 01x, 61x>
+    uni_use_last_atom_value <mat_value>
+    man_end_context
+    man_start_object <ornament, "">
+      mat_precise_x <8>
+      mat_precise_y <76>
+      mat_size <20, 1>
+      mat_font_id <arial>
+      mat_font_size <9>
+      mat_font_style <bold>
+      man_append_data <"Location:">
+    man_start_sibling <org_group, "">
+      mat_orientation <hlf>
+      mat_precise_width <200>
+      mat_precise_height <45>
+      mat_bool_precise <yes>
+      man_start_object <sss_list, "">
+        mat_orientation <vff>
+        mat_relative_tag <2>
+        man_start_object <trigger, "Move to Top">
+          mat_precise_x <21>
+          mat_precise_y <96>
+          mat_font_sis <arial, 8, normal>
+          mat_bool_default_send <no>
+        man_start_sibling <trigger, "Move to Bottom">
+          mat_precise_x <21>
+          mat_precise_y <116>
+          mat_font_sis <arial, 8, normal>
+          mat_bool_default_send <no>
+        man_end_object
+      man_end_object
+    man_start_sibling <ornament, "">
+      mat_precise_x <8>
+      mat_precise_y <141>
+      mat_size <20, 1>
+      mat_font_id <arial>
+      mat_font_size <9>
+      mat_font_style <bold>
+      man_append_data <"Navigation:">
+    man_start_sibling <sms_list, "">
+      mat_orientation <hff>
+      man_start_object <trigger, "Use Previous and Next navigation arrows to">
+        mat_precise_x <21>
+        mat_precise_y <157>
+        mat_relative_tag <5>
+        mat_font_sis <arial, 8, normal>
+        mat_bool_default_send <no>
+      man_end_object
+    man_start_sibling <ornament, "">
+      mat_precise_x <36>
+      mat_precise_y <177>
+      mat_size <34, 1>
+      mat_font_size <8>
+      mat_font_id <arial>
+      man_append_data <"track open windows only.">
+    man_start_sibling <ornament, "">
+      mat_precise_x <8>
+      mat_precise_y <200>
+      mat_size <20, 1>
+      mat_font_id <arial>
+      mat_font_size <9>
+      mat_font_style <bold>
+      man_append_data <"History Trail:">
+    man_start_sibling <sms_list, "">
+      mat_orientation <hff>
+      man_start_object <trigger, "Clear History Trail after each Sign Off or Switch">
+        mat_precise_x <21>
+        mat_precise_y <217>
+        mat_relative_tag <6>
+        mat_font_sis <arial, 8, normal>
+        mat_bool_default_send <no>
+      man_end_object
+    man_start_sibling <ornament, "">
+      mat_precise_x <36>
+      mat_precise_y <236>
+      mat_size <34, 1>
+      mat_font_size <8>
+      mat_font_id <arial>
+      man_append_data <"Screen Name.">
+    man_start_sibling <org_group, "">
+      mat_orientation <hrf>
+      mat_precise_x <8>
+      mat_precise_y <252>
+      mat_precise_width <270>
+      mat_precise_height <33>
+      man_start_object <trigger, "">
+        mat_precise_x <169>
+        mat_precise_y <253>
+        mat_relative_tag <10>
+        mat_color_face <0, 109, 170>
+        mat_color_text <255, 255, 255>
+        mat_color_top_edge <145, 182, 255>
+        mat_color_bottom_edge <1, 1, 1>
+        mat_trigger_style <rectangle>
+        mat_font_size <8>
+        mat_title <"  Clear History Now  ">
+        if_offline_then <1>
+        mat_bool_disabled <yes>
+        uni_sync_skip <1>
+        mat_horizontal_spacing <0>
+        mat_vertical_spacing <2>
+        mat_font_id <arial>
+        act_replace_select_action
+            <
+            uni_start_stream
+              uni_invoke_no_context <41-29303>
+            uni_end_stream
+            >
+        man_end_object
+      man_start_sibling <org_group, "">
+        mat_orientation <hff>
+        mat_precise_x <8>
+        mat_precise_y <285>
+        mat_precise_width <270>
+        mat_precise_height <40>
+        man_start_object <trigger, "">
+          mat_precise_x <63>
+          mat_precise_y <292>
+          mat_precise_width <70>
+          mat_precise_height <23>
+          mat_color_face <0, 109, 170>
+          mat_color_text <255, 255, 255>
+          mat_color_top_edge <145, 182, 255>
+          mat_color_bottom_edge <1, 1, 1>
+          mat_trigger_style <rectangle>
+          mat_font_size <8>
+          mat_title <"      OK      ">
+          mat_vertical_spacing <0>
+          mat_bool_default <yes>
+          mat_font_id <arial>
+          mat_command_key <0dx, 00x>
+          act_replace_select_action
+              <
+              uni_start_stream
+                de_start_extraction
+                man_set_context_relative <6>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-356>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <5>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-355>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <2>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-354>
+                de_get_data_value
+                uni_save_result
+                uni_get_result
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                uni_get_result
+                var_number_set_from_atom <A>
+                var_number_set <B, 1>
+                if_numa_eq_numb_then <1, 2>
+                man_set_context_globalid <3>
+                man_set_context_relative <21>
+                mat_position <top_center>
+                man_update_display
+                uni_sync_skip <1>
+                man_set_context_globalid <3>
+                man_set_context_relative <21>
+                mat_position <bottom_center>
+                man_update_display
+                uni_sync_skip <2>
+                man_end_context
+                man_end_context
+                man_set_context_relative <1>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-353>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                de_end_extraction
+                man_set_context_globalid <3>
+                man_set_context_relative <21>
+                man_update_display
+                act_do_action <65>
+                man_end_context
+                man_end_context
+                man_set_context_globalid <41-28625>
+                man_close_update
+              uni_end_stream
+              >
+          man_start_sibling <trigger, "">
+            mat_precise_x <149>
+            mat_precise_y <292>
+            mat_precise_width <70>
+            mat_precise_height <23>
+            mat_color_face <0, 109, 170>
+            mat_color_text <255, 255, 255>
+            mat_color_top_edge <145, 182, 255>
+            mat_color_bottom_edge <1, 1, 1>
+            mat_trigger_style <rectangle>
+            mat_font_size <8>
+            mat_title <"    Cancel    ">
+            mat_horizontal_spacing <4>
+            mat_vertical_spacing <0>
+            mat_font_id <arial>
+            act_replace_select_action
+                <
+                uni_start_stream <00x>
+                  man_close_update
+                uni_end_stream <00x>
+                >
+            man_end_object
+          man_end_object
+          man_update_display
+          man_set_context_relative <1>
+          act_get_db_value <14x, 00x, 01x, 61x>
+          uni_use_last_atom_value <mat_value>
+          man_end_context
+          man_set_context_relative <5>
+          act_get_db_value <14x, 00x, 01x, 63x>
+          uni_use_last_atom_value <mat_value>
+          man_end_context
+          man_set_context_relative <6>
+          act_get_db_value <14x, 00x, 01x, 64x>
+          uni_use_last_atom_value <mat_value>
+          man_end_context
+          man_set_context_relative <2>
+          act_get_db_value <14x, 00x, 01x, 62x>
+          uni_use_last_atom_value <mat_value>
+          man_end_context
+          man_set_context_relative <10>
+          mat_bool_active_offline <no>
+          man_end_context
+          man_update_display
+          uni_wait_off
+        uni_end_stream <00x>

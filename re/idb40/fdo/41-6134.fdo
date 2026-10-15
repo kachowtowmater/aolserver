@@ -1,0 +1,175 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "New Person">
+    mat_object_id <41-6134>
+    mat_style_id <41-6134>
+    mat_orientation <vff>
+    mat_color_face <255, 251, 240>
+    man_start_object <tab_group, "">
+      mat_frame_style <double_line>
+      mat_color_frame_hilight <0, 109, 170>
+      mat_color_frame_shadow <0, 0, 1>
+      mat_color_top_edge <145, 182, 255>
+      mat_color_bottom_edge <0, 0, 1>
+      mat_relative_tag <11>
+      man_start_object <tab_page, "Person">
+        mat_bool_background_flood <yes>
+        mat_color_top_edge <0, 109, 170>
+        mat_color_frame_shadow <0, 0, 1>
+        mat_color_frame_hilight <0, 36, 85>
+        mat_color_selected <0, 109, 170>
+        mat_color_bottom_edge <0, 0, 1>
+        mat_color_face <0, 36, 85>
+        mat_color_text <255, 255, 255>
+        man_start_object <edit_view, "First Name:">
+          mat_color_text <255, 255, 255>
+          mat_frame_style <pop_in>
+          mat_relative_tag <1>
+          mat_capacity <14000>
+          mat_title_pos <above | top_or_left>
+          mat_height <1>
+          mat_width <24>
+          mat_field_script <any>
+          mat_bool_writeable <yes>
+        man_end_object
+        man_start_object <edit_view, "Last Name:">
+          mat_color_text <255, 255, 255>
+          mat_frame_style <pop_in>
+          mat_relative_tag <2>
+          mat_capacity <14000>
+          mat_title_pos <above | top_or_left>
+          mat_height <1>
+          mat_width <24>
+          mat_field_script <any>
+          mat_bool_writeable <yes>
+        man_end_object
+        man_start_object <edit_view, "E-Mail Address:">
+          mat_color_text <255, 255, 255>
+          mat_frame_style <pop_in>
+          mat_relative_tag <3>
+          mat_capacity <14000>
+          mat_title_pos <above | top_or_left>
+          mat_height <1>
+          mat_width <24>
+          mat_bool_writeable <yes>
+          mat_validation <128>
+        man_end_object
+        man_start_object <edit_view, "Notes:">
+          mat_color_text <255, 255, 255>
+          mat_frame_style <pop_in>
+          mat_relative_tag <4>
+          mat_capacity <14000>
+          mat_title_pos <above | top_or_left>
+          mat_height <2>
+          mat_width <24>
+          mat_field_script <any>
+          mat_bool_writeable <yes>
+        man_end_object
+      man_end_object
+      man_start_object <tab_page, "Picture">
+        mat_orientation <vcf>
+        mat_bool_background_flood <yes>
+        mat_color_top_edge <0, 109, 170>
+        mat_color_frame_shadow <0, 0, 1>
+        mat_color_frame_hilight <0, 36, 85>
+        mat_color_selected <0, 109, 170>
+        mat_color_bottom_edge <0, 0, 1>
+        mat_color_face <0, 36, 85>
+        mat_color_text <255, 255, 255>
+        man_start_object <view, "">
+          mat_relative_tag <6>
+          rich_manage
+          mat_capacity <25000>
+          mat_bool_vertical_scroll <yes>
+          mat_bool_horizontal_scroll <yes>
+          mat_bool_resize_vertical <yes>
+          mat_bool_resize_horizontal <yes>
+          mat_bool_writeable <yes>
+          mat_width <23>
+          mat_height <13>
+          rich_allow_attributes <4079>
+        man_end_object
+        man_start_object <trigger, "  Select Picture  ">
+          mat_trigger_style <rectangle>
+          mat_color_face <0, 51, 102>
+          mat_color_text <255, 255, 255>
+          mat_color_frame_hilight <145, 182, 255>
+          mat_color_frame_shadow <1, 1, 1>
+          mat_font_sis <arial, 8, normal>
+          act_replace_select_action
+              <
+              uni_start_stream
+                man_set_context_relative <6>
+                rich_drop_picture
+                man_end_context
+              uni_end_stream
+              >
+          man_end_object
+        man_end_object
+      man_end_object
+      mat_position <center_center>
+      mat_bool_background_flood <yes>
+      man_start_object <org_group, "">
+        mat_orientation <hcf>
+        man_start_object <trigger, "">
+          mat_color_face <0, 109, 170>
+          mat_color_text <255, 255, 255>
+          mat_color_top_edge <145, 182, 255>
+          mat_color_bottom_edge <1, 1, 1>
+          mat_trigger_style <rectangle>
+          mat_font_size <8>
+          mat_title <"      OK      ">
+          mat_horizontal_spacing <7>
+          mat_bool_default <yes>
+          mat_font_id <arial>
+          mat_command_key <0dx, 01x>
+          act_replace_select_action
+              <
+              uni_start_stream
+                de_validate <display_msg>
+                if_last_return_false_then <1>
+                mip_action_command <27x>
+                uni_sync_skip <1>
+              uni_end_stream
+              >
+          man_start_sibling <trigger, "">
+            mat_color_face <0, 109, 170>
+            mat_color_text <255, 255, 255>
+            mat_color_top_edge <145, 182, 255>
+            mat_color_bottom_edge <1, 1, 1>
+            mat_trigger_style <rectangle>
+            mat_font_size <8>
+            mat_title <"    Cancel    ">
+            mat_horizontal_spacing <7>
+            mat_font_id <arial>
+            act_replace_select_action
+                <
+                uni_start_stream <00x>
+                  man_close_update
+                uni_end_stream <00x>
+                >
+            man_start_sibling <trigger, "">
+              mat_color_face <0, 109, 170>
+              mat_color_text <255, 255, 255>
+              mat_color_top_edge <145, 182, 255>
+              mat_color_bottom_edge <1, 1, 1>
+              mat_trigger_style <rectangle>
+              mat_font_size <8>
+              mat_title <"     Help     ">
+              mat_font_id <arial>
+              act_replace_select_action
+                  <
+                  uni_start_stream_wait_on
+                    async_exec_context_help <41x, 64x, 64x, 72x, 65x, 73x, 73x, 20x, 42x, 6fx, 6fx, 6bx>
+                  uni_wait_off_end_stream
+                  >
+              man_end_object
+            man_end_object
+            man_place_cursor <1>
+            man_update_display
+            man_set_context_globalid <41-6134>
+            man_set_context_relative <11>
+            mat_tab_set_cur_sel
+            man_end_context
+            man_end_context
+            uni_wait_off
+          uni_end_stream <00x>

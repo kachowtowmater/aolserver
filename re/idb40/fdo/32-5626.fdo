@@ -1,0 +1,408 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "AOL Setup">
+    mat_object_id <32-5626>
+    mat_style_id <32-5626>
+    mat_orientation <hff>
+    mat_color_face <255, 251, 240>
+    mat_bool_background_flood <yes>
+    act_set_criterion <300>
+    act_replace_action
+        <
+        uni_start_stream
+          act_get_db_record <20-3-31>
+          uni_save_result
+          if_last_return_true_then <5, 8>
+          uni_get_result
+          uni_use_last_atom_string <dice_update_device>
+          dice_get_obj_info <13>
+          var_number_set_from_atom <A>
+          var_number_set <B, 10>
+          if_numa_neq_numb_then <8>
+          uni_sync_skip <5>
+          var_number_set <B, 0>
+          dice_start_enumeration <1>
+          dice_restrict_type_enum <0ax>
+          dice_get_next_enum
+          var_string_set_from_atom <A>
+          if_last_return_false_then <7>
+        uni_abort_stream
+        uni_sync_skip <7>
+        var_string_get <A>
+        uni_use_last_atom_string <dice_update_device>
+        uni_sync_skip <8>
+        de_start_extraction <0>
+        man_set_context_relative <6>
+        dice_set_obj_attrib <6>
+        de_get_data_value
+        if_last_return_true_then <6, 7>
+        dice_set_obj_info <00x>
+        uni_sync_skip <6>
+        dice_set_obj_info <01x>
+        uni_sync_skip <7>
+        man_change_context_relative <7>
+        dice_set_obj_attrib <7>
+        de_get_data_value
+        uni_use_last_atom_value <dice_set_obj_info>
+        man_change_context_relative <11>
+        dice_set_obj_attrib <8>
+        de_get_data_value
+        uni_use_last_atom_value <dice_set_obj_info>
+        man_change_context_relative <8>
+        dice_set_obj_attrib <12>
+        de_set_data_type <text>
+        de_get_data_pointer
+        uni_use_last_atom_string <dice_set_obj_info>
+        man_change_context_relative <12>
+        dice_set_obj_attrib <11>
+        de_get_data_pointer
+        uni_use_last_atom_string <dice_set_obj_info>
+        man_end_context
+        de_end_extraction
+        dice_end_context
+      uni_end_stream
+      >
+    mat_art_id <1-0-21743>
+    mat_position <center_center>
+    mat_bool_resize_vertical <no>
+    mat_bool_modal <yes>
+    mat_bool_background_flood <yes>
+    man_start_object <org_group, "">
+      mat_orientation <vff>
+      man_start_object <ornament, "">
+        mat_art_id <1-1-46515>
+        mat_bool_disabled <yes>
+      man_end_object
+    man_start_sibling <org_group, "">
+      mat_orientation <vff>
+      man_start_object <org_group, "">
+        mat_orientation <vff>
+        man_start_object <ornament, "">
+          mat_size <30, 1, 128>
+          mat_color_text <1, 1, 1>
+          mat_font_id <arial>
+          mat_font_size <14>
+          mat_font_style <bold>
+          uni_start_typed_data <latin1>
+          man_append_data <"Get AOL Access Phone Numbers Online">
+        man_start_sibling <org_group, "">
+          mat_orientation <vff>
+          mat_precise_width <456>
+          mat_precise_height <2>
+          mat_color_face <1, 1, 1>
+          mat_bool_background_flood <yes>
+          mat_bool_precise <yes>
+        man_end_object
+      man_start_sibling <view, "">
+        rich_manage
+        rich_set_static
+        mat_size <47, 4, 1024>
+        mat_bool_vertical_scroll <no>
+        mat_bool_resize_vertical <no>
+        mat_bool_resize_horizontal <no>
+        mat_bool_exportable <no>
+        uni_next_atom_typed <ascii>
+        man_append_data <"To get the list of AOL Access phone numbers for the area you requested, we must use your modem and your phone line to connect to AOL now.  When you are ready to connect, click <B>NEXT</B>.">
+      man_start_sibling <view, "">
+        rich_manage
+        rich_set_static
+        mat_size <47, 2, 1024>
+        mat_bool_vertical_scroll <no>
+        mat_bool_resize_vertical <no>
+        mat_bool_resize_horizontal <no>
+        mat_bool_exportable <no>
+        uni_next_atom_typed <ascii>
+        man_append_data <"<B>Note:</B> Please make sure no one else is on the phone.">
+      man_start_sibling <view, "">
+        mat_size <10, 3>
+        mat_relative_tag <60>
+        morg_manage
+        mat_font_sis <arial, 9, normal>
+        uni_next_atom_typed <ascii>
+        morg_view_path <"$Connectivity\\Devices">
+        morg_view_highlight_full_line <yes>
+        act_set_criterion <128>
+        act_replace_action
+            <
+            uni_start_stream
+              act_do_action <200>
+            uni_end_stream
+            >
+          act_set_criterion <129>
+          act_replace_action
+              <
+              uni_start_stream
+                man_close_update
+              uni_end_stream
+              >
+            act_set_criterion <130>
+            act_replace_action
+                <
+                uni_start_stream
+                  act_do_action <200>
+                uni_end_stream
+                >
+              mat_bool_resize_horizontal <no>
+              mat_bool_invisible <yes>
+              mat_bool_writeable <yes>
+            man_start_sibling <ornament, "">
+              mat_size <6, 1>
+              mat_relative_tag <4>
+              mat_bool_invisible <yes>
+              mat_bool_hidden <yes>
+            man_start_sibling <org_group, "">
+              mat_orientation <vlc>
+              man_start_object <view, "">
+                rich_manage
+                rich_set_static
+                mat_size <50, 2, 2048>
+                mat_relative_tag <2>
+                mat_bool_vertical_scroll <no>
+                mat_bool_resize_vertical <no>
+                mat_bool_resize_horizontal <no>
+                mat_bool_exportable <no>
+                uni_next_atom_typed <ascii>
+                man_append_data <"<B>Please indicate, with a checkmark, if any of these special circumstances below apply.</B>  Click on the checkbox at left to add or remove a checkmark.">
+              man_start_sibling <org_group, "">
+                mat_orientation <hff>
+                man_start_object <org_group, "">
+                  mat_orientation <vff>
+                  man_start_object <org_group, "">
+                    mat_orientation <hff>
+                    man_start_object <sms_list, "">
+                      mat_orientation <hff>
+                      uni_next_atom_typed <ascii>
+                      man_start_object <trigger, "Dial">
+                        mat_relative_tag <7>
+                        mat_bool_default_send <no>
+                        act_replace_select_action
+                            <
+                            uni_start_stream
+                              de_start_extraction <0>
+                              man_set_context_relative <7>
+                              de_get_data_value
+                              uni_save_result
+                              de_end_extraction
+                              man_change_context_relative <8>
+                              uni_get_result
+                              if_last_return_true_then <1, 2>
+                              mat_bool_disabled <no>
+                              uni_sync_skip <1>
+                              mat_bool_disabled <yes>
+                              uni_sync_skip <2>
+                              man_end_context
+                              man_update_display
+                            uni_end_stream
+                            >
+                        man_end_object
+                      man_start_sibling <edit_view, "">
+                        mat_size <5, 1, 48>
+                        mat_relative_tag <8>
+                        mat_bool_disabled <yes>
+                        mat_bool_writeable <yes>
+                        man_append_data <"9,">
+                        uni_next_atom_typed <ascii>
+                      man_start_sibling <ornament, " to reach an outside line.">
+                        mat_size <30, 1, 56>
+                        mat_font_style <bold>
+                      man_end_object
+                    man_start_sibling <org_group, "">
+                      mat_orientation <hff>
+                      man_start_object <sms_list, "">
+                        mat_orientation <hff>
+                        uni_next_atom_typed <ascii>
+                        man_start_object <trigger, "Dial">
+                          mat_relative_tag <11>
+                          mat_bool_default_send <no>
+                          act_replace_select_action
+                              <
+                              uni_start_stream
+                                de_start_extraction
+                                man_set_context_relative <11>
+                                de_get_data_value
+                                uni_save_result
+                                de_end_extraction
+                                man_change_context_relative <12>
+                                uni_get_result
+                                if_last_return_true_then <1, 2>
+                                mat_bool_disabled <no>
+                                uni_sync_skip <1>
+                                mat_bool_disabled <yes>
+                                uni_sync_skip <2>
+                                man_end_context
+                                man_update_display
+                              uni_end_stream
+                              >
+                          man_end_object
+                        man_start_sibling <edit_view, "">
+                          mat_size <5, 1, 48>
+                          mat_relative_tag <12>
+                          act_get_db_record <20-3-32>
+                          uni_use_last_atom_string <man_append_data>
+                          mat_bool_disabled <yes>
+                          mat_bool_writeable <yes>
+                          uni_next_atom_typed <ascii>
+                        man_start_sibling <ornament, " to turn off call waiting.">
+                          mat_size <30, 1, 56>
+                          mat_font_style <bold>
+                        man_end_object
+                      man_start_sibling <sms_list, "">
+                        mat_orientation <hff>
+                        uni_next_atom_typed <ascii>
+                        man_start_object <trigger, "I do not have Touch Tone service.">
+                          mat_relative_tag <6>
+                          mat_bool_default_send <no>
+                        man_end_object
+                      man_end_object
+                    man_end_object
+                  man_end_object
+                man_start_sibling <org_group, "">
+                  mat_orientation <hfc>
+                  man_start_object <trigger, "">
+                    mat_relative_tag <80>
+                    mat_trigger_style <plain_picture>
+                    man_obj_stack_pop <0>
+                    if_last_return_false_then <1>
+                    mat_bool_hidden <yes>
+                    uni_sync_skip <1>
+                    mat_art_id <1-1-31171>
+                    mat_font_id <arial>
+                    mat_font_size <10>
+                    mat_command_key <98x, 00x>
+                    act_replace_select_action
+                        <
+                        uni_start_stream
+                          dice_access_action <6>
+                          man_obj_stack_pop <1>
+                          var_number_set_from_atom <A>
+                          if_numa_true_then <1>
+                          var_number_get <A>
+                          uni_use_last_atom_value <uni_invoke_no_context>
+                          uni_sync_skip <1>
+                          man_close_update <41-25397>
+                        uni_end_stream
+                        >
+                    man_start_sibling <org_group, "">
+                      mat_orientation <hcc>
+                      mat_font_sis <arial, 8, normal>
+                      uni_next_atom_typed <ascii>
+                      man_start_object <trigger, "Cancel">
+                        mat_title_width <6>
+                        mat_relative_tag <82>
+                        mat_color_face <0, 109, 170>
+                        mat_color_text <255, 255, 255>
+                        mat_color_top_edge <145, 182, 255>
+                        mat_color_bottom_edge <1, 1, 1>
+                        mat_trigger_style <rectangle>
+                        mat_font_sis <arial, 8, normal>
+                        man_obj_stack_pop <0>
+                        uni_use_last_atom_value <mat_bool_invisible>
+                        mat_command_key <71x, 01x>
+                        act_replace_select_action
+                            <
+                            uni_start_stream
+                              uni_invoke_no_context <41-27653>
+                            uni_end_stream
+                            >
+                          uni_next_atom_typed <ascii>
+                        man_start_sibling <trigger, "Help">
+                          mat_title_width <6>
+                          mat_color_face <0, 109, 170>
+                          mat_color_text <255, 255, 255>
+                          mat_color_top_edge <145, 182, 255>
+                          mat_color_bottom_edge <1, 1, 1>
+                          mat_trigger_style <rectangle>
+                          mat_font_sis <arial, 8, normal>
+                          act_replace_select_action
+                              <
+                              uni_start_stream_wait_on
+                                uni_next_atom_typed <ascii>
+                                async_exec_context_help <64x, 69x, 61x, 6cx, 69x, 6ex, 67x, 20x, 6fx, 70x, 74x, 69x, 6fx, 6ex, 73x>
+                              uni_wait_off_end_stream
+                              >
+                          man_end_object
+                        man_start_sibling <trigger, "">
+                          mat_relative_tag <81>
+                          mat_trigger_style <plain_picture>
+                          if_newuser_then <2, 3>
+                          mat_art_id <1-3-398>
+                          uni_sync_skip <2>
+                          mat_art_id <1-1-14785>
+                          uni_sync_skip <3>
+                          mat_bool_default <yes>
+                          mat_font_id <arial>
+                          mat_font_size <10>
+                          act_replace_select_action
+                              <
+                              uni_start_stream
+                                act_do_action <300>
+                                man_close_update
+                                man_close_update <41-24032>
+                                man_close_update <41-23930>
+                                man_preset_gid <32-221>
+                                if_last_return_false_then <3>
+                                uni_invoke_no_context <32-221>
+                                man_set_context_globalid <32-221>
+                                uni_sync_skip <3>
+                                mat_bool_invisible <yes>
+                                man_update_display
+                                man_end_context
+                                var_number_set <A, 1>
+                                var_number_save <A, 2244739072>
+                                man_obj_stack_pop <2>
+                                dice_access_action <5>
+                              uni_end_stream
+                              >
+                          man_end_object
+                        man_end_object
+                      man_end_object
+                      man_update_display
+                      act_get_db_record <20-3-31>
+                      uni_save_result
+                      if_last_return_true_then <5, 6>
+                      uni_get_result
+                      uni_use_last_atom_string <dice_update_device>
+                      uni_sync_skip <5>
+                      dice_set_context_device <1>
+                      uni_sync_skip <6>
+                      man_set_context_relative <6>
+                      dice_get_obj_info <6>
+                      if_last_return_true_then <6, 7>
+                      mat_value <0>
+                      uni_sync_skip <6>
+                      mat_value <1>
+                      uni_sync_skip <7>
+                      man_change_context_relative <7>
+                      dice_get_obj_info <7>
+                      var_number_set_from_atom <B>
+                      uni_use_last_atom_value <mat_value>
+                      man_change_context_relative <8>
+                      dice_get_obj_info <12>
+                      uni_use_last_atom_string <man_replace_data>
+                      if_numb_true_then <4>
+                      mat_bool_disabled <no>
+                      uni_sync_skip <4>
+                      man_change_context_relative <11>
+                      dice_get_obj_info <8>
+                      var_number_set_from_atom <B>
+                      uni_use_last_atom_value <mat_value>
+                      man_change_context_relative <12>
+                      dice_get_obj_info <11>
+                      uni_use_last_atom_string <man_replace_data>
+                      if_numb_true_then <5>
+                      mat_bool_disabled <no>
+                      uni_sync_skip <5>
+                      dice_end_context
+                      man_change_context_relative <81>
+                      man_make_focus
+                      man_end_context
+                      act_set_criterion <666>
+                      act_replace_action
+                          <
+                          uni_start_stream
+                            dice_access_action <6>
+                          uni_end_stream
+                          >
+                        man_update_display
+                        uni_end_typed_data
+                        uni_wait_off
+                      uni_end_stream <00x>

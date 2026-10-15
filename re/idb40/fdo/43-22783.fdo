@@ -1,0 +1,254 @@
+uni_start_stream
+  man_start_object <ind_group, "Form">
+    mat_style_id <43-22783>
+    mat_orientation <hff>
+    mat_color_face <255, 251, 240>
+    mat_bool_background_flood <yes>
+    mat_style_id <43-16245>
+    man_start_object <org_group, "">
+      mat_orientation <vff>
+      mat_bool_resize_vertical <yes>
+      mat_bool_resize_horizontal <yes>
+      man_start_object <org_group, "">
+        mat_orientation <vft>
+        mat_bool_resize_vertical <yes>
+        mat_bool_resize_horizontal <yes>
+        man_start_object <view, "">
+          mat_log_object <chat_log>
+          mat_bool_writeable <yes>
+          mat_width <45>
+          mat_height <16>
+          mat_font_sis <arial, 10, normal>
+          mat_bool_vertical_scroll <yes>
+          mat_relative_tag <256>
+          mat_paragraph <yes>
+          mat_bool_force_scroll <yes>
+          mat_capacity <8192>
+          mat_scroll_threshold <4096>
+          mat_ruler <15, 45>
+          mat_bool_writeable <yes>
+        man_start_sibling <org_group, "">
+          mat_orientation <hlf>
+          mat_bool_resize_vertical <yes>
+          mat_bool_resize_horizontal <yes>
+          man_start_object <edit_view, "">
+            mat_bool_importable <yes>
+            mat_precise_width <353>
+            mat_precise_height <24>
+            mat_font_sis <arial, 10, normal>
+            mat_bool_vertical_scroll <no>
+            mat_capacity <90>
+            mat_relative_tag <258>
+            mat_size <90, 1>
+            mat_field_script <latin>
+          man_start_sibling <trigger, "">
+            act_replace_select_action
+                <
+                uni_start_stream
+                  buf_start_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+                  de_start_extraction <0>
+                  de_validate <display_msg | terminate>
+                  buf_set_token <"Aa">
+                  man_set_context_relative <258>
+                  de_get_data
+                  de_end_extraction
+                  buf_close_buffer
+                  man_end_context
+                  man_clear_relative <258>
+                  man_update_display
+                uni_end_stream
+                >
+              mat_font_sis <small_fonts, 7, normal>
+              mat_precise_width <50>
+              mat_precise_height <26>
+              mat_art_id <1-1-50113>
+              mat_trigger_style <plain_picture>
+              mat_bool_default <yes>
+            man_end_object
+          man_end_object
+        man_end_object
+      man_start_sibling <org_group, "">
+        mat_orientation <vct>
+        mat_vertical_spacing <0>
+        mat_bool_resize_vertical <yes>
+        man_start_object <org_group, "">
+          mat_orientation <vlf>
+          mat_bool_resize_vertical <yes>
+          man_start_object <ornament, "">
+            mat_precise_width <110>
+            mat_precise_height <20>
+            mat_art_id <1-1-50762>
+            mat_font_sis <small_fonts, 7, normal>
+          man_start_sibling <dss_list, "">
+            mat_bool_default_send <no>
+            mat_relative_tag <257>
+            act_replace_select_action
+                <
+                uni_start_stream
+                  uni_wait_on
+                  buf_start_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+                  buf_set_token <"id">
+                  de_start_extraction
+                  man_set_context_relative <257>
+                  de_get_data
+                  man_end_context
+                  de_end_extraction
+                  buf_close_buffer
+                  uni_wait_off
+                uni_end_stream
+                >
+              mat_width <21>
+              mat_height <5>
+              mat_bool_resize_horizontal <no>
+              mat_font_sis <arial, 9, normal>
+              mat_sort_order <normal>
+            man_end_object
+          man_start_sibling <org_group, "">
+            mat_orientation <hlf>
+          man_start_sibling <trigger, "">
+            sm_set_object_domain <00x>
+            act_replace_select_action
+                <
+                uni_start_stream_wait_on <00x>
+                sm_send_f1 <40-3760>
+              uni_end_stream
+              >
+            mat_font_sis <small_fonts, 7, normal>
+            mat_precise_width <118>
+            mat_precise_height <63>
+            mat_art_id <1-1-50127>
+            mat_trigger_style <plain_picture>
+          man_start_sibling <org_group, "">
+            mat_orientation <vff>
+            mat_precise_width <180>
+            mat_precise_height <136>
+            mat_precise_x <0>
+            mat_precise_y <0>
+            mat_bool_precise <yes>
+            man_start_object <trigger, "">
+              mat_relative_tag <260>
+              mat_context_help <"Click here to interact with people on stage.">
+              act_replace_select_action
+                  <
+                  uni_start_stream
+                    man_preset_gid <43-16776>
+                    if_last_return_true_then <1, 2>
+                    man_make_focus
+                    man_update_display
+                    uni_sync_skip <1>
+                    uni_wait_on
+                    uni_invoke_no_context <43-16776>
+                    uni_sync_skip <2>
+                  uni_end_stream
+                  >
+                mat_font_sis <system, 12, normal>
+                mat_precise_width <155>
+                mat_precise_height <25>
+                mat_precise_x <1>
+                mat_precise_y <2>
+                mat_art_hint_title <"AOL Live">
+                mat_art_hint_width <150>
+                mat_art_hint_height <24>
+                mat_art_id <1-1-50129>
+                mat_trigger_style <plain_picture>
+              man_start_sibling <trigger, "">
+                mat_context_help <"Click here to see a list of today's live events.">
+                sm_set_object_domain <00x>
+                act_replace_select_action
+                    <
+                    uni_start_stream_wait_on <00x>
+                    sm_send_k1 <14-8785>
+                  uni_end_stream
+                  >
+                mat_font_sis <system, 12, normal>
+                mat_precise_width <120>
+                mat_precise_height <18>
+                mat_precise_x <1>
+                mat_precise_y <35>
+                mat_art_hint_title <"Private Chat">
+                mat_art_hint_width <116>
+                mat_art_hint_height <12>
+                mat_art_id <1-1-50131>
+                mat_trigger_style <plain_picture>
+              man_start_sibling <trigger, "">
+                mat_relative_tag <259>
+                mat_context_help <"Click here to see other Members in your row.">
+                act_replace_select_action
+                    <
+                    uni_start_stream_wait_on <00x>
+                      buf_start_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+                      buf_set_token <"cH">
+                      buf_close_buffer
+                    uni_end_stream
+                    >
+                  mat_font_sis <system, 12, normal>
+                  mat_precise_width <120>
+                  mat_precise_height <18>
+                  mat_precise_x <1>
+                  mat_precise_y <57>
+                  mat_art_hint_title <"Notify AOL">
+                  mat_art_hint_width <116>
+                  mat_art_hint_height <12>
+                  mat_art_id <1-1-50130>
+                  mat_trigger_style <plain_picture>
+                man_start_sibling <trigger, "">
+                  mat_context_help <"Click here to report a member violation.">
+                  act_replace_select_action
+                      <
+                      uni_start_stream
+                      sm_send_token_arg <"K1", 17-42646>
+                    uni_end_stream
+                    >
+                  mat_font_sis <system, 12, normal>
+                  mat_precise_width <120>
+                  mat_precise_height <18>
+                  mat_precise_x <1>
+                  mat_precise_y <79>
+                  mat_art_hint_title <"Chat Prefs">
+                  mat_art_hint_width <116>
+                  mat_art_hint_height <12>
+                  mat_art_id <1-1-50128>
+                  mat_trigger_style <plain_picture>
+                man_start_sibling <trigger, "">
+                  act_replace_select_action
+                      <
+                      uni_start_stream
+                        man_preset_gid <43-10029>
+                        if_last_return_true_then <1, 2>
+                        man_make_focus
+                        man_update_display
+                        uni_sync_skip <1>
+                        uni_start_stream
+                          uni_wait_on
+                          uni_invoke_no_context <43-10029>
+                        sm_send_token_arg <"CJ", 2>
+                      uni_end_stream
+                      uni_sync_skip <2>
+                      >
+                    mat_font_sis <small_fonts, 7, normal>
+                    mat_precise_width <54>
+                    mat_precise_height <35>
+                    mat_precise_x <18>
+                    mat_precise_y <104>
+                    mat_art_id <1-1-50108>
+                    mat_trigger_style <plain_picture>
+                  man_start_sibling <trigger, "">
+                    sm_set_object_domain <00x>
+                    act_replace_select_action
+                        <
+                        uni_start_stream_wait_on <00x>
+                        sm_send_token_arg <"t1", 57-11756>
+                      uni_end_stream
+                      >
+                    mat_font_sis <small_fonts, 7, normal>
+                    mat_precise_width <68>
+                    mat_precise_height <35>
+                    mat_precise_x <100>
+                    mat_precise_y <104>
+                    mat_art_id <1-1-50107>
+                    mat_trigger_style <plain_picture>
+                  man_end_object
+                man_end_object
+              man_end_object
+              man_update_display
+            man_update_woff_end_stream

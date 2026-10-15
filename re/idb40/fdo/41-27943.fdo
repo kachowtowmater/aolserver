@@ -1,0 +1,247 @@
+uni_start_stream
+  man_start_object <dss_list, "">
+    mat_relative_tag <127>
+    mat_bool_popup_menu <yes>
+    act_replace_select_action
+        <
+        uni_start_stream
+          man_set_context_relative <127>
+          man_set_context_relative <141>
+          mat_bool_disabled <yes>
+          async_is_known_subaccount
+          if_last_return_true_then <11>
+          man_get_top_window
+          uni_save_result
+          if_last_return_true_then <3>
+          uni_get_result
+          uni_use_last_atom_value <man_set_context_globalid>
+          man_get_attribute <mat_url>
+          man_end_context
+          if_last_return_true_then <2, 3>
+          mat_bool_disabled <no>
+          uni_sync_skip <2>
+          uni_get_result
+          uni_use_last_atom_value <man_set_context_globalid>
+          man_get_attribute <mat_bool_savable_to_pfc>
+          man_end_context
+          if_last_return_true_then <3>
+          mat_bool_disabled <no>
+          uni_sync_skip <3>
+          man_end_context
+          async_is_guest
+          if_last_return_false_then <1>
+          man_build_favorites_menu
+          uni_sync_skip <1>
+          uni_sync_skip <11>
+          man_end_context
+        uni_end_stream
+        >
+      man_start_object <trigger, "Favorite Places">
+        mat_shortcut_key <"F">
+        mat_relative_tag <233>
+        mat_bool_inactive_for_guest <yes>
+        act_replace_select_action
+            <
+            uni_start_stream
+              uni_invoke_local <32-4619>
+            uni_end_stream
+            >
+        man_end_object
+        man_start_object <ornament, "">
+        man_end_object
+        man_start_object <trigger, "Add Top Window to Favorite Places">
+          mat_shortcut_key <"A">
+          mat_command_key <2bx>
+          mat_bool_inactive_for_guest <yes>
+          mat_relative_tag <141>
+          act_replace_select_action
+              <
+              uni_start_stream
+                man_get_top_window
+                uni_save_result
+                if_last_return_true_then <5>
+                uni_get_result
+                uni_use_last_atom_value <man_set_context_globalid>
+                man_get_attribute <mat_url>
+                man_end_context
+                if_last_return_true_then <4, 5>
+                uni_invoke_no_context <32-5873>
+                uni_sync_skip <4>
+                mat_fp_save_to_fp <01x>
+                uni_sync_skip <5>
+              uni_end_stream
+              >
+          man_end_object
+          man_start_object <trigger, "Go To Keyword...">
+            mat_bool_disabled <yes>
+            mat_bool_active_online <yes>
+            mat_command_key <4bx>
+            mat_shortcut_key <"G">
+            act_replace_select_action
+                <
+                uni_start_stream_wait_on <00x>
+                  if_offline_then <1>
+                  uni_wait_off
+                uni_abort_stream
+                uni_sync_skip <1>
+                man_do_magic_response_id <8422>
+                uni_invoke_no_context <40-5792>
+              uni_end_stream
+              >
+          man_end_object
+          man_start_object <ornament, "">
+          man_end_object
+          man_start_object <dss_list, "My Shortcuts">
+            mat_object_id <20-0-41>
+            mat_bool_inactive_for_guest <yes>
+            mat_shortcut_key <"M">
+            man_start_object <trigger, "Edit Shortcuts">
+              mat_relative_tag <11>
+              mat_bool_inactive_for_guest <yes>
+              act_replace_select_action
+                  <
+                  uni_start_stream_wait_on
+                    uni_invoke_no_context <32-529>
+                    uni_wait_off
+                  uni_end_stream
+                  >
+              man_end_object
+              async_is_guest
+              if_last_return_false_then <1>
+              man_start_object <ornament, "">
+              man_end_object
+              uni_sync_skip <1>
+              uni_invoke_local <32-538>
+            man_end_object
+            async_is_guest
+            if_last_return_false_then <1>
+            man_start_object <ornament, "">
+            man_end_object
+            uni_sync_skip <1>
+          man_end_object
+          man_start_object <dss_list, "">
+            mat_relative_tag <109>
+            mat_bool_popup_menu <yes>
+            man_start_object <trigger, "Personal Filing Cabinet">
+              mat_shortcut_key <"P">
+              mat_relative_tag <234>
+              mat_bool_inactive_for_guest <yes>
+              act_replace_select_action
+                  <
+                  uni_start_stream
+                    uni_invoke_local <32-4621>
+                  uni_end_stream
+                  >
+              man_start_sibling <dss_list, "Save to Personal Filing Cabinet">
+                mat_relative_tag <140>
+                mat_bool_inactive_for_guest <yes>
+                mat_shortcut_key <"S">
+                act_replace_select_action
+                    <
+                    uni_start_stream
+                      man_set_context_relative <140>
+                      man_build_savemail_menu
+                      man_end_context
+                    uni_end_stream
+                    >
+                  man_start_object <ornament, "">
+                  man_end_object
+                man_start_sibling <ornament, "">
+                man_start_sibling <trigger, "Offline Mail">
+                  mat_shortcut_key <"O">
+                  mat_bool_inactive_for_guest <yes>
+                  mat_relative_tag <235>
+                  act_replace_select_action
+                      <
+                      uni_start_stream
+                        uni_invoke_no_context <32-4634>
+                      uni_end_stream
+                      >
+                  man_start_sibling <trigger, "Download Manager">
+                    mat_shortcut_key <"D">
+                    mat_relative_tag <236>
+                    mat_bool_inactive_for_guest <yes>
+                    act_replace_select_action
+                        <
+                        uni_start_stream
+                          sm_enter_paid
+                          xfer_invoke_dl_manager
+                        uni_end_stream
+                        >
+                    man_start_sibling <trigger, "My Web Page">
+                      mat_shortcut_key <"M">
+                      mat_relative_tag <237>
+                      mat_bool_disabled <yes>
+                      mat_bool_active_online <yes>
+                      act_replace_select_action
+                          <
+                          uni_start_stream
+                            map_pp3_mywebpage
+                          uni_end_stream
+                          >
+                      man_start_sibling <trigger, "Offline Newsgroups">
+                        mat_shortcut_key <"N">
+                        mat_bool_inactive_for_guest <yes>
+                        mat_relative_tag <238>
+                        act_replace_select_action
+                            <
+                            uni_start_stream
+                              uni_invoke_no_context <32-6465>
+                            uni_end_stream
+                            >
+                        man_start_sibling <ornament, "">
+                        man_start_sibling <trigger, "Log Manager">
+                          mat_shortcut_key <"L">
+                          act_replace_select_action
+                              <
+                              uni_start_stream
+                                uni_invoke_no_context <32-238>
+                              uni_end_stream
+                              >
+                          man_end_object
+                          act_replace_select_action
+                              <
+                              uni_start_stream
+                                man_get_top_window
+                                uni_use_last_atom_value <man_set_context_globalid>
+                                man_get_attribute <mat_bool_savable_to_pfc>
+                                man_end_context
+                                if_last_return_false_then <1, 2>
+                                man_set_context_relative <140>
+                                mat_bool_disabled <yes>
+                                man_end_context
+                                uni_sync_skip <1>
+                                async_is_known_subaccount
+                                if_last_return_true_then <1, 3>
+                                man_set_context_relative <140>
+                                mat_bool_disabled <no>
+                                man_end_context
+                                uni_sync_skip <1>
+                                man_set_context_relative <140>
+                                mat_bool_disabled <yes>
+                                man_end_context
+                                uni_sync_skip <3>
+                                uni_sync_skip <2>
+                                cm_is_tool_loaded <20003>
+                                if_last_return_true_then <5, 6>
+                                man_set_context_relative <237>
+                                mat_bool_disabled <no>
+                                man_end_context
+                                uni_sync_skip <5>
+                                man_set_context_relative <237>
+                                act_replace_select_action
+                                    <
+                                    uni_start_stream
+                                      buf_use_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+                                      buf_clear_buffer
+                                      buf_set_token <"ur">
+                                      buf_add_atom_pointer <"aol://1722:myplace">
+                                      buf_close_buffer
+                                    uni_end_stream
+                                    >
+                                  man_end_context
+                                  uni_sync_skip <6>
+                                uni_end_stream
+                                >
+                            man_end_object
+                          uni_end_stream

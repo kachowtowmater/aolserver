@@ -1,0 +1,40 @@
+var_string_get <D>
+var_data_set
+var_string_set
+uni_start_typed_data <6840692>
+the_unknown <0, 25, 6fx, 75x, 20x>
+uni_invoke_no_context
+uni_start_loop <65x, 72x, 65x>
+the_unknown <0, 31>
+uni_start_stream
+  uni_data
+  uni_start_typed_data <6385268>
+  uni_invoke_local <111-8291>
+  uni_wait_on
+the_unknown <0, 13>
+uni_end_stream <61x, 63x, 6bx>
+the_unknown <31, 31, 7fx, 4ax, 75x>
+the_unknown <31, 19>
+the_unknown <31, 20>
+uni_abort_stream <7104867>
+uni_use_last_atom_value
+uni_start_loop <65x, 72x, 65x>
+uni_invoke_local <111-32609>
+uni_invoke_local <104-26995>
+uni_start_stream <72x, 65x, 61x>
+  uni_invoke_local <111-8313>
+  uni_wait_on
+  uni_get_result
+uni_wait_off_end_stream
+the_unknown <0, 31>
+the_unknown <6, 1, 03x>
+the_unknown <6, 22>
+the_unknown <6, 15>
+the_unknown <6, 18>
+the_unknown <6, 9>
+the_unknown <6, 20>
+the_unknown <6, 5>
+uni_wait_off <6cx, 61x>
+uni_abort_stream
+uni_invoke_no_context
+sm_p_send_token_arg

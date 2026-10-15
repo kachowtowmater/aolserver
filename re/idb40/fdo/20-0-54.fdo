@@ -1,0 +1,10 @@
+man_start_object
+  uni_start_stream
+    uni_void <00x>
+    uni_void <00x>
+    uni_void <00x>
+    uni_void <00x>
+    uni_void <00x>
+    uni_void <00x, 00x, 00x, 05x, 00x, 00x, 00x>
+    act_set_criterion
+    uni_void

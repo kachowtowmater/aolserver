@@ -1,0 +1,348 @@
+uni_start_stream <00x>
+  man_set_context_globalid <1>
+  man_preset_gid <32-5483>
+  man_set_response_id
+  if_last_return_false_then <1, 2>
+  man_start_object <ind_group, "Channels">
+    mat_style_id <32-5483>
+    mat_orientation <vff>
+    mat_precise_width <540>
+    mat_precise_height <320>
+    mat_url <"aol://1722:channels">
+    mat_position <center_center>
+    mat_bool_resize_vertical <no>
+    mat_bool_precise <yes>
+    man_start_object <org_group, "">
+      mat_orientation <vff>
+      mat_precise_width <185>
+      mat_precise_height <320>
+      mat_art_id <1-1-19435>
+      mat_bool_background_pic <yes>
+      man_start_object <trigger, "">
+        mat_precise_x <13>
+        mat_precise_y <130>
+        mat_precise_width <159>
+        mat_precise_height <25>
+        mat_trigger_style <9>
+        mat_art_hint_title <"Return to Welcome">
+        mat_art_id <1-1-19568>
+        act_replace_select_action
+            <
+            uni_start_stream <00x>
+              sm_enter_paid
+              man_preset_gid <32-30>
+              if_last_return_true_then <1, 2>
+              man_make_focus
+              man_update_display
+              uni_sync_skip <1>
+              uni_wait_on
+              uni_invoke_no_context <32-30>
+              uni_sync_skip <2>
+            uni_wait_off_end_stream
+            >
+        man_start_sibling <trigger, "">
+          mat_precise_x <13>
+          mat_precise_y <160>
+          mat_precise_width <159>
+          mat_precise_height <32>
+          mat_trigger_style <9>
+          mat_context_help <"Find people, places, files and more.">
+          mat_art_hint_title <"Find">
+          mat_art_id <1-1-19561>
+          act_replace_select_action
+              <
+              uni_start_stream_wait_on <00x>
+              sm_send_f1 <32-6490>
+              >
+          man_start_sibling <trigger, "">
+            mat_precise_x <14>
+            mat_precise_y <198>
+            mat_precise_width <164>
+            mat_precise_height <34>
+            mat_trigger_style <plain_picture>
+            mat_context_help <"Your guide to what's best\x7fon AOL right now.">
+            mat_art_hint_title <"AOL Today">
+            mat_art_id <1-1-32670>
+            act_replace_select_action
+                <
+                uni_start_stream_wait_on <00x>
+                sm_send_f1 <32-6468>
+                >
+            man_start_sibling <trigger, "">
+              mat_precise_x <14>
+              mat_precise_y <235>
+              mat_precise_width <164>
+              mat_precise_height <34>
+              mat_trigger_style <plain_picture>
+              mat_context_help <"The latest headlines, the best sources:\x7fcustomize your newscast!">
+              mat_art_hint_title <"News">
+              mat_art_id <1-1-32663>
+              act_replace_select_action
+                  <
+                  uni_start_stream_wait_on <00x>
+                  sm_send_f1 <32-6480>
+                  >
+              man_start_sibling <trigger, "">
+                mat_precise_x <14>
+                mat_precise_y <272>
+                mat_precise_width <164>
+                mat_precise_height <34>
+                mat_trigger_style <plain_picture>
+                mat_context_help <"Scores, stats, features, chats,\x7fand lots of weekend fun.">
+                mat_art_hint_title <"Sports">
+                mat_art_id <1-1-32668>
+                act_replace_select_action
+                    <
+                    uni_start_stream_wait_on <00x>
+                    sm_send_f1 <32-6484>
+                    >
+                man_end_object
+              man_start_sibling <org_group, "">
+                mat_orientation <vff>
+                mat_precise_x <185>
+                mat_precise_width <175>
+                mat_precise_height <320>
+                mat_art_id <1-1-19436>
+                mat_bool_background_pic <yes>
+                man_start_object <trigger, "">
+                  mat_precise_x <187>
+                  mat_precise_y <13>
+                  mat_precise_width <164>
+                  mat_precise_height <34>
+                  mat_trigger_style <plain_picture>
+                  mat_context_help <"Gossip! Media! Power! Culture!\x7f             The good life!">
+                  mat_art_hint_title <"Influence">
+                  mat_art_id <1-1-33236>
+                  act_replace_select_action
+                      <
+                      uni_start_stream_wait_on <00x>
+                      sm_send_f1 <32-6474>
+                      >
+                  man_start_sibling <trigger, "">
+                    mat_precise_x <187>
+                    mat_precise_y <50>
+                    mat_precise_width <164>
+                    mat_precise_height <34>
+                    mat_trigger_style <plain_picture>
+                    mat_context_help <"Destinations, Online Booking,\x7fIdeas -- and Bargains.">
+                    mat_art_hint_title <"Travel">
+                    mat_art_id <1-1-32669>
+                    act_replace_select_action
+                        <
+                        uni_start_stream_wait_on <00x>
+                        sm_send_f1 <32-6485>
+                        >
+                    man_start_sibling <trigger, "">
+                      mat_precise_x <187>
+                      mat_precise_y <87>
+                      mat_precise_width <164>
+                      mat_precise_height <34>
+                      mat_trigger_style <plain_picture>
+                      mat_context_help <"Visit your favorite countries,\x7fmake friends around the world.">
+                      mat_art_hint_title <"International">
+                      mat_art_id <1-1-32659>
+                      act_replace_select_action
+                          <
+                          uni_start_stream_wait_on <00x>
+                          sm_send_f1 <32-6476>
+                          >
+                      man_start_sibling <trigger, "">
+                        mat_precise_x <187>
+                        mat_precise_y <124>
+                        mat_precise_width <164>
+                        mat_precise_height <34>
+                        mat_trigger_style <plain_picture>
+                        mat_context_help <"Stocks, Research, Trading,\x7fMutual Funds, Banks & Real Estate.">
+                        mat_art_hint_title <"Personal Finance">
+                        mat_art_id <1-1-32665>
+                        act_replace_select_action
+                            <
+                            uni_start_stream_wait_on <00x>
+                            sm_send_f1 <32-6481>
+                            >
+                        man_start_sibling <trigger, "">
+                          mat_precise_x <187>
+                          mat_precise_y <161>
+                          mat_precise_width <164>
+                          mat_precise_height <34>
+                          mat_trigger_style <plain_picture>
+                          mat_context_help <"Business & Career Info, News,\x7fTools, Services & Research.">
+                          mat_art_hint_title <"WorkPlace">
+                          mat_art_id <1-1-32650>
+                          act_replace_select_action
+                              <
+                              uni_start_stream_wait_on <00x>
+                              sm_send_f1 <32-6486>
+                              >
+                          man_start_sibling <trigger, "">
+                            mat_precise_x <187>
+                            mat_precise_y <198>
+                            mat_precise_width <164>
+                            mat_precise_height <34>
+                            mat_trigger_style <plain_picture>
+                            mat_context_help <"Helping you get the\x7fmost out of your PC.">
+                            mat_art_hint_title <"Computing">
+                            mat_art_id <1-1-32651>
+                            act_replace_select_action
+                                <
+                                uni_start_stream_wait_on <00x>
+                                sm_send_f1 <32-6469>
+                                >
+                            man_start_sibling <trigger, "">
+                              mat_precise_x <187>
+                              mat_precise_y <235>
+                              mat_precise_width <164>
+                              mat_precise_height <34>
+                              mat_trigger_style <plain_picture>
+                              mat_context_help <"Research resources, student help\x7fand online courses.">
+                              mat_art_hint_title <"Research & Learning">
+                              mat_art_id <1-1-32666>
+                              act_replace_select_action
+                                  <
+                                  uni_start_stream_wait_on <00x>
+                                  sm_send_f1 <32-6482>
+                                  >
+                              man_start_sibling <trigger, "">
+                                mat_precise_x <187>
+                                mat_precise_y <272>
+                                mat_precise_width <164>
+                                mat_precise_height <34>
+                                mat_trigger_style <plain_picture>
+                                mat_context_help <"Movies, TV, books, music and\x7fall the celebrity info you need!">
+                                mat_art_hint_title <"Entertainment">
+                                mat_art_id <1-1-33235>
+                                act_replace_select_action
+                                    <
+                                    uni_start_stream_wait_on <00x>
+                                    sm_send_f1 <32-6470>
+                                    >
+                                man_end_object
+                              man_start_sibling <org_group, "">
+                                mat_orientation <vff>
+                                mat_precise_x <360>
+                                mat_precise_width <180>
+                                mat_precise_height <320>
+                                mat_art_id <1-1-19437>
+                                mat_bool_background_pic <yes>
+                                man_start_object <trigger, "">
+                                  mat_precise_x <361>
+                                  mat_precise_y <13>
+                                  mat_precise_width <164>
+                                  mat_precise_height <34>
+                                  mat_trigger_style <plain_picture>
+                                  mat_context_help <"Interactive gaming,\x7fhot game news, and more!">
+                                  mat_art_hint_title <"Games">
+                                  mat_art_id <1-1-33237>
+                                  act_replace_select_action
+                                      <
+                                      uni_start_stream_wait_on <00x>
+                                      sm_send_f1 <32-6472>
+                                      >
+                                  man_start_sibling <trigger, "">
+                                    mat_precise_x <361>
+                                    mat_precise_y <50>
+                                    mat_precise_width <164>
+                                    mat_precise_height <34>
+                                    mat_trigger_style <plain_picture>
+                                    mat_context_help <"All about cars, food, pets,\x7fhobbies and more.">
+                                    mat_art_hint_title <"Interests">
+                                    mat_art_id <1-1-32657>
+                                    act_replace_select_action
+                                        <
+                                        uni_start_stream_wait_on <00x>
+                                        sm_send_f1 <32-6475>
+                                        >
+                                    man_start_sibling <trigger, "">
+                                      mat_precise_x <361>
+                                      mat_precise_y <87>
+                                      mat_precise_width <164>
+                                      mat_precise_height <34>
+                                      mat_trigger_style <plain_picture>
+                                      mat_context_help <"Explore your beliefs,\x7fchoices and heritage.">
+                                      mat_art_hint_title <"Lifestyles">
+                                      mat_art_id <1-1-32661>
+                                      act_replace_select_action
+                                          <
+                                          uni_start_stream_wait_on <00x>
+                                          sm_send_f1 <32-6478>
+                                          >
+                                      man_start_sibling <trigger, "">
+                                        mat_precise_x <361>
+                                        mat_precise_y <124>
+                                        mat_precise_width <164>
+                                        mat_precise_height <34>
+                                        mat_trigger_style <plain_picture>
+                                        mat_context_help <"The Place to Shop -- Great Savings,\x7f          Selection & Information.">
+                                        mat_art_hint_title <"Shopping">
+                                        mat_art_id <1-1-32667>
+                                        act_replace_select_action
+                                            <
+                                            uni_start_stream_wait_on <00x>
+                                            sm_send_f1 <32-6483>
+                                            >
+                                        man_start_sibling <trigger, "">
+                                          mat_precise_x <361>
+                                          mat_precise_y <161>
+                                          mat_precise_width <164>
+                                          mat_precise_height <34>
+                                          mat_trigger_style <plain_picture>
+                                          mat_context_help <"Sick or well, the information\x7fand support you need.">
+                                          mat_art_hint_title <"Health">
+                                          mat_art_id <1-1-32655>
+                                          act_replace_select_action
+                                              <
+                                              uni_start_stream_wait_on <00x>
+                                              sm_send_f1 <32-6473>
+                                              >
+                                          man_start_sibling <trigger, "">
+                                            mat_precise_x <361>
+                                            mat_precise_y <198>
+                                            mat_precise_width <164>
+                                            mat_precise_height <34>
+                                            mat_trigger_style <plain_picture>
+                                            mat_context_help <"Expert information\x7fabout life at home.">
+                                            mat_art_hint_title <"Families">
+                                            mat_art_id <1-1-32653>
+                                            act_replace_select_action
+                                                <
+                                                uni_start_stream_wait_on <00x>
+                                                sm_send_f1 <32-6471>
+                                                >
+                                            man_start_sibling <trigger, "">
+                                              mat_precise_x <361>
+                                              mat_precise_y <235>
+                                              mat_precise_width <164>
+                                              mat_precise_height <34>
+                                              mat_trigger_style <plain_picture>
+                                              mat_context_help <"Hang out with friends and\x7fget homework help.">
+                                              mat_art_hint_title <"Kids Only">
+                                              mat_art_id <1-1-32660>
+                                              act_replace_select_action
+                                                  <
+                                                  uni_start_stream_wait_on <00x>
+                                                  sm_send_f1 <32-6477>
+                                                  >
+                                              man_start_sibling <trigger, "">
+                                                mat_precise_x <361>
+                                                mat_precise_y <272>
+                                                mat_precise_width <164>
+                                                mat_precise_height <34>
+                                                mat_trigger_style <plain_picture>
+                                                mat_context_help <"Get more out of your community:\x7fevents, news, movies, dining & more.">
+                                                mat_art_hint_title <"Local">
+                                                mat_art_id <1-1-32662>
+                                                act_replace_select_action
+                                                    <
+                                                    uni_start_stream_wait_on <00x>
+                                                    sm_send_f1 <32-6479>
+                                                    >
+                                                man_end_object
+                                              man_end_object
+                                              man_update_display
+                                              uni_sync_skip <1>
+                                              man_make_focus
+                                              man_update_display
+                                              uni_sync_skip <2>
+                                              man_end_context
+                                              uni_wait_off
+                                            uni_end_stream <00x>

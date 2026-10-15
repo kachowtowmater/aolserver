@@ -1,0 +1,42 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Error">
+    mat_object_id <32-4733>
+    mat_style_id <32-4733>
+    mat_orientation <vcf>
+    mat_color_face <255, 251, 240>
+    man_start_object <trigger, "">
+      mat_bool_invisible <yes>
+      mat_command_key <0dx, 01x>
+      act_replace_select_action
+          <
+          uni_start_stream
+          sm_send_f1 <41-33347>
+          >
+      man_end_object
+      mat_position <center_center>
+      mat_bool_background_flood <yes>
+      man_start_object <view, "">
+        mat_size <50, 8>
+        mat_relative_tag <1>
+        mat_bool_writeable <yes>
+        man_append_data <"The following problems occurred while processing your request:\x7f\x7f">
+      man_start_sibling <trigger, "OK">
+        mat_font_sis <arial, 8, normal>
+        mat_color_text <255, 255, 255>
+        mat_precise_height <24>
+        mat_precise_width <50>
+        mat_trigger_style <rectangle>
+        mat_color_top_edge <145, 182, 255>
+        mat_color_bottom_edge <1, 1, 1>
+        mat_color_face <1, 109, 170>
+        mat_bool_default <yes>
+        act_replace_select_action
+            <
+            uni_start_stream <00x>
+              man_close_update
+            uni_end_stream <00x>
+            >
+        man_end_object
+        man_update_display
+        uni_wait_off
+      uni_end_stream <00x>

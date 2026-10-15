@@ -1,0 +1,6 @@
+man_start_object <org_group, "">
+  man_start_object <sss_list, "\x00\x00\x00\x00\x00\x00\t\x02\x00\x00\x00\x00\x00\x00Y\x05\x00\x00$\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\r\x00JG\x04\x0e\x00\x00\x00\x00\x16\x00\x00(\x00(\x00#\x05 \x01\x00®·ã\x08¶?ø\x00I\x11UÿúýÏ}âyÚ<æ«½¥{¼÷:¬Qk&¨b,¨Ñ\x11U\x12\x08B\x02\x10$DD$DD\x08BD\x19$L¿ýÈM\r">
+the_unknown <13, 81, 55x, 87x, ffx, c2x, 65x, e8x, d6x, f4x, 03x, b9x, 80x, 0ex, a5x, eex, 50x, e5x, 79x, 1cx, 9ex, 38x, f5x, ddx, 4ex, d3x, 32x>
+the_unknown <3, 89, b9x, 1ax, 66x, 50x, 19x, 4ax, a1x, a4x, 63x, 9ax, afx, 58x, e6x, 48x, c1x, 8dx, 65x, 2ex, dax, 6fx, 18x, bax, 63x, d9x, 86x, 20x, 65x, b9x, d6x, 25x, 8ax, b6x, 3bx, d6x, 53x, e1x, 91x, b3x, f3x, 2fx, 6cx, 03x, 25x, bfx, ecx, 9bx, 36x, bfx, b2x, ffx, 85x, f5x, 8ax, f5x, 91x, 66x, 45x, fbx, 19x, 83x, 56x, bex, 53x, 2ex, 0bx, d3x, 2ax, 30x, 38x, cax, 07x, 0dx, 8cx, 91x, 6bx, f3x, 22x, 1ex, 31x, e6x, e9x, 8ex, 0dx, 31x, 84x, 08x, 71x, 88x, 08x, 63x, 0ax, 1fx, 30x, 64x, 08x, 62x, fex, 10x, eax, f8x, 1bx, bbx, 5ex, 8dx, f5x, 79x, 0bx, 5dx>
+    de_get_data_value <current_object>
+    mat_art_hint_title_font_id <985040429>

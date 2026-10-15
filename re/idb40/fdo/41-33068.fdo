@@ -1,0 +1,110 @@
+uni_start_stream <00x>
+  man_preset_gid <41-27653>
+  if_last_return_true_then <5>
+uni_abort_stream
+uni_sync_skip <5>
+man_start_object <ind_group, "AOL Setup">
+  mat_object_id <41-33068>
+  mat_style_id <41-33068>
+  mat_orientation <vff>
+  mat_color_face <255, 251, 240>
+  mat_bool_background_flood <yes>
+  mat_position <center_center>
+  mat_bool_modal <yes>
+  man_start_object <org_group, "">
+    mat_orientation <hlc>
+    man_start_object <ornament, "">
+      mat_art_id <1-1-22358>
+      mat_bool_disabled <yes>
+    man_start_sibling <org_group, "">
+      mat_orientation <vlc>
+      mat_color_face <1, 1, 1>
+      man_start_object <ornament, "">
+        mat_size <20, 1, 512>
+        mat_font_id <arial>
+        mat_font_size <14>
+        mat_font_style <bold>
+        man_append_data <"Change for all numbers?">
+      man_start_sibling <org_group, "">
+        mat_orientation <vft>
+        mat_precise_width <330>
+        mat_precise_height <2>
+        mat_color_face <1, 1, 1>
+        mat_bool_background_flood <yes>
+        mat_bool_precise <yes>
+      man_end_object
+    man_end_object
+  man_start_sibling <ornament, "">
+    mat_size <10, 1, 5>
+  man_start_sibling <ornament, "">
+    mat_size <47, 3>
+    man_append_data <"Would you like all of your numbers (connections) to use the connection device you have just selected?">
+  man_start_sibling <org_group, "">
+    mat_orientation <hcc>
+    man_start_object <trigger, "Yes">
+      mat_title_width <6>
+      mat_relative_tag <6>
+      mat_color_face <0, 109, 170>
+      mat_color_text <255, 255, 255>
+      mat_color_top_edge <145, 182, 255>
+      mat_color_bottom_edge <1, 1, 1>
+      mat_trigger_style <rectangle>
+      mat_font_sis <arial, 10, normal>
+      mat_bool_gradual_shadow <yes>
+      act_replace_select_action
+          <
+          uni_start_stream
+            dice_send_message <17>
+            act_do_action <245>
+          uni_end_stream
+          >
+      man_start_sibling <trigger, "">
+        mat_bool_hidden <yes>
+        mat_size <1, 1>
+      man_start_sibling <trigger, "No">
+        mat_title_width <6>
+        mat_relative_tag <5>
+        mat_color_face <0, 109, 170>
+        mat_color_text <255, 255, 255>
+        mat_color_top_edge <145, 182, 255>
+        mat_color_bottom_edge <1, 1, 1>
+        mat_trigger_style <rectangle>
+        mat_font_sis <arial, 10, normal>
+        mat_bool_default <yes>
+        mat_bool_gradual_shadow <yes>
+        act_replace_select_action
+            <
+            uni_start_stream
+              act_do_action <245>
+            uni_end_stream
+            >
+        man_end_object
+      man_end_object
+      man_update_display
+      act_set_criterion <245>
+      act_replace_action
+          <
+          uni_start_stream
+            man_close_update
+            man_obj_stack_pop <2>
+            var_number_set <A, 0>
+            var_number_save <A, 2244739072>
+            man_preset_gid <32-221>
+            if_last_return_true_then <2, 3>
+            mat_bool_invisible <no>
+            man_update_display
+            man_end_context
+            uni_sync_skip <2>
+            if_offline_then <3>
+            uni_invoke_no_context <32-221>
+            uni_sync_skip <3>
+          uni_end_stream
+          >
+        man_update_display
+        man_set_context_relative <5>
+        man_make_focus
+        man_end_context
+        man_update_display
+        async_playsound <"Drop.wav">
+        uni_wait_off
+      uni_end_stream <00x>

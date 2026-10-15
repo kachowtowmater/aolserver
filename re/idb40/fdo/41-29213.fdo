@@ -1,0 +1,222 @@
+uni_start_stream
+  man_start_object <dss_list, "">
+    mat_relative_tag <120>
+    mat_shortcut_key <"P">
+    mat_bool_popup_menu <yes>
+    man_start_object <trigger, "AOL Today">
+      mat_shortcut_key <"A">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6468>
+        >
+    man_start_sibling <ornament, "">
+    man_start_sibling <trigger, "News">
+      mat_shortcut_key <"N">
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on <00x>
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6480>
+        >
+    man_start_sibling <trigger, "Sports">
+      mat_shortcut_key <"S">
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on <00x>
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6484>
+        >
+    man_start_sibling <trigger, "Influence">
+      mat_shortcut_key <"I">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6474>
+        >
+    man_start_sibling <trigger, "Travel">
+      mat_shortcut_key <"V">
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on <00x>
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6485>
+        >
+    man_start_sibling <trigger, "International">
+      mat_shortcut_key <"L">
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on <00x>
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6476>
+        >
+    man_start_sibling <ornament, "">
+    man_start_sibling <trigger, "Personal Finance">
+      mat_shortcut_key <"P">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6481>
+        >
+    man_start_sibling <trigger, "WorkPlace">
+      mat_shortcut_key <"W">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6486>
+        >
+    man_start_sibling <trigger, "Computing">
+      mat_shortcut_key <"U">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6469>
+        >
+    man_start_sibling <trigger, "Research & Learn">
+      mat_shortcut_key <"R">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6482>
+        >
+    man_start_sibling <ornament, "">
+    man_start_sibling <trigger, "Entertainment">
+      mat_shortcut_key <"E">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6470>
+        >
+    man_start_sibling <trigger, "Games">
+      mat_shortcut_key <"G">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6472>
+        >
+    man_start_sibling <trigger, "Interests">
+      mat_shortcut_key <"T">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6475>
+        >
+    man_start_sibling <trigger, "Lifestyles">
+      mat_shortcut_key <"y">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6478>
+        >
+    man_start_sibling <ornament, "">
+    man_start_sibling <trigger, "Shopping">
+      mat_shortcut_key <"O">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6483>
+        >
+    man_start_sibling <trigger, "Health">
+      mat_shortcut_key <"H">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6473>
+        >
+    man_start_sibling <trigger, "Families">
+      mat_shortcut_key <"F">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6471>
+        >
+    man_start_sibling <trigger, "Kids Only">
+      mat_shortcut_key <"K">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6477>
+        >
+    man_start_sibling <ornament, "">
+    man_start_sibling <trigger, "Local">
+      mat_shortcut_key <"C">
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <32-6479>
+        >
+    man_end_object
+  man_end_object
+uni_end_stream

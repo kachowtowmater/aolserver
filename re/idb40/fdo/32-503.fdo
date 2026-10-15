@@ -1,0 +1,12 @@
+uni_start_stream
+  idb_start_obj <"t">
+  idb_atr_globalid <20-0-16>
+  idb_append_data <03x, 4ex, 65x, 77x, 20x, 55x, 73x, 65x, 72x, 20x, 20x, 00x>
+  idb_append_data <35x, 35x, 35x, 35x, 35x, 35x, 35x, 35x, 35x, 35x, 00x>
+  idb_append_data <47x, 75x, 65x, 73x, 74x, 20x, 20x, 20x, 20x, 20x, 00x>
+  idb_append_data <37x, 37x, 37x, 37x, 37x, 37x, 37x, 37x, 37x, 37x, 00x>
+  idb_append_data <4ex, 65x, 77x, 20x, 4cx, 6fx, 63x, 61x, 6cx, 23x, 00x>
+  idb_append_data <35x, 35x, 35x, 35x, 35x, 35x, 35x, 35x, 35x, 30x, 00x>
+  idb_end_obj
+  idb_delete_obj <20-0-50>
+uni_end_stream

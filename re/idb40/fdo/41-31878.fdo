@@ -1,0 +1,104 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Picture in E-mail Warning from AOL Neighborhood Watch">
+    mat_object_id <41-31878>
+    mat_style_id <41-31878>
+    mat_orientation <vff>
+    mat_color_face <255, 251, 240>
+    mat_position <center_center>
+    mat_bool_resize_vertical <no>
+    mat_bool_background_flood <yes>
+    man_start_object <org_group, "">
+      mat_orientation <hle>
+      man_start_object <ornament, "">
+        mat_art_id <1-1-50522>
+        mat_bool_disabled <yes>
+      man_start_sibling <ornament, "">
+        mat_size <30, 1>
+        mat_font_id <arial>
+        mat_font_style <bold>
+        man_append_data <"   Do you know who sent you this e-mail? ">
+      man_end_object
+    man_start_sibling <ornament, "">
+      mat_size <60, 3>
+      mat_font_size <8>
+      mat_font_id <arial>
+      man_append_data <"You are about to open an e-mail containing a picture.  If you don't know who sent you this e-mail, be cautious in opening it.  There is a small chance that it could contain a picture objectionable to you.\x7f\x7f">
+    man_start_sibling <org_group, "">
+      mat_orientation <hlf>
+      uni_void
+      man_start_object <ornament, "">
+        mat_size <20, 2>
+        mat_font_size <8>
+        mat_font_id <arial>
+        man_append_data <"Note:  A special picture icon\x7fa picture.\x7f">
+      man_start_sibling <ornament, "">
+        mat_art_id <1-1-26005>
+        mat_bool_disabled <yes>
+      man_start_sibling <ornament, "">
+        mat_size <40, 2>
+        mat_font_size <8>
+        mat_font_id <arial>
+        man_append_data <"  in your New Mail list indicates that your e-mail contains">
+      man_end_object
+    man_start_sibling <ornament, "">
+      mat_size <65, 6>
+      mat_font_size <8>
+      mat_font_id <arial>
+      man_append_data <"Parents may restrict their children from receiving e-mail with pictures or file attachments.  To find out more, go to Keyword:  Parental Controls.  For more tips on how to ensure a safe online experience for you and your family, go to Keyword:   AOL Neighborhood Watch.\x7f\x7fDo you wish to open this e-mail?">
+    man_start_sibling <org_group, "">
+      mat_orientation <hec>
+      man_start_object <trigger, "Yes">
+        mat_trigger_style <rectangle>
+        mat_color_face <0, 109, 170>
+        mat_color_top_edge <145, 182, 255>
+        mat_color_bottom_edge <1, 1, 1>
+        mat_color_frame_hilight <145, 182, 255>
+        mat_color_frame_shadow <1, 1, 1>
+        mat_font_sis <arial, 8, normal>
+        mat_color_text <255, 255, 255>
+        mat_width <30>
+        act_replace_select_action
+            <
+            uni_start_stream
+              de_start_extraction
+              man_set_context_relative <2>
+              idb_start_obj <"b">
+              idb_atr_globalid <20-255-21>
+              de_get_data_value
+              uni_use_last_atom_value <idb_append_data>
+              idb_end_obj
+              man_end_context
+              de_end_extraction
+              man_close
+              man_update_display
+              mip_action_command <36x>
+            uni_end_stream
+            >
+        man_start_sibling <trigger, "No">
+          mat_trigger_style <rectangle>
+          mat_color_face <0, 109, 170>
+          mat_color_top_edge <145, 182, 255>
+          mat_color_bottom_edge <1, 1, 1>
+          mat_color_frame_hilight <145, 182, 255>
+          mat_color_frame_shadow <1, 1, 1>
+          mat_font_sis <arial, 8, normal>
+          mat_color_text <255, 255, 255>
+          mat_width <30>
+          act_replace_select_action
+              <
+              uni_start_stream <00x>
+                man_close_update
+              uni_end_stream <00x>
+              >
+          man_end_object
+        man_start_sibling <sms_list, "">
+          mat_orientation <hff>
+          mat_relative_tag <2>
+          man_start_object <trigger, "Don't show me this warning again.">
+            mat_font_sis <arial, 8, bold>
+            mat_bool_default_send <no>
+          man_end_object
+        man_end_object
+        man_update_display
+        uni_wait_off
+      uni_end_stream <00x>

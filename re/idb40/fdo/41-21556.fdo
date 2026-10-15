@@ -1,0 +1,27 @@
+uni_start_stream
+  sm_check_plus_group
+  act_get_db_value <14x, 00x, 00x, d1x>
+  if_last_return_false_then <2>
+  lm_table_use_table <20-0-71>
+  async_get_screen_name
+  uni_use_last_atom_string <lm_table_use_key>
+  lm_table_get_item
+  uni_save_result
+  if_last_return_false_then <1>
+  idb_set_context <20-0-78>
+  idb_atr_offset <0>
+  idb_get_string
+  var_string_set_from_atom <A>
+  idb_end_context
+  var_string_get <A>
+  uni_save_result
+  uni_use_last_atom_string <lm_table_set_item>
+  uni_sync_skip <1>
+  uni_get_result
+  uni_use_last_atom_string <www_load_url>
+  var_data_set <00x, 00x>
+  if_data_neq_zero_then <3>
+  uni_sync_skip <2>
+  www_load_url <"x-$home$://">
+  uni_sync_skip <3>
+uni_end_stream

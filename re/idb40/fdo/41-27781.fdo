@@ -1,0 +1,3 @@
+uni_start_stream
+  async_alert <info, "TCP/IP normally requires no extra configuration.  Please continue with setup for special considerations.  To change a modem, click the modem, then click Change Modem.">
+uni_end_stream

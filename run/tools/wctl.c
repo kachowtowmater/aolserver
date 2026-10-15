@@ -8,7 +8,9 @@
  *   wctl close <hwnd>             close a window (AOL child windows go through the MDI client)
  *   wctl closeall                 close every AOL child window (MDI children of the AOL frame)
  *   wctl dismiss                  press OK on every message box (#32770); prints how many
- *   wctl enter <hwnd>             press Enter in a control */
+ *   wctl enter <hwnd>             press Enter in a control
+ *   wctl clickat <hwnd> <x> <y>   real mouse click at (x,y) inside a window's client area (SendInput)
+ *   wctl wheel <hwnd> <x> <y> <n> real mouse-wheel scroll, n notches (negative = down) */
 #include <windows.h>
 #include <stdio.h>
 #include <string.h>
@@ -77,6 +79,18 @@ int main(int argc, char **argv) {
     }
     if (argc >= 2 && !strcmp(argv[1], "closeall")) { EnumWindows(frame_close, 0); printf("closed %d\n", n_closed); return 0; }
     if (argc >= 2 && !strcmp(argv[1], "dismiss")) { EnumWindows(box_ok, 0); printf("dismissed %d\n", n_closed); return 0; }
+    if (argc >= 5 && (!strcmp(argv[1], "clickat") || !strcmp(argv[1], "wheel"))) {
+        HWND h = (HWND)(ULONG_PTR)strtoull(argv[2], NULL, 16);
+        POINT pt = { atoi(argv[3]), atoi(argv[4]) }; ClientToScreen(h, &pt);
+        SetForegroundWindow(GetAncestor(h, GA_ROOT)); SetCursorPos(pt.x, pt.y); Sleep(100);
+        INPUT in[2] = {0}; in[0].type = in[1].type = INPUT_MOUSE;
+        if (!strcmp(argv[1], "clickat")) {
+            in[0].mi.dwFlags = MOUSEEVENTF_LEFTDOWN; in[1].mi.dwFlags = MOUSEEVENTF_LEFTUP; SendInput(2, in, sizeof(INPUT));
+        } else {
+            in[0].mi.dwFlags = MOUSEEVENTF_WHEEL; in[0].mi.mouseData = (DWORD)(atoi(argv[5]) * WHEEL_DELTA); SendInput(1, in, sizeof(INPUT));
+        }
+        printf("%s %p at %ld,%ld\n", argv[1], (void *)h, pt.x, pt.y); return 0;
+    }
     if (argc >= 3 && !strcmp(argv[1], "enter")) {
         HWND h = (HWND)(ULONG_PTR)strtoull(argv[2], NULL, 16);
         PostMessageA(h, WM_KEYDOWN, VK_RETURN, 0x001C0001); PostMessageA(h, WM_CHAR, '\r', 0x001C0001);

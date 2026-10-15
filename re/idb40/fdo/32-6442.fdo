@@ -1,0 +1,461 @@
+uni_start_stream <00x>
+  man_preset_gid <32-30>
+  act_get_db_value <14x, 00x, 00x, 42x>
+  if_last_return_true_then <1>
+  uni_invoke_no_context <32-5483>
+  man_force_update
+  uni_sync_skip <1>
+  uni_wait_on
+  man_set_context_globalid <1>
+  var_number_set <A, 0>
+  var_number_save <A, 161>
+  man_end_context
+  man_set_context_globalid <53>
+  man_start_object <ind_group, "">
+    mat_style_id <32-6442>
+    mat_orientation <vff>
+    mat_precise_width <532>
+    mat_precise_height <294>
+    mat_object_id <32-30>
+    mat_style_id <32-5447>
+    mat_url <"aol://1722:welcome">
+    mat_bool_ignore_url <yes>
+    act_set_criterion <24>
+    act_replace_action
+        <
+        uni_start_stream
+          act_set_criterion <24>
+          act_replace_action
+              <
+              uni_start_stream
+              uni_end_stream
+              >
+            act_get_db_value <14x, 00x, 01x, 5ex>
+            var_number_set_from_atom <A>
+            act_get_db_value <14x, 00x, 01x, 5fx>
+            var_number_set_from_atom <B>
+            if_numa_lt_numb_then <1>
+            var_number_increment <A>
+            act_set_db_length <1>
+            act_get_db_record <20-0-350>
+            if_last_return_true_then <14>
+            var_number_shl <24>
+            uni_sync_skip <14>
+            idb_start_obj <"b">
+            idb_atr_globalid <20-0-350>
+            var_number_get <A>
+            uni_use_last_atom_value <idb_append_data>
+            idb_end_obj
+            uni_start_stream
+            sm_send_k1 <17-65227>
+            uni_sync_skip <1>
+          uni_end_stream
+          >
+        mat_position <center_center>
+        mat_bool_resize_vertical <no>
+        mat_bool_non_closeable <yes>
+        mat_bool_precise <yes>
+        man_start_object <org_group, "">
+          mat_orientation <hff>
+          mat_precise_width <114>
+          mat_precise_height <294>
+          mat_art_id <1-1-21884>
+          mat_bool_precise <yes>
+          mat_bool_background_pic <yes>
+          man_start_object <trigger, "">
+            mat_precise_x <7>
+            mat_precise_y <10>
+            mat_trigger_style <9>
+            mat_precise_height <99>
+            mat_precise_width <99>
+            mat_art_id <1-1-43719>
+            act_replace_select_action
+                <
+                uni_start_stream_wait_on <00x>
+                sm_send_k1 <17-35040>
+                >
+            man_start_sibling <trigger, "">
+              mat_precise_x <14>
+              mat_precise_y <113>
+              mat_relative_tag <22>
+              mat_trigger_style <9>
+              mat_precise_height <50>
+              mat_precise_width <81>
+              mat_art_id <1-1-21573>
+              mat_bool_default <yes>
+              act_replace_select_action
+                  <
+                  uni_start_stream_wait_on <00x>
+                    mip_action_command <1dx>
+                  uni_end_stream
+                  >
+              man_start_sibling <trigger, "">
+                mat_precise_x <16>
+                mat_precise_y <170>
+                mat_trigger_style <9>
+                mat_precise_height <51>
+                mat_precise_width <81>
+                mat_art_id <1-1-21576>
+                act_replace_select_action
+                    <
+                    uni_start_stream <00x>
+                      man_preset_gid <32-5483>
+                      if_last_return_true_then <1, 2>
+                      man_make_focus
+                      man_update_display
+                      uni_sync_skip <1>
+                      uni_wait_on
+                      uni_invoke_no_context <32-5483>
+                      uni_sync_skip <2>
+                    uni_end_stream <00x>
+                    >
+                man_start_sibling <trigger, "">
+                  mat_precise_x <16>
+                  mat_precise_y <224>
+                  mat_trigger_style <9>
+                  mat_precise_height <56>
+                  mat_precise_width <80>
+                  mat_art_id <1-1-26889>
+                  act_replace_select_action
+                      <
+                      uni_start_stream
+                        sm_enter_paid
+                      sm_send_token_arg <"CJ">
+                      >
+                  man_end_object
+                man_start_sibling <org_group, "">
+                  mat_orientation <hff>
+                  mat_precise_x <114>
+                  mat_precise_width <418>
+                  mat_precise_height <294>
+                  mat_art_id <1-1-21579>
+                  mat_bool_background_pic <yes>
+                  man_start_object <trigger, "">
+                    mat_precise_x <125>
+                    mat_precise_y <30>
+                    mat_precise_width <16>
+                    mat_precise_height <16>
+                    mat_relative_tag <15>
+                    mat_trigger_style <9>
+                    mat_art_id <1-1-21570>
+                    act_replace_select_action
+                        <
+                        uni_start_stream <00x>
+                          man_set_context_relative <18>
+                          act_do_action <select>
+                          man_end_context
+                        uni_end_stream
+                        >
+                    man_start_sibling <trigger, "">
+                      mat_precise_x <142>
+                      mat_precise_y <24>
+                      mat_precise_width <128>
+                      mat_precise_height <24>
+                      mat_relative_tag <16>
+                      mat_trigger_style <9>
+                      act_replace_select_action
+                          <
+                          uni_start_stream <00x>
+                            man_set_context_relative <18>
+                            act_do_action <select>
+                            man_end_context
+                          uni_end_stream
+                          >
+                        mat_art_id <1-1-26851>
+                      man_start_sibling <view, "">
+                        rich_manage
+                        mat_precise_x <142>
+                        mat_precise_y <47>
+                        mat_precise_width <215>
+                        mat_precise_height <43>
+                        mat_relative_tag <17>
+                        rich_set_static
+                        mat_font_sis <arial, 8, normal>
+                        mat_bool_vertical_scroll <no>
+                        mat_bool_resize_vertical <no>
+                        mat_bool_resize_horizontal <no>
+                        mat_bool_exportable <no>
+                      man_start_sibling <view, "">
+                        rich_manage
+                        rich_set_static
+                        mat_precise_x <271>
+                        mat_precise_y <31>
+                        mat_precise_width <100>
+                        mat_precise_height <13>
+                        mat_relative_tag <40>
+                        mat_orientation <hcf>
+                        mat_font_sis <arial, 8, normal>
+                        mat_bool_vertical_scroll <no>
+                        mat_bool_resize_vertical <no>
+                        mat_bool_resize_horizontal <no>
+                        mat_bool_exportable <no>
+                      man_start_sibling <trigger, "">
+                        mat_precise_x <375>
+                        mat_precise_y <21>
+                        mat_precise_width <48>
+                        mat_precise_height <72>
+                        mat_relative_tag <18>
+                        mat_trigger_style <plain_picture>
+                        mat_art_id <1-1-48369>
+                        mat_trigger_style <framed>
+                        mat_precise_height <72>
+                        mat_precise_width <48>
+                        act_replace_select_action
+                            <
+                            uni_start_stream_wait_on <00x>
+                            sm_send_f1 <32-6468>
+                            >
+                        man_start_sibling <trigger, "">
+                          mat_precise_x <125>
+                          mat_precise_y <106>
+                          mat_precise_width <16>
+                          mat_precise_height <16>
+                          mat_relative_tag <41>
+                          mat_trigger_style <9>
+                          act_replace_select_action
+                              <
+                              uni_start_stream <00x>
+                                man_set_context_relative <19>
+                                act_do_action <select>
+                                man_end_context
+                              uni_end_stream
+                              >
+                            mat_art_id <1-1-26649>
+                          man_start_sibling <trigger, "">
+                            mat_precise_x <142>
+                            mat_precise_y <105>
+                            mat_precise_width <72>
+                            mat_precise_height <14>
+                            mat_relative_tag <42>
+                            mat_trigger_style <9>
+                            act_replace_select_action
+                                <
+                                uni_start_stream <00x>
+                                  man_set_context_relative <19>
+                                  act_do_action <select>
+                                  man_end_context
+                                uni_end_stream
+                                >
+                              mat_art_id <1-1-21580>
+                            man_start_sibling <trigger, "">
+                              mat_precise_x <137>
+                              mat_precise_y <122>
+                              mat_precise_width <42>
+                              mat_precise_height <30>
+                              mat_relative_tag <19>
+                              mat_trigger_style <9>
+                            man_start_sibling <view, "">
+                              rich_manage
+                              mat_precise_x <181>
+                              mat_precise_y <122>
+                              mat_precise_width <82>
+                              mat_precise_height <30>
+                              mat_relative_tag <20>
+                              mat_font_sis <arial, 8, normal>
+                              rich_set_static
+                              mat_bool_vertical_scroll <no>
+                              mat_bool_resize_vertical <no>
+                              mat_bool_resize_horizontal <no>
+                              mat_bool_exportable <no>
+                            man_start_sibling <trigger, "">
+                              mat_precise_x <272>
+                              mat_precise_y <106>
+                              mat_precise_width <16>
+                              mat_precise_height <16>
+                              mat_relative_tag <21>
+                              mat_trigger_style <9>
+                              mat_art_id <1-1-21571>
+                            man_start_sibling <trigger, "">
+                              mat_precise_x <289>
+                              mat_precise_y <105>
+                              mat_precise_width <78>
+                              mat_precise_height <17>
+                              mat_relative_tag <14>
+                              mat_trigger_style <9>
+                              act_replace_select_action
+                                  <
+                                  uni_start_stream <00x>
+                                    man_set_context_relative <21>
+                                    act_do_action <select>
+                                    man_end_context
+                                  uni_end_stream
+                                  >
+                                mat_art_id <1-1-21584>
+                              man_start_sibling <view, "">
+                                rich_manage
+                                mat_precise_x <289>
+                                mat_precise_y <122>
+                                mat_precise_width <127>
+                                mat_precise_height <30>
+                                mat_relative_tag <3>
+                                mat_font_sis <arial, 8, normal>
+                                rich_set_static
+                                mat_bool_vertical_scroll <no>
+                                mat_bool_resize_vertical <no>
+                                mat_bool_resize_horizontal <no>
+                                mat_bool_exportable <no>
+                              man_start_sibling <trigger, "">
+                                mat_precise_x <273>
+                                mat_precise_y <176>
+                                mat_precise_width <16>
+                                mat_precise_height <16>
+                                mat_relative_tag <23>
+                                mat_trigger_style <9>
+                                mat_art_id <1-1-21571>
+                              man_start_sibling <view, "">
+                                rich_manage
+                                mat_precise_x <290>
+                                mat_precise_y <174>
+                                mat_precise_width <210>
+                                mat_precise_height <30>
+                                mat_relative_tag <24>
+                                mat_font_sis <arial, 8, normal>
+                                rich_set_static
+                                mat_bool_vertical_scroll <no>
+                                mat_bool_resize_vertical <no>
+                                mat_bool_resize_horizontal <no>
+                                mat_bool_exportable <no>
+                              man_start_sibling <trigger, "">
+                                mat_precise_x <273>
+                                mat_precise_y <218>
+                                mat_precise_width <16>
+                                mat_precise_height <16>
+                                mat_relative_tag <25>
+                                mat_trigger_style <9>
+                                mat_art_id <1-1-21571>
+                              man_start_sibling <view, "">
+                                rich_manage
+                                mat_precise_x <290>
+                                mat_precise_y <217>
+                                mat_precise_width <210>
+                                mat_precise_height <30>
+                                mat_relative_tag <26>
+                                mat_font_sis <arial, 8, normal>
+                                rich_set_static
+                                mat_bool_vertical_scroll <no>
+                                mat_bool_resize_vertical <no>
+                                mat_bool_resize_horizontal <no>
+                                mat_bool_exportable <no>
+                              man_start_sibling <trigger, "">
+                                mat_precise_x <273>
+                                mat_precise_y <261>
+                                mat_precise_width <16>
+                                mat_precise_height <16>
+                                mat_relative_tag <27>
+                                mat_trigger_style <9>
+                                mat_art_id <1-1-21571>
+                              man_start_sibling <view, "">
+                                rich_manage
+                                mat_precise_x <290>
+                                mat_precise_y <261>
+                                mat_precise_width <210>
+                                mat_precise_height <15>
+                                mat_relative_tag <28>
+                                mat_font_sis <arial, 8, normal>
+                                rich_set_static
+                                mat_bool_vertical_scroll <no>
+                                mat_bool_resize_vertical <no>
+                                mat_bool_resize_horizontal <no>
+                                mat_bool_exportable <no>
+                              man_start_sibling <trigger, "">
+                                mat_precise_x <125>
+                                mat_precise_y <176>
+                                mat_precise_width <48>
+                                mat_precise_height <72>
+                                mat_relative_tag <29>
+                                mat_color_frame_shadow <1, 1, 1>
+                                mat_trigger_style <plain_picture>
+                                mat_trigger_style <framed>
+                                mat_precise_height <72>
+                                mat_precise_width <48>
+                                mat_art_id <1-0-28454>
+                              man_start_sibling <view, "">
+                                rich_manage
+                                mat_precise_x <183>
+                                mat_precise_y <174>
+                                mat_precise_width <85>
+                                mat_precise_height <70>
+                                mat_relative_tag <30>
+                                mat_font_sis <arial, 8, normal>
+                                rich_set_static
+                                mat_bool_vertical_scroll <no>
+                                mat_bool_resize_vertical <no>
+                                mat_bool_resize_horizontal <no>
+                                mat_bool_exportable <no>
+                              man_start_sibling <trigger, "">
+                                mat_precise_x <452>
+                                mat_precise_y <11>
+                                mat_relative_tag <50>
+                                mat_trigger_style <9>
+                                mat_precise_height <30>
+                                mat_precise_width <80>
+                                mat_art_id <1-1-21592>
+                                act_replace_select_action
+                                    <
+                                    uni_start_stream_wait_on <00x>
+                                    sm_send_f1 <32-6450>
+                                    >
+                                man_start_sibling <trigger, "">
+                                  mat_precise_x <452>
+                                  mat_precise_y <41>
+                                  mat_relative_tag <51>
+                                  mat_trigger_style <9>
+                                  mat_precise_height <30>
+                                  mat_precise_width <80>
+                                  mat_art_id <1-1-21590>
+                                  act_replace_select_action
+                                      <
+                                      uni_start_stream_wait_on <00x>
+                                      sm_send_f1 <32-6451>
+                                      >
+                                  man_start_sibling <trigger, "">
+                                    mat_precise_x <452>
+                                    mat_precise_y <71>
+                                    mat_relative_tag <52>
+                                    mat_trigger_style <9>
+                                    mat_precise_height <30>
+                                    mat_precise_width <80>
+                                    mat_art_id <1-1-21568>
+                                    act_replace_select_action
+                                        <
+                                        uni_start_stream_wait_on <00x>
+                                        sm_send_f1 <32-6452>
+                                        >
+                                    man_start_sibling <trigger, "">
+                                      mat_precise_x <452>
+                                      mat_precise_y <101>
+                                      mat_relative_tag <53>
+                                      mat_trigger_style <9>
+                                      mat_precise_height <30>
+                                      mat_precise_width <80>
+                                      mat_art_id <1-1-21583>
+                                      act_replace_select_action
+                                          <
+                                          uni_start_stream_wait_on <00x>
+                                            buf_use_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+                                            buf_set_token <"f1">
+                                            buf_add_atom_data <2101876>
+                                            buf_close_buffer
+                                            www_browse <"http://www.aol.com">
+                                          uni_end_stream <00x>
+                                          >
+                                      man_start_sibling <trigger, "">
+                                        mat_precise_x <452>
+                                        mat_precise_y <131>
+                                        mat_relative_tag <54>
+                                        mat_trigger_style <9>
+                                        mat_precise_height <30>
+                                        mat_precise_width <80>
+                                        mat_art_id <1-1-27810>
+                                        mat_font_id <arial>
+                                        mat_font_size <6>
+                                        mat_font_id <arial>
+                                        mat_font_size <6>
+                                        act_replace_select_action
+                                            <
+                                            uni_start_stream_wait_on <00x>
+                                            sm_send_f1 <32-6454>
+                                            >
+                                        man_end_object
+                                      man_end_object
+                                    uni_end_stream <00x>

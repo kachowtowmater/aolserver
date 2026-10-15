@@ -1,0 +1,90 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Temporary Root">
+    mat_orientation <vff>
+    mat_position <center_center>
+    mat_bool_background_tile <yes>
+    mat_art_id <1-0-3390>
+    mat_style_id <32-4633>
+    man_start_object <view, "">
+      mat_size <70, 16>
+      mat_relative_tag <1>
+      mat_bool_writeable <yes>
+      mat_managed_by <70>
+      mat_font_sis <arial, 9, normal>
+      morg_view_path <"%">
+      uni_sync_skip <1>
+      morg_view_include_root <yes>
+      uni_sync_skip <1>
+      act_set_criterion <129>
+      act_replace_action
+          <
+          uni_start_stream
+            man_close_update
+          uni_end_stream
+          >
+      man_start_sibling <org_group, "">
+        mat_orientation <hff>
+        man_start_object <org_group, "">
+          mat_orientation <hef>
+          man_start_object <trigger, "Open">
+            mat_bool_default <yes>
+            act_replace_select_action
+                <
+                uni_start_stream
+                  man_set_context_relative <1>
+                  morg_view_select_object
+                  man_end_context
+                uni_end_stream
+                >
+              mat_trigger_style <rectangle>
+              mat_font_sis <arial, 10, bold>
+            man_start_sibling <trigger, "Delete">
+              act_replace_select_action
+                  <
+                  uni_start_stream
+                    man_set_context_relative <1>
+                    morg_delete_current_object
+                    man_end_context
+                  uni_end_stream
+                  >
+                mat_trigger_style <rectangle>
+                mat_font_sis <arial, 10, bold>
+              man_start_sibling <trigger, "Rename">
+                mat_horizontal_spacing <10>
+                act_replace_select_action
+                    <
+                    uni_start_stream
+                      man_set_context_relative <1>
+                      morg_prompt_rename_object
+                      man_end_context
+                    uni_end_stream
+                    >
+                  mat_trigger_style <rectangle>
+                  mat_font_sis <arial, 10, bold>
+                man_start_sibling <trigger, "Add Folder">
+                  mat_horizontal_spacing <10>
+                  act_replace_select_action
+                      <
+                      uni_start_stream
+                        man_set_context_relative <1>
+                        morg_prompt_create_folder
+                        man_end_context
+                      uni_end_stream
+                      >
+                    mat_trigger_style <rectangle>
+                    mat_font_sis <arial, 10, bold>
+                  man_start_sibling <trigger, "Search">
+                    mat_trigger_style <rectangle>
+                    mat_font_sis <arial, 10, bold>
+                  man_end_object
+                man_start_sibling <org_group, "">
+                  mat_orientation <hef>
+                  man_start_object <trigger, "Help">
+                    mat_trigger_style <rectangle>
+                    mat_font_sis <arial, 10, bold>
+                  man_end_object
+                man_end_object
+              man_end_object
+              man_update_display
+              uni_wait_off
+            uni_end_stream <00x>

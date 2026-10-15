@@ -1,0 +1,142 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Oops!">
+    mat_object_id <32-5620>
+    mat_style_id <32-5620>
+    mat_orientation <hff>
+    mat_color_face <255, 251, 240>
+    mat_bool_background_flood <yes>
+    mat_position <center_center>
+    mat_bool_modal <yes>
+    mat_bool_background_flood <yes>
+    man_start_object <ornament, "">
+      mat_art_id <1-1-46515>
+      mat_bool_disabled <yes>
+    man_start_sibling <org_group, "">
+      mat_orientation <vff>
+      man_start_object <org_group, "">
+        mat_orientation <vff>
+        man_start_object <ornament, "No Connection Detected">
+          mat_size <30, 1, 128>
+          mat_font_id <arial>
+          mat_font_size <14>
+          mat_font_style <bold>
+        man_start_sibling <org_group, "">
+          mat_orientation <vff>
+          mat_precise_width <440>
+          mat_precise_height <2>
+          mat_color_face <1, 1, 1>
+          mat_bool_background_flood <yes>
+          mat_bool_precise <yes>
+        man_end_object
+      man_start_sibling <view, "">
+        rich_manage
+        rich_set_static
+        mat_size <47, 10>
+        mat_bool_vertical_scroll <no>
+        mat_bool_resize_vertical <no>
+        mat_bool_resize_horizontal <no>
+        mat_bool_exportable <no>
+        man_append_data <"Our software was unable to detect any connection device, such as a modem, that could be used to connect to the AOL service.\x7f\x7fIf you have a modem, please make sure it is turned on and plugged in to both your computer and phone line, and that it's not in use by another application.  If you have an external modem, please make sure it's also plugged in to a power outlet and turned on.  If you have another way to connect, such as a Local Area Network (LAN) or an Internet Service Provider (ISP), please make sure your computer is properly connected to it.">
+      man_start_sibling <sss_list, "">
+        mat_orientation <vlf>
+        mat_relative_tag <1>
+        man_start_object <trigger, "Search for connections again.  The problem is fixed.">
+          mat_title_width <37>
+          mat_bool_default_send <no>
+        man_start_sibling <trigger, "Go to custom setup (expert computer users only).">
+          mat_title_width <37>
+          mat_bool_default_send <no>
+        man_end_object
+      man_start_sibling <org_group, "">
+        mat_orientation <hff>
+        man_start_object <trigger, "">
+          mat_relative_tag <80>
+          mat_trigger_style <plain_picture>
+          man_obj_stack_pop <0>
+          if_last_return_false_then <1>
+          mat_bool_hidden <yes>
+          uni_sync_skip <1>
+          idb_exists <20-0-142>
+          if_last_return_true_then <2>
+          mat_bool_hidden <yes>
+          uni_sync_skip <2>
+          mat_art_id <1-1-31171>
+          mat_font_id <arial>
+          mat_font_size <10>
+          mat_command_key <98x, 00x>
+          act_replace_select_action
+              <
+              uni_start_stream
+                man_close_update
+                man_end_context
+                man_obj_stack_pop
+                uni_save_result
+                if_last_return_true_then <1>
+                uni_get_result
+                uni_use_last_atom_value <uni_invoke_no_context>
+                uni_sync_skip <1>
+              uni_end_stream
+              >
+          man_start_sibling <org_group, "">
+            mat_orientation <hcc>
+            mat_font_sis <arial, 8, normal>
+            man_start_object <trigger, "Cancel">
+              mat_title_width <6>
+              mat_relative_tag <82>
+              mat_color_face <0, 109, 170>
+              mat_color_text <255, 255, 255>
+              mat_color_top_edge <145, 182, 255>
+              mat_color_bottom_edge <1, 1, 1>
+              mat_trigger_style <rectangle>
+              mat_font_sis <arial, 8, normal>
+              man_obj_stack_pop <0>
+              uni_use_last_atom_value <mat_bool_invisible>
+              mat_command_key <71x, 01x>
+              act_replace_select_action
+                  <
+                  uni_start_stream
+                    uni_invoke_no_context <41-27653>
+                  uni_end_stream
+                  >
+              man_end_object
+            man_start_sibling <trigger, "">
+              mat_relative_tag <81>
+              mat_trigger_style <plain_picture>
+              if_newuser_then <2, 3>
+              mat_art_id <1-3-398>
+              uni_sync_skip <2>
+              mat_art_id <1-1-14785>
+              uni_sync_skip <3>
+              man_make_focus
+              mat_bool_default <yes>
+              mat_font_id <arial>
+              mat_font_size <10>
+              mat_command_key <99x, 00x>
+              act_replace_select_action
+                  <
+                  uni_start_stream
+                    man_obj_stack_push
+                    de_start_extraction <0>
+                    man_set_context_relative <1>
+                    de_get_data_value
+                    var_number_set_from_atom <A>
+                    man_end_context
+                    de_end_extraction
+                    var_number_set <B, 1>
+                    if_numa_eq_numb_then <1, 2>
+                    man_close_update
+                    man_end_context
+                    uni_invoke_no_context <32-5574>
+                    uni_sync_skip <1>
+                    man_close_update
+                    man_end_context
+                    uni_invoke_no_context <32-5858>
+                    uni_sync_skip <2>
+                  uni_end_stream
+                  >
+              man_end_object
+            man_end_object
+          man_end_object
+          man_update_display
+          uni_wait_off
+        uni_end_stream <00x>

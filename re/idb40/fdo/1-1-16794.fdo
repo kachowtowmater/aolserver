@@ -1,0 +1,8 @@
+man_start_object <org_group, "">
+  act_set_criterion <16777217>
+the_unknown <2, 21, 00x>
+the_unknown <2, 25, 01x>
+the_unknown <66, 38, 00x>
+the_unknown <2, 14, 01x>
+the_unknown <12, 214, ecx, 65x, e6x, 82x, a4x, b2x, d5x, a9x, 4ax, dcx, 39x, fex, cfx, 26x, 39x, 68x, c0x, 10x, 9ex, 64x, 84x, 48x, 88x, 1fx, f2x, b9x, f5x, a9x, 47x, fax, 65x, fex, 98x, 4cx, bcx, d2x, abx, d4x, 63x, 79x, 6ax>
+  var_numa_zero <b5x, 0ax, bcx, 4ex, 21x, 3ax, 94x, 56x, a3x, 0ex, 28x, 4dx, 4cx, 67x, 32x, 94x, 31x, c2x, 49x, 4ax, 0fx, c8x, 5bx, e3x, 6ex, 08x, 05x, 21x, 8bx, 68x, 84x, 1cx, 01x, fex, ffx, ffx, a5x, 18x, d2x, 02x, 24x, adx, dax, 9dx, 43x, bcx, 46x, 3fx, 91x, 29x, 24x, a4x, 52x, 8ax, 4ax, 49x, 26x, 9bx, 9fx, 79x, 5ex, b0x, edx, cdx, 89x, afx, 1bx, 36x, b6x, e5x, 6ex, 16x, b6x, f8x, a0x, bax, 39x, 0ax, 17x, d1x, aex, 9fx, f4x, 8fx, 34x, a2x, 1ex, 09x, f5x, d3x, 08x, 46x, cdx, 63x, 83x, bfx, ccx, d0x, 40x, bfx, 30x, 5ex, 38x, 99x, 39x, 46x, 83x, 71x, c5x, 13x, a2x, 20x, 26x, 92x, 61x, 4dx, a4x, 92x, 94x, f0x, 9ax, 07x, eex, 64x, 29x, 1dx, abx, d6x, d0x, a2x, 08x, 81x, 9bx, 45x, 11x, 18x, 25x, 78x, a6x, 1cx, a5x, d5x, 09x, bdx, 09x, 90x, a1x, 6cx, 3ax, 5cx, 73x, 97x, 06x, 88x, 76x, 1dx, 35x, cfx, 8fx, b3x, f7x, 96x, b3x, 30x, 15x, bcx, edx, f5x, 33x, 53x, 78x, 4fx, a6x, 5ax, efx, c9x, bdx, 5bx, b3x, abx, b0x, 2dx, 89x, 0bx, edx, f8x, 37x, 4ax, c6x, 0bx, 18x, 2cx, 42x, 41x, 24x, f7x, 50x, ffx, 28x, cfx, c7x, cbx, 00x, 00x, 00x, 0dx, 00x, 00x, 00x, 1ex, 00x, 46x, 01x, 48x, 01x, d4x, 00x, 38x, 01x, d4x, 00x, 74x, 5fx, 6fx, 62x, 6ax, 65x, 63x, 74x, 20x, 3cx, 6fx, 72x, 67x, 5fx, 67x, 72x, 6fx, 75x, 70x, 2cx, 20x>

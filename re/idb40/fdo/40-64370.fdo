@@ -1,0 +1,550 @@
+uni_start_stream_wait_on
+  man_set_context_globalid <3>
+  mat_value <1>
+  man_start_object <tool_group, "">
+    mat_orientation <hff>
+    mat_bool_dock_vertical <no>
+    mat_bool_children_movable <no>
+    mat_bool_background_flood <yes>
+    mat_color_face <0, 51, 102>
+    mat_color_frame_shadow <0, 51, 102>
+    mat_color_frame_hilight <0, 51, 102>
+    mat_relative_tag <21>
+    act_set_criterion <63>
+    act_replace_action
+        <
+        uni_start_stream
+          man_check_and_set_context_rid <61>
+          if_last_return_true_then <1>
+          mat_bool_repeat_animation <no>
+          man_end_context
+          uni_sync_skip <1>
+        uni_end_stream
+        >
+      act_set_criterion <64>
+      act_replace_action
+          <
+          uni_start_stream
+            man_set_context_relative <33>
+            mat_bool_disabled <no>
+            man_end_context
+            man_set_context_relative <21>
+            act_do_action <60>
+            man_end_context
+          uni_end_stream
+          >
+        act_set_criterion <60>
+        act_replace_action
+            <
+            uni_start_stream
+              man_check_and_set_context_rid <61>
+              if_last_return_true_then <2>
+              man_get_attribute <mat_bool_repeat_animation>
+              if_last_return_false_then <1>
+              mat_art_animation_rate <95>
+              mat_bool_repeat_animation <yes>
+              man_update_display
+              uni_sync_skip <1>
+              man_end_context
+              uni_sync_skip <2>
+            uni_end_stream
+            >
+          act_set_criterion <81>
+          act_replace_action
+              <
+              uni_start_stream
+                man_check_and_set_context_rid <82>
+                if_last_return_false_then <1, 2>
+                man_check_and_set_context_rid <61>
+                if_last_return_true_then <1>
+                man_get_attribute <mat_bool_repeat_animation>
+                var_number_set_from_atom <A>
+                man_get_attribute <mat_art_animation_rate>
+                var_number_set_from_atom <B>
+                mat_relative_tag <82>
+                mat_bool_invisible <yes>
+                mat_bool_spinner <no>
+                mat_precise_y <50>
+                man_end_context
+                man_check_and_set_context_rid <81>
+                if_last_return_true_then <1>
+                mat_relative_tag <61>
+                mat_bool_invisible <no>
+                mat_bool_spinner <yes>
+                var_number_get <A>
+                uni_use_last_atom_value <mat_bool_repeat_animation>
+                var_number_get <B>
+                uni_use_last_atom_value <mat_art_animation_rate>
+                man_end_context
+                uni_sync_skip <1>
+                man_end_context
+                uni_sync_skip <2>
+              uni_end_stream
+              >
+            act_set_criterion <82>
+            act_replace_action
+                <
+                uni_start_stream
+                  man_check_and_set_context_rid <81>
+                  if_last_return_false_then <1, 2>
+                  man_check_and_set_context_rid <61>
+                  if_last_return_true_then <1>
+                  man_get_attribute <mat_bool_repeat_animation>
+                  var_number_set_from_atom <A>
+                  man_get_attribute <mat_art_animation_rate>
+                  var_number_set_from_atom <B>
+                  mat_relative_tag <81>
+                  mat_bool_invisible <yes>
+                  mat_bool_spinner <no>
+                  man_end_context
+                  man_check_and_set_context_rid <82>
+                  if_last_return_true_then <1>
+                  mat_relative_tag <61>
+                  mat_bool_invisible <no>
+                  mat_bool_spinner <yes>
+                  mat_precise_y <0>
+                  var_number_get <A>
+                  uni_use_last_atom_value <mat_bool_repeat_animation>
+                  var_number_get <B>
+                  uni_use_last_atom_value <mat_art_animation_rate>
+                  man_end_context
+                  uni_sync_skip <1>
+                  man_end_context
+                  uni_sync_skip <2>
+                uni_end_stream
+                >
+              act_set_criterion <65>
+              act_replace_action
+                  <
+                  uni_start_stream
+                    act_get_db_value <14x, 00x, 01x, 61x>
+                    if_last_return_false_then <1, 2>
+                    man_set_context_relative <21>
+                    act_do_action <81>
+                    man_end_context
+                    man_set_context_relative <72>
+                    mat_precise_width <203>
+                    mat_precise_height <38>
+                    man_change_context_relative <73>
+                    mat_precise_width <176>
+                    mat_precise_height <38>
+                    man_change_context_relative <74>
+                    mat_precise_width <114>
+                    mat_precise_height <38>
+                    man_change_context_relative <75>
+                    mat_precise_width <79>
+                    mat_precise_height <38>
+                    man_change_context_relative <1>
+                    mat_art_id <1-1-25321>
+                    mat_precise_width <43>
+                    mat_precise_height <38>
+                    man_change_context_relative <2>
+                    mat_art_id <1-1-25647>
+                    mat_precise_width <45>
+                    mat_precise_height <38>
+                    man_change_context_relative <67>
+                    mat_art_id <1-1-25648>
+                    mat_precise_width <72>
+                    mat_precise_height <38>
+                    man_change_context_relative <19>
+                    mat_art_id <1-1-25319>
+                    mat_precise_width <43>
+                    mat_precise_height <38>
+                    man_change_context_relative <117>
+                    mat_art_id <1-1-25649>
+                    mat_precise_width <58>
+                    mat_precise_height <38>
+                    man_change_context_relative <53>
+                    mat_art_id <1-1-25316>
+                    mat_precise_width <59>
+                    mat_precise_height <38>
+                    man_change_context_relative <63>
+                    mat_art_id <1-1-25317>
+                    mat_precise_width <59>
+                    mat_precise_height <38>
+                    man_change_context_relative <51>
+                    mat_art_id <1-1-25315>
+                    mat_precise_width <55>
+                    mat_precise_height <38>
+                    man_change_context_relative <3>
+                    mat_art_id <1-1-25298>
+                    mat_precise_width <59>
+                    mat_precise_height <38>
+                    man_change_context_relative <60>
+                    mat_art_id <1-1-25320>
+                    mat_precise_width <79>
+                    mat_precise_height <38>
+                    man_change_context_relative <84>
+                    mat_precise_height <38>
+                    man_change_context_relative <85>
+                    mat_art_id <1-1-30991>
+                    mat_precise_width <53>
+                    mat_precise_height <38>
+                    man_change_context_relative <86>
+                    mat_precise_height <38>
+                    mat_art_id <1-1-30988>
+                    mat_precise_width <53>
+                    man_change_context_relative <87>
+                    mat_art_id <1-1-39192>
+                    mat_precise_width <54>
+                    mat_precise_height <38>
+                    man_change_context_relative <77>
+                    mat_precise_height <38>
+                    man_change_context_relative <83>
+                    mat_size <1, 38>
+                    mat_trigger_style <10>
+                    man_change_context_relative <69>
+                    mat_art_id <1-2-2088>
+                    mat_precise_width <55>
+                    man_end_context
+                    man_update_display
+                    uni_sync_skip <1>
+                    man_set_context_relative <21>
+                    act_do_action <82>
+                    man_end_context
+                    man_set_context_relative <72>
+                    mat_precise_width <207>
+                    mat_precise_height <14>
+                    man_change_context_relative <73>
+                    mat_precise_width <208>
+                    mat_precise_height <14>
+                    man_change_context_relative <74>
+                    mat_precise_width <143>
+                    mat_precise_height <14>
+                    man_change_context_relative <75>
+                    mat_precise_width <67>
+                    mat_precise_height <14>
+                    man_change_context_relative <1>
+                    mat_art_id <1-1-25313>
+                    mat_precise_width <42>
+                    mat_precise_height <14>
+                    man_change_context_relative <2>
+                    mat_art_id <1-1-25322>
+                    mat_precise_width <42>
+                    mat_precise_height <14>
+                    man_change_context_relative <67>
+                    mat_art_id <1-1-25323>
+                    mat_precise_width <84>
+                    mat_precise_height <14>
+                    man_change_context_relative <19>
+                    mat_art_id <1-1-25314>
+                    mat_precise_width <39>
+                    mat_precise_height <14>
+                    man_change_context_relative <117>
+                    mat_art_id <1-1-25324>
+                    mat_precise_width <71>
+                    mat_precise_height <14>
+                    man_change_context_relative <53>
+                    mat_art_id <1-1-25312>
+                    mat_precise_width <66>
+                    mat_precise_height <14>
+                    man_change_context_relative <63>
+                    mat_art_id <1-1-25311>
+                    mat_precise_width <65>
+                    mat_precise_height <14>
+                    man_change_context_relative <51>
+                    mat_art_id <1-1-25310>
+                    mat_precise_width <70>
+                    mat_precise_height <14>
+                    man_change_context_relative <3>
+                    mat_art_id <1-1-25302>
+                    mat_precise_width <73>
+                    mat_precise_height <14>
+                    man_change_context_relative <60>
+                    mat_art_id <1-1-25305>
+                    mat_precise_width <67>
+                    mat_precise_height <14>
+                    man_change_context_relative <84>
+                    mat_precise_height <14>
+                    man_change_context_relative <85>
+                    mat_precise_height <14>
+                    mat_art_id <1-1-30995>
+                    mat_precise_width <53>
+                    man_change_context_relative <86>
+                    mat_art_id <1-1-30994>
+                    mat_precise_width <49>
+                    mat_precise_height <14>
+                    man_change_context_relative <87>
+                    mat_art_id <1-1-30993>
+                    mat_precise_width <57>
+                    mat_precise_height <14>
+                    man_change_context_relative <77>
+                    mat_precise_height <14>
+                    man_change_context_relative <83>
+                    mat_size <1, 14>
+                    mat_trigger_style <plain_picture>
+                    man_change_context_relative <69>
+                    mat_art_id <1-2-2087>
+                    mat_precise_width <19>
+                    man_end_context
+                    man_update_display
+                    uni_sync_skip <2>
+                    man_set_context_globalid <1>
+                    var_lookup_by_id <A, 161>
+                    if_last_return_true_then <5>
+                    man_set_context_globalid <3>
+                    man_set_context_relative <1>
+                    mat_bool_disabled <no>
+                    uni_start_stream
+                      act_get_db_value <14x, 00x, 01x, 61x>
+                      if_last_return_false_then <1, 2>
+                      mat_art_id <1-1-25318>
+                      man_end_context
+                      man_update_display
+                      uni_sync_skip <1>
+                      mat_art_id <1-1-39507>
+                      man_end_context
+                      man_update_display
+                      uni_sync_skip <2>
+                    uni_end_stream
+                    man_end_context
+                    uni_sync_skip <5>
+                  uni_end_stream
+                  >
+                uni_invoke_local <41-27066>
+                uni_invoke_local <41-27943>
+                uni_invoke_local <41-29213>
+                uni_invoke_local <41-34774>
+                uni_invoke_local <41-11346>
+                uni_invoke_local <41-11339>
+                mat_vertical_spacing <1>
+              man_end_object
+              man_update_display
+              act_set_criterion <10>
+              act_replace_action
+                  <
+                  uni_start_stream
+                    man_set_context_relative <35>
+                    man_check_and_set_context_rid <65>
+                    if_last_return_true_then <1, 2>
+                    man_end_context
+                    uni_sync_skip <1>
+                    man_start_first <trigger, "Type Keyword or Web Address here and click Go">
+                      mat_relative_tag <65>
+                      mat_bool_invisible <yes>
+                    man_end_object
+                    uni_sync_skip <2>
+                    man_end_context
+                    act_do_action <128>
+                  uni_end_stream
+                  >
+                act_set_criterion <11>
+                act_replace_action
+                    <
+                    uni_start_stream
+                      man_set_context_globalid <3>
+                      async_is_guest
+                      if_last_return_true_then <1>
+                      man_set_context_relative <66>
+                      man_close_children
+                      man_end_context
+                      uni_sync_skip <1>
+                      man_set_context_relative <30>
+                      mat_bool_disabled <yes>
+                      man_end_context
+                      man_set_context_relative <32>
+                      mat_bool_disabled <yes>
+                      man_end_context
+                      man_update_display
+                      man_end_context
+                    uni_end_stream
+                    >
+                  act_set_criterion <128>
+                  act_replace_action
+                      <
+                      uni_start_stream_wait_on
+                        man_set_context_globalid <3>
+                        man_set_context_relative <66>
+                        de_start_extraction <0>
+                        de_set_data_type <text>
+                        de_get_data_pointer <default>
+                        var_string_set_from_atom <A>
+                        var_string_trim_spaces
+                        de_end_extraction
+                        if_stra_eq_null_then <71>
+                        man_set_context_relative <30>
+                        mat_bool_disabled <yes>
+                        man_end_context
+                        man_set_context_relative <32>
+                        mat_bool_disabled <yes>
+                        man_end_context
+                        var_data_zero <A>
+                        if_data_neq_zero_then <6>
+                        uni_sync_skip <71>
+                        mat_bool_list_allow_entry <no>
+                        de_start_extraction <0>
+                        de_set_data_type <index>
+                        de_get_data_value <default>
+                        var_number_set_from_atom <A>
+                        de_end_extraction
+                        man_set_context_relative <32>
+                        if_numa_gt_one_then <57>
+                        mat_bool_disabled <no>
+                        var_data_zero <A>
+                        if_data_neq_zero_then <58>
+                        uni_sync_skip <57>
+                        var_data_set <00x, 01x>
+                        var_string_null <A>
+                        uni_invoke_local <41-21707>
+                        if_datb_neq_zero_then <1>
+                        mat_bool_disabled <no>
+                        var_data_zero <A>
+                        if_data_neq_zero_then <58>
+                        uni_sync_skip <1>
+                        mat_bool_disabled <yes>
+                        uni_sync_skip <58>
+                        man_end_context
+                        de_start_extraction <0>
+                        de_set_data_type <index>
+                        de_get_data_value <default>
+                        var_number_set_from_atom <A>
+                        de_end_extraction
+                        de_start_extraction <0>
+                        de_set_data_type <child_count>
+                        de_get_data_value <current_object_all_children>
+                        var_number_set_from_atom <B>
+                        de_end_extraction
+                        man_set_context_relative <30>
+                        if_numa_neq_numb_then <59>
+                        mat_bool_disabled <no>
+                        var_data_zero <A>
+                        if_data_neq_zero_then <60>
+                        uni_sync_skip <59>
+                        var_data_set <00x, 00x>
+                        var_string_null <A>
+                        uni_invoke_local <41-21707>
+                        if_datb_neq_zero_then <1>
+                        mat_bool_disabled <no>
+                        var_data_zero <A>
+                        if_data_neq_zero_then <60>
+                        uni_sync_skip <1>
+                        mat_bool_disabled <yes>
+                        uni_sync_skip <60>
+                        man_end_context
+                        uni_sync_skip <6>
+                        mat_bool_list_allow_entry <yes>
+                        man_end_context
+                        man_update_display
+                        man_end_context
+                      uni_wait_off_end_stream
+                      >
+                    act_set_criterion <71>
+                    act_replace_action
+                        <
+                        uni_start_stream
+                          man_set_context_relative <69>
+                          mat_bool_hidden <no>
+                          man_end_context
+                        uni_end_stream
+                        >
+                      act_set_criterion <72>
+                      act_replace_action
+                          <
+                          uni_start_stream
+                            man_set_context_relative <69>
+                            mat_bool_hidden <yes>
+                            man_end_context
+                          uni_end_stream
+                          >
+                        act_set_criterion <75>
+                        act_replace_action
+                            <
+                            uni_start_stream
+                              man_set_context_relative <31>
+                              mat_bool_disabled <no>
+                              man_end_context
+                              man_set_context_relative <33>
+                              mat_bool_disabled <yes>
+                              man_end_context
+                              act_do_action <71>
+                              man_update_display
+                            uni_end_stream
+                            >
+                          act_set_criterion <76>
+                          act_replace_action
+                              <
+                              uni_start_stream
+                                man_set_context_relative <21>
+                                act_do_action <63>
+                                man_end_context
+                                man_set_context_relative <31>
+                                mat_bool_disabled <yes>
+                                man_end_context
+                                man_set_context_relative <33>
+                                mat_bool_disabled <no>
+                                man_end_context
+                                act_do_action <72>
+                                man_update_display
+                              uni_end_stream
+                              >
+                            act_set_criterion <77>
+                            act_replace_action
+                                <
+                                uni_start_stream
+                                  man_set_context_relative <31>
+                                  mat_bool_disabled <no>
+                                  man_end_context
+                                uni_end_stream
+                                >
+                              act_set_criterion <78>
+                              act_replace_action
+                                  <
+                                  uni_start_stream
+                                    man_set_context_relative <33>
+                                    mat_bool_disabled <no>
+                                    man_end_context
+                                    man_set_context_relative <21>
+                                    act_do_action <60>
+                                    man_end_context
+                                    man_update_display
+                                  uni_end_stream
+                                  >
+                                act_set_criterion <79>
+                                act_replace_action
+                                    <
+                                    uni_start_stream
+                                      man_set_context_relative <33>
+                                      mat_bool_disabled <yes>
+                                      man_end_context
+                                      man_set_context_relative <21>
+                                      act_do_action <63>
+                                      man_end_context
+                                      man_update_display
+                                    uni_end_stream
+                                    >
+                                  act_set_criterion <18>
+                                  act_replace_action
+                                      <
+                                      uni_start_stream
+                                        man_set_context_globalid <1>
+                                        var_number_set <A, 0>
+                                        var_number_save <A, 16>
+                                        var_number_save <A, 17>
+                                        var_number_save <A, 15>
+                                        man_end_context
+                                        man_set_context_relative <117>
+                                        async_is_guest
+                                        if_last_return_true_then <1, 2>
+                                        mat_sink
+                                        uni_sync_skip <1>
+                                        mat_sink <"Favorite Places">
+                                        uni_sync_skip <2>
+                                        man_end_context
+                                        man_set_context_relative <66>
+                                        man_close_children
+                                        man_end_context
+                                        man_set_context_relative <35>
+                                        man_close_children
+                                        man_update_display
+                                        man_start_first <trigger, "Type Keyword or Web Address here and click Go">
+                                          mat_relative_tag <65>
+                                          mat_bool_invisible <yes>
+                                        man_end_object
+                                        mat_value <1>
+                                      man_end_object
+                                      man_set_context_globalid <20-0-49>
+                                      act_do_action <18>
+                                      man_end_context
+                                    uni_end_stream
+                                    >
+                                uni_wait_off_end_stream

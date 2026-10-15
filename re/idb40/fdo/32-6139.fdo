@@ -1,0 +1,228 @@
+uni_start_stream <00x>
+  async_is_known_subaccount
+  if_last_return_false_then <1>
+  async_alert <info, "This feature can only be used by registered screen names (not New User or Guest).">
+  uni_wait_off
+uni_abort_stream
+uni_sync_skip <1>
+man_preset_gid <41-6139>
+if_last_return_true_then <1>
+man_make_focus
+man_update_display
+uni_wait_off
+uni_abort_stream
+uni_sync_skip <1>
+man_set_context_globalid <1>
+man_start_object <ind_group, "Address Book">
+  mat_object_id <41-21564>
+  mat_style_id <41-21564>
+  mat_orientation <hcc>
+  mat_color_face <0, 72, 170>
+  act_set_criterion <18>
+  act_replace_action
+      <
+      uni_start_stream
+        man_close <41-6139>
+        man_update_display
+      uni_end_stream
+      >
+    mat_art_id <1-1-8832>
+    mat_position <center_center>
+    mat_bool_background_tile <yes>
+    man_start_object <org_group, "">
+      mat_orientation <vcc>
+      man_start_object <view, "Name\\Address">
+        mat_size <19, 14>
+        mat_relative_tag <1>
+        mat_frame_style <pop_in>
+        morg_manage
+        morg_view_path <"\\\\Address Book">
+        mat_ruler <20, 40>
+      man_start_sibling <org_group, "">
+        mat_orientation <hlt>
+        man_start_object <trigger, "">
+          mat_trigger_style <plain_picture>
+          mat_precise_width <40>
+          mat_precise_height <55>
+          mat_art_id <1-1-13865>
+          mat_horizontal_spacing <4>
+          mat_font_id <arial>
+          act_replace_select_action
+              <
+              uni_start_stream <00x>
+                man_preset_gid <41-6134>
+                if_last_return_true_then <1, 2>
+                man_make_focus
+                man_update_display
+                uni_sync_skip <1>
+                uni_wait_on
+                uni_invoke_no_context <41-6134>
+                uni_sync_skip <2>
+              uni_end_stream <00x>
+              >
+          man_start_sibling <trigger, "">
+            mat_trigger_style <plain_picture>
+            mat_precise_width <40>
+            mat_precise_height <55>
+            mat_art_id <1-1-13867>
+            mat_horizontal_spacing <4>
+            mat_font_id <arial>
+            act_replace_select_action
+                <
+                uni_start_stream <00x>
+                  man_preset_gid <41-6129>
+                  if_last_return_true_then <1, 2>
+                  man_make_focus
+                  man_update_display
+                  uni_sync_skip <1>
+                  uni_wait_on
+                  uni_invoke_no_context <41-6129>
+                  uni_sync_skip <2>
+                uni_end_stream <00x>
+                >
+            man_start_sibling <trigger, "">
+              mat_trigger_style <plain_picture>
+              mat_precise_width <40>
+              mat_precise_height <55>
+              mat_art_id <1-1-13866>
+              mat_horizontal_spacing <4>
+              mat_font_id <arial>
+              act_replace_select_action
+                  <
+                  uni_start_stream
+                    man_set_context_relative <1>
+                    morg_act_on_selected <1>
+                    man_end_context
+                  uni_end_stream
+                  >
+              man_start_sibling <trigger, "">
+                mat_trigger_style <plain_picture>
+                mat_precise_width <40>
+                mat_precise_height <55>
+                mat_art_id <1-1-13864>
+                mat_horizontal_spacing <3>
+                mat_font_id <arial>
+                act_replace_select_action
+                    <
+                    uni_start_stream
+                      man_set_context_relative <1>
+                      morg_delete_current_object
+                      man_end_context
+                    uni_end_stream
+                    >
+                man_end_object
+              man_end_object
+            man_start_sibling <org_group, "">
+              mat_orientation <vcf>
+              mat_color_face <255, 255, 255>
+              mat_precise_x <0>
+              mat_precise_y <10>
+              mat_precise_height <200>
+              mat_precise_width <250>
+              man_start_object <org_group, "">
+                mat_orientation <vct>
+                mat_precise_width <55>
+                mat_precise_height <250>
+                mat_bool_precise <yes>
+                man_start_object <trigger, "">
+                  mat_precise_x <6>
+                  mat_precise_y <17>
+                  mat_precise_width <48>
+                  mat_precise_height <48>
+                  mat_color_face <0, 102, 153>
+                  mat_color_top_edge <1, 1, 1>
+                  mat_color_bottom_edge <1, 1, 1>
+                  mat_trigger_style <rectangle>
+                  mat_font_size <8>
+                  mat_art_id <1-1-13552>
+                  mat_font_id <arial>
+                  act_replace_select_action
+                      <
+                      uni_start_stream
+                        man_set_context_relative <1>
+                        morg_act_on_selected <2>
+                        man_end_context
+                      uni_end_stream
+                      >
+                  man_start_sibling <ornament, "">
+                    mat_precise_x <10>
+                    mat_precise_y <66>
+                    mat_precise_width <41>
+                    mat_precise_height <15>
+                    mat_font_size <8>
+                    mat_font_id <arial>
+                    man_append_data <"Send To">
+                  man_start_sibling <trigger, "">
+                    mat_precise_x <6>
+                    mat_precise_y <96>
+                    mat_precise_width <48>
+                    mat_precise_height <48>
+                    mat_color_face <0, 102, 153>
+                    mat_color_top_edge <1, 1, 1>
+                    mat_color_bottom_edge <1, 1, 1>
+                    mat_trigger_style <rectangle>
+                    mat_font_size <8>
+                    mat_art_id <1-1-13555>
+                    mat_font_id <arial>
+                    act_replace_select_action
+                        <
+                        uni_start_stream
+                          man_set_context_relative <1>
+                          morg_act_on_selected <3>
+                          man_end_context
+                        uni_end_stream
+                        >
+                    man_start_sibling <ornament, "">
+                      mat_precise_x <10>
+                      mat_precise_y <145>
+                      mat_precise_width <41>
+                      mat_precise_height <15>
+                      mat_font_size <8>
+                      mat_font_id <arial>
+                      man_append_data <"Copy To">
+                    man_start_sibling <trigger, "">
+                      mat_precise_x <6>
+                      mat_precise_y <175>
+                      mat_precise_width <48>
+                      mat_precise_height <48>
+                      mat_color_face <0, 102, 153>
+                      mat_color_top_edge <1, 1, 1>
+                      mat_color_bottom_edge <1, 1, 1>
+                      mat_trigger_style <rectangle>
+                      mat_font_size <8>
+                      mat_art_id <1-1-13554>
+                      mat_font_id <arial>
+                      act_replace_select_action
+                          <
+                          uni_start_stream
+                            man_set_context_relative <1>
+                            morg_act_on_selected <4>
+                            man_end_context
+                          uni_end_stream
+                          >
+                      man_start_sibling <ornament, "">
+                        mat_precise_x <4>
+                        mat_precise_y <224>
+                        mat_precise_width <52>
+                        mat_precise_height <15>
+                        mat_font_size <8>
+                        mat_font_id <arial>
+                        man_append_data <"Blind Copy">
+                      man_end_object
+                    man_start_sibling <org_group, "">
+                      mat_orientation <vrb>
+                      man_start_object <trigger, "">
+                        mat_color_face <0, 102, 153>
+                        mat_color_text <255, 255, 255>
+                        mat_color_top_edge <145, 182, 255>
+                        mat_color_bottom_edge <1, 1, 1>
+                        mat_trigger_style <rectangle>
+                        mat_font_size <8>
+                        mat_title <"   Help   ">
+                        mat_font_id <arial>
+                      man_end_object
+                    man_end_object
+                  man_end_object
+                  man_update_display
+                  uni_wait_off
+                uni_end_stream <00x>

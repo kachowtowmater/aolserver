@@ -1,0 +1,90 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "YOUR PASSWORD:  KEEP IT A SECRET">
+    mat_object_id <40-51670>
+    mat_style_id <40-51670>
+    mat_orientation <vff>
+    mat_precise_width <375>
+    mat_precise_height <326>
+    mat_art_id <1-0-21743>
+    mat_position <center_center>
+    mat_bool_resize_vertical <no>
+    mat_bool_precise <yes>
+    mat_bool_background_tile <yes>
+    man_start_object <trigger, "Change Your\rPassword">
+      mat_precise_x <66>
+      mat_precise_y <239>
+      mat_color_face <145, 145, 255>
+      mat_trigger_style <rectangle>
+      mat_art_id <1-0-1356>
+      mat_font_id <times_roman>
+      mat_font_size <9>
+      mat_font_id <times_roman>
+      mat_font_size <9>
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on <00x>
+          sm_send_f1 <32-383>
+          >
+      man_start_sibling <trigger, "Edit Your\rStored Password">
+        mat_precise_x <193>
+        mat_precise_y <239>
+        mat_color_face <145, 145, 255>
+        mat_trigger_style <rectangle>
+        mat_art_id <1-0-1493>
+        mat_font_id <times_roman>
+        mat_font_size <9>
+        mat_font_id <times_roman>
+        mat_font_size <9>
+        act_replace_select_action
+            <
+            uni_start_stream <00x>
+              man_preset_gid <41-16478>
+              if_last_return_true_then <1, 2>
+              man_make_focus
+              man_update_display
+              uni_sync_skip <1>
+              uni_wait_on
+              uni_invoke_no_context <41-16478>
+              uni_sync_skip <2>
+            uni_end_stream <00x>
+            >
+        man_start_sibling <ornament, "YOUR PASSWORD">
+          mat_precise_x <7>
+          mat_precise_y <7>
+          mat_precise_width <183>
+          mat_precise_height <24>
+          mat_color_text <0, 0, 85>
+          mat_font_id <times_roman>
+          mat_font_size <14>
+          mat_font_style <bold>
+        man_start_sibling <ornament, "YOUR STORED PASSWORD">
+          mat_precise_x <7>
+          mat_precise_y <130>
+          mat_size <20, 1>
+          mat_color_text <0, 0, 85>
+          mat_font_id <times_roman>
+          mat_font_size <14>
+          mat_font_style <bold>
+        man_start_sibling <view, "">
+          mat_precise_x <7>
+          mat_precise_y <33>
+          mat_precise_width <355>
+          mat_precise_height <89>
+          mat_bool_writeable <yes>
+          man_append_data <"Your password is like the PIN number for your bank cash machine card. Just as you keep your PIN number a secret, you should keep your AOL password a secret. AOL will never ask you for your password, so the guideline is simple: Don't tell anyone.\x7f\x7fIt's also a good idea to change your password every month. To change your password, click on \"Change Your Password\" below. ">
+        man_start_sibling <view, "">
+          mat_precise_x <7>
+          mat_precise_y <155>
+          mat_precise_width <355>
+          mat_precise_height <73>
+          mat_relative_tag <1>
+          mat_bool_writeable <yes>
+        man_end_object
+        man_update_display
+        man_set_context_relative <1>
+        man_append_data <"For your convenience, you may store your password on the computer you use to sign on to America Online. That way, you won't have to type it in every time you sign on. Keep in mind that this removes some security from your account: anyone with access to your computer will be able to sign on, read your email, etc.\x7f\x7fIf you have children, it's a good feature for their sub-accounts (Keyword: SCREENNAME). By storing their password on your computer at home, you won't have to worry about them forgetting it or accidentally sharing it with others.\x7f\x7fTo use use this feature, click \"Edit Your Stored Password\" below and type in your password for each screen name.\x7f\x7fREMEMBER: if you change your password through \"Change Your Password,\" you'll also have to update the Stored Password that resides on your computer.  \x7f\x7fHere's the rule of thumb:  If you keep your password in Stored Password and decide to chan">
+        man_append_data <"ge your password in Change Password, you must also change your password in Stored Password. In other words, the two password settings must match.">
+        man_end_context
+        man_update_display
+        uni_wait_off
+      uni_end_stream <00x>

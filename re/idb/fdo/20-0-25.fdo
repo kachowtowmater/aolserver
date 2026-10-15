@@ -1,0 +1,13 @@
+uni_start_stream <01x>
+  uni_invoke_no_context <0-32-221>
+  man_set_context_globalid <0-32-221>
+  man_set_context_relative <1>
+  man_get_index_by_title <"New User">
+  uni_use_last_atom_value <mat_value>
+  man_update_display
+  man_end_context
+  man_set_context_relative <3>
+  act_do_action <select>
+  man_end_context
+  man_end_context
+  uni_void

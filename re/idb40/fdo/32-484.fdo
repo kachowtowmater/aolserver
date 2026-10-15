@@ -1,0 +1,8 @@
+uni_start_stream
+  man_set_context_globalid <2>
+  man_set_context_relative <335>
+  man_close
+  man_update_display <2>
+  man_end_context
+  man_end_context
+uni_end_stream

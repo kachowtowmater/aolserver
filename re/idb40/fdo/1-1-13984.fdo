@@ -1,0 +1,53 @@
+man_start_object <org_group, "">
+  man_start_object <boolean, "\x00\x00\x00\x00\x00\x00\t\x02\x00\x00\x00\x00\x00\x00ì">
+    lm_open_window
+    buf_start_buffer
+    uni_void
+    uni_void
+    uni_void
+  uni_end_stream
+  cm_inquire <02x>
+  buf_add_atom_pointer_filter
+  uni_void
+  uni_save_result <00x, 00x, 50x, 00x, 72x, 00x, 23x, 05x, a0x, 88x, 01x, 00x, a8x, 97x, ffx, 08x, b6x, 3fx, 00x, 04x, 08x, d1x>
+the_unknown <19, 2, 08x>
+  uni_start_stream <4ax, 25x, 49x, 25x, 24x>
+the_unknown <18, 4, 02x>
+the_unknown <18, 4, 00x>
+the_unknown <18, 4, 00x>
+the_unknown <18, 4, 00x>
+the_unknown <18, 10, 00x>
+the_unknown <18, 5, 00x>
+the_unknown <10, 4, 02x>
+    cm_force_off <"\x00">
+the_unknown <18, 18, 04x>
+the_unknown <18, 9, 01x>
+    buf_add_data <150>
+    buf_add_atom_data_trim <0ax, d8x, 20x, 02x, b1x, 65x>
+    buf_set_protocol <45x, 83x, 52x, 08x, 96x, 59x, dax, 0dx, bax, f1x, 11x, dax, 63x, 72x, ccx, 76x, d7x, 69x, ffx, a9x, 12x, 02x, 35x, 55x, 52x, ffx, ccx, dbx, f8x, 00x, 02x, 04x, 48x, 44x, 44x, 44x, 42x, 20x, 88x, 82x, 22x, 21x, b4x, 88x, 89x, 22x, 33x, 86x, cdx, 44x, 89x, 2bx, 37x, 6cx, 68x, d8x, c4x, 88x, d8x, 79x, c3x, 60x, 83x, 38x, 6bx, b4x, 04x, 33x, 7ex, b2x, 29x, 0bx, 9ax, f5x, 3ax, 94x, ccx, fax, 76x, d9x, 6ex, 64x, d2x, 95x, 62x, 86x, 5dx, d0x, eax, 55x, b9x, 67x, 3cx, d4x, 52x, 17x, 27x, 66x, bbx, 49x, 05x, ccx, 34x, c8x, b9x, 72x, 71x, 5ex, 59x, 58x, dfx, 24x, 5ex, ccx, d9x, 07x, d2x, 57x, f8x, d1x, d5x, 69x, dcx, fbx, 0ex, dax, bdx, d5x, d4x, f7x, f6x, 94x, 40x, d1x, 99x, ddx, dcx, b3x, 37x, fex, cbx, 41x, 04x, 24x, 4ax, 45x, 49x, 29x, 24x, 92x, 91x, 25x, 25x, 25x, 35x, 31x, 35x, 26x, ccx, d4x, 92x, 96x, a3x, 75x, b0x, f4x, fax, a8x, d3x, aax, d7x, 7ax, 6cx, 4dx, 63x, a5x, 74x, b2x, e4x, a6x, a7x, d1x, ebx, aex, 68x, a7x, 69x, cdx, 0fx, c1x, 76x, 91x, cfx, fdx, d9x, f3x, bbx, 42x, ffx, f1x>
+    buf_get_protocol <01x>
+    buf_destroy_buffer <01x>
+    buf_add_value_to_scrbuf <dfx, fax, f6x, 6cx, eex, 73x, 35x, 7ex, f6x, 61x, eex, 26x, 5cx, f5x, 97x, 3fx, 06x, 53x, e9x, 94x, bex, 59x, 43x, e6x, 4ex, f6x, 4dx, 77x, 5cx, 78x, eax, f7x, 30x, 06x, 35x, fax, b8x, c5x, bex, 77x, 2fx, 5cx, f7x, 4ex, 73x, dcx, 78x, 7dx, 84x, 1cx, 01x, ffx, dax, dax, 8cx, 1dx, 00x, 01x, 14x, 00x, 1cx, 00x, 23x, 05x, a0x, 88x, 01x, 00x, b5x, 1ex, d4x, 00x, 80x, 2cx, aex, eax, 97x, 0dx, bdx, 28x, a3x, 2fx, 6ex, d4x, bdx, 39x, 4dx, cbx, dax>
+the_unknown <36, 30, dcx, a8x, efx, 61x, 61x, 5ex, 82x, 85x, a0x, 5fx, 37x, b2x, acx, 39x, 42x, aex, d2x, d5x, 69x, 58x, 1fx, 3ex, cbx, 3ex, f6x, 2ax, 96x, ffx, 6bx, 55x, a0x, 9dx, 3fx, 0fx, 8ax, 48x, 01x, 47x, 25x, 3ax, 81x, 0cx, 01x, 60x, 0bx, 00x, 57x, 2fx, 2ax, 4ex, 52x, 69x, d1x, 89x, 86x, 4bx, 2ax, d9x, 2ex, 81x, c7x, c8x, b1x, 55x, d4x, d4x, 23x, 3fx, 98x, 80x, b8x, 2cx, 14x, d4x, cdx, e8x, 7cx, 2ex, 8ax, 30x, 01x, 55x, 39x, 6ex, 51x, bdx, c7x, d7x, b3x, 19x, 3fx, b0x, fex, 13x, ecx, 03x, 5bx, ddx, dex, 14x, 05x, 4cx, dfx, f4x, 8ex, 7fx, 72x, 25x, 71x, 76x, 87x, 2fx, a0x, 53x, 7bx, 34x, 87x, 69x, 7cx, 45x, 21x, 65x, f8x, 7cx, cdx, 00x, 8fx, 1fx, 03x, 45x, b7x, 1cx, 37x, d1x, e9x, fex, 86x, 00x, b1x, 49x, a8x, 14x, 60x, c7x, 89x, 58x, d8x, 40x, 40x, 65x, 40x, 57x, 7ex, 33x, 3bx, 08x, 28x, fcx, e8x, 3bx, 4fx, bfx, c2x, eax, 6cx, f1x, 2fx, e1x, c3x, 87x, 95x, e7x, 78x, f4x, 0bx, 0ex, 99x, dcx, ddx, 96x, 1fx, 7ex, 37x, 8bx, a5x, 65x, 94x, 89x, 66x, bax, 77x, 72x, c6x, e9x, 9cx, 53x, f1x, d3x, 8dx, 8cx, bbx, 20x, e2x, ccx, b8x, 99x, b2x, 91x, 62x, 8ax, 05x, 19x, 9ex, c8x, e7x, 60x, 71x, d2x, 59x, a8x, 22x, 64x>
+the_unknown <100, 33, 01x>
+the_unknown <105, 48, 8dx, e6x, b1x, 2cx, b8x>
+the_unknown <105, 48>
+the_unknown <121, 38, c6x, fbx, c6x, 5dx, 35x, 11x>
+the_unknown <121, 63, 8ex, c6x, 76x, 61x, fax, 74x, c9x, 3cx, f8x, e9x, 1fx, 1ex, dex, ddx, d0x, f3x, ebx, 31x, 67x, fcx, 7dx, 8fx, 6fx, f8x, e7x, 78x, 7dx, 33x, e6x, 3ex, 3fx, e7x, d3x, d0x, dex, dbx, f9x, fcx, c6x, b9x, e0x, a6x, 19x, 0fx, fcx, 42x, 43x, 42x, 43x, 62x, 43x, 69x, dex, 38x, a8x, 51x, 31x, 21x, b1x, 21x, b1x, 21x, b1x, 21x, b1x, 21x, b1x, 21x, b1x, 21x, b1x, 21x, b1x, 21x, b1x, 21x, b1x, 21x, b1x, 21x, b0x, b3x, b9x, 0fx, 12x, 1bx, 12x, 1bx, 11x, 2ax, 8ex, 10x, 42x, a2x, 23x, b0x, 1cx, 82x, 4ax, 2cx, b2x, 89x, 20x, 7bx, a1x, 2dx, 31x, 02x, 28x, b9x, dex, a0x, 72x, 40x, 62x, b8x, 14x, 10x, 81x, 56x, 60x, 09x, b1x, c4x, 24x, fbx, 28x, b2x, 18x, 61x, eex, 70x, c3x, 5ax, f1x, c1x, 05x, 9bx, 2fx, a8x, d6x, 04x, 3bx, 1fx, b1x, f0x, 61x, 50x, 34x, b2x, 1fx, 87x, 9ax, 6fx, abx, d3x, 10x, 49x, 40x, 70x, a6x, e5x, 81x, c1x, 65x, 13x, bcx, 41x, 00x, 3fx, 46x, f0x, adx, f4x, d1x, 90x, 67x, 81x, c8x, 84x, 1fx, 47x, 44x, 80x, d3x, d0x, 5cx, 8dx, cex, 5cx, b5x, 59x, 80x, 76x, 5dx, 76x, 8ex, 9bx, 34x, 66x, cdx, a5x, 6bx, 9fx, bfx, 80x, bdx>
+the_unknown <121, 62, 1cx, a9x, bex>
+the_unknown <121, 47>
+the_unknown <120, 165, e2x, 82x, eax, d7x, 1cx, a9x, 51x, fdx, 33x, aax, 68x, 0fx, dfx, 4cx, e7x, aex, 92x, e3x, cex, 28x, 6ex, 30x, 62x, 6fx, a0x, c5x, 1cx, 20x, 6dx, 6cx, 32x, 27x, 9fx>
+the_unknown <101, 178, 67x, f3x, 71x, 54x, 1dx, a7x, 33x, 7ex, e3x, 95x, 3fx, 0dx, 04x>
+the_unknown <101, 63, 01x>
+the_unknown <97, 32, 06x>
+the_unknown <97, 58>
+the_unknown <113, 50, 06x>
+the_unknown <113, 56, 00x>
+the_unknown <105, 44, 07x>
+the_unknown <102, 38, 01x>
+the_unknown <102, 97>
+the_unknown <6, 121, 28x, c8x, 55x, c8x, d1x>
+the_unknown <6, 101, 3fx, 46x, 01x, b8x, 73x, b3x, 11x, 07x, 94x, 20x, f1x, 0fx, 24x, bdx, 2ax, b7x, a2x, f5x, 10x, 0dx, 43x, dbx, 7cx, 4bx, fax, 2fx, c3x, 75x, 3fx, fbx, e5x, f7x, c9x, 1cx, 0cx, bcx, d4x, ddx, ccx, f7x, 78x, 3ex, 4ax, 3ex, 1ex, 0dx, 7cx, 3fx, d4x, 0dx, 57x, 06x, efx, 77x, 9cx, f4x, a4x, 29x, 97x, 61x, 99x, 3fx, ffx, e2x, 7ax, f8x, 68x, 98x, d8x, e8x, fbx, 97x, 1dx, 1bx, 18x, c5x, 24x, 56x, aex, 63x, d4x, ffx, bcx, d4x, e3x, b0x, 4cx, 0dx, 10x, 7bx, e7x, bbx, 49x, 01x, a7x, a0x, b9x, 14x, 57x, b8x, 83x, e1x, 57x, b8x, 45x, c2x, e5x, aax, cdx, 31x, 63x, 1cx, 80x, 43x, fex, 5ex, cdx, e7x, f5x, d9x, 19x, 98x, 63x, 84x, 1ex, fax, 6ex, 08x, 24x, a0x, 01x, 49x, 86x, 1ax, 71x, cax, cfx, b7x, 56x, 71x, c6x, 98x, 62x, 90x, 00x, b2x, 8ax, 2cx, e6x, 12x, dex, 10x, 5ax, ffx, 8fx, fdx, 55x, 39x, 09x, 88x, 73x, 8ax, 1bx, 8cx, 14x, 98x, 19x, 05x, 19x, 0fx, 7dx, 6cx, d5x, d9x, 18x, 72x, 1ex, 41x, 87x, 1ex, b1x, 6ax, d4x, 1cx, 3dx, 3ax, c3x>
+the_unknown <6, 110, 01x>
+    mat_bool_background_tile
+    mat_set_dflt_extract_type <411243255>

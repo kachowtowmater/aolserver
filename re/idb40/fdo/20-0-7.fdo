@@ -1,0 +1,11 @@
+uni_start_stream <01x>
+  man_start_object <ind_group, "">
+    mat_title <"Connect\x00">
+    mat_object_id <7>
+    mat_bool_modal <yes>
+    man_start_object <ornament, "">
+      mat_title <"Hanging up modem.  Please wait...\x00">
+    man_end_object
+    man_update_display
+  man_end_object
+uni_end_stream

@@ -1,0 +1,139 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Attachments">
+    mat_object_id <41-16415>
+    mat_style_id <41-16415>
+    mat_orientation <vlf>
+    mat_color_face <255, 251, 240>
+    mat_bool_resize_vertical <yes>
+    mat_bool_resize_horizontal <yes>
+    mat_position <center_center>
+    mat_bool_modal <yes>
+    mat_bool_background_flood <yes>
+    man_start_object <ornament, "">
+      mat_size <43, 3>
+      mat_font_size <8>
+      mat_font_id <arial>
+      man_append_data <"You can attach one or more files to this mail; multiple attached files will be compressed.  For each file you want to attach click Attach, select the file, and click Open.">
+    man_start_sibling <view, "">
+      mat_size <36, 10>
+      mat_relative_tag <1>
+      mat_managed_by <70>
+      mat_font_sis <arial, 9, normal>
+      morg_view_path <"%attachments">
+      morg_view_highlight_full_line <yes>
+      mat_vertical_spacing <3>
+      mat_bool_horizontal_scroll <yes>
+      mat_bool_force_scroll <yes>
+      mat_bool_writeable <yes>
+    man_start_sibling <org_group, "">
+      mat_orientation <hcf>
+      man_start_object <trigger, "">
+        mat_color_face <0, 109, 170>
+        mat_color_text <255, 255, 255>
+        mat_color_top_edge <145, 182, 255>
+        mat_color_bottom_edge <1, 1, 1>
+        mat_trigger_style <rectangle>
+        mat_font_size <8>
+        mat_title <"     Attach     ">
+        man_make_focus
+        mat_horizontal_spacing <3>
+        mat_bool_default <yes>
+        mat_font_id <arial>
+        act_replace_select_action
+            <
+            uni_start_stream
+              man_set_context_relative <1>
+              fm_start
+              fm_edit_attachment_command <01x>
+              fm_end
+              man_end_context
+            uni_end_stream
+            >
+        man_start_sibling <trigger, "">
+          mat_color_face <0, 109, 170>
+          mat_color_text <255, 255, 255>
+          mat_color_top_edge <145, 182, 255>
+          mat_color_bottom_edge <1, 1, 1>
+          mat_trigger_style <rectangle>
+          mat_font_size <8>
+          mat_title <"    Detach     ">
+          mat_vertical_spacing <3>
+          mat_font_id <arial>
+          act_replace_select_action
+              <
+              uni_start_stream
+                man_set_context_relative <1>
+                fm_start
+                fm_edit_attachment_command <04x>
+                fm_end
+                man_end_context
+              uni_end_stream
+              >
+          man_end_object
+        man_start_sibling <org_group, "">
+          mat_orientation <hff>
+          mat_vertical_spacing <2>
+          man_start_object <trigger, "">
+            mat_color_face <0, 109, 170>
+            mat_color_text <255, 255, 255>
+            mat_color_top_edge <145, 182, 255>
+            mat_color_bottom_edge <1, 1, 1>
+            mat_trigger_style <rectangle>
+            mat_font_size <8>
+            mat_title <"        OK        ">
+            mat_vertical_spacing <2>
+            mat_font_id <arial>
+            act_replace_select_action
+                <
+                uni_start_stream
+                  man_set_context_relative <1>
+                  fm_start
+                  fm_edit_attachment_command <03x>
+                  fm_end
+                  man_end_context
+                uni_end_stream
+                >
+            man_start_sibling <org_group, "">
+              mat_orientation <hff>
+              man_start_object <trigger, "">
+                mat_color_face <0, 109, 170>
+                mat_color_text <255, 255, 255>
+                mat_color_top_edge <145, 182, 255>
+                mat_color_bottom_edge <1, 1, 1>
+                mat_trigger_style <rectangle>
+                mat_font_size <8>
+                mat_title <"     Cancel     ">
+                mat_horizontal_spacing <3>
+                mat_font_id <arial>
+                act_replace_select_action
+                    <
+                    uni_start_stream
+                      man_set_context_relative <1>
+                      fm_start
+                      fm_edit_attachment_command <02x>
+                      fm_end
+                      man_end_context
+                      man_close_update
+                    uni_end_stream
+                    >
+                man_start_sibling <trigger, "">
+                  mat_color_face <0, 109, 170>
+                  mat_color_text <255, 255, 255>
+                  mat_color_top_edge <145, 182, 255>
+                  mat_color_bottom_edge <1, 1, 1>
+                  mat_trigger_style <rectangle>
+                  mat_font_size <8>
+                  mat_title <"      Help      ">
+                  mat_font_id <arial>
+                  act_replace_select_action
+                      <
+                      uni_start_stream_wait_on
+                        async_exec_context_help <61x, 74x, 74x, 61x, 63x, 68x, 6dx, 65x, 6ex, 74x, 73x>
+                      uni_wait_off_end_stream
+                      >
+                  man_end_object
+                man_end_object
+              man_end_object
+              man_update_display
+              uni_wait_off
+            uni_end_stream <00x>

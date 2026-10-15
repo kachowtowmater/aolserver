@@ -1,0 +1,108 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Set Network Address">
+    mat_object_id <32-478>
+    mat_orientation <vff>
+    mat_position <center_center>
+    man_start_object <edit_view, "Network Address (2400 and lower):">
+      mat_size <25, 1, 25>
+      mat_relative_tag <1>
+    man_start_sibling <edit_view, "Network Address (9600):">
+      mat_size <25, 1, 25>
+      mat_relative_tag <2>
+      mat_bool_vertical_scroll <no>
+      mat_bool_resize_horizontal <no>
+    man_start_sibling <edit_view, "800 Phone Number:">
+      mat_size <25, 1, 25>
+      mat_relative_tag <3>
+      mat_bool_vertical_scroll <no>
+      mat_bool_resize_vertical <no>
+      mat_bool_resize_horizontal <no>
+    man_start_sibling <edit_view, "800 Network Address:">
+      mat_size <25, 1, 25>
+      mat_relative_tag <4>
+      mat_bool_vertical_scroll <no>
+      mat_bool_resize_vertical <no>
+      mat_bool_resize_horizontal <no>
+    man_start_sibling <org_group, "">
+      mat_orientation <hef>
+      man_start_object <trigger, "OK">
+        mat_bool_default <yes>
+        act_replace_select_action
+            <
+            uni_start_stream
+              de_start_extraction <0>
+              man_set_context_relative <1>
+              idb_start_obj <"b">
+              idb_atr_globalid <20-3-0>
+              de_get_data_pointer
+              uni_use_last_atom_string <idb_append_data>
+              idb_end_obj
+              man_end_context
+              man_set_context_relative <2>
+              idb_start_obj <"b">
+              idb_atr_globalid <20-3-24>
+              de_get_data_pointer
+              uni_use_last_atom_string <idb_append_data>
+              idb_end_obj
+              man_end_context
+              man_set_context_relative <3>
+              idb_start_obj <"b">
+              idb_atr_globalid <20-3-12>
+              de_get_data_pointer
+              uni_use_last_atom_string <idb_append_data>
+              idb_end_obj
+              man_end_context
+              man_set_context_relative <4>
+              idb_start_obj <"b">
+              idb_atr_globalid <20-3-25>
+              de_get_data_pointer
+              uni_use_last_atom_string <idb_append_data>
+              idb_end_obj
+              man_end_context
+              de_end_extraction
+              man_close
+              man_update_display
+            uni_end_stream
+            >
+        man_start_sibling <trigger, "Cancel">
+          act_replace_select_action
+              <
+              uni_start_stream <00x>
+                man_close_update
+              uni_end_stream <00x>
+              >
+          man_end_object
+        man_end_object
+        man_update_display
+        uni_start_stream
+          man_set_context_relative <1>
+          idb_start_extraction
+          idb_set_context <20-3-0>
+          idb_get_string
+          uni_use_last_atom_string <man_append_data>
+          idb_end_extraction
+          man_end_context
+          man_set_context_relative <2>
+          idb_start_extraction
+          idb_set_context <20-3-24>
+          idb_get_string
+          uni_use_last_atom_string <man_append_data>
+          idb_end_extraction
+          man_end_context
+          man_set_context_relative <3>
+          idb_start_extraction
+          idb_set_context <20-3-12>
+          idb_get_string
+          uni_use_last_atom_string <man_append_data>
+          idb_end_extraction
+          man_end_context
+          man_set_context_relative <4>
+          idb_start_extraction
+          idb_set_context <20-3-25>
+          idb_get_string
+          uni_use_last_atom_string <man_append_data>
+          idb_end_extraction
+          man_end_context
+        uni_end_stream
+        uni_wait_off
+      uni_end_stream <00x>

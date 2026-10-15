@@ -1,0 +1,177 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "AOL Setup">
+    mat_object_id <41-17294>
+    mat_style_id <41-17294>
+    mat_orientation <vlf>
+    mat_color_face <255, 251, 240>
+    mat_bool_background_flood <yes>
+    mat_position <center_center>
+    mat_bool_background_flood <yes>
+    man_start_object <org_group, "">
+      mat_orientation <hlf>
+      man_start_object <ornament, "">
+        mat_art_id <1-1-22358>
+        mat_bool_disabled <yes>
+      man_start_sibling <org_group, "">
+        mat_orientation <vlc>
+        man_start_object <ornament, "AOL Access Number Details">
+          mat_size <25, 1, 128>
+          mat_font_id <arial>
+          mat_font_size <14>
+          mat_font_style <bold>
+        man_start_sibling <org_group, "">
+          mat_orientation <vff>
+          mat_precise_width <350>
+          mat_precise_height <2>
+          mat_color_face <1, 1, 1>
+          mat_bool_background_flood <yes>
+          mat_bool_precise <yes>
+        man_end_object
+      man_end_object
+    man_start_sibling <org_group, "">
+      mat_orientation <hlf>
+      man_start_object <ornament, "Name:">
+        mat_size <5, 1>
+        mat_font_id <arial>
+        mat_font_size <10>
+        mat_font_style <bold>
+      man_start_sibling <ornament, "">
+        mat_size <40, 2>
+        mat_relative_tag <1>
+      man_end_object
+    man_start_sibling <org_group, "">
+      mat_orientation <hff>
+      man_start_object <org_group, "">
+        mat_orientation <hlc>
+        man_start_object <ornament, "Maximum Speed:">
+          mat_size <13, 1>
+          mat_font_id <arial>
+          mat_font_size <10>
+          mat_font_style <bold>
+        man_start_sibling <ornament, "">
+          mat_size <5, 1>
+          mat_relative_tag <5>
+        man_end_object
+      man_start_sibling <org_group, "">
+        mat_orientation <hlc>
+        man_start_object <ornament, "Network:">
+          mat_size <8, 1>
+          mat_font_id <arial>
+          mat_font_size <10>
+          mat_font_style <bold>
+        man_start_sibling <ornament, "">
+          mat_size <12, 1, 128>
+          mat_relative_tag <6>
+        man_end_object
+      man_end_object
+    man_start_sibling <ornament, "">
+      mat_size <49, 1, 1028>
+      man_append_data <"  (This is the maximum speed, but not the only speed for this number.)">
+    man_start_sibling <org_group, "">
+      mat_orientation <hff>
+      man_start_object <org_group, "">
+        mat_orientation <hlc>
+        man_start_object <ornament, "Number:">
+          mat_size <7, 1>
+          mat_font_id <arial>
+          mat_font_size <10>
+          mat_font_style <bold>
+        man_start_sibling <ornament, "">
+          mat_size <20, 1>
+          mat_relative_tag <4>
+        man_end_object
+      man_start_sibling <org_group, "">
+        mat_orientation <hlc>
+        man_start_object <ornament, "Area Code:">
+          mat_size <8, 1>
+          mat_font_id <arial>
+          mat_font_size <10>
+          mat_font_style <bold>
+        man_start_sibling <ornament, "">
+          mat_size <12, 1, 128>
+          mat_relative_tag <3>
+        man_end_object
+      man_end_object
+    man_start_sibling <ornament, "">
+      mat_size <49, 2, 1028>
+      man_append_data <"  (If you're not sure whether or not this access phone\x7f  number is a local call, please ask your phone company.)">
+    man_start_sibling <org_group, "">
+      mat_orientation <hff>
+      man_start_object <org_group, "">
+        mat_orientation <hlc>
+        man_start_object <ornament, "City:">
+          mat_size <7, 1>
+          mat_font_id <arial>
+          mat_font_size <10>
+          mat_font_style <bold>
+        man_start_sibling <ornament, "">
+          mat_size <20, 1>
+          mat_relative_tag <7>
+        man_end_object
+      man_start_sibling <org_group, "">
+        mat_orientation <hlc>
+        man_start_object <ornament, "State:">
+          mat_size <8, 1>
+          mat_font_id <arial>
+          mat_font_size <10>
+          mat_font_style <bold>
+        man_start_sibling <ornament, "">
+          mat_size <12, 1, 128>
+          mat_relative_tag <8>
+        man_end_object
+      man_end_object
+    man_start_sibling <org_group, "">
+      mat_orientation <hlc>
+      man_start_object <ornament, "Country:">
+        mat_size <7, 1>
+        mat_font_id <arial>
+        mat_font_size <10>
+        mat_font_style <bold>
+      man_start_sibling <ornament, "">
+        mat_size <20, 1>
+        mat_relative_tag <2>
+      man_end_object
+    man_start_sibling <org_group, "">
+      mat_orientation <hff>
+      man_start_object <trigger, "OK">
+        mat_title_width <8>
+        mat_color_face <0, 109, 170>
+        mat_color_text <255, 255, 255>
+        mat_color_top_edge <145, 182, 255>
+        mat_color_bottom_edge <1, 1, 1>
+        mat_trigger_style <rectangle>
+        mat_font_sis <arial, 8, normal>
+        mat_context_help <"Click here to close this window">
+        act_replace_select_action
+            <
+            uni_start_stream <00x>
+              man_close_update
+            uni_end_stream <00x>
+            >
+        man_start_sibling <trigger, "Surcharge Info">
+          mat_title_width <15>
+          mat_color_face <0, 109, 170>
+          mat_color_text <255, 255, 255>
+          mat_color_top_edge <145, 182, 255>
+          mat_color_bottom_edge <1, 1, 1>
+          mat_trigger_style <rectangle>
+          mat_font_sis <arial, 8, normal>
+          mat_context_help <"Click here to read detailed\x7finformation about surcharges.">
+          act_replace_select_action
+              <
+              uni_start_stream <00x>
+                man_preset_gid <41-20987>
+                if_last_return_true_then <1, 2>
+                man_make_focus
+                man_update_display
+                uni_sync_skip <1>
+                uni_wait_on
+                uni_invoke_no_context <41-20987>
+                uni_sync_skip <2>
+              uni_end_stream <00x>
+              >
+          man_end_object
+        man_end_object
+        man_update_display
+        uni_wait_off
+      uni_end_stream <00x>

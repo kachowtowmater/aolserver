@@ -1,0 +1,70 @@
+uni_start_stream_wait_on
+  man_set_context_globalid <1>
+  var_number_set <C, 1>
+  var_number_save <C, 17>
+  man_end_context
+  man_set_context_globalid <2>
+  man_set_context_relative <52>
+  mat_bool_disabled <yes>
+  man_change_context_relative <32>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_update_display
+  man_end_context
+  man_set_context_globalid <3>
+  man_set_context_relative <223>
+  mat_bool_disabled <yes>
+  man_change_context_relative <224>
+  mat_bool_disabled <no>
+  man_change_context_relative <237>
+  mat_bool_disabled <yes>
+  man_change_context_relative <238>
+  mat_bool_disabled <yes>
+  man_change_context_relative <242>
+  mat_bool_disabled <yes>
+  man_change_context_relative <243>
+  mat_bool_disabled <yes>
+  man_change_context_relative <244>
+  mat_bool_disabled <yes>
+  man_change_context_relative <245>
+  mat_bool_disabled <yes>
+  man_change_context_relative <248>
+  mat_bool_disabled <yes>
+  man_change_context_relative <250>
+  mat_bool_disabled <yes>
+  man_change_context_relative <229>
+  mat_bool_disabled <yes>
+  man_change_context_relative <230>
+  mat_bool_disabled <yes>
+  man_change_context_relative <232>
+  mat_bool_disabled <yes>
+  man_change_context_relative <260>
+  mat_bool_disabled <yes>
+  man_change_context_relative <261>
+  mat_bool_disabled <yes>
+  man_change_context_relative <209>
+  mat_bool_disabled <yes>
+  man_change_context_relative <210>
+  mat_bool_disabled <yes>
+  man_change_context_relative <211>
+  mat_bool_disabled <yes>
+  man_change_context_relative <212>
+  mat_bool_disabled <yes>
+  man_change_context_relative <213>
+  mat_bool_disabled <yes>
+  man_change_context_relative <217>
+  mat_bool_disabled <yes>
+  man_change_context_relative <219>
+  mat_bool_disabled <yes>
+  man_change_context_relative <220>
+  mat_bool_disabled <yes>
+  man_change_context_relative <87>
+  mat_bool_disabled <yes>
+  man_change_context_relative <265>
+  mat_bool_disabled <yes>
+  man_end_context
+  man_update_display
+  man_end_context
+  uni_wait_off
+uni_end_stream
+man_set_context_globalid <53>

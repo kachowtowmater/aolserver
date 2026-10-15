@@ -1,0 +1,90 @@
+uni_start_stream
+  var_data_set <01x, 00x>
+  man_set_context_relative <66>
+  var_number_set <A, 320>
+  mat_bool_list_allow_entry <no>
+  de_start_extraction <0>
+  var_number_get <A>
+  uni_use_last_atom_value <de_set_variable_id>
+  de_set_data_type <var>
+  de_get_data_value <selected_children>
+  var_number_set_from_atom <A>
+  de_end_extraction
+  mat_bool_list_allow_entry <yes>
+  if_numa_eq_one_then <1>
+  var_number_set <A, 319>
+  mat_bool_list_allow_entry <no>
+  de_start_extraction <0>
+  var_number_get <A>
+  uni_use_last_atom_value <de_set_variable_id>
+  de_set_data_type <var>
+  de_get_data_value <selected_children>
+  var_number_set_from_atom <A>
+  de_end_extraction
+  mat_bool_list_allow_entry <yes>
+  var_number_get <A>
+  if_numa_true_then <1>
+  var_number_copy_between_regs <A, D>
+  var_number_set <A, 320>
+  mat_bool_list_allow_entry <no>
+  de_start_extraction <0>
+  var_number_get <A>
+  uni_use_last_atom_value <de_set_variable_id>
+  de_set_data_type <var>
+  de_get_data_value <selected_children>
+  var_number_set_from_atom <A>
+  de_end_extraction
+  mat_bool_list_allow_entry <yes>
+  if_numa_true_then <1>
+  var_number_copy_between_regs <A, C>
+  var_number_set <A, 321>
+  mat_bool_list_allow_entry <no>
+  de_start_extraction <0>
+  var_number_get <A>
+  uni_use_last_atom_value <de_set_variable_id>
+  de_set_data_type <var>
+  de_get_data_value <selected_children>
+  var_number_set_from_atom <A>
+  de_end_extraction
+  mat_bool_list_allow_entry <yes>
+  var_number_get <D>
+  uni_use_last_atom_value <man_preset_gid>
+  if_last_return_true_then <1>
+  if_numa_true_then <11>
+  var_number_get <A>
+  uni_use_last_atom_value <man_set_context_relative>
+  man_is_rendered
+  if_last_return_false_then <12>
+  man_end_context
+  man_end_context
+  var_number_set <A, 0>
+  if_numa_true_then <1>
+  uni_sync_skip <12>
+  man_end_context
+  uni_sync_skip <11>
+  if_stra_neq_null_then <6>
+  man_make_focus
+  uni_sync_skip <6>
+  var_number_get <C>
+  uni_use_last_atom_value <man_set_context_relative>
+  if_data_eq_zero_then <3, 2>
+  www_can_go_back
+  if_last_return_true_then <2>
+  if_stra_neq_null_then <4>
+  www_go_back
+  uni_sync_skip <4>
+  var_data_set <01x, 01x>
+  if_datb_eq_zero_then <2>
+  uni_sync_skip <3>
+  www_can_go_forward
+  if_last_return_true_then <2>
+  if_stra_neq_null_then <5>
+  www_go_forward
+  uni_sync_skip <5>
+  var_data_set <01x, 01x>
+  uni_sync_skip <2>
+  man_end_context
+  man_end_context
+  uni_sync_skip <1>
+  man_end_context
+uni_end_stream

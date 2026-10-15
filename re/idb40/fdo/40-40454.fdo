@@ -1,0 +1,204 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Security Alerts">
+    mat_object_id <40-40454>
+    mat_style_id <40-40454>
+    mat_orientation <vff>
+    mat_precise_width <360>
+    mat_precise_height <175>
+    mat_color_face <255, 251, 240>
+    mat_position <center_center>
+    mat_bool_resize_vertical <no>
+    mat_bool_precise <yes>
+    mat_bool_background_flood <yes>
+    man_start_object <org_group, "">
+      mat_orientation <vff>
+      mat_precise_width <351>
+      mat_precise_height <138>
+      man_start_object <ornament, "Show an Alert Before :">
+        mat_precise_x <8>
+        mat_precise_y <8>
+        mat_size <20, 1>
+        mat_font_size <8>
+        mat_font_id <arial>
+      man_start_sibling <sms_list, "">
+        mat_orientation <hff>
+        man_start_object <trigger, " Entering a Secure Document Environment">
+          mat_precise_x <8>
+          mat_precise_y <33>
+          mat_precise_width <13>
+          mat_precise_height <13>
+          mat_relative_tag <1>
+          mat_bool_default_send <no>
+        man_end_object
+      man_start_sibling <sms_list, "">
+        mat_orientation <hff>
+        man_start_object <trigger, "Leaving a Secure Document Environment">
+          mat_precise_x <8>
+          mat_precise_y <59>
+          mat_precise_width <13>
+          mat_precise_height <13>
+          mat_relative_tag <5>
+          mat_bool_default_send <no>
+        man_end_object
+      man_start_sibling <sms_list, "">
+        mat_orientation <hff>
+        man_start_object <trigger, " Viewing a Document With a Secure/Insecure Mix">
+          mat_precise_x <8>
+          mat_precise_y <85>
+          mat_precise_width <13>
+          mat_precise_height <13>
+          mat_relative_tag <2>
+          mat_bool_default_send <no>
+        man_end_object
+      man_start_sibling <sms_list, "">
+        mat_orientation <hff>
+        man_start_object <trigger, " Submitting a Form">
+          mat_precise_x <8>
+          mat_precise_y <111>
+          mat_precise_width <13>
+          mat_precise_height <13>
+          mat_relative_tag <3>
+          mat_bool_default_send <no>
+        man_end_object
+      man_end_object
+    man_start_sibling <ornament, "">
+      mat_precise_x <28>
+      mat_precise_y <32>
+      mat_size <30, 1>
+      mat_font_id <arial>
+      mat_font_size <9>
+      mat_font_style <bold>
+      man_append_data <"Entering a Secure Document Environment">
+    man_start_sibling <ornament, "">
+      mat_precise_x <28>
+      mat_precise_y <58>
+      mat_size <30, 1>
+      mat_font_id <arial>
+      mat_font_size <9>
+      mat_font_style <bold>
+      man_append_data <"Leaving a Secure Document Environment">
+    man_start_sibling <ornament, "">
+      mat_precise_x <28>
+      mat_precise_y <84>
+      mat_size <40, 1>
+      mat_font_id <arial>
+      mat_font_size <9>
+      mat_font_style <bold>
+      man_append_data <"Viewing a Document With a Secure/Insecure Mix">
+    man_start_sibling <ornament, "">
+      mat_precise_x <28>
+      mat_precise_y <110>
+      mat_size <30, 1>
+      mat_font_id <arial>
+      mat_font_size <9>
+      mat_font_style <bold>
+      man_append_data <"Submitting a Form">
+    man_start_sibling <org_group, "">
+      mat_orientation <hef>
+      mat_precise_y <140>
+      mat_precise_width <341>
+      mat_precise_height <36>
+      man_start_object <trigger, "OK">
+        mat_precise_x <115>
+        mat_precise_y <144>
+        mat_precise_width <70>
+        mat_precise_height <23>
+        mat_relative_tag <4>
+        mat_color_face <0, 109, 170>
+        mat_color_text <255, 255, 255>
+        mat_color_top_edge <145, 182, 255>
+        mat_color_bottom_edge <1, 1, 1>
+        mat_trigger_style <rectangle>
+        mat_font_size <8>
+        mat_bool_default <yes>
+        mat_font_id <arial>
+        act_replace_select_action
+            <
+            uni_start_stream
+              de_start_extraction <0>
+              lm_table_use_table <20-0-202>
+              lm_table_use_key <"secureNew">
+              man_set_context_relative <1>
+              de_get_data_value
+              if_last_return_false_then <10, 11>
+              lm_table_set_item <"0">
+              uni_sync_skip <10>
+              lm_table_set_item <"1">
+              uni_sync_skip <11>
+              man_end_context
+              lm_table_use_key <"leaveSecureDoc">
+              man_set_context_relative <5>
+              de_get_data_value
+              if_last_return_false_then <50, 51>
+              lm_table_set_item <"0">
+              uni_sync_skip <50>
+              lm_table_set_item <"1">
+              uni_sync_skip <51>
+              man_end_context
+              lm_table_use_key <"mixedSecurity">
+              man_set_context_relative <2>
+              de_get_data_value
+              if_last_return_false_then <20, 21>
+              lm_table_set_item <"0">
+              uni_sync_skip <20>
+              lm_table_set_item <"1">
+              uni_sync_skip <21>
+              man_end_context
+              lm_table_use_key <"secureSubmit">
+              man_set_context_relative <3>
+              de_get_data_value
+              if_last_return_false_then <30, 31>
+              lm_table_set_item <"0">
+              uni_sync_skip <30>
+              lm_table_set_item <"1">
+              uni_sync_skip <31>
+              man_end_context
+              de_end_extraction
+              man_close_update
+            uni_end_stream
+            >
+        man_start_sibling <trigger, "Cancel">
+          mat_precise_x <195>
+          mat_precise_y <144>
+          mat_precise_width <70>
+          mat_precise_height <23>
+          mat_color_face <0, 109, 170>
+          mat_color_text <255, 255, 255>
+          mat_color_top_edge <145, 182, 255>
+          mat_color_bottom_edge <1, 1, 1>
+          mat_trigger_style <rectangle>
+          mat_font_size <8>
+          mat_font_id <arial>
+          act_replace_select_action
+              <
+              uni_start_stream
+                man_close_update
+              uni_end_stream
+              >
+          man_end_object
+        man_end_object
+        man_update_display
+        lm_table_use_table <20-0-202>
+        man_set_context_relative <1>
+        lm_table_use_key <"secureNew">
+        lm_table_get_item_value
+        uni_use_last_atom_value <mat_value>
+        man_end_context
+        man_set_context_relative <5>
+        lm_table_use_key <"leaveSecureDoc">
+        lm_table_get_item_value
+        uni_use_last_atom_value <mat_value>
+        man_end_context
+        man_set_context_relative <2>
+        lm_table_use_key <"mixedSecurity">
+        lm_table_get_item_value
+        uni_use_last_atom_value <mat_value>
+        man_end_context
+        man_set_context_relative <3>
+        lm_table_use_key <"secureSubmit">
+        lm_table_get_item_value
+        uni_use_last_atom_value <mat_value>
+        man_end_context
+        man_update_display
+        uni_wait_off
+      uni_end_stream <00x>

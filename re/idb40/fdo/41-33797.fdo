@@ -1,0 +1,82 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Resize this image?">
+    mat_object_id <41-33797>
+    mat_style_id <41-33797>
+    mat_orientation <vcf>
+    mat_color_face <255, 251, 240>
+    mat_position <center_center>
+    mat_bool_resize_vertical <no>
+    mat_bool_modal <yes>
+    mat_bool_background_flood <yes>
+    man_start_object <org_group, "">
+      mat_orientation <hce>
+      man_start_object <ornament, "">
+        mat_size <50, 3>
+        mat_ruler <5>
+        mat_font_id <arial>
+        mat_font_style <bold>
+        man_append_data <"\tWould you like to resize this picture to fit in the document? \x7f\tIf not, the image will be inserted actual size.">
+      man_end_object
+    man_start_sibling <org_group, "">
+      mat_orientation <vec>
+      man_start_object <trigger, "Yes, resize the image">
+        mat_font_sis <arial, 8, normal>
+        mat_color_text <255, 255, 255>
+        mat_precise_height <24>
+        mat_precise_width <175>
+        mat_trigger_style <rectangle>
+        mat_color_top_edge <145, 182, 255>
+        mat_color_bottom_edge <1, 1, 1>
+        mat_color_face <1, 109, 170>
+        mat_bool_default <yes>
+        act_replace_select_action
+            <
+            uni_start_stream <00x>
+              de_start_extraction <0>
+              man_set_context_relative <2>
+              idb_start_obj <"b">
+              idb_atr_globalid <20-0-2>
+              de_get_data_value
+              uni_use_last_atom_value <idb_append_data>
+              idb_end_obj
+              man_end_context
+              de_end_extraction
+              rich_scale_images <yes>
+            uni_end_stream
+            >
+        man_start_sibling <trigger, "No, do not resize the image">
+          mat_font_sis <arial, 8, normal>
+          mat_color_text <255, 255, 255>
+          mat_precise_height <24>
+          mat_precise_width <175>
+          mat_trigger_style <rectangle>
+          mat_color_top_edge <145, 182, 255>
+          mat_color_bottom_edge <1, 1, 1>
+          mat_color_face <1, 109, 170>
+          act_replace_select_action
+              <
+              uni_start_stream <00x>
+                de_start_extraction <0>
+                man_set_context_relative <2>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-2>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                de_end_extraction
+                rich_scale_images <no>
+              uni_end_stream
+              >
+          man_end_object
+        man_start_sibling <sms_list, "">
+          mat_orientation <hff>
+          mat_relative_tag <2>
+          man_start_object <trigger, "Don't show this again.">
+            mat_font_sis <arial, 8, bold>
+            mat_bool_default_send <no>
+          man_end_object
+        man_end_object
+        man_update_display
+        uni_wait_off
+      uni_end_stream <00x>

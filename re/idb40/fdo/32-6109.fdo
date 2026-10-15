@@ -1,0 +1,103 @@
+uni_start_stream <00x>
+  man_set_context_globalid <1>
+  man_start_object <ind_group, "Switch Screen Name Password">
+    mat_object_id <32-6109>
+    mat_style_id <32-6109>
+    mat_orientation <hct>
+    mat_precise_width <355>
+    mat_precise_height <130>
+    mat_art_id <1-1-8832>
+    mat_position <center_center>
+    mat_bool_resize_vertical <no>
+    mat_bool_modal <yes>
+    mat_bool_precise <yes>
+    mat_bool_background_tile <yes>
+    man_start_object <ornament, "">
+      mat_precise_x <11>
+      mat_precise_y <21>
+      mat_precise_width <83>
+      mat_precise_height <16>
+      mat_font_size <9>
+      mat_font_id <arial>
+      mat_font_style <bold>
+      man_append_data <"Screen Name:">
+    man_start_sibling <ornament, "">
+      mat_precise_x <101>
+      mat_precise_y <21>
+      mat_size <26, 1>
+      mat_relative_tag <2>
+      async_get_screen_name
+      uni_use_last_atom_string <man_append_data>
+      mat_font_id <arial>
+      mat_font_size <9>
+      mat_font_style <bold>
+    man_start_sibling <ornament, "">
+      mat_precise_x <29>
+      mat_precise_y <55>
+      mat_size <8, 1>
+      mat_font_size <9>
+      mat_title_pos <below | bottom_or_right>
+      mat_font_id <arial>
+      mat_font_style <bold>
+      man_append_data <"Password:">
+    man_start_sibling <edit_view, "">
+      mat_precise_x <101>
+      mat_precise_y <52>
+      mat_size <26, 1, 10>
+      mat_relative_tag <1>
+      mat_frame_style <pop_in>
+      mat_title_pos <left | center>
+      mat_vertical_spacing <4>
+      mat_bool_protected_input <yes>
+      mat_bool_writeable <yes>
+      mat_validation <128>
+    man_start_sibling <trigger, "">
+      mat_title_width <8>
+      mat_precise_x <170>
+      mat_precise_y <94>
+      mat_color_face <0, 109, 170>
+      mat_color_text <254, 255, 255>
+      mat_color_top_edge <150, 200, 255>
+      mat_trigger_style <rectangle>
+      mat_font_size <8>
+      mat_title <"   Switch   ">
+      mat_horizontal_spacing <5>
+      mat_bool_default <yes>
+      mat_font_id <arial>
+      mat_font_size <9>
+      act_replace_select_action
+          <
+          uni_start_stream
+            de_validate <display_msg | terminate>
+            man_set_context_relative <1>
+            de_start_extraction <0>
+            de_get_data_pointer
+            uni_use_last_atom_string <async_storepassword>
+            de_end_extraction
+            man_end_context
+            man_close_update
+            async_relogon
+          uni_end_stream
+          >
+      man_start_sibling <trigger, "">
+        mat_precise_x <266>
+        mat_precise_y <94>
+        mat_color_face <0, 109, 170>
+        mat_color_text <254, 255, 255>
+        mat_color_top_edge <150, 200, 255>
+        mat_trigger_style <rectangle>
+        mat_font_size <8>
+        mat_title <"    Cancel    ">
+        mat_font_id <arial>
+        mat_font_size <9>
+        act_replace_select_action
+            <
+            uni_start_stream
+              man_close_update
+              async_exit_aux
+            uni_end_stream
+            >
+        man_end_object
+        man_update_display
+        uni_wait_off
+      uni_end_stream <00x>

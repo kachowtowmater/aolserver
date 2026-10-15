@@ -1,0 +1,120 @@
+uni_start_stream <00x>
+  man_preset_gid <41-27653>
+  if_last_return_true_then <5>
+uni_abort_stream
+uni_sync_skip <5>
+man_start_object <ind_group, "Cancel AOL Setup">
+  mat_object_id <41-27653>
+  mat_style_id <41-27653>
+  mat_orientation <vff>
+  mat_color_face <255, 251, 240>
+  mat_bool_background_flood <yes>
+  mat_position <center_center>
+  mat_bool_modal <yes>
+  man_start_object <org_group, "">
+    mat_orientation <hlc>
+    man_start_object <ornament, "">
+      mat_art_id <1-1-22358>
+      mat_bool_disabled <yes>
+    man_start_sibling <org_group, "">
+      mat_orientation <vlc>
+      mat_color_face <1, 1, 1>
+      man_start_object <ornament, "">
+        mat_size <20, 1>
+        mat_font_id <arial>
+        mat_font_size <14>
+        mat_font_style <bold>
+        man_append_data <"Are You Sure?">
+      man_start_sibling <org_group, "">
+        mat_orientation <vft>
+        mat_precise_width <330>
+        mat_precise_height <2>
+        mat_color_face <1, 1, 1>
+        mat_bool_background_flood <yes>
+        mat_bool_precise <yes>
+      man_end_object
+    man_end_object
+  man_start_sibling <ornament, "">
+    mat_size <10, 1, 5>
+  man_start_sibling <ornament, "">
+    mat_size <47, 3>
+    man_append_data <"You have not finished setting up your connection to the AOL service.  If you stop now, you may not be able to sign on.">
+  man_start_sibling <ornament, "">
+    mat_size <45, 3>
+    if_newuser_then <1, 2>
+    mat_title <"Remember - there's no risk and no obligation during a FREE trial period.  Are you sure you want to stop?">
+    uni_sync_skip <1>
+    mat_title <"Are you sure you want to stop?">
+    uni_sync_skip <2>
+    mat_font_style <bold>
+  man_start_sibling <org_group, "">
+    mat_orientation <hcc>
+    man_start_object <trigger, "No">
+      mat_title_width <6>
+      mat_relative_tag <5>
+      mat_color_face <0, 109, 170>
+      mat_color_text <255, 255, 255>
+      mat_color_top_edge <145, 182, 255>
+      mat_color_bottom_edge <1, 1, 1>
+      mat_trigger_style <rectangle>
+      mat_font_sis <arial, 10, normal>
+      mat_bool_default <yes>
+      mat_bool_gradual_shadow <yes>
+      act_replace_select_action
+          <
+          uni_start_stream <00x>
+            man_close_update
+          uni_end_stream <00x>
+          >
+      man_start_sibling <trigger, "">
+        mat_bool_hidden <yes>
+        mat_size <1, 1>
+      man_start_sibling <trigger, "Yes">
+        mat_title_width <6>
+        mat_relative_tag <6>
+        mat_color_face <0, 109, 170>
+        mat_color_text <255, 255, 255>
+        mat_color_top_edge <145, 182, 255>
+        mat_color_bottom_edge <1, 1, 1>
+        mat_trigger_style <rectangle>
+        mat_font_sis <arial, 10, normal>
+        mat_bool_gradual_shadow <yes>
+        act_replace_select_action
+            <
+            uni_start_stream
+              man_close_update
+              man_get_top_window
+              var_number_set_from_atom <D>
+              uni_use_last_atom_value <man_set_context_globalid>
+              act_do_action <666>
+              var_number_get <D>
+              uni_use_last_atom_value <man_close_update>
+              man_obj_stack_pop <2>
+              var_number_set <A, 0>
+              var_number_save <A, 2244739072>
+              idb_exists <20-0-142>
+              if_last_return_true_then <1>
+              idb_delete_obj <20-0-142>
+              uni_sync_skip <1>
+              man_preset_gid <32-221>
+              if_last_return_true_then <2, 3>
+              mat_bool_invisible <no>
+              man_update_display
+              man_end_context
+              uni_sync_skip <2>
+              if_offline_then <3>
+              uni_invoke_no_context <32-221>
+              uni_sync_skip <3>
+            uni_end_stream
+            >
+        man_end_object
+      man_end_object
+      man_update_display
+      man_update_display
+      man_set_context_relative <5>
+      man_make_focus
+      man_end_context
+      man_update_display
+      async_playsound <"Drop.wav">
+      uni_wait_off
+    uni_end_stream <00x>

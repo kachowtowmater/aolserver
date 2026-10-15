@@ -1,0 +1,43 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Automatic AOL">
+    mat_object_id <41-30893>
+    mat_style_id <41-30893>
+    mat_orientation <vff>
+    mat_color_face <255, 251, 240>
+    mat_position <center_center>
+    mat_bool_modal <yes>
+    mat_bool_background_flood <yes>
+    man_start_object <ornament, "">
+      mat_size <40, 5>
+      mat_font_sis <arial, 8, normal>
+      mat_font_id <arial>
+      man_append_data <"The AOL state is not ready for the scheduled Automatic AOL session.  You may wait for the next scheduled session or start the session by selecting \"Run Automatic AOL\" from the \"Mail Center\" drop-down menu.">
+    man_start_sibling <org_group, "">
+      mat_orientation <hce>
+      man_start_object <trigger, "OK">
+        mat_font_sis <arial, 8, normal>
+        mat_color_text <255, 255, 255>
+        mat_precise_height <24>
+        mat_precise_width <50>
+        mat_trigger_style <rectangle>
+        mat_color_top_edge <145, 182, 255>
+        mat_color_bottom_edge <1, 1, 1>
+        mat_color_face <1, 109, 170>
+        mat_bool_default <yes>
+        act_replace_select_action
+            <
+            uni_start_stream <00x>
+              man_close_update
+            uni_end_stream <00x>
+            >
+        man_end_object
+      man_end_object
+      man_update_display
+      man_set_context_relative <1>
+      act_get_db_value <14x, 00x, 00x, 76x>
+      uni_use_last_atom_value <mat_value>
+      man_end_context
+      man_update_display
+      man_end_context
+      uni_wait_off
+    uni_end_stream <00x>

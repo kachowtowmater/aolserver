@@ -1,0 +1,13 @@
+the_unknown <19, 20, 03x>
+the_unknown <19, 1>
+the_unknown <19, 20>
+the_unknown <19, 9>
+the_unknown <19, 3>
+uni_start_stream <72x, 74x>
+  uni_start_loop <2ax>
+sm_end_object_with_action
+  <
+uni_wait_off_end_stream
+uni_invoke_local
+lm_open_window
+>

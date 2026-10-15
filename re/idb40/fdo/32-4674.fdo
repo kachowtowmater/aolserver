@@ -1,0 +1,61 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Proxy Configuration">
+    mat_object_id <32-4674>
+    mat_orientation <vff>
+    mat_position <center_center>
+    man_start_object <edit_view, "HTTP Proxy:">
+      mat_size <50, 1>
+      mat_relative_tag <1>
+      mat_bool_writeable <yes>
+      lm_table_use_table <20-0-88>
+      lm_table_get_item <"proxHTTP">
+      uni_save_result
+      if_last_return_true_then <1>
+      uni_get_result
+      uni_use_last_atom_string <man_replace_data>
+      uni_sync_skip <1>
+    man_start_sibling <edit_view, "HTTP Port:">
+      mat_size <50, 1>
+      mat_relative_tag <2>
+      mat_bool_writeable <yes>
+      lm_table_use_table <20-0-88>
+      lm_table_get_item <"portHTTP">
+      uni_save_result
+      if_last_return_true_then <1>
+      uni_get_result
+      uni_use_last_atom_string <man_replace_data>
+      uni_sync_skip <1>
+    man_start_sibling <trigger, "OK">
+      mat_bool_default <yes>
+      act_replace_select_action
+          <
+          uni_start_stream
+            lm_table_use_table <20-0-88>
+            lm_table_clear
+            de_start_extraction <0>
+            lm_table_use_key <"proxHTTP">
+            man_set_context_relative <1>
+            de_get_data_pointer
+            uni_save_result
+            if_last_return_true_then <1>
+            uni_get_result
+            uni_use_last_atom_string <lm_table_set_item>
+            uni_sync_skip <1>
+            man_end_context
+            lm_table_use_key <"portHTTP">
+            man_set_context_relative <2>
+            de_get_data_pointer
+            uni_save_result
+            if_last_return_true_then <1>
+            uni_get_result
+            uni_use_last_atom_string <lm_table_set_item>
+            uni_sync_skip <1>
+            man_end_context
+            de_end_extraction
+            man_close_update
+          uni_end_stream
+          >
+      man_end_object
+      man_update_display
+      uni_wait_off
+    uni_end_stream <00x>

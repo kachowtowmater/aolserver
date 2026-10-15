@@ -1,0 +1,17 @@
+uni_start_loop
+uni_invoke_local
+uni_invoke_local
+uni_wait_off
+exapi_list_item_end <2fx>
+exapi_leave_anteroom
+exapi_leave_anteroom
+exapi_leave_anteroom
+sm_end_object_with_action
+  <
+  uni_wait_on
+  uni_save_result
+sm_send_k1 <111-27904>
+>
+sm_send_k1
+sm_mp_send_token_arg
+the_unknown <14, 13>

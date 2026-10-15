@@ -1,0 +1,25 @@
+uni_start_stream <00x>
+  man_preset_gid <32-6166>
+  if_last_return_true_then <1>
+  man_end_context
+uni_abort_stream
+uni_sync_skip <1>
+uni_invoke_no_context <32-6166>
+uni_abort_stream
+man_start_object <ind_group, "Modem Selection">
+  mat_object_id <32-6179>
+  mat_style_id <32-6179>
+  mat_orientation <vff>
+  mat_art_id <1-0-21743>
+  mat_position <center_center>
+  mat_bool_resize_vertical <no>
+  mat_bool_background_tile <yes>
+  man_start_object <org_group, "">
+    mat_orientation <hff>
+    man_start_object <org_group, "">
+      mat_orientation <vfc>
+    man_end_object
+  man_end_object
+  man_update_display
+  uni_wait_off
+uni_end_stream <00x>

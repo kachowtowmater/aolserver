@@ -1,0 +1,61 @@
+var_string_get <D>
+var_data_set
+var_string_set
+uni_start_typed_data <6840692>
+the_unknown <0, 25, 6fx, 75x, 20x>
+uni_invoke_no_context
+the_unknown <0, 31>
+uni_start_stream
+  uni_data
+  uni_start_typed_data <6385268>
+  uni_invoke_local <111-8291>
+  uni_wait_on
+the_unknown <0, 13>
+uni_end_stream <61x, 63x, 6bx>
+the_unknown <31, 31, 7fx, 4ax, 75x>
+the_unknown <31, 19>
+the_unknown <31, 20>
+uni_abort_stream <7104867>
+uni_use_last_atom_value
+uni_start_loop <65x, 72x, 65x>
+sm_do_list_action <32>
+rich_set_static <03x>
+rich_font_select_size
+rich_allow_textfile
+rich_set_color_item
+rich_edit_action
+rich_get_text_style
+uni_start_stream <6cx, 73x, 6fx>
+  uni_invoke_no_context <101-28260>
+  uni_invoke_local <104-26995>
+  uni_wait_off <61x, 76x>
+  uni_wait_on
+uni_wait_off_end_stream
+uni_end_loop
+uni_invoke_local
+the_unknown <0, 31>
+mat_object_id <3>
+mat_bool_disabled
+mat_bool_resize_vertical
+mat_bool_modal
+uni_invoke_local <111-8289>
+uni_wait_off <72x, 69x, 65x>
+uni_data
+uni_end_loop <6ex, 20x, 45x>
+async_exec_help <61x, 69x, 6cx>
+async_alert_start
+async_play_sound_dammit
+async_send_clientstatus
+uni_start_stream <6ex, 20x, 49x>
+  uni_data
+  uni_invoke_no_context
+  uni_invoke_local
+  uni_start_stream
+    uni_data
+    uni_invoke_local
+the_unknown <0, 13, 65x, 73x>
+    uni_invoke_no_context
+    uni_start_stream
+      uni_sync_skip
+the_unknown <14, 13>
+the_unknown <10, 173, 00x, 00x>

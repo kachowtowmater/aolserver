@@ -1,0 +1,34 @@
+uni_start_loop
+uni_invoke_local
+uni_invoke_local
+uni_wait_off
+exapi_list_item_end <2fx>
+exapi_leave_anteroom
+exapi_leave_anteroom
+exapi_leave_anteroom
+sm_end_object_with_action
+  <
+  uni_wait_on
+  uni_save_result
+sm_send_k1 <111-27951>
+>
+sm_send_k1
+sm_mp_send_token_arg
+the_unknown <14, 13>
+if_numa_eq_one_then <103, 105, 45>
+if_numb_false_then
+if_stra_neq_null_then
+if_data_neq_zero_then
+if_paid_area_then <101, 98, 115>
+if_numb_eq_one_then
+if_numb_true_then
+if_test_index_false_then
+if_numa_eq_one_then
+if_strb_eq_null_then
+the_unknown <31, 26, 3dx, 31x, 26x>
+the_unknown <31, 20>
+doc_open_file
+doc_get_text_alignment
+the_unknown <31, 13>
+pictalk_timeline_action <73x>
+uni_use_last_atom_string

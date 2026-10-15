@@ -1,0 +1,228 @@
+uni_start_stream
+  man_start_object <dss_list, "">
+    mat_relative_tag <121>
+    mat_bool_popup_menu <yes>
+    mat_shortcut_key <"L">
+    man_start_object <trigger, "My AOL">
+      mat_bool_disabled <yes>
+      mat_bool_active_online <yes>
+      mat_shortcut_key <"M">
+      mat_relative_tag <239>
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_k1 <17-35043>
+        >
+    man_start_sibling <ornament, "">
+    man_start_sibling <trigger, "Set Up AOL">
+      mat_bool_disabled <yes>
+      mat_bool_active_online <yes>
+      mat_shortcut_key <"S">
+      mat_relative_tag <240>
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_f1 <40-50989>
+        >
+    man_start_sibling <trigger, "Preferences">
+      mat_shortcut_key <"P">
+      mat_relative_tag <241>
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on
+            man_do_magic_response_id <8436>
+            uni_invoke_no_context <32-278>
+          uni_wait_off_end_stream
+          >
+      man_start_sibling <ornament, "">
+      man_start_sibling <trigger, "My Member Profile">
+        mat_bool_disabled <yes>
+        mat_bool_active_online <yes>
+        mat_shortcut_key <"y">
+        mat_relative_tag <242>
+        act_replace_select_action
+            <
+            uni_start_stream_wait_on <00x>
+              if_offline_then <1>
+              uni_wait_off
+            uni_abort_stream
+            uni_sync_skip <1>
+            sm_enter_paid
+          sm_send_k1 <17-48638>
+          >
+      man_start_sibling <trigger, "Screen Names">
+        mat_bool_disabled <yes>
+        mat_bool_active_online <yes>
+        mat_shortcut_key <"N">
+        mat_relative_tag <243>
+        act_replace_select_action
+            <
+            uni_start_stream_wait_on <00x>
+              if_offline_then <1>
+              uni_wait_off
+            uni_abort_stream
+            uni_sync_skip <1>
+            sm_enter_paid
+          sm_send_f1 <32-384>
+          >
+      man_start_sibling <trigger, "Passwords">
+        mat_bool_disabled <yes>
+        mat_bool_active_online <yes>
+        mat_shortcut_key <"a">
+        mat_relative_tag <244>
+        act_replace_select_action
+            <
+            uni_start_stream_wait_on <00x>
+              if_offline_then <1>
+              uni_wait_off
+            uni_abort_stream
+            uni_sync_skip <1>
+            sm_enter_paid
+          sm_send_f1 <32-383>
+          >
+      man_start_sibling <trigger, "Parental Controls">
+        mat_bool_disabled <yes>
+        mat_bool_active_online <yes>
+        mat_shortcut_key <"C">
+        mat_relative_tag <245>
+        act_replace_select_action
+            <
+            uni_start_stream_wait_on <00x>
+              if_offline_then <1>
+              uni_wait_off
+            uni_abort_stream
+            uni_sync_skip <1>
+            sm_enter_paid
+          sm_send_k1 <2-15919>
+          >
+      man_start_sibling <ornament, "">
+      man_start_sibling <trigger, "Online Clock">
+        mat_bool_disabled <yes>
+        mat_bool_active_online <yes>
+        mat_shortcut_key <"O">
+        mat_relative_tag <246>
+        act_replace_select_action
+            <
+            uni_start_stream_wait_on
+              if_offline_then <1>
+              uni_wait_off
+            uni_abort_stream
+            uni_sync_skip <1>
+            buf_start_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+            buf_set_token <"K1">
+            buf_add_atom_data <540323>
+            buf_close_buffer
+          uni_end_stream
+          >
+      man_start_sibling <trigger, "Buddy List">
+        mat_bool_disabled <yes>
+        mat_bool_active_online <yes>
+        mat_shortcut_key <"B">
+        mat_relative_tag <247>
+        act_replace_select_action
+            <
+            uni_start_stream_wait_on <00x>
+              if_offline_then <1>
+              uni_wait_off
+            uni_abort_stream
+            uni_sync_skip <1>
+            sm_enter_paid
+          sm_send_k1 <17-21293>
+          >
+      man_start_sibling <trigger, "Personal Publisher">
+        mat_shortcut_key <"E">
+        mat_relative_tag <248>
+        mat_bool_disabled <yes>
+        mat_bool_active_online <yes>
+      man_start_sibling <trigger, "Stock Portfolios">
+        mat_bool_disabled <yes>
+        mat_bool_active_online <yes>
+        mat_shortcut_key <"T">
+        mat_relative_tag <249>
+        act_replace_select_action
+            <
+            uni_start_stream_wait_on
+              if_offline_then <1>
+              uni_wait_off
+            uni_abort_stream
+            uni_sync_skip <1>
+            sm_enter_paid
+            man_do_magic_response_id <8391>
+            if_last_return_false_then <1, 2>
+            buf_start_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+            buf_set_token <"f1">
+            buf_add_atom_data <2668753>
+            buf_close_buffer
+            uni_sync_skip <1>
+            man_make_focus
+            man_update_display
+            uni_wait_off
+            uni_sync_skip <2>
+          uni_end_stream
+          >
+      man_start_sibling <trigger, "Reminder Service">
+        mat_bool_disabled <yes>
+        mat_bool_active_online <yes>
+        mat_shortcut_key <"R">
+        mat_relative_tag <250>
+        act_replace_select_action
+            <
+            uni_start_stream
+              if_offline_then <1>
+              uni_wait_off
+            uni_abort_stream
+            uni_sync_skip <1>
+          sm_send_k1 <17-38133>
+          >
+      man_start_sibling <trigger, "News Profiles">
+        mat_bool_disabled <yes>
+        mat_bool_active_online <yes>
+        mat_shortcut_key <"w">
+        mat_relative_tag <251>
+        act_replace_select_action
+            <
+            uni_start_stream_wait_on <00x>
+              if_offline_then <1>
+              uni_wait_off
+            uni_abort_stream
+            uni_sync_skip <1>
+            sm_enter_paid
+          sm_send_k1 <17-48132>
+          >
+      man_end_object
+      act_replace_select_action
+          <
+          uni_start_stream
+            cm_is_tool_loaded <20003>
+            if_last_return_true_then <1, 2>
+            man_set_context_relative <248>
+            mat_bool_disabled <no>
+            act_replace_select_action
+                <
+                uni_start_stream
+                  map_pp3_menustart
+                uni_end_stream
+                >
+              man_end_context
+              uni_sync_skip <1>
+              man_set_context_relative <248>
+              act_replace_select_action
+                  <
+                  uni_start_stream
+                    sm_enter_paid
+                  sm_send_f1 <41-31864>
+                  >
+                man_end_context
+                uni_sync_skip <2>
+              uni_end_stream
+              >
+          man_end_object
+        uni_end_stream

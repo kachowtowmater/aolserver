@@ -1,0 +1,50 @@
+uni_start_stream
+  man_set_context_globalid <32-221>
+  var_number_clear_id <A>
+  de_start_extraction <0>
+  man_set_context_relative <1>
+  de_get_data_pointer
+  var_string_set_from_atom <B>
+  man_end_context
+  de_end_extraction
+  buf_close_buffer
+  var_string_set <A,"Guest     ">
+  if_stra_eq_strb_then <10>
+  async_alert <info, "You must select a registered screen name before beginning Automatic AOL.">
+  mip_action_command <0ax>
+uni_abort_stream
+uni_sync_skip <10>
+var_string_set <A,"New User  ">
+if_stra_eq_strb_then <10>
+async_alert <info, "You must select a registered screen name before beginning Automatic AOL.">
+mip_action_command <0ax>
+uni_abort_stream
+uni_sync_skip <10>
+var_string_set <A,"New Local#">
+if_stra_eq_strb_then <10>
+async_alert <info, "You must select a registered screen name before beginning the Flashsession.">
+mip_action_command <0ax>
+uni_abort_stream
+uni_sync_skip <10>
+uni_get_result
+man_set_context_relative <2>
+de_start_extraction <0>
+de_get_data_pointer
+var_string_set_from_atom <A>
+de_end_extraction
+man_end_context
+if_stra_neq_null_then <1, 2>
+mat_bool_invisible <yes>
+man_update_display
+idb_start_obj <"t">
+idb_atr_globalid <20-3-26>
+var_string_get <B>
+uni_use_last_atom_string <idb_append_data>
+idb_end_obj
+var_string_null <B>
+uni_invoke_no_context <32-6001>
+uni_sync_skip <1>
+async_alert <info, "Automatic AOL could not be completed because no password was specified.  Please select 'Preferences', 'Passwords', and store a password for this screen name.">
+mip_action_command <0ax>
+uni_sync_skip <2>
+uni_end_stream

@@ -1,0 +1,1800 @@
+man_clear_object <2>
+var_string_set_from_atom <C>
+var_number_get
+uni_void <00x>
+act_set_index
+act_set_criterion <256>
+de_set_extraction_type <default>
+buf_start_buffer <0>
+idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+xfer_abort <00x, 00x>
+fm_start <00x, 00x, 00x, 00x>
+lm_open_window <0-0-0>
+cm_mark_tool_invalid <0>
+chat_room_open <00x, 00x, 00x, 00x>
+var_number_save <A, 0>
+if_numa_false_then <0, 0, 0, 0>
+async_exit <00x, 00x, 0ex>
+uni_void
+mat_bool_vertical_scroll <no>
+mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+var_string_null <C>
+man_clear_object <2>
+var_string_set_from_atom <C>
+var_number_get
+uni_void <00x>
+act_set_inheritance
+act_set_criterion <512>
+de_set_extraction_type <default>
+buf_start_buffer <0>
+idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+xfer_abort <00x, 00x>
+fm_start <00x, 00x, 00x, 00x>
+lm_open_window <0-0-0>
+cm_mark_tool_invalid <0>
+chat_room_open <00x, 00x, 00x, 00x>
+var_number_save <A, 0>
+if_numa_false_then <0, 0, 0, 0>
+async_exit <00x, 00x, 0ex>
+uni_void
+mat_bool_vertical_scroll <no>
+mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+var_string_null <C>
+man_clear_object <2>
+var_string_set_from_atom <C>
+var_number_get
+uni_void <00x>
+act_set_criterion
+act_set_criterion <1024>
+de_set_extraction_type <54>
+buf_start_buffer <0>
+idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+xfer_abort <00x, 00x>
+fm_start <00x, 00x, 00x, 00x>
+lm_open_window <0-0-0>
+cm_mark_tool_invalid <0>
+chat_room_open <00x, 00x, 00x, 00x>
+var_number_save <A, 0>
+if_numa_false_then <0, 0, 0, 0>
+async_exit <00x, 00x, 0ex>
+uni_void
+mat_bool_vertical_scroll <no>
+mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+var_string_null <C>
+man_clear_object <2>
+var_string_set_from_atom <C>
+var_data_set_from_atom
+uni_void <00x>
+act_set_criterion
+act_set_criterion <2048>
+de_set_extraction_type <default>
+buf_start_buffer <0>
+idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 5fx, 00x, 00x, 00x>
+xfer_abort <00x, 00x>
+fm_start <00x, 00x, 00x, 00x>
+lm_open_window <0-0-0>
+cm_mark_tool_invalid <0>
+chat_room_open <00x, 00x, 00x, 00x>
+var_number_save <A, 0>
+if_numa_false_then <0, 0, 0, 0>
+async_exit <00x, 00x, 0ex>
+uni_start_stream
+  uni_wait_on
+  uni_save_result
+  mat_bool_vertical_scroll <no>
+  mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+  var_string_null <C>
+  man_clear_object <2>
+  var_string_set_from_atom <C>
+  var_number_get
+  uni_void <00x>
+  act_replace_select_action
+      <
+      >
+    act_set_criterion <512>
+    de_set_extraction_type <default>
+    buf_start_buffer <0>
+    idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+    xfer_abort <00x, 00x>
+    fm_start <00x, 00x, 00x, 00x>
+    lm_open_window <0-0-0>
+    cm_mark_tool_invalid <0>
+    chat_room_open <00x, 00x, 00x, 00x>
+    var_number_save <A, 0>
+    if_numa_false_then <0, 0, 0, 0>
+    async_exit <00x, 00x, 0ex>
+    uni_void
+    mat_bool_vertical_scroll <no>
+    mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+    var_string_null <C>
+    man_clear_object <2>
+    var_string_set_from_atom <C>
+    var_number_get
+    uni_void <00x>
+    act_set_criterion
+    act_set_criterion <2304>
+    de_set_extraction_type <66>
+    buf_start_buffer <0>
+    idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+    xfer_abort <00x, 00x>
+    fm_start <00x, 00x, 00x, 00x>
+    lm_open_window <0-0-0>
+    cm_mark_tool_invalid <0>
+    chat_room_open <00x, 00x, 00x, 00x>
+    var_number_save <A, 0>
+    if_numa_false_then <0, 0, 0, 0>
+    async_exit <00x, 00x, 0ex>
+    uni_void
+    mat_bool_vertical_scroll <no>
+    mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+    var_string_null <C>
+    man_clear_object <2>
+    var_string_set_from_atom <C>
+the_unknown <12, 13>
+    uni_void <00x>
+    act_set_criterion
+    act_set_criterion <2048>
+    de_set_extraction_type <default>
+    buf_start_buffer <0>
+    idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 70x, 00x, 00x, 00x>
+    xfer_abort <00x, 00x>
+    fm_start <00x, 00x, 00x, 00x>
+    lm_open_window <0-0-0>
+    cm_mark_tool_invalid <0>
+    chat_room_open <00x, 00x, 00x, 00x>
+    var_number_save <A, 0>
+    if_numa_false_then <0, 0, 0, 0>
+    async_exit <00x, 00x, 0ex>
+    uni_start_stream
+      uni_wait_on
+      uni_save_result
+      mat_bool_vertical_scroll <no>
+      mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+      var_string_null <C>
+      man_clear_object <2>
+      var_string_set_from_atom <C>
+      var_number_get
+      uni_void <00x>
+      act_set_criterion
+      act_set_criterion <1024>
+      de_set_extraction_type <66>
+      buf_start_buffer <0>
+      idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+      xfer_abort <00x, 00x>
+      fm_start <00x, 00x, 00x, 00x>
+      lm_open_window <0-0-0>
+      cm_mark_tool_invalid <0>
+      chat_room_open <00x, 00x, 00x, 00x>
+      var_number_save <A, 0>
+      if_numa_false_then <0, 0, 0, 0>
+      async_exit <00x, 00x, 0ex>
+      uni_void
+      mat_bool_vertical_scroll <no>
+      mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+      var_string_null <C>
+      man_clear_object <2>
+      var_string_set_from_atom <C>
+the_unknown <12, 13>
+      uni_void <00x>
+      act_set_criterion
+      act_set_criterion <2048>
+      de_set_extraction_type <default>
+      buf_start_buffer <0>
+      idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 70x, 00x, 00x, 00x>
+      xfer_abort <00x, 00x>
+      fm_start <00x, 00x, 00x, 00x>
+      lm_open_window <0-0-0>
+      cm_mark_tool_invalid <0>
+      chat_room_open <00x, 00x, 00x, 00x>
+      var_number_save <A, 0>
+      if_numa_false_then <0, 0, 0, 0>
+      async_exit <00x, 00x, 0ex>
+      uni_start_stream
+        uni_wait_on
+        uni_save_result
+        mat_bool_vertical_scroll <no>
+        mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+        var_string_null <C>
+        man_clear_object <2>
+        var_string_set_from_atom <C>
+        var_number_get
+        uni_void <00x>
+        act_set_inheritance
+        act_set_criterion <512>
+        de_set_extraction_type <default>
+        buf_start_buffer <0>
+        idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+        xfer_abort <00x, 00x>
+        fm_start <00x, 00x, 00x, 00x>
+        lm_open_window <0-0-0>
+        cm_mark_tool_invalid <0>
+        chat_room_open <00x, 00x, 00x, 00x>
+        var_number_save <A, 0>
+        if_numa_false_then <0, 0, 0, 0>
+        async_exit <00x, 00x, 0ex>
+        uni_void
+        mat_bool_vertical_scroll <no>
+        mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+        var_string_null <C>
+        man_clear_object <2>
+        var_string_set_from_atom <C>
+        var_number_get
+        uni_void <00x>
+        act_set_criterion
+        act_set_criterion <1024>
+        de_set_extraction_type <23>
+        buf_start_buffer <0>
+        idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+        xfer_abort <00x, 00x>
+        fm_start <00x, 00x, 00x, 00x>
+        lm_open_window <0-0-0>
+        cm_mark_tool_invalid <0>
+        chat_room_open <00x, 00x, 00x, 00x>
+        var_number_save <A, 0>
+        if_numa_false_then <0, 0, 0, 0>
+        async_exit <00x, 00x, 0ex>
+        uni_void
+        mat_bool_vertical_scroll <no>
+        mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+        var_string_null <C>
+        man_clear_object <2>
+        var_string_set_from_atom <C>
+        var_data_set_from_atom
+        uni_void <00x>
+        act_set_criterion
+        act_set_criterion <2048>
+        de_set_extraction_type <default>
+        buf_start_buffer <0>
+        idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 3fx, 00x, 00x, 00x>
+        xfer_abort <00x, 00x>
+        fm_start <00x, 00x, 00x, 00x>
+        lm_open_window <0-0-0>
+        cm_mark_tool_invalid <0>
+        chat_room_open <00x, 00x, 00x, 00x>
+        var_number_save <A, 0>
+        if_numa_false_then <0, 0, 0, 0>
+        async_exit <00x, 00x, 0ex>
+        uni_start_stream
+          uni_wait_on
+          uni_save_result
+          mat_bool_vertical_scroll <no>
+          mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+          var_string_null <C>
+          man_clear_object <2>
+          var_string_set_from_atom <C>
+          var_number_get
+          uni_void <00x>
+the_unknown <2, 20>
+          act_set_criterion <512>
+          de_set_extraction_type <default>
+          buf_start_buffer <0>
+          idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+          xfer_abort <00x, 00x>
+          fm_start <00x, 00x, 00x, 00x>
+          lm_open_window <0-0-0>
+          cm_mark_tool_invalid <0>
+          chat_room_open <00x, 00x, 00x, 00x>
+          var_number_save <A, 0>
+          if_numa_false_then <0, 0, 0, 0>
+          async_exit <00x, 00x, 0ex>
+          uni_void
+          mat_bool_vertical_scroll <no>
+          mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+          var_string_null <C>
+          man_clear_object <2>
+          var_string_set_from_atom <C>
+          var_number_get
+          uni_void <00x>
+          act_set_criterion
+          act_set_criterion <1024>
+          de_set_extraction_type <11>
+          buf_start_buffer <0>
+          idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+          xfer_abort <00x, 00x>
+          fm_start <00x, 00x, 00x, 00x>
+          lm_open_window <0-0-0>
+          cm_mark_tool_invalid <0>
+          chat_room_open <00x, 00x, 00x, 00x>
+          var_number_save <A, 0>
+          if_numa_false_then <0, 0, 0, 0>
+          async_exit <00x, 00x, 0ex>
+          uni_void
+          mat_bool_vertical_scroll <no>
+          mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+          var_string_null <C>
+          man_clear_object <2>
+          var_string_set_from_atom <C>
+          var_data_save
+          uni_void <00x>
+          act_set_criterion
+          act_set_criterion <2048>
+          de_set_extraction_type <default>
+          buf_start_buffer <0>
+          idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 07x, 00x, 00x, 00x>
+          xfer_abort <00x, 00x>
+          fm_start <00x, 00x, 00x, 00x>
+          lm_open_window <0-0-0>
+          cm_mark_tool_invalid <0>
+          chat_room_open <00x, 00x, 00x, 00x>
+          var_number_save <A, 0>
+          if_numa_false_then <0, 0, 0, 0>
+          async_exit <00x, 00x, 0ex>
+          uni_start_stream
+            uni_wait_on
+            uni_save_result
+            mat_bool_vertical_scroll <no>
+            mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+            var_string_null <C>
+            man_clear_object <2>
+            var_string_set_from_atom <C>
+            var_number_get
+            uni_void <00x>
+            act_set_criterion
+            act_set_criterion <2304>
+            de_set_extraction_type <11>
+            buf_start_buffer <0>
+            idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+            xfer_abort <00x, 00x>
+            fm_start <00x, 00x, 00x, 00x>
+            lm_open_window <0-0-0>
+            cm_mark_tool_invalid <0>
+            chat_room_open <00x, 00x, 00x, 00x>
+            var_number_save <A, 0>
+            if_numa_false_then <0, 0, 0, 0>
+            async_exit <00x, 00x, 0ex>
+            uni_void
+            mat_bool_vertical_scroll <no>
+            mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+            var_string_null <C>
+            man_clear_object <2>
+            var_string_set_from_atom <C>
+            var_data_save
+            uni_void <00x>
+            act_set_criterion
+            act_set_criterion <2048>
+            de_set_extraction_type <default>
+            buf_start_buffer <0>
+            idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 07x, 00x, 00x, 00x>
+            xfer_abort <00x, 00x>
+            fm_start <00x, 00x, 00x, 00x>
+            lm_open_window <0-0-0>
+            cm_mark_tool_invalid <0>
+            chat_room_open <00x, 00x, 00x, 00x>
+            var_number_save <A, 0>
+            if_numa_false_then <0, 0, 0, 0>
+            async_exit <00x, 00x, 0ex>
+            uni_start_stream
+              uni_wait_on
+              uni_save_result
+              mat_bool_vertical_scroll <no>
+              mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+              var_string_null <C>
+              man_clear_object <2>
+              var_string_set_from_atom <C>
+              var_number_get
+              uni_void <00x>
+              act_set_criterion
+              act_set_criterion <1280>
+              de_set_extraction_type <default>
+              buf_start_buffer <token_header | leave_buffer_open | pointer_included | 16384>
+              idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+              xfer_abort <00x, 00x>
+              fm_start <00x, 00x, 00x, 00x>
+              lm_open_window <0-0-0>
+              cm_mark_tool_invalid <0>
+              chat_room_open <00x, 00x, 00x, 00x>
+              var_number_save <A, 0>
+              if_numa_false_then <0, 0, 0, 0>
+              async_exit <00x, 00x, 0ex>
+              uni_void
+              mat_bool_vertical_scroll <no>
+              mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+              var_string_null <C>
+              man_clear_object <2>
+              var_string_set_from_atom <C>
+              var_data_save
+              uni_void <00x>
+              act_set_criterion
+              act_set_criterion <2048>
+              de_set_extraction_type <default>
+              buf_start_buffer <0>
+              idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 07x, 00x, 00x, 00x>
+              xfer_abort <00x, 00x>
+              fm_start <00x, 00x, 00x, 00x>
+              lm_open_window <0-0-0>
+              cm_mark_tool_invalid <0>
+              chat_room_open <00x, 00x, 00x, 00x>
+              var_number_save <A, 0>
+              if_numa_false_then <0, 0, 0, 0>
+              async_exit <00x, 00x, 0ex>
+              uni_start_stream
+                uni_wait_on
+                uni_save_result
+                mat_bool_vertical_scroll <no>
+                mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                var_string_null <C>
+                man_clear_object <2>
+                var_string_set_from_atom <C>
+                var_number_get
+                uni_void <00x>
+                act_set_criterion
+                act_set_criterion <1280>
+                de_set_extraction_type <default>
+                buf_start_buffer <stream_id_header | leave_buffer_open | pointer_included | 16384>
+                idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                xfer_abort <00x, 00x>
+                fm_start <00x, 00x, 00x, 00x>
+                lm_open_window <0-0-0>
+                cm_mark_tool_invalid <0>
+                chat_room_open <00x, 00x, 00x, 00x>
+                var_number_save <A, 0>
+                if_numa_false_then <0, 0, 0, 0>
+                async_exit <00x, 00x, 0ex>
+                uni_void
+                mat_bool_vertical_scroll <no>
+                mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                var_string_null <C>
+                man_clear_object <2>
+                var_string_set_from_atom <C>
+                var_data_save
+                uni_void <00x>
+                act_set_criterion
+                act_set_criterion <2048>
+                de_set_extraction_type <default>
+                buf_start_buffer <0>
+                idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 07x, 00x, 00x, 00x>
+                xfer_abort <00x, 00x>
+                fm_start <00x, 00x, 00x, 00x>
+                lm_open_window <0-0-0>
+                cm_mark_tool_invalid <0>
+                chat_room_open <00x, 00x, 00x, 00x>
+                var_number_save <A, 0>
+                if_numa_false_then <0, 0, 0, 0>
+                async_exit <00x, 00x, 0ex>
+                uni_start_stream
+                  uni_wait_on
+                  uni_save_result
+                  mat_bool_vertical_scroll <no>
+                  mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                  var_string_null <C>
+                  man_clear_object <2>
+                  var_string_set_from_atom <C>
+                  var_number_get
+                  uni_void <00x>
+                  act_set_criterion
+                  act_set_criterion <1280>
+                  de_set_extraction_type <default>
+                  buf_start_buffer <token_header | stream_id_header | leave_buffer_open | pointer_included | 16384>
+                  idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                  xfer_abort <00x, 00x>
+                  fm_start <00x, 00x, 00x, 00x>
+                  lm_open_window <0-0-0>
+                  cm_mark_tool_invalid <0>
+                  chat_room_open <00x, 00x, 00x, 00x>
+                  var_number_save <A, 0>
+                  if_numa_false_then <0, 0, 0, 0>
+                  async_exit <00x, 00x, 0ex>
+                  uni_void
+                  mat_bool_vertical_scroll <no>
+                  mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                  var_string_null <C>
+                  man_clear_object <2>
+                  var_string_set_from_atom <C>
+                  var_data_save
+                  uni_void <00x>
+                  act_set_criterion
+                  act_set_criterion <2048>
+                  de_set_extraction_type <default>
+                  buf_start_buffer <0>
+                  idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 07x, 00x, 00x, 00x>
+                  xfer_abort <00x, 00x>
+                  fm_start <00x, 00x, 00x, 00x>
+                  lm_open_window <0-0-0>
+                  cm_mark_tool_invalid <0>
+                  chat_room_open <00x, 00x, 00x, 00x>
+                  var_number_save <A, 0>
+                  if_numa_false_then <0, 0, 0, 0>
+                  async_exit <00x, 00x, 0ex>
+                  uni_start_stream
+                    uni_wait_on
+                    uni_save_result
+                    mat_bool_vertical_scroll <no>
+                    mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                    var_string_null <C>
+                    man_clear_object <2>
+                    var_string_set_from_atom <C>
+                    var_number_get
+                    uni_void <00x>
+                    act_set_criterion
+                    act_set_criterion <1280>
+                    de_set_extraction_type <default>
+                    buf_start_buffer <host_bound | leave_buffer_open | pointer_included | 16384>
+                    idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                    xfer_abort <00x, 00x>
+                    fm_start <00x, 00x, 00x, 00x>
+                    lm_open_window <0-0-0>
+                    cm_mark_tool_invalid <0>
+                    chat_room_open <00x, 00x, 00x, 00x>
+                    var_number_save <A, 0>
+                    if_numa_false_then <0, 0, 0, 0>
+                    async_exit <00x, 00x, 0ex>
+                    uni_void
+                    mat_bool_vertical_scroll <no>
+                    mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                    var_string_null <C>
+                    man_clear_object <2>
+                    var_string_set_from_atom <C>
+                    var_data_save
+                    uni_void <00x>
+                    act_set_criterion
+                    act_set_criterion <2048>
+                    de_set_extraction_type <default>
+                    buf_start_buffer <0>
+                    idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 07x, 00x, 00x, 00x>
+                    xfer_abort <00x, 00x>
+                    fm_start <00x, 00x, 00x, 00x>
+                    lm_open_window <0-0-0>
+                    cm_mark_tool_invalid <0>
+                    chat_room_open <00x, 00x, 00x, 00x>
+                    var_number_save <A, 0>
+                    if_numa_false_then <0, 0, 0, 0>
+                    async_exit <00x, 00x, 0ex>
+                    uni_start_stream
+                      uni_wait_on
+                      uni_save_result
+                      mat_bool_vertical_scroll <no>
+                      mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                      var_string_null <C>
+                      man_clear_object <2>
+                      var_string_set_from_atom <C>
+                      var_number_get
+                      uni_void <00x>
+                      act_set_criterion
+                      act_set_criterion <1280>
+                      de_set_extraction_type <default>
+                      buf_start_buffer <token_header | leave_buffer_open | pointer_included | clear_buffer | 16384>
+                      idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                      xfer_abort <00x, 00x>
+                      fm_start <00x, 00x, 00x, 00x>
+                      lm_open_window <0-0-0>
+                      cm_mark_tool_invalid <0>
+                      chat_room_open <00x, 00x, 00x, 00x>
+                      var_number_save <A, 0>
+                      if_numa_false_then <0, 0, 0, 0>
+                      async_exit <00x, 00x, 0ex>
+                      uni_void
+                      mat_bool_vertical_scroll <no>
+                      mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                      var_string_null <C>
+                      man_clear_object <2>
+                      var_string_set_from_atom <C>
+                      var_data_save
+                      uni_void <00x>
+                      act_set_criterion
+                      act_set_criterion <2048>
+                      de_set_extraction_type <default>
+                      buf_start_buffer <0>
+                      idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 07x, 00x, 00x, 00x>
+                      xfer_abort <00x, 00x>
+                      fm_start <00x, 00x, 00x, 00x>
+                      lm_open_window <0-0-0>
+                      cm_mark_tool_invalid <0>
+                      chat_room_open <00x, 00x, 00x, 00x>
+                      var_number_save <A, 0>
+                      if_numa_false_then <0, 0, 0, 0>
+                      async_exit <00x, 00x, 0ex>
+                      uni_start_stream
+                        uni_wait_on
+                        uni_save_result
+                        mat_bool_vertical_scroll <no>
+                        mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                        var_string_null <C>
+                        man_clear_object <2>
+                        var_string_set_from_atom <C>
+                        var_number_get
+                        uni_void <00x>
+                        act_set_criterion
+                        act_set_criterion <1280>
+                        de_set_extraction_type <default>
+                        buf_start_buffer <stream_id_header | leave_buffer_open | pointer_included | clear_buffer | 16384>
+                        idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                        xfer_abort <00x, 00x>
+                        fm_start <00x, 00x, 00x, 00x>
+                        lm_open_window <0-0-0>
+                        cm_mark_tool_invalid <0>
+                        chat_room_open <00x, 00x, 00x, 00x>
+                        var_number_save <A, 0>
+                        if_numa_false_then <0, 0, 0, 0>
+                        async_exit <00x, 00x, 0ex>
+                        uni_void
+                        mat_bool_vertical_scroll <no>
+                        mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                        var_string_null <C>
+                        man_clear_object <2>
+                        var_string_set_from_atom <C>
+                        var_data_save
+                        uni_void <00x>
+                        act_set_criterion
+                        act_set_criterion <2048>
+                        de_set_extraction_type <default>
+                        buf_start_buffer <0>
+                        idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 07x, 00x, 00x, 00x>
+                        xfer_abort <00x, 00x>
+                        fm_start <00x, 00x, 00x, 00x>
+                        lm_open_window <0-0-0>
+                        cm_mark_tool_invalid <0>
+                        chat_room_open <00x, 00x, 00x, 00x>
+                        var_number_save <A, 0>
+                        if_numa_false_then <0, 0, 0, 0>
+                        async_exit <00x, 00x, 0ex>
+                        uni_start_stream
+                          uni_wait_on
+                          uni_save_result
+                          mat_bool_vertical_scroll <no>
+                          mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                          var_string_null <C>
+                          man_clear_object <2>
+                          var_string_set_from_atom <C>
+                          var_number_get
+                          uni_void <00x>
+                          act_set_criterion
+                          act_set_criterion <1280>
+                          de_set_extraction_type <default>
+                          buf_start_buffer <stream_id_header | host_bound | data_included | pointer_included | 16384>
+                          idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                          xfer_abort <00x, 00x>
+                          fm_start <00x, 00x, 00x, 00x>
+                          lm_open_window <0-0-0>
+                          cm_mark_tool_invalid <0>
+                          chat_room_open <00x, 00x, 00x, 00x>
+                          var_number_save <A, 0>
+                          if_numa_false_then <0, 0, 0, 0>
+                          async_exit <00x, 00x, 0ex>
+                          uni_void
+                          mat_bool_vertical_scroll <no>
+                          mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                          var_string_null <C>
+                          man_clear_object <2>
+                          var_string_set_from_atom <C>
+                          var_data_save
+                          uni_void <00x>
+                          act_set_criterion
+                          act_set_criterion <2048>
+                          de_set_extraction_type <default>
+                          buf_start_buffer <0>
+                          idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 07x, 00x, 00x, 00x>
+                          xfer_abort <00x, 00x>
+                          fm_start <00x, 00x, 00x, 00x>
+                          lm_open_window <0-0-0>
+                          cm_mark_tool_invalid <0>
+                          chat_room_open <00x, 00x, 00x, 00x>
+                          var_number_save <A, 0>
+                          if_numa_false_then <0, 0, 0, 0>
+                          async_exit <00x, 00x, 0ex>
+                          uni_start_stream
+                            uni_wait_on
+                            uni_save_result
+                            mat_bool_vertical_scroll <no>
+                            mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                            var_string_null <C>
+                            man_clear_object <2>
+                            var_string_set_from_atom <C>
+                            var_number_get
+                            uni_void <00x>
+                            act_set_criterion
+                            act_set_criterion <1280>
+                            de_set_extraction_type <default>
+                            buf_start_buffer <stream_id_header | data_included | leave_buffer_open | pointer_included | 16384>
+                            idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                            xfer_abort <00x, 00x>
+                            fm_start <00x, 00x, 00x, 00x>
+                            lm_open_window <0-0-0>
+                            cm_mark_tool_invalid <0>
+                            chat_room_open <00x, 00x, 00x, 00x>
+                            var_number_save <A, 0>
+                            if_numa_false_then <0, 0, 0, 0>
+                            async_exit <00x, 00x, 0ex>
+                            uni_void
+                            mat_bool_vertical_scroll <no>
+                            mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                            var_string_null <C>
+                            man_clear_object <2>
+                            var_string_set_from_atom <C>
+                            var_data_save
+                            uni_void <00x>
+                            act_set_criterion
+                            act_set_criterion <2048>
+                            de_set_extraction_type <default>
+                            buf_start_buffer <0>
+                            idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 07x, 00x, 00x, 00x>
+                            xfer_abort <00x, 00x>
+                            fm_start <00x, 00x, 00x, 00x>
+                            lm_open_window <0-0-0>
+                            cm_mark_tool_invalid <0>
+                            chat_room_open <00x, 00x, 00x, 00x>
+                            var_number_save <A, 0>
+                            if_numa_false_then <0, 0, 0, 0>
+                            async_exit <00x, 00x, 0ex>
+                            uni_start_stream
+                              uni_wait_on
+                              uni_save_result
+                              mat_bool_vertical_scroll <no>
+                              mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                              var_string_null <C>
+                              man_clear_object <2>
+                              var_string_set_from_atom <C>
+                              var_number_get
+                              uni_void <00x>
+                              act_replace_select_action
+                                  <
+                                  >
+                                act_set_criterion <512>
+                                de_set_extraction_type <default>
+                                buf_start_buffer <0>
+                                idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                xfer_abort <00x, 00x>
+                                fm_start <00x, 00x, 00x, 00x>
+                                lm_open_window <0-0-0>
+                                cm_mark_tool_invalid <0>
+                                chat_room_open <00x, 00x, 00x, 00x>
+                                var_number_save <A, 0>
+                                if_numa_false_then <0, 0, 0, 0>
+                                async_exit <00x, 00x, 0ex>
+                                uni_void
+                                mat_bool_vertical_scroll <no>
+                                mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                var_string_null <C>
+                                man_clear_object <2>
+                                var_string_set_from_atom <C>
+                                var_number_get
+                                uni_void <00x>
+                                act_set_criterion
+                                act_set_criterion <1024>
+                                de_set_extraction_type <56>
+                                buf_start_buffer <0>
+                                idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                xfer_abort <00x, 00x>
+                                fm_start <00x, 00x, 00x, 00x>
+                                lm_open_window <0-0-0>
+                                cm_mark_tool_invalid <0>
+                                chat_room_open <00x, 00x, 00x, 00x>
+                                var_number_save <A, 0>
+                                if_numa_false_then <0, 0, 0, 0>
+                                async_exit <00x, 00x, 0ex>
+                                uni_void
+                                mat_bool_vertical_scroll <no>
+                                mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                var_string_null <C>
+                                man_clear_object <2>
+                                var_string_set_from_atom <C>
+the_unknown <12, 13>
+                                uni_void <00x>
+                                act_set_criterion
+                                act_set_criterion <2048>
+                                de_set_extraction_type <default>
+                                buf_start_buffer <0>
+                                idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 60x, 00x, 00x, 00x>
+                                xfer_abort <00x, 00x>
+                                fm_start <00x, 00x, 00x, 00x>
+                                lm_open_window <0-0-0>
+                                cm_mark_tool_invalid <0>
+                                chat_room_open <00x, 00x, 00x, 00x>
+                                var_number_save <A, 0>
+                                if_numa_false_then <0, 0, 0, 0>
+                                async_exit <00x, 00x, 0ex>
+                                uni_start_stream
+                                  uni_wait_on
+                                  uni_save_result
+                                  mat_bool_vertical_scroll <no>
+                                  mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                  var_string_null <C>
+                                  man_clear_object <2>
+                                  var_string_set_from_atom <C>
+                                  var_number_get
+                                  uni_void <00x>
+                                  act_set_criterion
+                                  act_set_criterion <2304>
+                                  de_set_extraction_type <56>
+                                  buf_start_buffer <0>
+                                  idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                  xfer_abort <00x, 00x>
+                                  fm_start <00x, 00x, 00x, 00x>
+                                  lm_open_window <0-0-0>
+                                  cm_mark_tool_invalid <0>
+                                  chat_room_open <00x, 00x, 00x, 00x>
+                                  var_number_save <A, 0>
+                                  if_numa_false_then <0, 0, 0, 0>
+                                  async_exit <00x, 00x, 0ex>
+                                  uni_void
+                                  mat_bool_vertical_scroll <no>
+                                  mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                  var_string_null <C>
+                                  man_clear_object <2>
+                                  var_string_set_from_atom <C>
+the_unknown <12, 13>
+                                  uni_void <00x>
+                                  act_set_criterion
+                                  act_set_criterion <2048>
+                                  de_set_extraction_type <default>
+                                  buf_start_buffer <0>
+                                  idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 60x, 00x, 00x, 00x>
+                                  xfer_abort <00x, 00x>
+                                  fm_start <00x, 00x, 00x, 00x>
+                                  lm_open_window <0-0-0>
+                                  cm_mark_tool_invalid <0>
+                                  chat_room_open <00x, 00x, 00x, 00x>
+                                  var_number_save <A, 0>
+                                  if_numa_false_then <0, 0, 0, 0>
+                                  async_exit <00x, 00x, 0ex>
+                                  uni_start_stream
+                                    uni_wait_on
+                                    uni_save_result
+                                    mat_bool_vertical_scroll <no>
+                                    mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                    var_string_null <C>
+                                    man_clear_object <2>
+                                    var_string_set_from_atom <C>
+                                    var_number_get
+                                    uni_void <00x>
+                                    act_replace_select_action
+                                        <
+                                        >
+                                      act_set_criterion <512>
+                                      de_set_extraction_type <default>
+                                      buf_start_buffer <0>
+                                      idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                      xfer_abort <00x, 00x>
+                                      fm_start <00x, 00x, 00x, 00x>
+                                      lm_open_window <0-0-0>
+                                      cm_mark_tool_invalid <0>
+                                      chat_room_open <00x, 00x, 00x, 00x>
+                                      var_number_save <A, 0>
+                                      if_numa_false_then <0, 0, 0, 0>
+                                      async_exit <00x, 00x, 0ex>
+                                      uni_void
+                                      mat_bool_vertical_scroll <no>
+                                      mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                      var_string_null <C>
+                                      man_clear_object <2>
+                                      var_string_set_from_atom <C>
+                                      var_number_get
+                                      uni_void <00x>
+                                      act_set_criterion
+                                      act_set_criterion <1024>
+                                      de_set_extraction_type <14>
+                                      buf_start_buffer <0>
+                                      idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                      xfer_abort <00x, 00x>
+                                      fm_start <00x, 00x, 00x, 00x>
+                                      lm_open_window <0-0-0>
+                                      cm_mark_tool_invalid <0>
+                                      chat_room_open <00x, 00x, 00x, 00x>
+                                      var_number_save <A, 0>
+                                      if_numa_false_then <0, 0, 0, 0>
+                                      async_exit <00x, 00x, 0ex>
+                                      uni_void
+                                      mat_bool_vertical_scroll <no>
+                                      mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                      var_string_null <C>
+                                      man_clear_object <2>
+                                      var_string_set_from_atom <C>
+                                      var_data_set_from_atom
+                                      uni_void <00x>
+                                      act_set_criterion
+                                      act_set_criterion <2048>
+                                      de_set_extraction_type <default>
+                                      buf_start_buffer <0>
+                                      idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 1fx, 00x, 00x, 00x>
+                                      xfer_abort <00x, 00x>
+                                      fm_start <00x, 00x, 00x, 00x>
+                                      lm_open_window <0-0-0>
+                                      cm_mark_tool_invalid <0>
+                                      chat_room_open <00x, 00x, 00x, 00x>
+                                      var_number_save <A, 0>
+                                      if_numa_false_then <0, 0, 0, 0>
+                                      async_exit <00x, 00x, 0ex>
+                                      uni_start_stream
+                                        uni_wait_on
+                                        uni_save_result
+                                        mat_bool_vertical_scroll <no>
+                                        mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                        var_string_null <C>
+                                        man_clear_object <2>
+                                        var_string_set_from_atom <C>
+                                        var_number_get
+                                        uni_void <00x>
+                                        act_set_criterion
+                                        act_set_criterion <2304>
+                                        de_set_extraction_type <14>
+                                        buf_start_buffer <0>
+                                        idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                        xfer_abort <00x, 00x>
+                                        fm_start <00x, 00x, 00x, 00x>
+                                        lm_open_window <0-0-0>
+                                        cm_mark_tool_invalid <0>
+                                        chat_room_open <00x, 00x, 00x, 00x>
+                                        var_number_save <A, 0>
+                                        if_numa_false_then <0, 0, 0, 0>
+                                        async_exit <00x, 00x, 0ex>
+                                        uni_void
+                                        mat_bool_vertical_scroll <no>
+                                        mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                        var_string_null <C>
+                                        man_clear_object <2>
+                                        var_string_set_from_atom <C>
+                                        var_data_set_from_atom
+                                        uni_void <00x>
+                                        act_set_criterion
+                                        act_set_criterion <2048>
+                                        de_set_extraction_type <default>
+                                        buf_start_buffer <0>
+                                        idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 1fx, 00x, 00x, 00x>
+                                        xfer_abort <00x, 00x>
+                                        fm_start <00x, 00x, 00x, 00x>
+                                        lm_open_window <0-0-0>
+                                        cm_mark_tool_invalid <0>
+                                        chat_room_open <00x, 00x, 00x, 00x>
+                                        var_number_save <A, 0>
+                                        if_numa_false_then <0, 0, 0, 0>
+                                        async_exit <00x, 00x, 0ex>
+                                        uni_start_stream
+                                          uni_wait_on
+                                          uni_save_result
+                                          mat_bool_vertical_scroll <no>
+                                          mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                          var_string_null <C>
+                                          man_clear_object <2>
+                                          var_string_set_from_atom <C>
+                                          var_number_get
+                                          uni_void <00x>
+                                          act_replace_select_action
+                                              <
+                                              >
+                                            act_set_criterion <512>
+                                            de_set_extraction_type <default>
+                                            buf_start_buffer <0>
+                                            idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                            xfer_abort <00x, 00x>
+                                            fm_start <00x, 00x, 00x, 00x>
+                                            lm_open_window <0-0-0>
+                                            cm_mark_tool_invalid <0>
+                                            chat_room_open <00x, 00x, 00x, 00x>
+                                            var_number_save <A, 0>
+                                            if_numa_false_then <0, 0, 0, 0>
+                                            async_exit <00x, 00x, 0ex>
+                                            uni_void
+                                            mat_bool_vertical_scroll <no>
+                                            mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                            var_string_null <C>
+                                            man_clear_object <2>
+                                            var_string_set_from_atom <C>
+                                            var_number_get
+                                            uni_void <00x>
+                                            act_set_criterion
+                                            act_set_criterion <1024>
+                                            de_set_extraction_type <61>
+                                            buf_start_buffer <0>
+                                            idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                            xfer_abort <00x, 00x>
+                                            fm_start <00x, 00x, 00x, 00x>
+                                            lm_open_window <0-0-0>
+                                            cm_mark_tool_invalid <0>
+                                            chat_room_open <00x, 00x, 00x, 00x>
+                                            var_number_save <A, 0>
+                                            if_numa_false_then <0, 0, 0, 0>
+                                            async_exit <00x, 00x, 0ex>
+                                            uni_void
+                                            mat_bool_vertical_scroll <no>
+                                            mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                            var_string_null <C>
+                                            man_clear_object <2>
+                                            var_string_set_from_atom <C>
+                                            var_data_set_from_atom
+                                            uni_void <00x>
+                                            act_set_criterion
+                                            act_set_criterion <2048>
+                                            de_set_extraction_type <default>
+                                            buf_start_buffer <0>
+                                            idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 6cx, 00x, 00x, 00x>
+                                            xfer_abort <00x, 00x>
+                                            fm_start <00x, 00x, 00x, 00x>
+                                            lm_open_window <0-0-0>
+                                            cm_mark_tool_invalid <0>
+                                            chat_room_open <00x, 00x, 00x, 00x>
+                                            var_number_save <A, 0>
+                                            if_numa_false_then <0, 0, 0, 0>
+                                            async_exit <00x, 00x, 0ex>
+                                            uni_start_stream
+                                              uni_wait_on
+                                              uni_save_result
+                                              mat_bool_vertical_scroll <no>
+                                              mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                              var_string_null <C>
+                                              man_clear_object <2>
+                                              var_string_set_from_atom <C>
+                                              var_number_get
+                                              uni_void <00x>
+                                              act_set_criterion
+                                              act_set_criterion <2304>
+                                              de_set_extraction_type <61>
+                                              buf_start_buffer <0>
+                                              idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                              xfer_abort <00x, 00x>
+                                              fm_start <00x, 00x, 00x, 00x>
+                                              lm_open_window <0-0-0>
+                                              cm_mark_tool_invalid <0>
+                                              chat_room_open <00x, 00x, 00x, 00x>
+                                              var_number_save <A, 0>
+                                              if_numa_false_then <0, 0, 0, 0>
+                                              async_exit <00x, 00x, 0ex>
+                                              uni_void
+                                              mat_bool_vertical_scroll <no>
+                                              mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                              var_string_null <C>
+                                              man_clear_object <2>
+                                              var_string_set_from_atom <C>
+                                              var_data_set_from_atom
+                                              uni_void <00x>
+                                              act_set_criterion
+                                              act_set_criterion <2048>
+                                              de_set_extraction_type <default>
+                                              buf_start_buffer <0>
+                                              idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 6cx, 00x, 00x, 00x>
+                                              xfer_abort <00x, 00x>
+                                              fm_start <00x, 00x, 00x, 00x>
+                                              lm_open_window <0-0-0>
+                                              cm_mark_tool_invalid <0>
+                                              chat_room_open <00x, 00x, 00x, 00x>
+                                              var_number_save <A, 0>
+                                              if_numa_false_then <0, 0, 0, 0>
+                                              async_exit <00x, 00x, 0ex>
+                                              uni_start_stream
+                                                uni_wait_on
+                                                uni_save_result
+                                                mat_bool_vertical_scroll <no>
+                                                mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                var_string_null <C>
+                                                man_clear_object <2>
+                                                var_string_set_from_atom <C>
+                                                var_number_get
+                                                uni_void <00x>
+                                                act_replace_select_action
+                                                    <
+                                                    >
+                                                  act_set_criterion <512>
+                                                  de_set_extraction_type <default>
+                                                  buf_start_buffer <0>
+                                                  idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                                  xfer_abort <00x, 00x>
+                                                  fm_start <00x, 00x, 00x, 00x>
+                                                  lm_open_window <0-0-0>
+                                                  cm_mark_tool_invalid <0>
+                                                  chat_room_open <00x, 00x, 00x, 00x>
+                                                  var_number_save <A, 0>
+                                                  if_numa_false_then <0, 0, 0, 0>
+                                                  async_exit <00x, 00x, 0ex>
+                                                  uni_void
+                                                  mat_bool_vertical_scroll <no>
+                                                  mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                  var_string_null <C>
+                                                  man_clear_object <2>
+                                                  var_string_set_from_atom <C>
+                                                  var_number_get
+                                                  uni_void <00x>
+                                                  act_set_criterion
+                                                  act_set_criterion <1024>
+                                                  de_set_extraction_type <48>
+                                                  buf_start_buffer <0>
+                                                  idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                                  xfer_abort <00x, 00x>
+                                                  fm_start <00x, 00x, 00x, 00x>
+                                                  lm_open_window <0-0-0>
+                                                  cm_mark_tool_invalid <0>
+                                                  chat_room_open <00x, 00x, 00x, 00x>
+                                                  var_number_save <A, 0>
+                                                  if_numa_false_then <0, 0, 0, 0>
+                                                  async_exit <00x, 00x, 0ex>
+                                                  uni_void
+                                                  mat_bool_vertical_scroll <no>
+                                                  mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                  var_string_null <C>
+                                                  man_clear_object <2>
+                                                  var_string_set_from_atom <C>
+the_unknown <12, 13>
+                                                  uni_void <00x>
+                                                  act_set_criterion
+                                                  act_set_criterion <2048>
+                                                  de_set_extraction_type <default>
+                                                  buf_start_buffer <0>
+                                                  idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 45x, 00x, 00x, 00x>
+                                                  xfer_abort <00x, 00x>
+                                                  fm_start <00x, 00x, 00x, 00x>
+                                                  lm_open_window <0-0-0>
+                                                  cm_mark_tool_invalid <0>
+                                                  chat_room_open <00x, 00x, 00x, 00x>
+                                                  var_number_save <A, 0>
+                                                  if_numa_false_then <0, 0, 0, 0>
+                                                  async_exit <00x, 00x, 0ex>
+                                                  uni_start_stream
+                                                    uni_wait_on
+                                                    uni_save_result
+                                                    mat_bool_vertical_scroll <no>
+                                                    mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                    var_string_null <C>
+                                                    man_clear_object <2>
+                                                    var_string_set_from_atom <C>
+                                                    var_number_get
+                                                    uni_void <00x>
+                                                    act_set_criterion
+                                                    act_set_criterion <2304>
+                                                    de_set_extraction_type <48>
+                                                    buf_start_buffer <0>
+                                                    idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                                    xfer_abort <00x, 00x>
+                                                    fm_start <00x, 00x, 00x, 00x>
+                                                    lm_open_window <0-0-0>
+                                                    cm_mark_tool_invalid <0>
+                                                    chat_room_open <00x, 00x, 00x, 00x>
+                                                    var_number_save <A, 0>
+                                                    if_numa_false_then <0, 0, 0, 0>
+                                                    async_exit <00x, 00x, 0ex>
+                                                    uni_void
+                                                    mat_bool_vertical_scroll <no>
+                                                    mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                    var_string_null <C>
+                                                    man_clear_object <2>
+                                                    var_string_set_from_atom <C>
+the_unknown <12, 13>
+                                                    uni_void <00x>
+                                                    act_set_criterion
+                                                    act_set_criterion <2048>
+                                                    de_set_extraction_type <default>
+                                                    buf_start_buffer <0>
+                                                    idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 45x, 00x, 00x, 00x>
+                                                    xfer_abort <00x, 00x>
+                                                    fm_start <00x, 00x, 00x, 00x>
+                                                    lm_open_window <0-0-0>
+                                                    cm_mark_tool_invalid <0>
+                                                    chat_room_open <00x, 00x, 00x, 00x>
+                                                    var_number_save <A, 0>
+                                                    if_numa_false_then <0, 0, 0, 0>
+                                                    async_exit <00x, 00x, 0ex>
+                                                    uni_start_stream
+                                                      uni_wait_on
+                                                      uni_save_result
+                                                      mat_bool_vertical_scroll <no>
+                                                      mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                      var_string_null <C>
+                                                      man_clear_object <2>
+                                                      var_string_set_from_atom <C>
+                                                      var_number_get
+                                                      uni_void <00x>
+the_unknown <2, 18>
+                                                      act_set_criterion <512>
+                                                      de_set_extraction_type <default>
+                                                      buf_start_buffer <0>
+                                                      idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                                      xfer_abort <00x, 00x>
+                                                      fm_start <00x, 00x, 00x, 00x>
+                                                      lm_open_window <0-0-0>
+                                                      cm_mark_tool_invalid <0>
+                                                      chat_room_open <00x, 00x, 00x, 00x>
+                                                      var_number_save <A, 0>
+                                                      if_numa_false_then <0, 0, 0, 0>
+                                                      async_exit <00x, 00x, 0ex>
+                                                      uni_void
+                                                      mat_bool_vertical_scroll <no>
+                                                      mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                      var_string_null <C>
+                                                      man_clear_object <2>
+                                                      var_string_set_from_atom <C>
+                                                      var_number_get
+                                                      uni_void <00x>
+                                                      act_set_criterion
+                                                      act_set_criterion <1024>
+                                                      de_set_extraction_type <7>
+                                                      buf_start_buffer <0>
+                                                      idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                                      xfer_abort <00x, 00x>
+                                                      fm_start <00x, 00x, 00x, 00x>
+                                                      lm_open_window <0-0-0>
+                                                      cm_mark_tool_invalid <0>
+                                                      chat_room_open <00x, 00x, 00x, 00x>
+                                                      var_number_save <A, 0>
+                                                      if_numa_false_then <0, 0, 0, 0>
+                                                      async_exit <00x, 00x, 0ex>
+                                                      uni_void
+                                                      mat_bool_vertical_scroll <no>
+                                                      mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                      var_string_null <C>
+                                                      man_clear_object <2>
+                                                      var_string_set_from_atom <C>
+                                                      var_data_save
+                                                      uni_void <00x>
+                                                      act_set_criterion
+                                                      act_set_criterion <2048>
+                                                      de_set_extraction_type <default>
+                                                      buf_start_buffer <0>
+                                                      idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 1dx, 00x, 00x, 00x>
+                                                      xfer_abort <00x, 00x>
+                                                      fm_start <00x, 00x, 00x, 00x>
+                                                      lm_open_window <0-0-0>
+                                                      cm_mark_tool_invalid <0>
+                                                      chat_room_open <00x, 00x, 00x, 00x>
+                                                      var_number_save <A, 0>
+                                                      if_numa_false_then <0, 0, 0, 0>
+                                                      async_exit <00x, 00x, 0ex>
+                                                      uni_start_stream
+                                                        uni_wait_on
+                                                        uni_save_result
+                                                        mat_bool_vertical_scroll <no>
+                                                        mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                        var_string_null <C>
+                                                        man_clear_object <2>
+                                                        var_string_set_from_atom <C>
+                                                        var_number_get
+                                                        uni_void <00x>
+                                                        act_set_criterion
+                                                        act_set_criterion <2304>
+                                                        de_set_extraction_type <7>
+                                                        buf_start_buffer <0>
+                                                        idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                                        xfer_abort <00x, 00x>
+                                                        fm_start <00x, 00x, 00x, 00x>
+                                                        lm_open_window <0-0-0>
+                                                        cm_mark_tool_invalid <0>
+                                                        chat_room_open <00x, 00x, 00x, 00x>
+                                                        var_number_save <A, 0>
+                                                        if_numa_false_then <0, 0, 0, 0>
+                                                        async_exit <00x, 00x, 0ex>
+                                                        uni_void
+                                                        mat_bool_vertical_scroll <no>
+                                                        mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                        var_string_null <C>
+                                                        man_clear_object <2>
+                                                        var_string_set_from_atom <C>
+                                                        var_data_save
+                                                        uni_void <00x>
+                                                        act_set_criterion
+                                                        act_set_criterion <2048>
+                                                        de_set_extraction_type <default>
+                                                        buf_start_buffer <0>
+                                                        idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 1dx, 00x, 00x, 00x>
+                                                        xfer_abort <00x, 00x>
+                                                        fm_start <00x, 00x, 00x, 00x>
+                                                        lm_open_window <0-0-0>
+                                                        cm_mark_tool_invalid <0>
+                                                        chat_room_open <00x, 00x, 00x, 00x>
+                                                        var_number_save <A, 0>
+                                                        if_numa_false_then <0, 0, 0, 0>
+                                                        async_exit <00x, 00x, 0ex>
+                                                        uni_start_stream
+                                                          uni_wait_on
+                                                          uni_save_result
+                                                          mat_bool_vertical_scroll <no>
+                                                          mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                          var_string_null <C>
+                                                          man_clear_object <2>
+                                                          var_string_set_from_atom <C>
+                                                          var_number_get
+                                                          uni_void <00x>
+                                                          act_set_criterion
+                                                          act_set_criterion <3584>
+                                                          de_set_extraction_type <24>
+                                                          buf_start_buffer <pointer_included>
+                                                          idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                                          xfer_abort <00x, 00x>
+                                                          fm_start <00x, 00x, 00x, 00x>
+                                                          lm_open_window <0-0-0>
+                                                          cm_mark_tool_invalid <0>
+                                                          chat_room_open <00x, 00x, 00x, 00x>
+                                                          var_number_save <A, 0>
+                                                          if_numa_false_then <0, 0, 0, 0>
+                                                          async_exit <00x, 00x, 0ex>
+                                                          uni_void
+                                                          mat_bool_vertical_scroll <no>
+                                                          mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                          var_string_null <C>
+                                                          man_clear_object <2>
+                                                          var_string_set_from_atom <C>
+                                                          var_data_save
+                                                          uni_void <00x>
+                                                          act_set_criterion
+                                                          act_set_criterion <2048>
+                                                          de_set_extraction_type <default>
+                                                          buf_start_buffer <0>
+                                                          idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 1dx, 00x, 00x, 00x>
+                                                          xfer_abort <00x, 00x>
+                                                          fm_start <00x, 00x, 00x, 00x>
+                                                          lm_open_window <0-0-0>
+                                                          cm_mark_tool_invalid <0>
+                                                          chat_room_open <00x, 00x, 00x, 00x>
+                                                          var_number_save <A, 0>
+                                                          if_numa_false_then <0, 0, 0, 0>
+                                                          async_exit <00x, 00x, 0ex>
+                                                          uni_start_stream
+                                                            uni_wait_on
+                                                            uni_save_result
+                                                            mat_bool_vertical_scroll <no>
+                                                            mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                            var_string_null <C>
+                                                            man_clear_object <2>
+                                                            var_string_set_from_atom <C>
+                                                            var_number_get
+                                                            uni_void <00x>
+                                                            act_set_criterion
+                                                            act_set_criterion <1280>
+                                                            de_set_extraction_type <default>
+                                                            buf_start_buffer <token_header | start_stream_header | data_included | leave_buffer_open | 1024 | 4096 | 8192 | 16384>
+                                                            idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                                            xfer_abort <00x, 00x>
+                                                            fm_start <00x, 00x, 00x, 00x>
+                                                            lm_open_window <0-0-0>
+                                                            cm_mark_tool_invalid <0>
+                                                            chat_room_open <00x, 00x, 00x, 00x>
+                                                            var_number_save <A, 0>
+                                                            if_numa_false_then <0, 0, 0, 0>
+                                                            async_exit <00x, 00x, 0ex>
+                                                            uni_void
+                                                            mat_bool_vertical_scroll <no>
+                                                            mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                            var_string_null <C>
+                                                            man_clear_object <2>
+                                                            var_string_set_from_atom <C>
+                                                            var_data_save
+                                                            uni_void <00x>
+                                                            act_set_criterion
+                                                            act_set_criterion <2048>
+                                                            de_set_extraction_type <default>
+                                                            buf_start_buffer <0>
+                                                            idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 1dx, 00x, 00x, 00x>
+                                                            xfer_abort <00x, 00x>
+                                                            fm_start <00x, 00x, 00x, 00x>
+                                                            lm_open_window <0-0-0>
+                                                            cm_mark_tool_invalid <0>
+                                                            chat_room_open <00x, 00x, 00x, 00x>
+                                                            var_number_save <A, 0>
+                                                            if_numa_false_then <0, 0, 0, 0>
+                                                            async_exit <00x, 00x, 0ex>
+                                                            uni_start_stream
+                                                              uni_wait_on
+                                                              uni_save_result
+                                                              mat_bool_vertical_scroll <no>
+                                                              mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                              var_string_null <C>
+                                                              man_clear_object <2>
+                                                              var_string_set_from_atom <C>
+                                                              var_number_get
+                                                              uni_void <00x>
+                                                              act_set_criterion
+                                                              act_set_criterion <1280>
+                                                              de_set_extraction_type <default>
+                                                              buf_start_buffer <stream_id_header | start_stream_header | data_included | leave_buffer_open | 1024 | 4096 | 8192 | 16384>
+                                                              idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                                              xfer_abort <00x, 00x>
+                                                              fm_start <00x, 00x, 00x, 00x>
+                                                              lm_open_window <0-0-0>
+                                                              cm_mark_tool_invalid <0>
+                                                              chat_room_open <00x, 00x, 00x, 00x>
+                                                              var_number_save <A, 0>
+                                                              if_numa_false_then <0, 0, 0, 0>
+                                                              async_exit <00x, 00x, 0ex>
+                                                              uni_void
+                                                              mat_bool_vertical_scroll <no>
+                                                              mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                              var_string_null <C>
+                                                              man_clear_object <2>
+                                                              var_string_set_from_atom <C>
+                                                              var_data_save
+                                                              uni_void <00x>
+                                                              act_set_criterion
+                                                              act_set_criterion <2048>
+                                                              de_set_extraction_type <default>
+                                                              buf_start_buffer <0>
+                                                              idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 1dx, 00x, 00x, 00x>
+                                                              xfer_abort <00x, 00x>
+                                                              fm_start <00x, 00x, 00x, 00x>
+                                                              lm_open_window <0-0-0>
+                                                              cm_mark_tool_invalid <0>
+                                                              chat_room_open <00x, 00x, 00x, 00x>
+                                                              var_number_save <A, 0>
+                                                              if_numa_false_then <0, 0, 0, 0>
+                                                              async_exit <00x, 00x, 0ex>
+                                                              uni_start_stream
+                                                                uni_wait_on
+                                                                uni_save_result
+                                                                mat_bool_vertical_scroll <no>
+                                                                mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                                var_string_null <C>
+                                                                man_clear_object <2>
+                                                                var_string_set_from_atom <C>
+                                                                var_number_get
+                                                                uni_void <00x>
+                                                                act_set_criterion
+                                                                act_set_criterion <1280>
+                                                                de_set_extraction_type <default>
+                                                                buf_start_buffer <token_header | data_included | leave_buffer_open | 1024 | 4096 | 8192 | 16384>
+                                                                idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                                                xfer_abort <00x, 00x>
+                                                                fm_start <00x, 00x, 00x, 00x>
+                                                                lm_open_window <0-0-0>
+                                                                cm_mark_tool_invalid <0>
+                                                                chat_room_open <00x, 00x, 00x, 00x>
+                                                                var_number_save <A, 0>
+                                                                if_numa_false_then <0, 0, 0, 0>
+                                                                async_exit <00x, 00x, 0ex>
+                                                                uni_void
+                                                                mat_bool_vertical_scroll <no>
+                                                                mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                                var_string_null <C>
+                                                                man_clear_object <2>
+                                                                var_string_set_from_atom <C>
+                                                                var_data_save
+                                                                uni_void <00x>
+                                                                act_set_criterion
+                                                                act_set_criterion <2048>
+                                                                de_set_extraction_type <default>
+                                                                buf_start_buffer <0>
+                                                                idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 1dx, 00x, 00x, 00x>
+                                                                xfer_abort <00x, 00x>
+                                                                fm_start <00x, 00x, 00x, 00x>
+                                                                lm_open_window <0-0-0>
+                                                                cm_mark_tool_invalid <0>
+                                                                chat_room_open <00x, 00x, 00x, 00x>
+                                                                var_number_save <A, 0>
+                                                                if_numa_false_then <0, 0, 0, 0>
+                                                                async_exit <00x, 00x, 0ex>
+                                                                uni_start_stream
+                                                                  uni_wait_on
+                                                                  uni_save_result
+                                                                  mat_bool_vertical_scroll <no>
+                                                                  mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                                  var_string_null <C>
+                                                                  man_clear_object <2>
+                                                                  var_string_set_from_atom <C>
+                                                                  var_number_get
+                                                                  uni_void <00x>
+                                                                  act_set_criterion
+                                                                  act_set_criterion <1280>
+                                                                  de_set_extraction_type <default>
+                                                                  buf_start_buffer <host_bound | data_included | leave_buffer_open | 1024 | 4096 | 8192 | 16384>
+                                                                  idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                                                  xfer_abort <00x, 00x>
+                                                                  fm_start <00x, 00x, 00x, 00x>
+                                                                  lm_open_window <0-0-0>
+                                                                  cm_mark_tool_invalid <0>
+                                                                  chat_room_open <00x, 00x, 00x, 00x>
+                                                                  var_number_save <A, 0>
+                                                                  if_numa_false_then <0, 0, 0, 0>
+                                                                  async_exit <00x, 00x, 0ex>
+                                                                  uni_void
+                                                                  mat_bool_vertical_scroll <no>
+                                                                  mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                                  var_string_null <C>
+                                                                  man_clear_object <2>
+                                                                  var_string_set_from_atom <C>
+                                                                  var_data_save
+                                                                  uni_void <00x>
+                                                                  act_set_criterion
+                                                                  act_set_criterion <2048>
+                                                                  de_set_extraction_type <default>
+                                                                  buf_start_buffer <0>
+                                                                  idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 1dx, 00x, 00x, 00x>
+                                                                  xfer_abort <00x, 00x>
+                                                                  fm_start <00x, 00x, 00x, 00x>
+                                                                  lm_open_window <0-0-0>
+                                                                  cm_mark_tool_invalid <0>
+                                                                  chat_room_open <00x, 00x, 00x, 00x>
+                                                                  var_number_save <A, 0>
+                                                                  if_numa_false_then <0, 0, 0, 0>
+                                                                  async_exit <00x, 00x, 0ex>
+                                                                  uni_start_stream
+                                                                    uni_wait_on
+                                                                    uni_save_result
+                                                                    mat_bool_vertical_scroll <no>
+                                                                    mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                                    var_string_null <C>
+                                                                    man_clear_object <2>
+                                                                    var_string_set_from_atom <C>
+                                                                    var_number_get
+                                                                    uni_void <00x>
+                                                                    act_set_criterion
+                                                                    act_set_criterion <1280>
+                                                                    de_set_extraction_type <default>
+                                                                    buf_start_buffer <token_header | host_bound | end_stream_trailer | data_included | leave_buffer_open | 1024 | 4096 | 8192 | 16384>
+                                                                    idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                                                    xfer_abort <00x, 00x>
+                                                                    fm_start <00x, 00x, 00x, 00x>
+                                                                    lm_open_window <0-0-0>
+                                                                    cm_mark_tool_invalid <0>
+                                                                    chat_room_open <00x, 00x, 00x, 00x>
+                                                                    var_number_save <A, 0>
+                                                                    if_numa_false_then <0, 0, 0, 0>
+                                                                    async_exit <00x, 00x, 0ex>
+                                                                    uni_void
+                                                                    mat_bool_vertical_scroll <no>
+                                                                    mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                                    var_string_null <C>
+                                                                    man_clear_object <2>
+                                                                    var_string_set_from_atom <C>
+                                                                    var_data_save
+                                                                    uni_void <00x>
+                                                                    act_set_criterion
+                                                                    act_set_criterion <2048>
+                                                                    de_set_extraction_type <default>
+                                                                    buf_start_buffer <0>
+                                                                    idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 1dx, 00x, 00x, 00x>
+                                                                    xfer_abort <00x, 00x>
+                                                                    fm_start <00x, 00x, 00x, 00x>
+                                                                    lm_open_window <0-0-0>
+                                                                    cm_mark_tool_invalid <0>
+                                                                    chat_room_open <00x, 00x, 00x, 00x>
+                                                                    var_number_save <A, 0>
+                                                                    if_numa_false_then <0, 0, 0, 0>
+                                                                    async_exit <00x, 00x, 0ex>
+                                                                    uni_start_stream
+                                                                      uni_wait_on
+                                                                      uni_save_result
+                                                                      mat_bool_vertical_scroll <no>
+                                                                      mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                                      var_string_null <C>
+                                                                      man_clear_object <2>
+                                                                      var_string_set_from_atom <C>
+                                                                      var_number_get
+                                                                      uni_void <00x>
+                                                                      act_set_criterion
+                                                                      act_set_criterion <1280>
+                                                                      de_set_extraction_type <default>
+                                                                      buf_start_buffer <token_header | host_bound | data_included | leave_buffer_open | 1024 | 4096 | 8192 | 16384>
+                                                                      idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 00x, 00x, 00x, 00x>
+                                                                      xfer_abort <00x, 00x>
+                                                                      fm_start <00x, 00x, 00x, 00x>
+                                                                      lm_open_window <0-0-0>
+                                                                      cm_mark_tool_invalid <0>
+                                                                      chat_room_open <00x, 00x, 00x, 00x>
+                                                                      var_number_save <A, 0>
+                                                                      if_numa_false_then <0, 0, 0, 0>
+                                                                      async_exit <00x, 00x, 0ex>
+                                                                      uni_void
+                                                                      mat_bool_vertical_scroll <no>
+                                                                      mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                                      var_string_null <C>
+                                                                      man_clear_object <2>
+                                                                      var_string_set_from_atom <C>
+                                                                      var_data_save
+                                                                      uni_void <00x>
+                                                                      act_set_criterion
+                                                                      act_set_criterion <2048>
+                                                                      de_set_extraction_type <default>
+                                                                      buf_start_buffer <0>
+                                                                      idb_atr_dod <00x, 00x, 00x, 00x>
+the_unknown <6, 0, 1dx, 00x, 00x, 00x>
+                                                                      xfer_abort <00x, 00x>
+                                                                      fm_start <00x, 00x, 00x, 00x>
+                                                                      lm_open_window <0-0-0>
+                                                                      cm_mark_tool_invalid <0>
+                                                                      chat_room_open <00x, 00x, 00x, 00x>
+                                                                      var_number_save <A, 0>
+                                                                      if_numa_false_then <0, 0, 0, 0>
+                                                                      async_exit <00x, 00x, 0ex>
+                                                                      uni_start_stream
+                                                                        uni_wait_on
+                                                                        uni_save_result
+                                                                        mat_bool_vertical_scroll <no>
+                                                                        mip_start_message <00x, 00x, 00x, 00x>
+the_unknown <18, 0, 00x, 00x, 00x, 00x>
+the_unknown <19, 0, 00x, 00x, 00x, 00x, 41x, 4fx>
+                                                                        var_string_null <C>

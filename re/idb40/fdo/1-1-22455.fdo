@@ -1,0 +1,7 @@
+man_start_object <org_group, "">
+  man_start_object <sss_list, "\x00\x00\x00\x00\x00\x00\t\x02\x00\x00\x00\x00\x00\x00Y\x05\x00\x00$\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x0c\x00JG\x04\x0e\x00\x00\x00\x00\x16\x00\x00(\x00(\x00#\x05 \x01\x00w»\x08¶?\x1c@M\x11UTÿ÷w»¾ýþow<$H\"D\t$\"DD\")$EI\x12I$R¤¹f%JsïÞ¨³3;²þËÚ">
+the_unknown <30, 25, 03x>
+    irc_user_info <0>
+    mmi_get_attr_priority <1828300370>
+the_unknown <20, 29, 62x, 24x, 48x, 91x, 23x, 34x, e7x, d1x, 09x, 17x, 67x, 32x, 44x, cbx, 99x, b4x, 91x, 0cx, ccx, 41x, 90x, 32x, f8x, 91x, 96x, 86x, 58x, 27x, 2ex, 1fx, b1x, 9ex, 4dx, 32x, 67x, 48x, 12x, 17x, 7fx, e3x, eex, 2ex, 62x, 4cx, 6ax, bcx, c5x, 98x, 6fx, b1x, 27x, 0ex, 17x, 7fx, 7ax, afx, 67x, d8x, 37x, 10x, 33x, 43x, 41x, ffx, a8x, ffx, eex, a4x, 27x, 2cx, 94x, a0x, 00x, 00x, 00x, 4ax, d0x, 00x, 00x, 00x, 04x, 99x, 00x, 00x, 00x, 00x, 48x, 70x, 00x, 00x, 00x, 90x, 20x, 00x, 00x, 00x, 08x, c3x, 60x, 00x, 00x, 00x, 89x, a0x, 00x, 22x, 48x, 00x, 87x, 60x, 08x, 6fx, 60x, 00x, 02x, 10x, c7x, 00x, 84x, 1cx, 01x, aax, 6dx, 00x, 8cx, 1dx, 00x, 01x, 0ax, 00x, 0ax, 00x, 23x, 05x, a0x, 88x, 01x, 00x, a0x, 1ex, dcx, 31x, aax, eax, abx, 1dx, d3x, 36x, 85x, e5x, 54x, e6x, f7x, 14x, 57x, bcx, a1x, 7bx, b2x, d1x, 7ex, 91x, a9x, b8x, 7cx, 6bx, e7x, b0x, a9x, b7x, e1x, c0x, a7x, 1fx, 09x, 68x, 93x, f3x, f1x, 29x>
+    mat_bool_children_movable <yes>

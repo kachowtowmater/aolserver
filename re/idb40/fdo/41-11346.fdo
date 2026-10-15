@@ -1,0 +1,425 @@
+uni_start_stream
+  man_start_object <org_group, "">
+    mat_orientation <hff>
+    mat_horizontal_spacing <0>
+    mat_vertical_spacing <0>
+    mat_bool_background_tile <yes>
+    mat_art_id <1-1-44182>
+    mat_relative_tag <72>
+    mat_bool_child_removable <no>
+    mat_precise_width <194>
+    mat_precise_height <38>
+    man_start_object <trigger, "Read">
+      mat_trigger_style <9>
+      mat_bool_palette_art <yes>
+      mat_context_help <"Read new, old, and sent mail.">
+      mat_bool_disabled <yes>
+      mat_bool_active_online <yes>
+      mat_relative_tag <1>
+      mat_text_on_picture_pos <art_middle_center | 15>
+      mat_horizontal_spacing <0>
+      mat_vertical_spacing <0>
+      mat_bool_child_removable <no>
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on
+            sm_enter_paid
+            mip_action_command <1dx>
+          uni_end_stream
+          >
+      man_end_object
+      man_start_object <trigger, "Write">
+        mat_bool_palette_art <yes>
+        mat_trigger_style <9>
+        mat_context_help <"Write mail and send files.">
+        mat_relative_tag <2>
+        mat_horizontal_spacing <0>
+        mat_vertical_spacing <0>
+        mat_bool_child_removable <no>
+        mat_text_on_picture_pos <art_middle_center | 15>
+        act_replace_select_action
+            <
+            uni_start_stream_wait_on
+              sm_enter_paid
+              mip_display_mail_form <0>
+            uni_wait_off_end_stream
+            >
+        man_end_object
+        man_start_object <trigger, "Mail Center">
+          mat_trigger_style <9>
+          mat_precise_width <64>
+          mat_precise_height <36>
+          mat_context_help <"Everything about mail.">
+          mat_relative_tag <67>
+          mat_horizontal_spacing <0>
+          mat_vertical_spacing <0>
+          mat_bool_child_removable <no>
+          mat_shortcut_key <"M">
+          mat_text_on_picture_pos <art_middle_center | 15>
+          mat_bool_dropdown_button <yes>
+          act_replace_popup_menu_action
+            <
+            uni_start_stream
+              man_set_context_relative <124>
+              man_display_popup_menu <0>
+              man_end_context
+            uni_end_stream
+            >
+        man_end_object
+        man_start_object <trigger, "Print">
+          mat_trigger_style <9>
+          mat_bool_palette_art <yes>
+          mat_precise_width <36>
+          mat_precise_height <36>
+          mat_context_help <"Print text or pictures.">
+          mat_relative_tag <19>
+          mat_bool_disabled <no>
+          mat_text_on_picture_pos <art_middle_center | 15>
+          mat_bool_child_removable <no>
+          mat_horizontal_spacing <1>
+          mat_vertical_spacing <0>
+          act_replace_select_action
+              <
+              uni_start_stream
+                fm_start
+                fm_broadcast <09x>
+                fm_handle_error <display_msg | terminate>
+                fm_end
+              uni_end_stream
+              >
+          man_end_object
+        man_end_object
+        man_start_object <org_group, "">
+          mat_orientation <hff>
+          mat_horizontal_spacing <0>
+          mat_vertical_spacing <0>
+          mat_bool_background_tile <yes>
+          mat_art_id <1-1-44183>
+          mat_relative_tag <73>
+          mat_precise_width <169>
+          mat_precise_height <38>
+          mat_bool_child_removable <no>
+          man_start_object <trigger, "My Files">
+            mat_trigger_style <9>
+            mat_bool_palette_art <yes>
+            mat_precise_width <54>
+            mat_precise_height <36>
+            mat_shortcut_key <"Y">
+            mat_context_help <"Your Personal Documents.">
+            mat_text_on_picture_pos <art_middle_center | 15>
+            mat_bool_disabled <no>
+            mat_relative_tag <63>
+            mat_bool_child_removable <no>
+            mat_horizontal_spacing <0>
+            mat_vertical_spacing <0>
+            mat_bool_dropdown_button <yes>
+            act_replace_popup_menu_action
+              <
+              uni_start_stream
+                man_set_context_relative <109>
+                man_display_popup_menu <0>
+                man_end_context
+              uni_end_stream
+              >
+          man_end_object
+          man_start_object <trigger, "My AOL">
+            mat_trigger_style <9>
+            mat_bool_palette_art <yes>
+            mat_context_help <"Customize AOL for YOU.">
+            mat_relative_tag <53>
+            mat_art_id <1-1-25316>
+            mat_vertical_spacing <0>
+            mat_horizontal_spacing <0>
+            mat_bool_child_removable <no>
+            mat_precise_width <56>
+            mat_precise_height <36>
+            mat_shortcut_key <"A">
+            mat_text_on_picture_pos <art_middle_center | 15>
+            mat_bool_dropdown_button <yes>
+            act_replace_popup_menu_action
+              <
+              uni_start_stream
+                man_set_context_relative <121>
+                man_display_popup_menu <0>
+                man_end_context
+              uni_end_stream
+              >
+          man_end_object
+          man_start_object <trigger, "Favorites">
+            mat_text_on_picture_pos <art_middle_center | 15>
+            mat_trigger_style <9>
+            mat_bool_palette_art <yes>
+            mat_relative_tag <117>
+            mat_sink <"Favorite Places">
+            mat_context_help <"See your favorite places.\x7fDrag heart icons here.">
+            mat_horizontal_spacing <1>
+            mat_vertical_spacing <0>
+            mat_precise_width <59>
+            mat_precise_height <36>
+            mat_shortcut_key <"V">
+            mat_bool_child_removable <no>
+            mat_bool_dropdown_button <yes>
+            act_replace_popup_menu_action
+              <
+              uni_start_stream
+                man_set_context_relative <127>
+                man_display_popup_menu <0>
+                man_end_context
+              uni_end_stream
+              >
+          man_end_object
+        man_end_object
+        man_start_object <org_group, "">
+          mat_orientation <hff>
+          mat_horizontal_spacing <0>
+          mat_vertical_spacing <0>
+          mat_bool_child_removable <no>
+          mat_bool_background_tile <yes>
+          mat_art_id <1-1-44181>
+          mat_relative_tag <74>
+          mat_precise_width <120>
+          mat_precise_height <38>
+          man_start_object <trigger, "Internet">
+            mat_text_on_picture_pos <art_middle_center | 15>
+            mat_trigger_style <9>
+            mat_bool_palette_art <yes>
+            mat_precise_width <44>
+            mat_precise_height <36>
+            mat_context_help <"Access to the Web and other Internet features.">
+            mat_bool_disabled <yes>
+            mat_bool_active_online <yes>
+            mat_relative_tag <51>
+            mat_bool_child_removable <no>
+            mat_horizontal_spacing <0>
+            mat_vertical_spacing <0>
+            mat_shortcut_key <"I">
+            mat_bool_dropdown_button <yes>
+            act_replace_popup_menu_action
+              <
+              uni_start_stream
+                man_set_context_relative <126>
+                man_display_popup_menu <0>
+                man_end_context
+              uni_end_stream
+              >
+          man_end_object
+          man_start_object <trigger, "Channels">
+            mat_text_on_picture_pos <art_middle_center | 15>
+            mat_trigger_style <9>
+            mat_bool_palette_art <yes>
+            mat_context_help <"AOL content, by category.">
+            mat_bool_active_online <yes>
+            mat_bool_disabled <yes>
+            mat_relative_tag <3>
+            mat_horizontal_spacing <1>
+            mat_vertical_spacing <0>
+            mat_precise_width <76>
+            mat_precise_height <36>
+            mat_bool_child_removable <no>
+            mat_bool_dropdown_button <yes>
+            mat_shortcut_key <"C">
+            act_replace_popup_menu_action
+              <
+              uni_start_stream
+                man_set_context_relative <120>
+                man_display_popup_menu <0>
+                man_end_context
+              uni_end_stream
+              >
+          man_end_object
+        man_end_object
+        man_start_object <org_group, "">
+          mat_orientation <hff>
+          mat_horizontal_spacing <0>
+          mat_vertical_spacing <0>
+          mat_bool_background_flood <yes>
+          mat_color_face <102, 153, 153>
+          mat_relative_tag <75>
+          mat_bool_child_removable <no>
+          mat_precise_width <73>
+          mat_precise_height <38>
+          man_start_object <trigger, "People">
+            mat_text_on_picture_pos <art_middle_center | 15>
+            mat_trigger_style <9>
+            mat_bool_palette_art <yes>
+            mat_context_help <"Get together with other members.">
+            mat_bool_disabled <yes>
+            mat_bool_active_online <yes>
+            mat_relative_tag <60>
+            mat_horizontal_spacing <1>
+            mat_vertical_spacing <0>
+            mat_precise_width <73>
+            mat_precise_height <36>
+            mat_bool_child_removable <no>
+            mat_bool_dropdown_button <yes>
+            mat_shortcut_key <"P">
+            act_replace_popup_menu_action
+              <
+              uni_start_stream
+                man_set_context_relative <122>
+                man_display_popup_menu <0>
+                man_end_context
+              uni_end_stream
+              >
+          man_end_object
+        man_end_object
+        man_start_object <org_group, "">
+          mat_orientation <hff>
+          mat_horizontal_spacing <0>
+          mat_vertical_spacing <0>
+          mat_bool_background_flood <yes>
+          mat_color_face <102, 51, 102>
+          mat_relative_tag <84>
+          mat_bool_child_removable <no>
+          mat_precise_width <165>
+          mat_precise_height <38>
+          man_start_object <trigger, "Quotes">
+            mat_text_on_picture_pos <art_middle_center | 15>
+            mat_trigger_style <9>
+            mat_bool_palette_art <yes>
+            mat_context_help <"Today's stock quotes">
+            mat_bool_disabled <yes>
+            mat_bool_active_online <yes>
+            mat_relative_tag <86>
+            mat_horizontal_spacing <0>
+            mat_vertical_spacing <0>
+            mat_bool_child_movable <no>
+            act_replace_select_action
+                <
+                uni_start_stream
+                  sm_enter_paid
+                  uni_invoke_no_context <40-47287>
+                uni_end_stream
+                >
+            man_end_object
+            man_start_object <trigger, "Perks">
+              mat_trigger_style <9>
+              mat_text_on_picture_pos <art_middle_center | 15>
+              mat_bool_palette_art <yes>
+              mat_context_help <"AOL Member Perks">
+              mat_bool_disabled <yes>
+              mat_bool_active_online <yes>
+              mat_relative_tag <87>
+              mat_horizontal_spacing <0>
+              mat_vertical_spacing <0>
+              mat_bool_child_movable <no>
+              act_replace_select_action
+                  <
+                  uni_start_stream
+                    sm_enter_paid
+                  sm_send_k1 <17-59110>
+                  >
+              man_end_object
+              man_start_object <trigger, "Weather">
+                mat_text_on_picture_pos <art_middle_center | 15>
+                mat_trigger_style <9>
+                mat_bool_palette_art <yes>
+                mat_bool_disabled <yes>
+                mat_bool_active_online <yes>
+                mat_relative_tag <85>
+                mat_horizontal_spacing <0>
+                mat_vertical_spacing <0>
+                mat_bool_child_movable <no>
+              man_end_object
+            man_end_object
+            man_start_object <org_group, "">
+              mat_orientation <hff>
+              mat_horizontal_spacing <0>
+              mat_vertical_spacing <0>
+              mat_bool_child_removable <no>
+              mat_bool_background_flood <yes>
+              mat_color_face <102, 51, 102>
+              mat_relative_tag <77>
+              mat_precise_width <1>
+              mat_precise_height <38>
+              mat_bool_child_movable <no>
+              mat_bool_drop_at_top <yes>
+              man_start_object <trigger, "">
+                mat_relative_tag <83>
+                mat_object_type <trigger, "">
+                mat_trigger_style <8>
+                mat_color_text <255, 255, 255>
+                mat_font_sis <arial, 8, normal>
+                mat_bool_child_removable <no>
+                mat_bool_child_movable <no>
+                mat_horizontal_spacing <0>
+                mat_vertical_spacing <0>
+                mat_context_help <"Drag your favorite places here.">
+              man_end_object
+            man_end_object
+            man_start_object <ornament, "">
+              mat_art_id <1-1-22350>
+              mat_precise_width <44>
+              mat_precise_height <38>
+              mat_relative_tag <61>
+              mat_bool_palette_art <yes>
+              mat_bool_spinner <yes>
+              mat_horizontal_spacing <1>
+              mat_vertical_spacing <0>
+              mat_bool_child_movable <no>
+              mat_bool_child_removable <no>
+              mat_art_frame <0>
+            man_end_object
+            fm_start
+            fm_item_type <ini_file>
+            fm_item_set <"version.inf">
+            fm_item_type <ini_group>
+            fm_item_set <"Application Information">
+            fm_item_type <ini_key>
+            fm_item_set <"home">
+            fm_ini_read_data
+            var_string_set_from_atom <B>
+            var_string_save <B, 36>
+            fm_end
+            if_strb_neq_null_then <1, 2>
+            man_set_context_relative <85>
+            act_replace_select_action
+                <
+                uni_start_stream
+                  fm_start
+                  fm_item_type <ini_file>
+                  fm_item_set <"version.inf">
+                  fm_item_type <ini_group>
+                  fm_item_set <"Application Information">
+                  fm_item_type <ini_key>
+                  fm_item_set <"home">
+                  fm_ini_read_data
+                  var_string_set_from_atom <B>
+                  var_string_save <B, 36>
+                  fm_end
+                  buf_start_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+                  buf_set_token <"Kk">
+                  var_lookup_by_id <B, 36>
+                  uni_save_result
+                  uni_get_result
+                  uni_use_last_atom_string <buf_add_atom_pointer>
+                  buf_close_buffer
+                uni_end_stream
+                >
+              fm_start
+              fm_item_type <ini_file>
+              fm_item_set <"version.inf">
+              fm_item_type <ini_group>
+              fm_item_set <"Application Information">
+              fm_item_type <ini_key>
+              fm_item_set <"contexthelp">
+              fm_ini_read_data
+              var_string_set_from_atom <C>
+              var_string_save <C, 35>
+              fm_end
+              var_lookup_by_id <C, 35>
+              uni_save_result
+              uni_get_result
+              uni_use_last_atom_string <mat_context_help>
+              man_end_context
+              uni_sync_skip <1>
+              man_set_context_relative <85>
+              mat_context_help <"Weather">
+              act_replace_select_action
+                  <
+                  uni_start_stream
+                  sm_send_paid_k1 <17-64133>
+                  man_end_context
+                  uni_sync_skip <2>
+                uni_end_stream
+                >

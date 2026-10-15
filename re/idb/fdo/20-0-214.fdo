@@ -1,0 +1,21 @@
+uni_start_loop
+uni_invoke_local
+uni_invoke_local
+uni_wait_off
+exapi_list_item_end <2fx>
+exapi_leave_anteroom
+exapi_leave_anteroom
+exapi_leave_anteroom
+sm_end_object_with_action
+  <
+  uni_wait_on
+  uni_save_result
+sm_send_k1 <111-27951>
+>
+sm_send_k1
+sm_mp_send_token_arg
+the_unknown <14, 13>
+if_last_return_true_then <101, 97, 114>
+if_numa_eq_one_then
+if_strb_eq_null_then
+uni_void <20x, 37x, 38x, 78x, 00x, 00x, 00x, 00x, 00x, 00x, 00x, 00x, 06x, 00x, 09x, 00x, 14x, 00x, 75x, 80x, 61x, 70x, 70x, 6cx, 69x, 63x, 61x, 74x, 69x, 6fx, 6ex, 2fx, 6fx, 63x, 74x, 65x, 74x, 2dx, 73x, 74x, 72x, 65x, 61x, 6dx>

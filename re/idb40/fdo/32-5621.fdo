@@ -1,0 +1,152 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "AOL Setup">
+    mat_object_id <32-5621>
+    mat_style_id <32-5621>
+    mat_orientation <hff>
+    mat_color_face <255, 251, 240>
+    mat_bool_background_flood <yes>
+    mat_position <center_center>
+    mat_bool_resize_vertical <no>
+    mat_bool_modal <yes>
+    mat_bool_background_flood <yes>
+    man_start_object <ornament, "">
+      mat_art_id <1-1-46515>
+      mat_bool_disabled <yes>
+    man_start_sibling <org_group, "">
+      mat_orientation <vff>
+      man_start_object <org_group, "">
+        mat_orientation <vff>
+        man_start_object <ornament, "Confirm Your TCP/IP Connection">
+          mat_size <30, 1, 128>
+          mat_font_id <arial>
+          mat_font_size <14>
+          mat_font_style <bold>
+          uni_start_typed_data <latin1>
+          man_append_data
+        man_start_sibling <org_group, "">
+          mat_orientation <vff>
+          mat_precise_width <440>
+          mat_precise_height <2>
+          mat_color_face <1, 1, 1>
+          mat_bool_background_flood <yes>
+          mat_bool_precise <yes>
+        man_end_object
+      man_start_sibling <view, "">
+        rich_manage
+        rich_set_static
+        mat_size <45, 7>
+        mat_bool_vertical_scroll <no>
+        mat_bool_resize_vertical <no>
+        mat_bool_resize_horizontal <no>
+        mat_bool_exportable <no>
+        uni_next_atom_typed <ascii>
+        man_append_data <"TCP/IP normally requires no extra configuration.  However, if your LAN requires additional proxy setup, click Setup on the Sign On screen, then click on Expert Setup to edit the connection. \x7f\x7fIf no additional setup is required, click <B>Next</B> to sign on to AOL!">
+      man_start_sibling <sms_list, "">
+        mat_orientation <hcf>
+        uni_next_atom_typed <ascii>
+        man_start_object <trigger, "Sign on to America Online now!">
+          mat_relative_tag <1>
+          uni_next_atom_typed <ascii>
+          mat_context_help <"Check or uncheck this box to indicate whether\x7fyou want to sign on to America Online when you\x7fclick on the right arrow below.">
+          mat_bool_default_send <no>
+          act_replace_select_action
+              <
+              uni_start_stream
+              uni_end_stream
+              >
+            mat_value <1>
+          man_end_object
+        man_start_sibling <org_group, "">
+          mat_orientation <hff>
+          man_start_object <trigger, "">
+            mat_relative_tag <80>
+            mat_trigger_style <plain_picture>
+            uni_next_atom_typed <ascii>
+            mat_context_help <"Click here to go back to the previous screen.">
+            man_obj_stack_pop <0>
+            if_last_return_false_then <1>
+            mat_bool_hidden <yes>
+            uni_sync_skip <1>
+            mat_art_id <1-1-31171>
+            mat_font_id <arial>
+            mat_font_size <10>
+            mat_command_key <98x, 00x>
+            act_replace_select_action
+                <
+                uni_start_stream
+                  man_close_update
+                  man_end_context
+                  man_obj_stack_pop
+                  uni_save_result
+                  if_last_return_true_then <1>
+                  uni_get_result
+                  uni_use_last_atom_value <uni_invoke_no_context>
+                  uni_sync_skip <1>
+                uni_end_stream
+                >
+            man_start_sibling <org_group, "">
+              mat_orientation <hcc>
+              mat_font_sis <arial, 8, normal>
+              uni_next_atom_typed <ascii>
+              man_start_object <trigger, "Cancel">
+                mat_title_width <6>
+                mat_relative_tag <82>
+                mat_color_face <0, 109, 170>
+                mat_color_text <255, 255, 255>
+                mat_color_top_edge <145, 182, 255>
+                mat_color_bottom_edge <1, 1, 1>
+                mat_trigger_style <rectangle>
+                mat_font_sis <arial, 8, normal>
+                man_obj_stack_pop <0>
+                uni_use_last_atom_value <mat_bool_invisible>
+                mat_command_key <71x, 01x>
+                act_replace_select_action
+                    <
+                    uni_start_stream
+                      uni_invoke_no_context <41-27653>
+                    uni_end_stream
+                    >
+                man_end_object
+              man_start_sibling <trigger, "">
+                mat_title_width <6>
+                mat_relative_tag <81>
+                mat_trigger_style <plain_picture>
+                if_newuser_then <2, 3>
+                mat_art_id <1-3-398>
+                uni_sync_skip <2>
+                mat_art_id <1-1-14785>
+                uni_sync_skip <3>
+                man_make_focus
+                mat_bool_default <yes>
+                mat_font_id <arial>
+                mat_font_size <10>
+                mat_command_key <99x, 00x>
+                act_replace_select_action
+                    <
+                    uni_start_stream
+                      de_start_extraction <0>
+                      man_set_context_relative <1>
+                      de_get_data_value
+                      uni_save_result
+                      man_end_context
+                      de_end_extraction
+                      uni_get_result
+                      if_last_return_true_then <1, 2>
+                      var_number_set <C, 6>
+                      uni_sync_skip <1>
+                      var_number_set <C, 9>
+                      uni_sync_skip <2>
+                      man_close_update
+                      dice_set_context_tool <20>
+                      var_number_get <C>
+                      uni_use_last_atom_value <dice_send_message>
+                      dice_end_context
+                    uni_end_stream
+                    >
+                man_end_object
+              man_end_object
+            man_end_object
+            man_update_display
+            uni_end_typed_data
+            uni_wait_off
+          uni_end_stream <00x>

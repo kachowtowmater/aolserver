@@ -1,0 +1,156 @@
+uni_start_stream <00x>
+  de_start_extraction <0>
+  de_set_data_type <text>
+  de_get_data_pointer <default>
+  var_string_set_from_atom <A>
+  var_string_trim_spaces
+  de_end_extraction
+  if_stra_eq_null_then <55>
+  man_do_magic_response_id <8422>
+  uni_invoke_no_context <40-5792>
+  var_data_zero <A>
+  if_data_neq_zero_then <56>
+  uni_sync_skip <55>
+  mat_bool_list_allow_entry <no>
+  de_start_extraction <0>
+  de_set_variable_id <305>
+  de_set_data_type <var>
+  de_get_data_pointer <selected_children>
+  var_string_set_from_atom <A>
+  de_end_extraction
+  mat_bool_list_allow_entry <yes>
+  var_number_set <A, 318>
+  uni_invoke_local <41-18849>
+  if_numa_eq_one_then <10>
+  var_number_set <A, 319>
+  uni_invoke_local <41-18849>
+  var_number_get <A>
+  if_numa_true_then <11>
+  var_number_copy_between_regs <A, D>
+  var_number_set <A, 320>
+  uni_invoke_local <41-18849>
+  if_numa_true_then <12>
+  var_number_copy_between_regs <A, C>
+  var_number_set <A, 321>
+  uni_invoke_local <41-18849>
+  var_number_get <D>
+  uni_use_last_atom_value <man_preset_gid>
+  if_last_return_true_then <12>
+  man_get_attribute <mat_bool_invisible>
+  if_last_return_true_then <70, 12>
+  man_end_context
+  uni_sync_skip <70>
+  if_numa_true_then <1>
+  var_number_get <A>
+  uni_use_last_atom_value <man_set_context_relative>
+  man_is_rendered
+  if_last_return_false_then <2>
+  man_end_context
+  man_end_context
+  var_number_set <A, 0>
+  if_numa_true_then <56>
+  uni_sync_skip <2>
+  man_end_context
+  uni_sync_skip <1>
+  man_make_focus
+  man_get_attribute <mat_url>
+  var_string_set_from_atom <B>
+  var_number_get <C>
+  uni_use_last_atom_value <man_set_context_relative>
+  var_string_get <A>
+  if_stra_neq_strb_then <1, 2>
+  var_string_get <A>
+  uni_use_last_atom_string <www_load_url>
+  man_end_context
+  uni_sync_skip <1>
+  man_end_context
+  man_get_attribute <mat_url>
+  uni_use_last_atom_string <mat_url>
+  uni_sync_skip <2>
+  man_update_display
+  man_end_context
+  var_number_set <A, 0>
+  if_numa_true_then <56>
+  uni_sync_skip <11>
+  man_get_top_window
+  var_number_set_from_atom <B>
+  var_number_get <B>
+  if_last_return_true_then <12>
+  var_number_get <B>
+  uni_use_last_atom_value <man_set_context_globalid>
+  var_number_set <B, 2101857>
+  man_get_attribute <mat_style_id>
+  var_number_set_from_atom <A>
+  if_numa_neq_numb_then <13>
+  man_end_context
+  var_number_set <A, 0>
+  if_numa_true_then <12>
+  uni_sync_skip <13>
+  man_set_context_relative <4>
+  man_is_rendered
+  uni_save_result
+  man_end_context
+  uni_get_result
+  if_last_return_false_then <14>
+  man_end_context
+  var_number_set <A, 0>
+  if_numa_true_then <12>
+  uni_sync_skip <14>
+  man_make_focus
+  man_set_context_relative <1>
+  var_string_get <A>
+  uni_use_last_atom_string <www_load_url>
+  man_end_context
+  man_update_display
+  man_end_context
+  var_number_set <A, 0>
+  if_numa_true_then <56>
+  uni_sync_skip <12>
+  var_string_get <A>
+  uni_use_last_atom_string <www_browse>
+  var_number_set <A, 0>
+  if_numa_true_then <56>
+  uni_sync_skip <10>
+  var_number_set <B, 2>
+  if_numa_eq_numb_then <57>
+  var_number_set <A, 0>
+  if_numa_true_then <56>
+  uni_sync_skip <57>
+  var_number_set <A, 319>
+  uni_invoke_local <41-18849>
+  var_number_get <A>
+  if_numa_true_then <64>
+  var_number_get <A>
+  uni_use_last_atom_value <man_preset_gid>
+  if_last_return_true_then <64>
+  man_get_attribute <mat_bool_invisible>
+  if_last_return_true_then <70, 64>
+  man_end_context
+  uni_sync_skip <70>
+  man_get_attribute <mat_url>
+  uni_save_result
+  if_last_return_true_then <1>
+  uni_get_result
+  var_string_set_from_atom <B>
+  if_stra_eq_strb_then <1>
+  man_make_focus
+  man_update_display
+  man_get_attribute <mat_url>
+  uni_use_last_atom_string <mat_url>
+  man_end_context
+  var_number_set <A, 0>
+  if_numa_true_then <56>
+  uni_sync_skip <1>
+  man_end_context
+  uni_sync_skip <64>
+  man_set_context_relative <64>
+  var_string_get <A>
+  uni_use_last_atom_string <mat_title>
+  act_do_action <select>
+  man_end_context
+  uni_sync_skip <56>
+uni_abort_stream
+uni_sync_skip <63>
+var_string_get <A>
+uni_use_last_atom_string <www_browse>
+uni_end_stream

@@ -1,0 +1,557 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "AOL Setup">
+    mat_object_id <32-6044>
+    mat_style_id <32-6044>
+    mat_orientation <vff>
+    mat_bool_background_flood <yes>
+    mat_color_face <255, 251, 240>
+    var_number_zero_save <D, B, A, A, A>
+    act_set_criterion <33>
+    act_replace_action
+        <
+        uni_start_stream
+          de_start_extraction <0>
+          man_set_context_relative <2>
+          de_set_data_type <text>
+          de_get_data_pointer
+          uni_save_result
+          man_change_context_relative <1>
+          man_replace_data <"Modem: ">
+          uni_get_result
+          uni_use_last_atom_string <man_append_data>
+          man_append_data <" on ">
+          man_change_context_relative <3>
+          de_set_data_type <text>
+          de_get_data_pointer
+          uni_save_result
+          man_change_context_relative <1>
+          uni_get_result
+          uni_use_last_atom_string <man_append_data>
+          man_end_context
+          de_end_extraction
+        uni_end_stream
+        >
+      act_set_criterion <32>
+      act_replace_action
+          <
+          uni_start_stream
+            var_number_set <D, 1>
+            var_number_save <D, 16777216>
+            de_start_extraction <0>
+            man_set_context_relative <32>
+            de_get_data_pointer
+            uni_save_result
+            man_end_context
+            de_end_extraction
+            uni_get_result
+            uni_use_last_atom_string <dice_update_device>
+            man_set_context_relative <2>
+            dice_get_obj_info <16>
+            uni_use_last_atom_string <man_get_index_by_title>
+            uni_save_result
+            if_last_return_true_then <1>
+            uni_get_result
+            uni_use_last_atom_value <mat_value>
+            uni_sync_skip <1>
+            man_change_context_relative <3>
+            dice_get_obj_info <4>
+            uni_use_last_atom_value <mat_value>
+            man_change_context_relative <4>
+            dice_get_obj_info <5>
+            uni_convert_last_atom_data
+            var_string_set_from_atom <A>
+            var_string_set <B," bps\x00">
+            var_string_concatenate_regs <A, B>
+            var_string_get <A>
+            uni_use_last_atom_string <man_get_index_by_title>
+            uni_save_result
+            if_last_return_true_then <1>
+            uni_get_result
+            uni_use_last_atom_value <mat_value>
+            uni_sync_skip <1>
+            man_change_context_relative <5>
+            dice_get_obj_info <15>
+            var_number_set_from_atom <A>
+            var_numa_increment
+            var_number_get <A>
+            uni_use_last_atom_value <mat_value>
+            man_end_context
+            man_update_display
+            dice_end_context
+          uni_end_stream
+          >
+        mat_position <center_center>
+        mat_bool_resize_vertical <no>
+        mat_bool_modal <yes>
+        mat_bool_background_flood <yes>
+        man_start_object <org_group, "">
+          mat_orientation <hlf>
+          man_start_object <ornament, "">
+            mat_art_id <1-1-22358>
+            mat_bool_disabled <yes>
+          man_start_sibling <org_group, "">
+            mat_orientation <vlc>
+            man_start_object <ornament, "Expert Add Modem">
+              mat_size <20, 1, 128>
+              mat_relative_tag <12>
+              mat_font_id <arial>
+              mat_font_size <14>
+              mat_font_style <bold>
+            man_start_sibling <org_group, "">
+              mat_orientation <vff>
+              mat_precise_width <350>
+              mat_precise_height <2>
+              mat_color_face <1, 1, 1>
+              mat_bool_background_flood <yes>
+              mat_bool_precise <yes>
+            man_end_object
+          man_end_object
+        man_start_sibling <org_group, "">
+          mat_orientation <hff>
+          man_start_object <dss_list, "Modem:">
+            mat_orientation <vff>
+            mat_size <35, 10>
+            mat_relative_tag <2>
+            mat_context_help <"Select the exact modem model that you use.  If\x7fit doesn't appear on the list, or you aren't\x7fsure of the model, you can try a different model\x7fby the same company, or you can choose !\"Unknown.!">
+            mat_sort_order <alphabetical>
+            uni_wait_on
+            dice_set_context_tool <10>
+            dice_start_enumeration <5>
+            uni_start_loop
+            dice_get_next_enum
+            uni_save_result
+            if_last_return_true_then <1>
+            uni_get_result
+            uni_use_last_atom_string <man_preset_title>
+            man_start_object <trigger, "">
+            man_end_object
+            uni_end_loop
+            uni_sync_skip <1>
+            dice_end_context
+            mat_title_pos <left | top_or_left>
+          man_start_sibling <ornament, "">
+            mat_size <1, 1>
+            mat_relative_tag <1>
+            mat_bool_hidden <yes>
+          man_end_object
+        man_start_sibling <org_group, "">
+          mat_orientation <hff>
+          man_start_object <org_group, "">
+            mat_orientation <vrf>
+            man_start_object <dss_list, "Connected to port:">
+              mat_orientation <vff>
+              mat_title_width <15>
+              mat_size <10, 1>
+              mat_relative_tag <3>
+              mat_context_help <"Select the COM port to\x7fwhich your modem is attached.">
+              mat_title_pos <left | center>
+              mat_bool_resize_vertical <no>
+              man_start_object <trigger, "COM1">
+                mat_title_width <15>
+                mat_bool_default <yes>
+              man_start_sibling <trigger, "COM2">
+                mat_title_width <15>
+              man_start_sibling <trigger, "COM3">
+                mat_title_width <15>
+              man_start_sibling <trigger, "COM4">
+                mat_title_width <15>
+              man_end_object
+            man_start_sibling <dss_list, "Port speed:">
+              mat_orientation <vff>
+              mat_size <15, 1>
+              mat_relative_tag <4>
+              mat_context_help <"Setting this option to your modem's maximum speed\x7fusually gives the best results.  If you are frequently\x7fdisconnected from AOL, or your experience seems slow,\x7fselecting a lower speed may correct the problem.">
+              mat_title_pos <left | center>
+              mat_bool_resize_vertical <no>
+              man_start_object <trigger, "9600 bps">
+                mat_bool_default <yes>
+              man_start_sibling <trigger, "14400 bps">
+              man_start_sibling <trigger, "19200 bps">
+              man_start_sibling <trigger, "28800 bps">
+              man_start_sibling <trigger, "33600 bps">
+              man_start_sibling <trigger, "38400 bps">
+              man_end_object
+            man_end_object
+          man_start_sibling <org_group, "">
+            mat_orientation <vrf>
+            man_start_object <dss_list, "Speaker volume:">
+              mat_orientation <vff>
+              mat_size <7, 1>
+              mat_relative_tag <5>
+              mat_context_help <"Select the volume of your modem's\x7fspeaker when connecting to AOL.\x7fNot all modems support this feature.">
+              mat_title_pos <left | center>
+              mat_bool_resize_vertical <no>
+              man_start_object <trigger, "Off">
+              man_start_sibling <trigger, "Low">
+              man_start_sibling <trigger, "Normal">
+              man_start_sibling <trigger, "Loud">
+              man_end_object
+            man_end_object
+          man_end_object
+        man_start_sibling <org_group, "">
+          mat_orientation <hfc>
+          man_start_object <trigger, "">
+            mat_relative_tag <80>
+            mat_trigger_style <plain_picture>
+            mat_art_id <1-1-31171>
+            mat_bool_invisible <yes>
+            mat_font_id <arial>
+            mat_font_size <10>
+            mat_command_key <98x, 00x>
+            act_replace_select_action
+                <
+                uni_start_stream
+                  man_close_update
+                  man_end_context
+                  man_obj_stack_pop <1>
+                  uni_save_result
+                  if_last_return_true_then <1>
+                  uni_get_result
+                  uni_use_last_atom_value <uni_invoke_no_context>
+                  uni_sync_skip <1>
+                uni_end_stream
+                >
+            man_start_sibling <trigger, "OK">
+              mat_title_width <6>
+              mat_relative_tag <83>
+              mat_color_face <0, 109, 170>
+              mat_color_text <255, 255, 255>
+              mat_color_top_edge <145, 182, 255>
+              mat_color_bottom_edge <1, 1, 1>
+              mat_trigger_style <rectangle>
+              mat_font_sis <arial, 8, normal>
+              act_replace_select_action
+                  <
+                  uni_start_stream
+                    man_set_context_relative <81>
+                    act_do_action <select>
+                    man_end_context
+                  uni_end_stream
+                  >
+              man_start_sibling <org_group, "">
+                mat_orientation <hcc>
+                man_start_object <trigger, "Edit Commands">
+                  mat_title_width <12>
+                  mat_color_face <0, 109, 170>
+                  mat_color_text <255, 255, 255>
+                  mat_color_top_edge <145, 182, 255>
+                  mat_color_bottom_edge <1, 1, 1>
+                  mat_trigger_style <rectangle>
+                  mat_font_sis <arial, 8, normal>
+                  mat_context_help <"Edit the advanced modem\x7fcommands for the selected modem.\x7fRecommended for advanced users only.">
+                  act_replace_select_action
+                      <
+                      uni_start_stream
+                        uni_invoke_no_context <41-12829>
+                      uni_end_stream
+                      >
+                  man_start_sibling <trigger, "Cancel">
+                    mat_title_width <6>
+                    mat_relative_tag <82>
+                    mat_color_face <0, 109, 170>
+                    mat_color_text <255, 255, 255>
+                    mat_color_top_edge <145, 182, 255>
+                    mat_color_bottom_edge <1, 1, 1>
+                    mat_trigger_style <rectangle>
+                    mat_font_sis <arial, 8, normal>
+                    mat_context_help <"Exit from the connection set-up.\x7fNo changes will be made.">
+                    if_newuser_then <2>
+                    mat_bool_invisible <yes>
+                    uni_sync_skip <2>
+                    mat_command_key <71x, 01x>
+                    act_replace_select_action
+                        <
+                        uni_start_stream
+                          man_set_context_relative <83>
+                          man_get_attribute <mat_bool_invisible>
+                          var_number_set_from_atom <A>
+                          man_end_context
+                          if_numa_true_then <1, 2>
+                          uni_invoke_no_context <41-27653>
+                          uni_sync_skip <1>
+                          man_close_update
+                          var_number_set <C, 0>
+                          man_preset_gid <32-6166>
+                          if_last_return_true_then <3>
+                          man_make_focus
+                          var_number_set <C, 1>
+                          uni_sync_skip <3>
+                          man_preset_gid <32-6029>
+                          if_last_return_true_then <4>
+                          man_make_focus
+                          var_number_set <C, 1>
+                          uni_sync_skip <4>
+                          man_preset_gid <41-28686>
+                          if_last_return_true_then <5>
+                          man_make_focus
+                          var_number_set <C, 1>
+                          uni_sync_skip <5>
+                          var_number_get <C>
+                          if_last_return_false_then <6>
+                          man_set_context_globalid <32-221>
+                          mat_bool_invisible <no>
+                          uni_sync_skip <6>
+                          man_update_display
+                          man_end_context
+                          uni_sync_skip <2>
+                        uni_end_stream
+                        >
+                    man_start_sibling <trigger, "Help">
+                      mat_title_width <6>
+                      mat_color_face <0, 109, 170>
+                      mat_color_text <255, 255, 255>
+                      mat_color_top_edge <145, 182, 255>
+                      mat_color_bottom_edge <1, 1, 1>
+                      mat_trigger_style <rectangle>
+                      mat_font_sis <arial, 8, normal>
+                      act_replace_select_action
+                          <
+                          uni_start_stream_wait_on
+                            async_exec_context_help <45x, 78x, 70x, 65x, 72x, 74x, 20x, 41x, 64x, 64x, 20x, 4dx, 6fx, 64x, 65x, 6dx, 20x, 57x, 69x, 6ex, 64x, 6fx, 77x>
+                          uni_wait_off_end_stream
+                          >
+                      man_end_object
+                    man_start_sibling <trigger, "">
+                      mat_relative_tag <81>
+                      morg_obj_set_context <"$Connectivity\\Devices">
+                      morg_obj_count_children
+                      var_number_set_from_atom <A>
+                      morg_obj_end_context
+                      man_preset_gid <41-20994>
+                      if_last_return_true_then <9>
+                      man_end_context
+                      var_number_set <A, 0>
+                      uni_sync_skip <9>
+                      if_numa_false_then <1, 2>
+                      man_preset_gid <41-24032>
+                      uni_save_result
+                      if_last_return_true_then <3>
+                      man_end_context
+                      uni_sync_skip <3>
+                      uni_get_result
+                      if_last_return_false_then <1, 2>
+                      mat_art_id <1-3-398>
+                      mat_trigger_style <plain_picture>
+                      mat_bool_default <yes>
+                      man_set_context_relative <80>
+                      mat_bool_invisible <no>
+                      man_end_context
+                      man_set_context_relative <83>
+                      mat_bool_invisible <yes>
+                      man_end_context
+                      uni_sync_skip <1>
+                      mat_bool_hidden <yes>
+                      man_set_context_relative <83>
+                      mat_context_help <"Save changes to this form.">
+                      mat_bool_invisible <no>
+                      mat_bool_default <yes>
+                      man_end_context
+                      uni_sync_skip <2>
+                      mat_command_key <99x, 00x>
+                      act_replace_select_action
+                          <
+                          uni_start_stream
+                            act_do_action <33>
+                            de_start_extraction <0>
+                            de_set_data_type <text>
+                            man_set_context_relative <1>
+                            de_get_data_pointer
+                            var_string_set_from_atom <A>
+                            man_end_context
+                            var_number_set <A, 0>
+                            dice_start_enumeration <1>
+                            uni_start_loop
+                            dice_get_next_enum
+                            uni_save_result
+                            if_last_return_true_then <1>
+                            uni_get_result
+                            var_string_set_from_atom <B>
+                            if_stra_eq_strb_then <2, 1>
+                            var_number_set <A, 1>
+                            uni_sync_skip <2>
+                            uni_end_loop
+                            uni_sync_skip <1>
+                            var_number_get <A>
+                            if_last_return_true_then <2>
+                            man_set_context_relative <32>
+                            de_get_data_pointer
+                            var_string_set_from_atom <B>
+                            man_end_context
+                            if_stra_neq_strb_then <2>
+                            async_alert <yes_no, "You are about to overwrite an existing device.  Continue?">
+                            if_last_return_false_then <1>
+                            de_end_extraction
+                          uni_abort_stream
+                          uni_sync_skip <1>
+                          var_number_set <D, 0>
+                          uni_sync_skip <2>
+                          var_number_get <D>
+                          if_last_return_true_then <1, 2>
+                          man_set_context_relative <32>
+                          de_get_data_pointer
+                          var_string_set_from_atom <D>
+                          uni_use_last_atom_string <dice_update_device>
+                          man_change_context_relative <1>
+                          dice_set_obj_attrib <3>
+                          de_get_data_pointer
+                          uni_use_last_atom_string <dice_set_obj_info>
+                          man_end_context
+                          uni_sync_skip <1>
+                          man_set_context_relative <1>
+                          de_get_data_pointer
+                          var_string_set_from_atom <D>
+                          uni_use_last_atom_string <dice_update_device>
+                          man_end_context
+                          uni_sync_skip <2>
+                          dice_set_obj_attrib <13>
+                          dice_set_obj_info <0ax>
+                          man_set_context_relative <2>
+                          dice_set_obj_attrib <16>
+                          de_set_data_type <text>
+                          de_get_data_pointer
+                          uni_use_last_atom_string <dice_set_obj_info>
+                          man_change_context_relative <3>
+                          dice_set_obj_attrib <4>
+                          de_set_data_type <index>
+                          de_get_data_value
+                          uni_use_last_atom_value <dice_set_obj_info>
+                          man_change_context_relative <4>
+                          dice_set_obj_attrib <5>
+                          de_set_data_type <text>
+                          de_get_data_pointer
+                          uni_use_last_atom_value <dice_set_obj_info>
+                          man_change_context_relative <5>
+                          dice_set_obj_attrib <15>
+                          de_set_data_type <index>
+                          de_get_data_value
+                          uni_use_last_atom_value <dice_set_obj_info>
+                          man_end_context
+                          de_end_extraction
+                          dice_end_context
+                          man_set_context_relative <83>
+                          man_get_attribute <mat_bool_invisible>
+                          var_number_set_from_atom <A>
+                          man_end_context
+                          if_numa_true_then <8, 9>
+                          man_obj_stack_push
+                          man_set_context_relative <60>
+                          var_string_get <D>
+                          var_string_set_from_atom <A>
+                          if_stra_neq_null_then <10>
+                          morg_obj_set_context <"$Connectivity\\Devices">
+                          var_string_get <D>
+                          uni_use_last_atom_string <morg_obj_set_context>
+                          morg_set_selection
+                          morg_act_on_selected <0>
+                          morg_obj_end_context
+                          morg_obj_end_context
+                          uni_sync_skip <10>
+                          man_end_context
+                          dice_access_search_form
+                          man_close_update <32-6044>
+                        uni_abort_stream
+                        uni_sync_skip <8>
+                        man_preset_gid <41-24032>
+                        if_last_return_true_then <10>
+                        man_set_context_relative <41>
+                        morg_obj_set_context <"$Connectivity\\Devices">
+                        var_string_get <D>
+                        uni_use_last_atom_string <morg_obj_set_context>
+                        morg_set_selection
+                        morg_act_on_selected <0>
+                        morg_obj_end_context
+                        morg_obj_end_context
+                        man_end_context
+                        man_end_context
+                        uni_sync_skip <10>
+                        man_close_update
+                        uni_sync_skip <9>
+                        var_number_set <C, 0>
+                        man_preset_gid <32-6166>
+                        if_last_return_true_then <13>
+                        man_make_focus
+                        var_number_set <C, 1>
+                        uni_sync_skip <13>
+                        man_preset_gid <32-6029>
+                        if_last_return_true_then <14>
+                        man_make_focus
+                        var_number_set <C, 1>
+                        uni_sync_skip <14>
+                        man_preset_gid <41-28686>
+                        if_last_return_true_then <15>
+                        man_make_focus
+                        var_number_set <C, 1>
+                        uni_sync_skip <15>
+                        var_number_get <C>
+                        if_last_return_false_then <16>
+                        man_set_context_globalid <32-221>
+                        mat_bool_invisible <no>
+                        uni_sync_skip <16>
+                        man_update_display
+                        man_end_context
+                      uni_end_stream
+                      >
+                  man_end_object
+                man_start_sibling <ornament, "">
+                  mat_size <20, 1>
+                  mat_relative_tag <32>
+                  mat_bool_disabled <yes>
+                  mat_bool_invisible <yes>
+                  mat_bool_hidden <yes>
+                  man_append_data <"-----">
+                man_start_sibling <view, "">
+                  mat_size <3, 1>
+                  mat_relative_tag <60>
+                  morg_manage
+                  mat_font_sis <arial, 9, normal>
+                  morg_view_path <"$Connectivity\\Devices">
+                  morg_view_highlight_full_line <yes>
+                  act_set_criterion <128>
+                  act_replace_action
+                      <
+                      uni_start_stream
+                        act_do_action <200>
+                      uni_end_stream
+                      >
+                    act_set_criterion <129>
+                    act_replace_action
+                        <
+                        uni_start_stream
+                        uni_end_stream
+                        >
+                      act_set_criterion <130>
+                      act_replace_action
+                          <
+                          uni_start_stream
+                            act_do_action <200>
+                          uni_end_stream
+                          >
+                        mat_bool_resize_horizontal <no>
+                        mat_bool_invisible <yes>
+                        mat_bool_writeable <yes>
+                      man_end_object
+                      man_update_display
+                      dice_set_context_tool <10>
+                      dice_send_message <16>
+                      uni_save_result
+                      dice_end_context
+                      uni_get_result
+                      if_last_return_true_then <16>
+                      man_set_context_relative <4>
+                      man_start_object <trigger, "57600 bps">
+                      man_end_object
+                      man_start_object <trigger, "115200 bps">
+                      man_end_object
+                      man_update_display
+                      man_end_context
+                      uni_sync_skip <16>
+                      man_set_context_relative <4>
+                      man_get_index_by_title <"9600 bps">
+                      uni_use_last_atom_value <mat_value>
+                      man_change_context_relative <5>
+                      man_get_index_by_title <"Normal">
+                      uni_use_last_atom_value <mat_value>
+                      man_end_context
+                      man_update_display
+                      uni_wait_off
+                    uni_end_stream <00x>

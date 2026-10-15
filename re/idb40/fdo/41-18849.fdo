@@ -1,0 +1,11 @@
+uni_start_stream
+  mat_bool_list_allow_entry <no>
+  de_start_extraction <0>
+  var_number_get <A>
+  uni_use_last_atom_value <de_set_variable_id>
+  de_set_data_type <var>
+  de_get_data_value <selected_children>
+  var_number_set_from_atom <A>
+  de_end_extraction
+  mat_bool_list_allow_entry <yes>
+uni_end_stream

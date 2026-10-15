@@ -1,0 +1,242 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Advanced WWW Preferences">
+    mat_object_id <32-4677>
+    mat_orientation <vff>
+    mat_bool_background_flood <yes>
+    mat_color_face <255, 251, 240>
+    mat_bool_precise <yes>
+    mat_precise_width <485>
+    mat_precise_height <205>
+    mat_bool_modal <yes>
+    man_start_object <org_group, "">
+      mat_orientation <hff>
+      man_start_object <sms_list, "">
+        mat_orientation <vff>
+        man_start_object <trigger, "Show script Error">
+          mat_font_sis <arial, 9, bold>
+          mat_precise_x <10>
+          mat_precise_y <15>
+          mat_relative_tag <5>
+          mat_bool_default_send <no>
+        man_end_object
+      man_start_sibling <sms_list, "">
+        mat_orientation <vff>
+        man_start_object <trigger, "Run ActiveX controls">
+          mat_relative_tag <6>
+          mat_font_sis <arial, 9, bold>
+          mat_precise_x <240>
+          mat_precise_y <15>
+          mat_bool_default_send <yes>
+        man_end_object
+      man_end_object
+      man_start_object <org_group, "atom$mat_orientation <hff">
+      man_start_sibling <sms_list, "">
+        mat_orientation <vff>
+      man_start_sibling <sms_list, "">
+        mat_orientation <vff>
+        man_start_object <trigger, "Show Cookie Warnings">
+          mat_relative_tag <8>
+          mat_font_sis <arial, 9, bold>
+          mat_precise_x <10>
+          mat_precise_y <45>
+          mat_vertical_spacing <0>
+          mat_bool_default_send <yes>
+        man_end_object
+      man_end_object
+    man_end_object
+    man_start_object <org_group, "">
+      mat_orientation <hcc>
+      man_start_object <sms_list, "">
+        mat_orientation <vff>
+        man_start_object <trigger, "Run Scripts">
+          mat_font_sis <arial, 9, bold>
+          mat_precise_x <240>
+          mat_precise_y <45>
+          mat_relative_tag <10>
+          mat_bool_default_send <no>
+        man_end_object
+        man_start_object <sms_list, "">
+          mat_orientation <vff>
+          man_start_object <trigger, "Disable Disk Caching of SSL Pages">
+            mat_font_sis <arial, 9, bold>
+            mat_precise_x <10>
+            mat_precise_y <75>
+            mat_relative_tag <20>
+            mat_bool_default_send <no>
+          man_end_object
+        man_end_object
+      man_end_object
+      man_start_object <sms_list, "">
+        mat_orientation <vcc>
+        man_start_object <trigger, "">
+          mat_title <"Cache web pages and graphics locally">
+          mat_font_sis <arial, 9, bold>
+          mat_precise_x <240>
+          mat_precise_y <75>
+          mat_relative_tag <1>
+          mat_bool_default <yes>
+        man_end_object
+      man_start_sibling <org_group, "">
+        mat_orientation <hcc>
+        man_start_object <ornament, "">
+          mat_font_sis <arial, 9, bold>
+          mat_title <"Maximum disk space to use for cache:">
+          mat_precise_x <10>
+          mat_precise_y <120>
+        man_start_sibling <select_range, "">
+          mat_relative_tag <2>
+          mat_width <4>
+          mat_minimum <1>
+          mat_maximum <1000>
+          mat_increment <1>
+          mat_precise_x <238>
+          mat_precise_y <117>
+        man_start_sibling <ornament, " megabyte(s)">
+          mat_font_sis <arial, 9, bold>
+          mat_precise_y <120>
+          mat_precise_x <302>
+        man_end_object
+      man_start_sibling <org_group, "">
+        mat_orientation <hef>
+        man_start_object <trigger, "OK">
+          mat_bool_default <yes>
+          mat_trigger_style <rectangle>
+          mat_color_face <0, 109, 170>
+          mat_color_top_edge <145, 182, 255>
+          mat_color_frame_shadow <1, 1, 1>
+          mat_font_sis <arial, 8, normal>
+          mat_color_text <255, 255, 255>
+          mat_precise_width <70>
+          mat_precise_height <23>
+          mat_precise_x <110>
+          mat_precise_y <166>
+          act_replace_select_action
+              <
+              uni_start_stream
+                de_start_extraction
+                man_set_context_relative <1>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-89>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <2>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-90>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <5>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-325>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <6>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-326>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <8>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-328>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <10>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-329>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                man_set_context_relative <20>
+                idb_start_obj <"b">
+                idb_atr_globalid <20-0-331>
+                de_get_data_value
+                uni_use_last_atom_value <idb_append_data>
+                idb_end_obj
+                man_end_context
+                xfer_refresh_prefs
+                man_set_context_globalid <32-4677>
+                man_close
+                man_update_display
+                man_end_context
+              uni_end_stream
+              >
+          man_start_sibling <trigger, "Purge Cache">
+            mat_trigger_style <rectangle>
+            mat_color_face <0, 109, 170>
+            mat_color_top_edge <145, 182, 255>
+            mat_color_frame_shadow <1, 1, 1>
+            mat_font_sis <arial, 8, normal>
+            mat_color_text <255, 255, 255>
+            mat_precise_width <90>
+            mat_precise_height <23>
+            mat_precise_x <200>
+            mat_precise_y <166>
+            act_replace_select_action
+                <
+                uni_start_stream
+                  async_alert <yes_no, "Are you sure you want to remove all items from your local cache?">
+                  if_last_return_true_then <1>
+                  www_purge_cache
+                  uni_sync_skip <1>
+                uni_end_stream
+                >
+            man_start_sibling <trigger, "Cancel">
+              mat_trigger_style <rectangle>
+              mat_color_face <0, 109, 170>
+              mat_color_top_edge <145, 182, 255>
+              mat_color_frame_shadow <1, 1, 1>
+              mat_font_sis <arial, 8, normal>
+              mat_color_text <255, 255, 255>
+              mat_precise_width <70>
+              mat_precise_height <23>
+              mat_precise_y <166>
+              mat_precise_x <310>
+              act_replace_select_action
+                  <
+                  uni_start_stream <00x>
+                    man_close_update
+                  uni_end_stream
+                  >
+              man_end_object
+              man_update_display
+              man_set_context_relative <1>
+              act_get_db_value <14x, 00x, 00x, 59x>
+              uni_use_last_atom_value <mat_value>
+              man_end_context
+              man_set_context_relative <2>
+              act_get_db_value <14x, 00x, 00x, 5ax>
+              uni_use_last_atom_value <mat_value>
+              man_end_context
+              man_set_context_relative <5>
+              act_get_db_value <14x, 00x, 01x, 45x>
+              uni_use_last_atom_value <mat_value>
+              man_end_context
+              man_set_context_relative <6>
+              act_get_db_value <14x, 00x, 01x, 46x>
+              uni_use_last_atom_value <mat_value>
+              man_end_context
+              man_set_context_relative <8>
+              act_get_db_value <14x, 00x, 01x, 48x>
+              uni_use_last_atom_value <mat_value>
+              man_end_context
+              man_set_context_relative <10>
+              act_get_db_value <14x, 00x, 01x, 49x>
+              uni_use_last_atom_value <mat_value>
+              man_end_context
+              man_set_context_relative <20>
+              act_get_db_value <14x, 00x, 01x, 4bx>
+              uni_use_last_atom_value <mat_value>
+              man_end_context
+              man_update_display
+              uni_wait_off
+            uni_end_stream

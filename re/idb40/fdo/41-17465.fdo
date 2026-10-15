@@ -1,0 +1,258 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Add New Folder/Favorite Place">
+    mat_object_id <41-17465>
+    mat_style_id <41-17465>
+    mat_orientation <vff>
+    mat_relative_tag <8>
+    mat_color_face <255, 251, 240>
+    mat_position <center_center>
+    mat_bool_background_flood <yes>
+    man_start_object <org_group, "">
+      mat_orientation <hcc>
+      man_start_object <sss_list, "">
+        mat_orientation <hcc>
+        mat_bool_default_send <no>
+        man_start_object <trigger, "New Favorite Place">
+          mat_relative_tag <2>
+          mat_bool_default_send <no>
+          uni_start_stream
+            act_replace_select_action
+                <
+                uni_start_stream
+                  if_data_neq_zero_then <20, 21>
+                  man_set_context_relative <3>
+                  man_make_focus
+                  mat_bool_invisible <no>
+                  man_set_context_relative <9>
+                  mat_bool_invisible <no>
+                  mat_bool_disabled <no>
+                  man_set_context_relative <4>
+                  mat_bool_invisible <yes>
+                  man_set_context_relative <5>
+                  mat_bool_invisible <yes>
+                  man_set_context_relative <6>
+                  mat_bool_invisible <yes>
+                  mat_bool_disabled <yes>
+                  man_end_context
+                  man_update_display
+                  uni_sync_skip <20>
+                  man_set_context_relative <3>
+                  mat_bool_invisible <yes>
+                  man_set_context_relative <9>
+                  mat_bool_invisible <yes>
+                  mat_bool_disabled <yes>
+                  de_start_extraction <0>
+                  man_set_context_relative <3>
+                  de_get_data_pointer
+                  var_string_set_from_atom <A>
+                  man_end_context
+                  de_end_extraction
+                  man_set_context_relative <4>
+                  var_string_get <A>
+                  uni_use_last_atom_string <man_replace_data>
+                  uni_save_result
+                  man_end_context
+                  man_set_context_relative <4>
+                  man_make_focus
+                  mat_bool_invisible <no>
+                  man_set_context_relative <5>
+                  mat_bool_invisible <no>
+                  man_set_context_relative <6>
+                  mat_bool_invisible <no>
+                  mat_bool_disabled <no>
+                  man_end_context
+                  man_update_display
+                  uni_sync_skip <21>
+                uni_end_stream
+                >
+            man_start_sibling <trigger, "New Folder">
+              mat_relative_tag <1>
+              mat_bool_default_send <no>
+              uni_start_stream
+                act_replace_select_action
+                    <
+                    uni_start_stream
+                      if_data_neq_zero_then <20, 21>
+                      man_set_context_relative <3>
+                      mat_bool_invisible <yes>
+                      man_set_context_relative <9>
+                      mat_bool_invisible <yes>
+                      mat_bool_disabled <yes>
+                      man_set_context_relative <4>
+                      mat_bool_invisible <no>
+                      man_make_focus
+                      man_set_context_relative <5>
+                      mat_bool_invisible <no>
+                      man_set_context_relative <6>
+                      mat_bool_invisible <no>
+                      mat_bool_disabled <no>
+                      man_end_context
+                      man_update_display
+                      uni_sync_skip <20>
+                      de_start_extraction <0>
+                      man_set_context_relative <4>
+                      de_get_data_pointer
+                      var_string_set_from_atom <A>
+                      man_end_context
+                      de_end_extraction
+                      man_set_context_relative <3>
+                      var_string_get <A>
+                      uni_use_last_atom_string <man_replace_data>
+                      uni_save_result
+                      man_end_context
+                      man_set_context_relative <3>
+                      mat_bool_invisible <no>
+                      man_make_focus
+                      man_set_context_relative <9>
+                      mat_bool_invisible <no>
+                      mat_bool_disabled <no>
+                      man_set_context_relative <4>
+                      mat_bool_invisible <yes>
+                      man_set_context_relative <5>
+                      mat_bool_invisible <yes>
+                      man_set_context_relative <6>
+                      mat_bool_invisible <yes>
+                      mat_bool_disabled <yes>
+                      man_end_context
+                      man_update_display
+                      uni_sync_skip <21>
+                    uni_end_stream
+                    >
+                man_end_object
+              man_end_object
+            man_start_sibling <org_group, "">
+              mat_orientation <vff>
+              man_start_object <edit_view, "Enter the New Folder's Name:">
+                mat_field_script <any>
+                mat_encode_type <00x>
+                mat_bool_first_script <no>
+                mat_size <40, 1, 78>
+                mat_relative_tag <3>
+                mat_frame_style <pop_in>
+                mat_bool_invisible <yes>
+                mat_bool_writeable <yes>
+                mat_validation <128>
+              man_end_object
+            man_start_sibling <org_group, "">
+              mat_orientation <vff>
+              man_start_object <edit_view, "Enter the Place's Description:">
+                mat_field_script <any>
+                mat_encode_type <00x>
+                mat_bool_first_script <no>
+                mat_size <40, 1, 78>
+                mat_relative_tag <4>
+                mat_frame_style <pop_in>
+                man_make_focus
+                mat_bool_vertical_scroll <no>
+                mat_bool_resize_vertical <no>
+                mat_bool_resize_horizontal <no>
+                mat_validation <128>
+              man_start_sibling <edit_view, "Enter the Internet Address:">
+                mat_size <40, 1, 250>
+                mat_relative_tag <5>
+                mat_frame_style <pop_in>
+                mat_bool_writeable <yes>
+                mat_validation <128>
+              man_end_object
+            man_start_sibling <org_group, "">
+              mat_orientation <hcc>
+              man_start_object <trigger, "">
+                mat_relative_tag <9>
+                mat_color_face <0, 109, 170>
+                mat_color_text <255, 255, 255>
+                mat_color_top_edge <145, 182, 255>
+                mat_color_bottom_edge <1, 1, 1>
+                mat_trigger_style <rectangle>
+                mat_font_size <8>
+                mat_title <"       OK       ">
+                mat_horizontal_spacing <7>
+                mat_bool_default <yes>
+                mat_bool_invisible <yes>
+                mat_font_id <arial>
+                act_replace_select_action
+                    <
+                    uni_start_stream
+                      de_start_extraction <0>
+                      man_set_context_relative <3>
+                      de_get_data_pointer
+                      var_string_set_from_atom <A>
+                      de_validate <display_msg | terminate>
+                      man_end_context
+                      de_end_extraction
+                      man_set_context_globalid <32-4619>
+                      man_set_context_relative <1>
+                      morg_obj_set_context_selection
+                      var_string_get <A>
+                      uni_use_last_atom_string <morg_add_folder>
+                      uni_save_result
+                      man_end_context
+                      man_end_context
+                      uni_get_result
+                      if_last_return_false_exit
+                      uni_start_stream
+                        man_close
+                        man_update_display
+                      uni_end_stream
+                    uni_end_stream
+                    >
+                man_start_sibling <trigger, "">
+                  mat_relative_tag <6>
+                  mat_color_face <0, 109, 170>
+                  mat_color_text <255, 255, 255>
+                  mat_color_top_edge <145, 182, 255>
+                  mat_color_bottom_edge <1, 1, 1>
+                  mat_trigger_style <rectangle>
+                  mat_font_size <8>
+                  mat_title <"       OK       ">
+                  mat_horizontal_spacing <7>
+                  mat_bool_default <yes>
+                  mat_font_id <arial>
+                  act_replace_select_action
+                      <
+                      uni_start_stream
+                        de_start_extraction <0>
+                        man_set_context_relative <4>
+                        de_get_data_pointer
+                        var_string_set_from_atom <A>
+                        de_validate <display_msg | terminate>
+                        man_end_context
+                        man_set_context_relative <5>
+                        de_get_data_pointer
+                        var_string_set_from_atom <B>
+                        de_validate <display_msg | terminate>
+                        man_end_context
+                        de_end_extraction
+                        morg_set_bookmark_close_form
+                        man_set_context_globalid <32-4619>
+                        man_set_context_relative <1>
+                        var_string_get <B>
+                        uni_use_last_atom_string <morg_set_bookmark_url>
+                        var_string_get <A>
+                        uni_use_last_atom_string <morg_add_bookmark>
+                        man_end_context
+                        man_end_context
+                        uni_sync_skip <2>
+                      uni_end_stream
+                      >
+                  man_start_sibling <trigger, "">
+                    mat_relative_tag <7>
+                    mat_color_face <0, 109, 170>
+                    mat_color_text <255, 255, 255>
+                    mat_color_top_edge <145, 182, 255>
+                    mat_color_bottom_edge <1, 1, 1>
+                    mat_trigger_style <rectangle>
+                    mat_font_size <8>
+                    mat_title <"    Cancel    ">
+                    mat_font_id <arial>
+                    act_replace_select_action
+                        <
+                        uni_start_stream <00x>
+                          man_close_update
+                        uni_end_stream <00x>
+                        >
+                    man_end_object
+                  man_end_object
+                  man_place_cursor <3>
+                  man_update_display
+                  uni_wait_off
+                uni_end_stream <00x>

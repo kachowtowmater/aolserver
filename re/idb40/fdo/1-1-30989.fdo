@@ -1,0 +1,47 @@
+man_start_object <org_group, "\x01\x00">
+  man_place_cursor <0>
+  act_set_criterion
+  uni_void
+  uni_end_loop <00x, 00x>
+  uni_void
+the_unknown <0, 148, 00x, 00x>
+  buf_start_buffer
+  uni_void
+  uni_void
+  uni_void
+  uni_void
+  cm_inquire <02x>
+  buf_add_atom_pointer_filter
+  uni_void
+  uni_save_result <00x, 00x, 26x, 00x, 37x, 00x, 23x, 05x, a0x, 88x, 01x, 00x, bfx, 37x, 3fx, 08x, b6x, 3fx, 70x, c4x, 48x, d1x>
+the_unknown <16, 213, ffx, edx, bex, b5x, b7x, 6dx, cbx, bcx, edx, 9fx, 82x, 20x, 80x, a2x, 22x, aax, acx, 10x, 54x, 90x, 62x, c7x, 1cx, 33x, 38x, fbx, c8x, 88x, 91x, 22x, 22x, a9x, 00x, 00x, 00x, 06x, 66x, 11x, 54x, 5cx, 03x, 97x, e2x, abx, 19x, 25x, 96x, 60x, 5cx, 86x, abx, 70x, b6x, 38x, f6x, 01x, c6x, 9cx, 97x, fcx, 49x, 81x, f0x, e7x, 6fx, bex, 6fx, f6x, 0ax, 09x, 12x, 21x, 9ax, 0fx, ffx>
+the_unknown <80, 88, 01x>
+the_unknown <80, 78>
+the_unknown <89, 85, 01x>
+the_unknown <89, 77, 01x>
+the_unknown <91, 88, 05x>
+the_unknown <91, 64, 00x>
+the_unknown <91, 76, 00x>
+the_unknown <91, 73, 01x>
+the_unknown <91, 90, c0x, 0ex, 02x, 62x, afx, c0x, 02x, 12x, 4bx, 2cx, 48x, 94x, 30x, 0ax, 94x, a7x, 1ex, 46x, 93x, 4fx, 4bx, a9x, 22x, 24x, 8ex, 61x, b9x, dax, 84x, 1cx, 01x, 55x, 24x, 6dx, 8cx, 1dx, 00x, 01x, 09x, 00x, 0dx, 00x, 23x, 05x, a0x, 88x, 01x, 00x, a2x, 1ex, f2x, 32x, efx, ffx, e9x, f1x, 3fx, 7bx, 6dx, 4cx, 7ax, a6x, 67x, bax, 49x, f0x, a7x, c2x, 9fx, 0ax, 66x, 72x, 8fx, 5bx, f3x, aex, d3x, 3bx, 5ax, cex, d7x, a3x, 5ex, 90x, 94x, 1fx, 08x, 49x, 91x, a2x, c1x, 25x, 74x, f4x, 73x, 19x, d0x, 5ax, dax, 8bx, d8x, 6dx, 8fx, c5x, ccx, 60x, c7x, b3x, 18x, cax, 40x, 2bx, 5bx, 24x, a8x, 3cx, 2bx, 2bx, 5ex, 96x, 50x, 94x, 94x, 40x, d0x, c5x, e1x, 92x, a1x, 82x, 1cx, 6cx, 25x, 68x, cex, 2fx, 84x, bex, 69x, 76x, 96x, c2x, d0x, dcx, 0dx, 4dx, a3x, e6x, e4x, d3x, 5ax, 9dx, 3fx, e2x, 7cx, c3x, a7x, a3x, efx, 60x, b9x, 59x, 0fx, ebx, 34x, 09x, 3fx, 57x, e0x, eex, 4ex, fdx, a3x, 12x, 01x, 03x, 70x, 9fx, 70x, 82x, 05x, d9x, e4x, bax, 3fx, 64x, 20x, 80x, 1cx, 73x, a5x, 81x, 54x, 04x, 08x, 40x, b5x, 96x, 66x, 56x, 38x, 40x, 7dx>
+the_unknown <91, 64, 01x>
+the_unknown <88, 91, 04x>
+the_unknown <85, 88, 00x>
+the_unknown <85, 87, 01x>
+the_unknown <92, 64, 43x, f1x>
+the_unknown <92, 86, 00x>
+the_unknown <92, 70, 5ex, 8dx, 94x, 44x>
+the_unknown <68, 64, 82x, d1x, 96x, e5x, c0x, afx, d1x, e1x, 3dx, c0x, 09x, 3dx, 35x, f2x, 3ax>
+the_unknown <68, 87, 00x>
+the_unknown <67, 73, 4ex, f4x, 00x, 03x>
+the_unknown <67, 90, 00x>
+the_unknown <84, 71, abx, 83x, c2x>
+the_unknown <84, 69, 00x>
+the_unknown <84, 83>
+the_unknown <76, 83, efx, 67x, abx, 36x, 8cx, cbx, 01x, 01x, a2x, 72x, 97x, 55x, cbx, b5x, 59x, adx, 4dx, 9bx, bex, 6ax, 14x, b4x, 42x, bax, 00x, 3dx, 72x, 22x, dex, cax, 4cx, fcx, b6x, 8bx, b5x, f6x, d9x, ecx, 01x, fdx, 02x, 6dx, 39x, 0dx, 16x, fdx, 4bx, 79x, 24x, 85x, ecx, 54x, fbx, 66x, 80x, 3dx, 5bx, eex, 41x, 2fx, 55x, 9fx, adx, 75x, 27x, f0x, 89x, fcx, 4dx, 2ax, 4fx, 6cx, d0x, 1bx, 94x, fbx, f1x, 3dx, b2x, 8ex, 73x, e5x, 61x, 49x, a2x, d2x, f3x, 6cx, 23x, d0x, 9ax, aex, 59x, 0fx, 03x, c3x, 10x, eex, 6ex, 0fx, 1ex, 73x, e5x, 5ax, f6x, b8x, 5dx>
+the_unknown <76, 64, 01x>
+the_unknown <76, 81, 00x>
+the_unknown <72, 0, 95x, 1dx, cex, 66x, f4x, 3bx, 72x, e6x, c1x, dax, 87x, c0x, 10x, 42x, 31x, 2fx, 0fx, adx, 6bx, 25x, ddx, ddx, 82x, bbx, dex, 87x, c8x, 10x, 43x, 70x, d1x, 62x, c5x, c9x, e4x, 9fx, aax, c1x, 85x, 89x, a4x, 42x, ffx, 2cx, 25x, bdx, abx, 66x, b8x, f4x, edx, d5x, 70x, b3x, 61x, 54x, 81x, 02x, ccx, 5fx, 29x, 23x, 83x, 3bx, afx, 45x, 39x, 67x, cax, bfx, 48x, 68x, 46x, 4bx, 2cx, 5ax, 5fx, c4x, d3x, 17x, dcx, 7ax, 5ax, 23x, dfx, bax, 33x, 42x, 43x, 26x, 57x, f2x, e1x, eex>
+the_unknown <68, 20, 07x>
+the_unknown <68, 24, 2fx, 84x, 9bx, f7x, 46x, 68x, 33x, 9bx, bex, e6x, 36x, bbx, 4fx, 36x, a4x, 16x, c1x, 8dx, dcx, 29x, 84x, 06x, 44x, d9x, 69x, 74x, 89x, f1x, a8x, 89x, b0x, d3x, 09x, 04x, ffx, 58x, a5x, c7x, 1fx, 3fx, 33x, 90x, 49x, 13x, c2x, 04x, ffx, 86x, 89x, 00x, 90x, 09x, 00x, 90x, 00x, 8ax, 19x, 05x, 12x, 01x, 20x, 12x, 01x, 20x, 12x, 01x, 20x, cfx, cbx, 01x, 00x, f8x, 03x, 00x, 00x, 00x, 00x, 00x, 00x, 09x, 02x, 37x, 00x, 26x, 00x, 00x, 00x, d4x, 03x, 00x, 00x, 24x, 00x, 00x, 00x, 00x, 00x, 00x, 00x, 00x, 00x, 00x, 00x, 01x, 00x, 4ax, 47x, 04x, 0ex, 00x, 00x>
+  plugin_manage <0>
