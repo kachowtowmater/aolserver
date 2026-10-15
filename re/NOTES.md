@@ -31,8 +31,11 @@ disc/client/AOLP3.AOL -o re/codemap/aolp3.c`.
   20-0-16: count, then <name padded to 10>\0<10 digits>\0 per entry; host rewrites it.
 - Sign Off menu sends pE; host shows the client's Goodbye form 32-5438.
   `**` with data "DISCONNECT" makes AOLASYNC stop P3 (ToolSendMsg 1,0x23,4).
-- KNOWN ISSUE: after sign-off, SIGN ON AGAIN in the same process never opens a new
-  TCP connection (shows "Checking password..." forever) under Wine; exit + relaunch works.
+- Sign Off: reply to pE with token XS (data "\0" or a message): AOLASYNC's host-initiated sign-off
+  broadcasts offline (client hangs up itself, resetting AOLTCPIP's flag 0x1000800c), opens Goodbye
+  32-5438; SIGN ON AGAIN then reconnects. (ccl_hang_up/async_offline/** DISCONNECT/closing the
+  socket all leave the flag set.)
+- AOL 4.0 downloads: client answers the offer with uJ + folder (not eJ + full path); aS = ad request.
 
 ## Chat / IM / mail / areas
 - AOLCHAT tokens: AB <name:10><sep><text> line, CA <slot><name> arrive, CB <slot> leave.

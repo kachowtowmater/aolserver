@@ -97,7 +97,9 @@ def chosen(link, stream_id, body):
     print(f"      xfer: save to {path!r}")
     if not x or x["stage"] != "offered":
         return
-    name = _safe_name(path) if path else x["name"]
+    # 3.0 (eJ) sends the full file path; 4.0 (uJ) sends just the folder
+    last = path.replace("/", "\\").rsplit("\\", 1)[-1]
+    name = _safe_name(path) if path and "." in last else x["name"]
     x.update(stage="open", saved_as=path or name)
     size = len(x["data"])
     hdr = bytes([0x20]) + size.to_bytes(4, "little")[:3] + bytes(15)  # 0x20 = show the progress dialog
@@ -142,7 +144,7 @@ def readme(link, stream_id=0, body=b""):
 
 # ---------- Internet Archive (File Search) ----------
 
-MAX_SIZE = 2_000_000
+MAX_SIZE = 15_000_000  # tf carries the size in 3 bytes (<= 16,777,215)
 # what a 1997 member would want to download, best first
 PREFERRED = (".zip", ".exe", ".com", ".lzh", ".arj", ".txt", ".doc", ".wri", ".hlp", ".mid", ".wav", ".gif",
              ".bmp", ".jpg", ".pdf", ".mp3")
@@ -179,7 +181,7 @@ def archive_download(link, ident: str, name: str | None = None):
             (info["files"][0] if info["files"] else None)
         if not pick:
             return info, None, None
-        data = _get(f"https://archive.org/download/{ident}/{urllib.parse.quote(pick['name'])}", timeout=60)
+        data = _get(f"https://archive.org/download/{ident}/{urllib.parse.quote(pick['name'])}", timeout=180)
         if pick.get("md5") and hashlib.md5(data).hexdigest() != pick["md5"]:
             raise IOError(f"md5 mismatch on {pick['name']}")
         return info, pick, data
@@ -201,4 +203,8 @@ def archive_download(link, ident: str, name: str | None = None):
     run_bg(guarded, finish)
 
 
-TOKENS = {b"eJ": chosen, b"ej": chosen, b"eK": cancelled, b"xG": go, b"xA": failed, DONE_TOKEN: done}
+def ad_request(link, stream_id, body):
+    """aS: AOL 4.0's File Transfer window asking for an ad banner -- show none."""
+
+
+TOKENS = {b"aS": ad_request, b"uJ": chosen, b"eJ": chosen, b"ej": chosen, b"eK": cancelled, b"xG": go, b"xA": failed, DONE_TOKEN: done}

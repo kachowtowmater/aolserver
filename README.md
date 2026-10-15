@@ -15,9 +15,9 @@ Works with the real **AOL 3.0** (1996-98) and **AOL 4.0** (1998-99) Windows clie
 - [x] Keywords + every Channels/toolbar area with live 2026 content: news,
       quotes, weather, the Web (as text), Wikipedia, files (Internet Archive), deals
 - [x] Profiles, Locate Member, Member Directory, Message Boards, Stock Portfolios
-- [x] File downloads (3.0): File Search -> Internet Archive -> the client's own Download Manager
+- [x] File downloads (3.0 + 4.0, up to 15 MB): File Search -> Internet Archive -> the client's own Download Manager
 - [x] 16k original AOL art records harvested from 73 AOL CD images
-- [ ] 3.0: SIGN ON AGAIN after sign-off doesn't reconnect (exit + relaunch works)
+- [x] Sign Off -> Goodbye -> SIGN ON AGAIN (host answers pE with XS, the real host sign-off)
 
 ## Layout
 - `server/` Python asyncio host on TCP 5190 (`python3 server.py`); `test_p3.py`

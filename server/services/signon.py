@@ -107,13 +107,12 @@ def register(link, stream_id, body):
 
 
 def sign_off(link, stream_id, body):
-    """pE (Sign Off menu): the client's own 'Goodbye from America Online!' form 32-5438,
-    whose async_offline hangs up the way 1997 did."""
+    """pE (Sign Off menu). XS is AOLASYNC's host-initiated sign-off: it broadcasts the
+    offline notification (which hangs up through the client's own path, so SIGN ON AGAIN
+    works), opens the Goodbye form 32-5438 and shows our message if non-empty."""
     from . import art
     art.ensure_form(link, "32-5438")
-    # ccl_hang_up runs the CCL hang-up section (NetDisc), which is the only thing
-    # that resets AOLTCPIP's connection flag -- without it SIGN ON AGAIN is dead.
-    link.send_stream(stream(atom("uni_invoke_local", gid("32-5438")), atom("uni_wait_off"), atom("ccl_hang_up")))
+    link.send_data_raw(b"XS", b"\0")
 
 
 def on_disconnect(link):
