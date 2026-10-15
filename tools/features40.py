@@ -153,7 +153,34 @@ def check_file_search():
     return errors(log) + ([] if "tok=zF" in log else ["file search didn't reach the server"])
 
 
-CHECKS = {"quote": check_quote, "weather": check_weather, "chat": check_chat, "im": check_im,
+def check_write_mail():
+    """4.0's own Write Mail window: To/Subject/body, Send Now (the client sends mN packets)."""
+    act("uni_invoke_no_context <32-4629>"); time.sleep(5)
+    blk = child_block("Write Mail")
+    if not blk:
+        return ["no Write Mail window"]
+    lines = blk.splitlines()
+    eds = [l.split()[0] for l in lines if "_AOL_Edit" in l and "vis=1" in l]
+    rich = [l.split()[0] for l in lines if "RICHCNTL" in l]
+    # the right-hand column of picture buttons: Send Now is the top one
+    col = sorted((int(re.search(r"@(\d+),(\d+)", l).group(2)), l.split()[0]) for l in lines
+                 if "_AOL_Icon" in l and "vis=1" in l and int(re.search(r"@(\d+),", l).group(1)) > 1400)
+    if len(eds) < 3 or not rich or not col:
+        return ["Write Mail fields not found"]
+    unread = lambda: int(sw.admin(f'__import__("sys").modules["services.store"].unread({NAME!r})') or 0)
+    before = unread()
+    start = sw.LOG.stat().st_size
+    sw.wctl("settext", eds[0], NAME)
+    sw.wctl("settext", eds[2], "features40 write mail check")
+    sw.wctl("settext", rich[0], "Sent from 4.0's own Write Mail window.")
+    sw.wctl("clickh", col[0][1])
+    time.sleep(10)
+    log = server_since(start)
+    return errors(log) + ([] if unread() > before else ["mail didn't arrive"]) + \
+        ([] if not child_block("Write Mail") else ["Write Mail window stayed open"])
+
+
+CHECKS = {"write mail": check_write_mail, "quote": check_quote, "weather": check_weather, "chat": check_chat, "im": check_im,
           "boards": check_boards, "web": check_web_keyword, "directory": check_member_directory,
           "files": check_file_search}
 

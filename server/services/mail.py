@@ -74,7 +74,7 @@ def compose_packet(link, stream_id, body):
     d = link.session.setdefault("draft", {"to": [], "cc": [], "subject": "", "text": []})
     kind = 0
     for a in atoms(body):
-        if a.name == "mip_text":
+        if a.name in ("mip_text", "mip_data"):  # 3.0 sends mip_text; 4.0 (mN) mip_data blocks of HTML
             d["text"].append(a.args.decode("latin1"))
         elif a.name == "mip_attr_addressee_type":
             kind = int.from_bytes(a.args, "big")
@@ -136,5 +136,6 @@ def open_message(link, mid: int):
         store.mark_read(mid)
 
 
-TOKENS = {b"m4": compose_packet, b"eL": read_new_mail, b"eO": lambda link, sid, body: read_new_mail(link, sid, body, "old"),
+TOKENS = {b"m4": compose_packet, b"mN": compose_packet,  # mN = 4.0 Write Mail
+          b"eL": read_new_mail, b"eO": lambda link, sid, body: read_new_mail(link, sid, body, "old"),
           b"oL": lambda link, sid, body: read_new_mail(link, sid, body, "sent")}
