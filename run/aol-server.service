@@ -1,0 +1,15 @@
+[Unit]
+Description=AOL revival host (P3 on :5190) for the original AOL 3.0/4.0 clients
+After=aol-fdod.service
+Wants=aol-fdod.service
+
+[Service]
+WorkingDirectory=%h/aol-revival/server
+ExecStart=/usr/bin/python3 -u server.py
+Restart=on-failure
+RestartSec=3
+StandardOutput=append:%h/aol-revival/run/server.log
+StandardError=append:%h/aol-revival/run/server.log
+
+[Install]
+WantedBy=default.target
