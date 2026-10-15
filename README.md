@@ -83,6 +83,16 @@ WRP (a headless Chrome that renders pages as clickable pictures), see SETUP.md.
 3. In `ccl/TCP.CCL`, change `AmericaOnline.aol.com` to the server address.
 4. Setup -> Edit Location -> Network: TCP/IP, then Sign On.
 
+## Known issues (AOL 4.0)
+- World Wide Web under Wine: Wine Gecko (2016) occasionally crashes the client inside
+  `xul.dll` while browsing (not yet reproduced on demand). Pages go through WRP as pictures,
+  so typing into a site's own search/login boxes doesn't work; use Keyword or the Find box.
+- Some sites (e.g. CNN) block WRP's headless Chrome and show an error page.
+- Features that only existed on AOL's servers and have no 2026 equivalent show an
+  explanation window (Pager, Reminder Service) or today's headlines; anything a button asks
+  for that the host doesn't know is logged to `run/unmapped.log`.
+- Windows/macOS clients are documented in SETUP.md but so far only verified on Linux/Wine.
+
 ## References
 - WireTap / AtomForge: https://github.com/iconidentify (protocol tools)
 - FDO91 docs: http://koin.org/files/aol.aim/aol/fdo/manuals/
