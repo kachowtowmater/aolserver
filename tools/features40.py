@@ -26,7 +26,10 @@ def child_block(title_part):
     blocks = re.split(r"(?m)^(?=    \S+ AOL Child )", listing())
     hits = [b for b in blocks if b.startswith("    ") and "AOL Child" in b.splitlines()[0]
             and title_part.lower() in b.splitlines()[0].lower()]
-    return hits[0] if hits else ""
+    if not hits:
+        return ""
+    # the frame's own toolbar is listed after the last child window: not part of it
+    return re.split(r"(?m)^\s+\S+ (?:AOL Toolbar|MDIClient)", hits[0])[0]
 
 
 def edits(block):
@@ -180,7 +183,55 @@ def check_write_mail():
         ([] if not child_block("Write Mail") else ["Write Mail window stayed open"])
 
 
-CHECKS = {"write mail": check_write_mail, "quote": check_quote, "weather": check_weather, "chat": check_chat, "im": check_im,
+def keyword(word):
+    sw.admin(f'__import__("sys").modules["services.areas"].keyword(next(l for l in links if l.session.get("name")=={NAME!r}), 0, '
+             f'__import__("fdo.codec",fromlist=["x"]).atom("de_data", {word.encode()!r}))')
+
+
+def check_create_room():
+    act("sm_send_k1 <14-16393>"); time.sleep(4)
+    log, err = fill_and_press("Create a Member Room", ["Retro Room"], "Create")
+    return [err] if err else errors(log) + ([] if child_block("Retro Room") else ["didn't enter Retro Room"])
+
+
+def check_private_chat():
+    act("sm_send_k1 <14-8785>"); time.sleep(4)
+    log, err = fill_and_press("Private Chat", ["SecretClub"], "Go Chat")
+    if err:
+        return [err]
+    listed = "SecretClub" in sw.admin('[n for n, r in __import__("state").ROOMS.items() if not r.get("private")]')
+    return errors(log) + ([] if child_block("SecretClub") else ["didn't enter SecretClub"]) + \
+        (["private room shows in the public list"] if listed else [])
+
+
+def check_buddy_add():
+    act("sm_send_k1 <17-21293>"); time.sleep(4)
+    log, err = fill_and_press("Buddy List Setup", ["kewlguy97"], "Add Buddy")
+    has = "kewlguy97" in sw.admin(f'__import__("sys").modules["services.store"].buddies({NAME!r})')
+    return [err] if err else errors(log) + ([] if has else ["buddy not saved"])
+
+
+def check_portfolio():
+    keyword("portfolio"); time.sleep(8)
+    blk = child_block("Portfolio")
+    if not blk:
+        return ["no portfolio window"]
+    if "Add Stock" not in blk:
+        btn = [l.split()[0] for l in blk.splitlines() if "_AOL_Button" in l and "Add" in l]
+        if btn:
+            sw.wctl("clickh", btn[0]); time.sleep(4)
+    log, err = fill_and_press("Add Stock", ["MSFT", "10"], "Add Stock", wait=10)
+    return [err] if err else errors(log) + ([] if "tok=zH" in log else ["add didn't reach the server"])
+
+
+def check_profile_save():
+    act("sm_send_k1 <17-48638>"); time.sleep(4)
+    log, err = fill_and_press("Edit Your Online Profile", ["Tester Ninety-Eight"], "Update")
+    return [err] if err else errors(log) + ([] if "tok=zP" in log else ["profile save didn't reach the server"])
+
+
+CHECKS = {"write mail": check_write_mail, "create room": check_create_room, "private chat": check_private_chat,
+          "buddy": check_buddy_add, "portfolio": check_portfolio, "profile": check_profile_save, "quote": check_quote, "weather": check_weather, "chat": check_chat, "im": check_im,
           "boards": check_boards, "web": check_web_keyword, "directory": check_member_directory,
           "files": check_file_search}
 
