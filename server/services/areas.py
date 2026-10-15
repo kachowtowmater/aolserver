@@ -46,7 +46,7 @@ GID_AREAS = {
     "8-49074": "member services", "8-50600": "member services", "8-50934": "member services",
     # 4.0 Welcome screen (32-6442) promo spots: today's stories
     "17-65227": "what's hot", "17-35040": "what's hot", "32-6450": "news", "32-6451": "entertainment",
-    "32-6452": "finance", "32-6454": "sports", "32-4724": "browser",  # Go to the Web: the client opens its own browser right after
+    "32-6452": "finance", "32-6454": "sports", "32-4724": "browser", "32-5846": "browser",  # Go to the Web: the client opens its own browser right after
 }
 
 import json as _json
@@ -370,7 +370,8 @@ def _module_areas():
 
 
 def keyword(link, stream_id, body):
-    word = _norm(" ".join(request(body)["texts"]))
+    raw = " ".join(request(body)["texts"]).strip()
+    word = _norm(raw)
     print(f"      keyword: {word!r}")
     extra = _module_areas().get(word) or _module_areas().get(word.replace(" ", ""))
     if extra:
@@ -378,6 +379,8 @@ def keyword(link, stream_id, body):
     area = KEYWORDS.get(word) or KEYWORDS.get(word.replace(" ", ""))
     if area:
         return open_area(link, area)
+    if looks_like_url(raw):
+        return open_url(link, raw)
     link.send_stream(stream(atom("uni_wait_off")))
     alert(link, f'"{word}" is not a valid keyword.  Please check the spelling and try again.')
 
@@ -431,7 +434,7 @@ def item(link, stream_id, body):
         from . import buddy
         buddy.setup(link)
     elif kind == "web":
-        show_page(link, payload[1])
+        open_url(link, payload[1])
     elif kind == "wiki":
         show_wiki(link, payload[1])
     elif kind == "ia_item":
@@ -441,6 +444,28 @@ def item(link, stream_id, body):
         xfer.archive_download(link, *payload[1:])
     else:
         link.send_stream(stream(atom("uni_wait_off")))
+
+
+def open_url(link, url: str):
+    """A Web address: AOL 4.0 opens it in its own browser, which reaches the 2026 Web through
+    WRP (http only -- WRP fetches the https site itself); AOL 3.0 gets the page as text."""
+    from . import art
+    if art.version(link) != "40":
+        return show_page(link, url)
+    url = url.strip()
+    if url.lower().startswith("https://"):
+        url = "http://" + url[8:]
+    elif not url.lower().startswith("http://"):
+        url = "http://" + url
+    from .util import compile_fdo, fdo_text
+    link.send_stream(compile_fdo(f'uni_start_stream <00x>\n  www_browse <"{fdo_text(url)}">\n  uni_wait_off\n'
+                                 'uni_end_stream <00x>'))
+
+
+def looks_like_url(text: str) -> bool:
+    t = text.strip().lower()
+    return t.startswith(("http://", "https://", "www.")) or (
+        " " not in t and "." in t.strip(".") and t.rsplit(".", 1)[-1].isalpha())
 
 
 def show_page(link, url):
@@ -454,8 +479,12 @@ def web(link, stream_id, body):
     q = (request(body)["texts"] or [""])[0].strip()
     if not q:
         return link.send_stream(stream(atom("uni_wait_off")))
-    if "." in q and " " not in q:
-        return show_page(link, q)
+    if looks_like_url(q):
+        return open_url(link, q)
+    from . import art
+    if art.version(link) == "40":  # search results in the real browser
+        from urllib.parse import quote_plus
+        return open_url(link, "http://duckduckgo.com/?q=" + quote_plus(q))
 
     def done(results):
         rows = [(r["title"], _item(link, ("web", r["link"]))) for r in results]
@@ -530,7 +559,7 @@ def url_request(link, stream_id, body):
     print(f"      url: {url!r}")
     low = url.lower()
     if low.startswith(("http://", "https://", "www.")):
-        return show_page(link, url)
+        return open_url(link, url)
     if low.startswith("aol://"):
         target = url.split(":", 2)[-1] if url.count(":") >= 2 else url[6:]
         word = _norm(target.replace("_", " ").replace("%20", " "))
