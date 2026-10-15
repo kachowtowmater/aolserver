@@ -64,8 +64,22 @@ static BOOL CALLBACK frame_close(HWND h, LPARAM lp) {
     if (!strcmp(cls, "AOL Frame25")) EnumChildWindows(h, mdi_close, 0);
     return TRUE;
 }
+static HWND only_icon; static int n_icons;
+static BOOL CALLBACK count_icon(HWND h, LPARAM lp) {
+    char cls[64]; GetClassNameA(h, cls, sizeof cls);
+    if (!strcmp(cls, "_AOL_Icon") && IsWindowVisible(h)) { only_icon = h; n_icons++; }
+    return TRUE;
+}
 static BOOL CALLBACK box_ok(HWND h, LPARAM lp) {
     char cls[64]; GetClassNameA(h, cls, sizeof cls);
+    if (!strcmp(cls, "_AOL_Modal") && IsWindowVisible(h)) {  /* AOL's own notice: one OK picture button */
+        only_icon = NULL; n_icons = 0; EnumChildWindows(h, count_icon, 0);
+        if (n_icons == 1) {
+            RECT r; GetClientRect(only_icon, &r); LPARAM pt = MAKELPARAM(r.right / 2, r.bottom / 2);
+            PostMessageA(only_icon, WM_LBUTTONDOWN, MK_LBUTTON, pt); PostMessageA(only_icon, WM_LBUTTONUP, 0, pt);
+            n_closed++;
+        }
+    }
     if (!strcmp(cls, "#32770") && IsWindowVisible(h)) {
         PostMessageA(h, WM_COMMAND, MAKEWPARAM(IDOK, BN_CLICKED), 0); n_closed++;
     }
