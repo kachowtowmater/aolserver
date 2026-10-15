@@ -9,7 +9,7 @@ def sign_on(link, stream_id, body):
     fields = de_strings(body)
     name = (fields[0].strip() if fields else "") or "Guest"
     link.session["name"] = name
-    state.ONLINE[name.lower()] = link
+    state.ONLINE[name.lower().replace(" ", "")] = link
     # async_online flips every client tool to "online"; 32-296 is the client's
     # own went-online script (Sign Off menu, toolbar, Welcome sound).
     link.send_stream(stream(atom("async_online"), atom("uni_invoke_local", gid("32-296"))))
@@ -18,8 +18,9 @@ def sign_on(link, stream_id, body):
 
 def on_disconnect(link):
     name = link.session.get("name")
-    if name and state.ONLINE.get(name.lower()) is link:
-        del state.ONLINE[name.lower()]
+    key = name.lower().replace(" ", "") if name else None
+    if key and state.ONLINE.get(key) is link:
+        del state.ONLINE[key]
 
 
 TOKENS = {b"Dd": sign_on}

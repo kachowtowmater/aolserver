@@ -1,0 +1,21 @@
+uni_start_stream <00x>
+  man_preset_gid <{{gid}}>
+  if_last_return_true_then <1, 2>
+    man_end_context
+  uni_sync_skip <1>
+    uni_invoke_local <32-223>
+    man_set_context_globalid <0-223>
+    mat_object_id <{{gid}}>
+    mat_title <"Instant Message From: {{sender}}">
+    man_set_context_relative <1>
+    man_append_data <"{{sender}}">
+    man_end_context
+    man_end_context
+  uni_sync_skip <2>
+  man_set_context_globalid <{{gid}}>
+  man_set_context_relative <3>
+  man_append_data <"{{sender}}:  {{text}}\r">
+  man_end_context
+  man_end_context
+  man_update_display
+uni_end_stream <00x>
