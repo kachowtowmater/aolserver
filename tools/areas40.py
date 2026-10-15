@@ -18,12 +18,10 @@ import sweep40 as sw  # noqa: E402  (shares the test-client plumbing)
 NAME = "Tester98"
 
 
-def session_items():
-    out = sw.admin(f'sorted(next(l for l in links if l.session.get("name")=={NAME!r}).session.get("items", {{}}).items())[-40:]')
-    try:
-        return dict(eval(out, {"__builtins__": {}}, {}))  # (n, payload) pairs, plain literals
-    except Exception:
-        return {}
+def item_seq() -> int:
+    """The host numbers each clickable entry it sends (1..250, wrapping): the last one used."""
+    out = sw.admin(f'next(l for l in links if l.session.get("name")=={NAME!r}).session.get("item_seq", 0)')
+    return int(out) if out.isdigit() else 0
 
 
 def windows():
@@ -56,15 +54,15 @@ def main():
         if only not in area:
             continue
         sw.wctl("dismiss"); sw.wctl("closeall")
-        before = set(session_items())
+        before = item_seq()
         problems, _ = step(f"sm_send_k1 <{gid}>")
         opened = windows()
         if not opened and not problems:
             problems.append("no window opened")
-        new_items = sorted(set(session_items()) - before)
+        after = item_seq()
         followed = ""
-        if new_items:
-            n = new_items[0]
+        if after != before:
+            n = before % 250 + 1  # first entry this window added
             p2, _ = step(f'sm_send_token_arg <"zA", {n}>')
             followed = f"item {n} -> {windows()[:2]}"
             problems += [f"(link) {p}" for p in p2]
