@@ -15,6 +15,8 @@ def sign_on(link, stream_id, body):
     # own went-online script (Sign Off menu, toolbar, Welcome sound).
     link.send_stream(stream(atom("async_online"), atom("uni_invoke_local", gid("32-296"))))
     link.send_stream(render("welcome", name=name))
+    from . import mail
+    mail.got_mail(link)
 
 
 def on_disconnect(link):

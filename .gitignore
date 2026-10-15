@@ -20,3 +20,4 @@ server/captures/
 wiretap/
 server/art/
 re/*.txt
+server/var/

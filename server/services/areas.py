@@ -58,6 +58,7 @@ KEYWORDS = {  # keyword -> area (case/space-insensitive)
     "reference": "reference", "encyclopedia": "reference", "wikipedia": "reference", "files": "file search",
     "file search": "file search", "software": "file search", "download": "file search", "shopping": "marketplace",
     "deals": "marketplace", "my aol": "my aol", "aol live": "aol live", "live": "aol live",
+    "mail": "mail", "read mail": "mail", "mailbox": "mail", "new mail": "mail",
 }
 
 
@@ -213,6 +214,9 @@ def ask(link, title, prompt, button, token, intro, rid=None):
 
 
 def open_area(link, area: str, rid=None):
+    if area == "mail":
+        from . import mail
+        return mail.read_new_mail(link, 0)
     if area in INFO:
         return info_area(link, area, rid)
     if area == "my aol":
@@ -287,6 +291,12 @@ def item(link, stream_id, body):
         quote_box(link)
     elif kind == "room":
         chat.join(link, payload[1])
+    elif kind == "mail":
+        from . import mail
+        mail.open_message(link, payload[1])
+    elif kind == "mailbox":
+        from . import mail
+        mail.read_new_mail(link, 0, b"", payload[1])
     elif kind == "web":
         show_page(link, payload[1])
     elif kind == "wiki":

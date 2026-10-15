@@ -3,7 +3,8 @@
 usage: python3 -I harvest_art.py [--item NAME] [--keep DIR] PATH [PATH ...]
 
 PATH may be an IDX file (MAIN.IDX, ART5.IDX, ...), an installer/blob that embeds
-zip entries (AOL DynaZip SETUP95.EXE etc.), or a directory (walked recursively).
+zip entries (AOL DynaZip SETUP95.EXE etc.), a Wise installer (AOL 4.0 SETUP32.EXE:
+raw-deflate streams + CRC32), a raw disk image, or a directory (walked recursively).
 Embedded *.IDX zip entries are carved out in memory (validated by CRC); with
 --keep they are also saved under DIR for later re-harvesting.
 
@@ -15,6 +16,7 @@ gid, item, size, image type, file.
 Pure stdlib; treats every input as untrusted data (never executed).
 """
 import argparse
+import itertools
 import os
 import struct
 import sys
@@ -48,6 +50,21 @@ def records(d: bytes):
                     and i + 26 + n <= len(d):
                 yield g, flags, d[i + 26:i + 26 + n], i - self_off, i + 26 + n
         i = d.find(b"R2D2", i + 4)
+
+
+def records25(d: bytes):
+    """AOL 2.5 databases ("DC\x01" header) use 22-byte 'RE' records:
+    RE | id u16 | sub u8 | type u8 | len u16 | flags u16 | stamp u32 | 4 zero | self-offset u32.
+    Same yield shape as records()."""
+    i = d.find(b"RE")
+    while i >= 0:
+        if i + 22 <= len(d):
+            gid_id, sub, typ, n = struct.unpack_from("<HBBH", d, i + 2)
+            self_off, = struct.unpack_from("<I", d, i + 18)
+            base = i - self_off
+            if 0 <= base and d.startswith(b"DC\x01", base) and i + 22 + n <= len(d):
+                yield (typ << 24) | (sub << 16) | gid_id, 0, d[i + 22:i + 22 + n], base, i + 22 + n
+        i = d.find(b"RE", i + 2)
 
 
 def image_type(body: bytes) -> str:
@@ -110,6 +127,33 @@ def zip_entries(d: bytes, depth=0):
         i = start + csz
 
 
+def wise_streams(d: bytes):
+    """Wise installers (e.g. AOL 4.0 SETUP32/SETUP323.EXE) store each file in the PE
+    overlay as a raw-deflate stream followed by its CRC32.  Walk them in order,
+    byte-scanning only across gaps.  Yields (offset, data)."""
+    try:
+        pe, = struct.unpack_from("<I", d, 0x3C)
+        nsec, = struct.unpack_from("<H", d, pe + 6)
+        opt, = struct.unpack_from("<H", d, pe + 20)
+        sec = pe + 24 + opt
+        p = max(sum(struct.unpack_from("<II", d, sec + 40 * i + 16)) for i in range(nsec))
+    except struct.error:
+        return
+    while p < len(d) - 8:
+        o = zlib.decompressobj(-15)
+        try:
+            out = o.decompress(d[p:p + (64 << 20)])
+        except zlib.error:
+            out = None
+        if out and o.eof:
+            end = min(len(d), p + (64 << 20)) - len(o.unused_data)
+            if end + 4 <= len(d) and struct.unpack_from("<I", d, end)[0] == zlib.crc32(out):
+                yield p, out
+                p = end + 4
+                continue
+        p += 1
+
+
 class Store:
     def __init__(self):
         ART.mkdir(parents=True, exist_ok=True)
@@ -121,11 +165,13 @@ class Store:
                     self.rows[f[0]] = f + [""] * (5 - len(f))
         self.new = self.bigger = 0
 
+    fill_only = False
+
     def add(self, gid, body, item, fname):
         size = len(body)
         cur = self.rows.get(gid)
         kind = image_type(body)
-        if cur and (int(cur[2]) >= size or (kind == "unknown" and cur[3] != "unknown")):
+        if cur and (self.fill_only or int(cur[2]) >= size or (kind == "unknown" and cur[3] != "unknown")):
             return
         (ART / f"{gid}.bin").write_bytes(body)
         if cur:
@@ -147,9 +193,12 @@ class Store:
 
 def harvest_blob(store, d, item, fname, keep):
     n = 0
-    if b"R2D2" in d:
+    if b"R2D2" in d or b"DC\x01" in d:
         ends = {}
-        for g, flags, body, base, end in records(d):
+        recs = records(d) if b"R2D2" in d else iter(())
+        if b"DC\x01" in d:
+            recs = itertools.chain(recs, records25(d))
+        for g, flags, body, base, end in recs:
             ends[base] = max(ends.get(base, 0), end)
             if g >> 24 == 1 and body:
                 where = fname if base == 0 else f"{fname}@{base:#x}"
@@ -163,13 +212,22 @@ def harvest_blob(store, d, item, fname, keep):
                     dst.write_bytes(d[base:end])
     if b"PK\x03\x04" in d:
         for name, raw in zip_entries(d):
-            if not name.upper().endswith(".IDX") or b"R2D2" not in raw:
+            if not name.upper().endswith(".IDX") or (b"R2D2" not in raw and not raw.startswith(b"DC\x01")):
                 continue
             if keep:
                 dst = Path(keep) / (Path(fname).name + "!" + name.replace("/", "_").replace("!", "_"))
                 dst.parent.mkdir(parents=True, exist_ok=True)
                 dst.write_bytes(raw)
             n += harvest_blob(store, raw, item, f"{fname}!{name}", None)
+    if d[:2] == b"MZ" and b"WiseMain" in d[:1 << 20]:
+        for off, raw in wise_streams(d):
+            if not raw.startswith(b"AOLDB"):
+                continue
+            if keep:
+                dst = Path(keep) / f"{Path(fname).name}!wise@{off:#x}.IDX"
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                dst.write_bytes(raw)
+            n += harvest_blob(store, raw, item, f"{fname}!wise@{off:#x}", None)
     return n
 
 
@@ -189,8 +247,11 @@ def main():
     ap.add_argument("--keep", help="directory to save IDX files carved out of installers")
     ap.add_argument("--all", action="store_true", help="scan every file, not just IDX/EXE/ZIP/...")
     ap.add_argument("paths", nargs="+")
+    ap.add_argument("--fill-only", action="store_true",
+                    help="only add GIDs not already present (for lower-priority sources: 2.5, non-US)")
     a = ap.parse_args()
     store = Store()
+    store.fill_only = a.fill_only
     item = a.item or Path(a.paths[0]).resolve().name
     for f in walk(a.paths):
         up = f.name.upper()
