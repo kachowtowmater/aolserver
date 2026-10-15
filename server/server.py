@@ -53,6 +53,7 @@ class Link:
         self.peer = "%s:%d" % writer.get_extra_info("peername")[:2]
         self.tx = self.rx = p3.SEQ_MAX  # last seq we sent / last seq we accepted
         self.session = {}  # per-connection state owned by host.py
+        self.no_crc = False  # AOL 4.0 over TCP: once the client sends '**' CRCs, so do we
         self.stream_seq = 0
         self.log = (LOG / f"{time.strftime('%Y%m%d-%H%M%S')}-{self.peer.replace(':', '_')}.jsonl").open("w")
 
@@ -76,7 +77,7 @@ class Link:
         if type_ == p3.DATA:
             self.tx = p3.next_seq(self.tx)
         f = p3.Frame(self.tx, self.rx, type_, payload)
-        raw = p3.encode(f)
+        raw = p3.encode(f, no_crc=self.no_crc)
         self.record("S->C", f, raw)
         self.writer.write(raw)
 
@@ -99,6 +100,8 @@ class Link:
             self.send(p3.DATA, b"at" + sid + chunk)
 
     def on_frame(self, f: p3.Frame):
+        if f.crc_variant == "none":
+            self.no_crc = True
         if not f.crc_ok:
             return self.send(p3.NAK, b"\x01")
         kind = f.type & 0x7F
@@ -152,7 +155,8 @@ class Link:
 async def admin(reader: asyncio.StreamReader, writer: asyncio.StreamWriter):
     scope = {k: getattr(codec, k) for k in dir(codec) if not k.startswith("_")}
     while line := (await reader.readline()).decode().strip():
-        scope.update(link=LINKS[-1] if LINKS else None, links=LINKS, host=current_host())
+        scope.update(link=LINKS[-1] if LINKS else None, links=LINKS, host=current_host(),
+                     by_name=lambda n: next((l for l in LINKS if l.session.get("name", "").lower() == n.lower()), None))
         try:
             out = eval(line, scope)
             for l in LINKS:

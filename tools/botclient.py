@@ -31,8 +31,9 @@ class Bot:
         self.tx = p3.next_seq(self.tx)
         self.raw(p3.DATA, self.tx, token + stream_id.to_bytes(2, "big") + body)
 
-    def sign_on(self):
-        self.data(b"Dd", codec.stream(codec.atom("de_data", self.name.encode())))
+    def sign_on(self, password: str = "botpass1"):
+        self.data(b"Dd", codec.stream(codec.atom("de_data", self.name.encode()),
+                                      codec.atom("de_data", password.encode())))
 
     def pump(self, seconds):
         end = time.time() + seconds

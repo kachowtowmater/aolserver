@@ -27,6 +27,18 @@ GID_AREAS = {
     "32-384": "screen names",
 }
 
+import json as _json
+from pathlib import Path as _Path
+
+_CHANNEL_ART = _json.loads((_Path(__file__).resolve().parent.parent / "data" / "channel_art.json").read_text())
+# each area wears the banner its button has on the client's own Channels screen
+AREA_ART = {}
+for _g, _a in GID_AREAS.items():
+    if _g in _CHANNEL_ART:
+        AREA_ART.setdefault(_a, _CHANNEL_ART[_g])
+AREA_ART.setdefault("what's hot", AREA_ART.get("news"))
+AREA_ART.setdefault("business", AREA_ART.get("finance"))
+
 NEWS_AREAS = {  # area -> (window title, intro, feed topic)
     "news": ("Today's News", "Top stories, updated around the clock.", "top"),
     "newsstand": ("Newsstand", "The day's papers and magazines.", "us"),
@@ -91,8 +103,9 @@ def news_area(link, area: str, rid=None):
             return link.send_stream(screens.text_window(title, "This area is temporarily unavailable.", rid))
         rows = [(f"{h['title']}", _item(link, ("article", h))) for h in items]
         when = datetime.now().strftime("%A, %B %-d, %Y  %-I:%M %p")
+        art.ensure_art(link, [AREA_ART[area]] if AREA_ART.get(area) else [])
         link.send_stream(screens.list_window(title, f"{intro}  {when}.  Double-click a headline to read it.",
-                                             rows, response_id=rid))
+                                             rows, response_id=rid, art=AREA_ART.get(area), window=area))
     run_bg(lambda: content.headlines(topic, 25), done)
 
 
@@ -124,7 +137,7 @@ def finance_area(link, rid=None):
                  f"({'+' if q['pct'] >= 0 else ''}{q['pct']:.2f}%)" for name, q in rows if q]
         intro = "Market summary  " + datetime.now().strftime("%-I:%M %p %b %-d") + "\r" + "\r".join(lines)
         link.send_stream(screens.list_window(
-            "Personal Finance", intro, [("Business news", _item(link, ("area", "business")))],
+            "Personal Finance", intro, art=AREA_ART.get("finance"), window="finance", items= [("Business news", _item(link, ("area", "business")))],
             buttons=[("Stock Quotes", '          sm_send_token_arg <"zA", %d>' % _item(link, ("quote_box",)))],
             response_id=rid, width=56))
     run_bg(work, done)
@@ -266,8 +279,8 @@ def open_area(link, area: str, rid=None):
         art.ensure_form(link, "32-5483")
         return link.send_stream(stream(atom("uni_invoke_local", gid("32-5483")), atom("uni_wait_off")))
     if area == "welcome":
-        from .util import render
-        return link.send_stream(render("welcome", name=name_of(link)))
+        from . import signon
+        return signon.welcome(link)
     link.send_stream(stream(atom("uni_wait_off")))
     alert(link, f"{area.title()} is not currently available.  Please try again later.")
 

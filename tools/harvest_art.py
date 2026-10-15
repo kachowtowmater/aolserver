@@ -139,19 +139,43 @@ def wise_streams(d: bytes):
         p = max(sum(struct.unpack_from("<II", d, sec + 40 * i + 16)) for i in range(nsec))
     except struct.error:
         return
+    mv = memoryview(d)
+
+    def inflate(p):
+        o, out, q = zlib.decompressobj(-15), [], p
+        while q < len(d):
+            chunk = mv[q:q + 65536]
+            try:
+                out.append(o.decompress(chunk))
+            except zlib.error:
+                return None
+            q += len(chunk)
+            if o.eof:
+                return b"".join(out), q - len(o.unused_data)
+        return None
+
     while p < len(d) - 8:
-        o = zlib.decompressobj(-15)
-        try:
-            out = o.decompress(d[p:p + (64 << 20)])
-        except zlib.error:
-            out = None
-        if out and o.eof:
-            end = min(len(d), p + (64 << 20)) - len(o.unused_data)
+        r = inflate(p)
+        if r and r[0]:
+            out, end = r
             if end + 4 <= len(d) and struct.unpack_from("<I", d, end)[0] == zlib.crc32(out):
                 yield p, out
                 p = end + 4
                 continue
         p += 1
+
+
+def keep_file(dst: Path, data: bytes):
+    """Write a kept IDX; never clobber a different file of the same name
+    (e.g. WIN31/SETUP.EXE and WIN95/SETUP.EXE both carry a MAIN.IDX)."""
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    k, final = 1, dst
+    while final.exists():
+        if final.read_bytes() == data:
+            return
+        final = dst.with_name(f"{dst.stem}.{k}{dst.suffix}")
+        k += 1
+    final.write_bytes(data)
 
 
 class Store:
@@ -207,26 +231,20 @@ def harvest_blob(store, d, item, fname, keep):
         if keep:                        # save databases found loose inside disk images
             for base, end in ends.items():
                 if base:
-                    dst = Path(keep) / f"{Path(fname).name}@{base:#x}.IDX"
-                    dst.parent.mkdir(parents=True, exist_ok=True)
-                    dst.write_bytes(d[base:end])
+                    keep_file(Path(keep) / f"{Path(fname).name}@{base:#x}.IDX", d[base:end])
     if b"PK\x03\x04" in d:
         for name, raw in zip_entries(d):
             if not name.upper().endswith(".IDX") or (b"R2D2" not in raw and not raw.startswith(b"DC\x01")):
                 continue
             if keep:
-                dst = Path(keep) / (Path(fname).name + "!" + name.replace("/", "_").replace("!", "_"))
-                dst.parent.mkdir(parents=True, exist_ok=True)
-                dst.write_bytes(raw)
+                keep_file(Path(keep) / (Path(fname).name + "!" + name.replace("/", "_").replace("!", "_")), raw)
             n += harvest_blob(store, raw, item, f"{fname}!{name}", None)
     if d[:2] == b"MZ" and b"WiseMain" in d[:1 << 20]:
         for off, raw in wise_streams(d):
             if not raw.startswith(b"AOLDB"):
                 continue
             if keep:
-                dst = Path(keep) / f"{Path(fname).name}!wise@{off:#x}.IDX"
-                dst.parent.mkdir(parents=True, exist_ok=True)
-                dst.write_bytes(raw)
+                keep_file(Path(keep) / f"{Path(fname).name}!wise@{off:#x}.IDX", raw)
             n += harvest_blob(store, raw, item, f"{fname}!wise@{off:#x}", None)
     return n
 

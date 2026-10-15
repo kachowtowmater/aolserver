@@ -75,7 +75,7 @@ def _llm(persona: str, name: str, room: str, history: list, topic: str) -> str |
                                     {"role": "user", "content": f"Recent chat:\n{convo}\n\nYour line:"}]}).encode()
     try:
         req = urllib.request.Request(LLM_URL, data=body, headers={"Content-Type": "application/json"})
-        with urllib.request.urlopen(req, timeout=40) as r:
+        with urllib.request.urlopen(req, timeout=20) as r:
             text = json.loads(r.read())["choices"][0]["message"]["content"]
     except Exception as e:
         print(f"      regulars: llm unavailable ({e})")
@@ -84,6 +84,19 @@ def _llm(persona: str, name: str, room: str, history: list, topic: str) -> str |
     if line.lower().startswith(name.lower() + ":"):
         line = line[len(name) + 1:].strip()
     return line[:120] or None
+
+
+CANNED = [
+    "lol", "brb", "re", "hey all", "anyone here from cali?", "a/s/l anyone?", "this room is dead lol",
+    "wb!", "*waves*", "who wants to trade sigs", "my modem is so slow tonight", "LOL", "rofl",
+    "any1 wanna chat?", "hehe", "hiya!", "afk dinner", "back", "kewl", "omg did u see the news?",
+    "{topic}... can u believe it", "anyone talking about {topic}?", "just read about {topic}",
+]
+
+
+def canned(room_history, topic) -> str:
+    line = random.choice(CANNED)
+    return line.replace("{topic}", topic[:60].rstrip(" .") if topic else "the news")
 
 
 def _topic() -> str:
@@ -101,6 +114,8 @@ async def speak(room_name: str, who: "Regular"):
     name = who.session["name"]
     line = await asyncio.get_running_loop().run_in_executor(
         None, _llm, PERSONAS[name], name, room_name, list(room["history"]), _topic())
+    if not line:
+        line = canned(room["history"], _topic())
     if line and room_name in state.ROOMS and humans(state.ROOMS[room_name]):
         sys.modules["services.chat"].broadcast_line(state.ROOMS[room_name], name, line)
 

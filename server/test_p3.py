@@ -40,3 +40,10 @@ def test_handshake_over_tcp():
         assert f.type == p3.ACK and f.rx == 16
         w.close(); srv.close()
     asyncio.run(run())
+
+
+def test_aol4_no_crc_marker():
+    raw = bytearray(p3.encode(p3.Frame(16, 127, p3.DATA | 0x80, b"Wh\x00\x01")))
+    raw[1:3] = b"**"
+    f, n = p3.try_decode(raw)
+    assert f.crc_ok and f.token == b"Wh" and n == len(raw)

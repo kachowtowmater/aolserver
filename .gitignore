@@ -21,3 +21,7 @@ wiretap/
 server/art/
 re/*.txt
 server/var/
+re/codemap40/
+run/disabled-tools-40/
+client40/*.aol*
+tools/__pycache__/

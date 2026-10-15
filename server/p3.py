@@ -48,6 +48,7 @@ class Frame:
 
 
 SEQ_MIN, SEQ_MAX = 16, 127
+NO_CRC = b"**"
 MAX_CLIENT_DATA = 0x77
 
 
@@ -55,9 +56,10 @@ def next_seq(n: int) -> int:
     return SEQ_MIN if n + 1 > SEQ_MAX else n + 1
 
 
-def encode(f: Frame) -> bytes:
+def encode(f: Frame, no_crc: bool = False) -> bytes:
     body = (len(f.payload) + 3).to_bytes(2, "big") + bytes([f.tx, f.rx, f.type]) + f.payload
-    return bytes([MAGIC]) + crc16(body).to_bytes(2, "big") + body + b"\x0d"
+    crc = NO_CRC if no_crc else crc16(body).to_bytes(2, "big")
+    return bytes([MAGIC]) + crc + body + b"\x0d"
 
 
 def try_decode(buf: bytearray) -> tuple[Frame | None, int]:
@@ -74,6 +76,9 @@ def try_decode(buf: bytearray) -> tuple[Frame | None, int]:
     if len(buf) < total + 1:
         return None, 0
     raw = bytes(buf[:total])
+    if raw[1:3] == NO_CRC:  # AOL 4.0 over TCP skips the CRC and sends '**'
+        return Frame(raw[5], raw[6], raw[7], raw[8:], crc_ok=True, crc_variant="none"), \
+            total + (1 if buf[total] == 0x0D else 0)
     ok = crc16(raw[3:]) == int.from_bytes(raw[1:3], "big")
     f = Frame(raw[5], raw[6], raw[7], raw[8:], crc_ok=ok, crc_variant="arc" if ok else "")
     return f, total + (1 if buf[total] == 0x0D else 0)

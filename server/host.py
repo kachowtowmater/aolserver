@@ -28,7 +28,13 @@ def load():
     HANDLERS.update(handlers)
 
 
+PRE_SIGNON = {b"Dd", b"zS", b"fh", b"Wh"}
+
+
 def on_data(link, token: bytes, stream_id: int, body: bytes):
+    if token not in PRE_SIGNON and "name" not in link.session:
+        print(f"      (ignoring {token!r} before sign-on)")
+        return
     handler = HANDLERS.get(token)
     if handler:
         handler(link, stream_id, body)

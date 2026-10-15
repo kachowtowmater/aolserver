@@ -65,9 +65,15 @@ def sign_on(link, stream_id, body):
 
 
 def welcome(link):
-    link.send_stream(render("welcome", name=link.session["name"]))
-    from . import mail
-    mail.got_mail(link)
+    from . import areas, art, content, mail
+    from .util import run_bg
+
+    def done(heads):
+        rows = [(h["title"], areas._item(link, ("article", h))) for h in (heads or [])[:6]]
+        art.ensure_art(link, ["1-0-24836"])
+        link.send_stream(screens.welcome_window(link.session["name"], store.unread(link.session["name"]), rows))
+        mail.got_mail(link)
+    run_bg(lambda: content.headlines("top", 6), done)
 
 
 def new_member_form(link, problem: str = ""):
