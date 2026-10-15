@@ -11,14 +11,11 @@ def _appends(text: str) -> str:
                      for i in range(0, len(text), TEXT_CHUNK))
 
 
-_IDS: dict[str, int] = {}
-
-
 def window_gid(key: str) -> str:
-    """Stable global id per window kind ('signup', 'quote', ...) so a re-send replaces it."""
-    if key not in _IDS:
-        _IDS[key] = 1 + len(_IDS)
-    return f"52-0-{_IDS[key]}"
+    """Stable global id per window kind ('signup', 'quote', ...) so a re-send replaces it.
+    Derived from the name (not a counter) so hot reloads never reshuffle ids."""
+    import zlib
+    return f"52-0-{1 + zlib.crc32(key.encode()) % 60000}"
 
 
 def _wrap(body: str, response_id: bytes | None, window: str | None = None) -> bytes:
@@ -101,13 +98,14 @@ def input_window(title: str, prompt: str, button: str, token: str, intro: str = 
     return _wrap(body, response_id, window)
 
 
-def page_window(title: str, text: str, links: list[tuple[str, int]], response_id=None, window: str | None = None) -> bytes:
+def page_window(title: str, text: str, links: list[tuple[str, int]], response_id=None, window: str | None = None,
+                links_title: str = "Links on this page:") -> bytes:
     """Text pane on top, clickable links list (zA) underneath: the 2026 web, 1997 window."""
     lines = ['  man_start_object <ind_group, "%s">' % fdo_text(title[:60]),
              "    mat_orientation <vcf>", "    mat_position <center_center>",
              '    man_start_object <view, "">', "      mat_size <64, 13>", _appends(text), "      man_end_data"]
     if links:
-        lines += ['    man_start_sibling <dss_list, "Links on this page:">', "      mat_size <64, 6>",
+        lines += [f'    man_start_sibling <dss_list, "{fdo_text(links_title)}">', "      mat_size <64, 6>",
                   "      mat_title_pos <left | top_or_left>", "      mat_bool_default_send <no>"]
         for i, (label, n) in enumerate(links):
             verb = "man_start_object" if i == 0 else "man_start_sibling"

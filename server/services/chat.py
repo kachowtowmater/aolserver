@@ -98,12 +98,30 @@ def list_rooms(link, stream_id, body):
         state.ROOMS.setdefault(name, {"slots": {}, "next": 1})
     rows = [(f"{name:<24}{len(r['slots']):>3}", areas._item(link, ("room", name)))
             for name, r in sorted(state.ROOMS.items(), key=lambda kv: (not kv[0].startswith("Lobby"), kv[0]))]
-    link.send_stream(screens.list_window("Public Rooms", "Double-click a room to go there.  Number of people in each room is shown.",
-                                         rows, width=34))
+    link.send_stream(screens.list_window(
+        "Public Rooms", "Double-click a room to go there.  Number of people in each room is shown.", rows,
+        buttons=[("Create Room", '          sm_send_token_arg <"zA", %d>' % areas._item(link, ("create_room",)))],
+        width=34, window="rooms"))
+
+
+def create_room_form(link):
+    from . import screens
+    link.send_stream(screens.form_window("Create a Member Room", "Name your room (up to 20 characters).  "
+                                         "Anyone can join it from the room list.", [("Room Name:", 20, "")],
+                                         "Create", "zC", window="createroom"))
+
+
+def create_room(link, stream_id, body):
+    from .util import request
+    name = " ".join((request(body)["texts"] or [""])[0].split())[:20]
+    if not name:
+        return
+    state.ROOMS.setdefault(name, {"slots": {}, "next": 1, "regulars": []})
+    join(link, name)
 
 
 def on_disconnect(link):
     leave(link)
 
 
-TOKENS = {b"CJ": enter_people_connection, b"Aa": chat_line, b"LP": list_rooms}
+TOKENS = {b"CJ": enter_people_connection, b"Aa": chat_line, b"LP": list_rooms, b"zC": create_room}

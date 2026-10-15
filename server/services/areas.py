@@ -75,6 +75,7 @@ KEYWORDS = {  # keyword -> area (case/space-insensitive)
     "file search": "file search", "software": "file search", "download": "file search", "shopping": "marketplace",
     "deals": "marketplace", "my aol": "my aol", "aol live": "aol live", "live": "aol live",
     "mail": "mail", "read mail": "mail", "mailbox": "mail", "new mail": "mail",
+    "boards": "boards", "message boards": "boards", "board": "boards", "bbs": "boards",
     "buddy": "buddy list", "buddies": "buddy list", "buddy list": "buddy list", "buddy view": "buddy list",
 }
 
@@ -242,6 +243,9 @@ def ask(link, title, prompt, button, token, intro, rid=None):
 
 
 def open_area(link, area: str, rid=None):
+    if area == "boards":
+        from . import boards
+        return boards.board_list(link, rid)
     if area in ("buddy list", "buddy setup"):
         from . import buddy
         return buddy.show(link, rid) if area == "buddy list" else buddy.setup(link, rid)
@@ -327,6 +331,8 @@ def item(link, stream_id, body):
         quote_box(link)
     elif kind == "room":
         chat.join(link, payload[1])
+    elif kind == "create_room":
+        chat.create_room_form(link)
     elif kind == "mail":
         from . import mail
         mail.open_message(link, payload[1])
@@ -336,6 +342,10 @@ def item(link, stream_id, body):
     elif kind == "mailbox":
         from . import mail
         mail.read_new_mail(link, 0, b"", payload[1])
+    elif kind in ("board", "topic", "new_topic", "reply"):
+        from . import boards
+        {"board": boards.board, "topic": boards.topic, "new_topic": boards.new_topic_form,
+         "reply": boards.reply_form}[kind](link, payload[1])
     elif kind == "buddy":
         from . import buddy
         buddy.buddy_im(link, payload[1])
