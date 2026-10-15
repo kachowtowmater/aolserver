@@ -369,6 +369,11 @@ def item(link, stream_id, body):
         show_page(link, payload[1])
     elif kind == "wiki":
         show_wiki(link, payload[1])
+    elif kind == "ia_item":
+        file_description(link, payload[1])
+    elif kind == "ia_download":
+        from . import xfer
+        xfer.archive_download(link, *payload[1:])
     else:
         link.send_stream(stream(atom("uni_wait_off")))
 
@@ -418,9 +423,36 @@ def files(link, stream_id, body):
         return link.send_stream(stream(atom("uni_wait_off")))
 
     def done(results):
-        rows = [(r["title"], _item(link, ("article", r))) for r in results]
-        link.send_stream(screens.list_window(f"File Search: {q}", f"{len(rows)} files found.", rows))
+        rows = [(r["title"], _item(link, ("ia_item", r))) for r in results]
+        link.send_stream(screens.list_window(f"File Search: {q}", f"{len(rows)} files found.  "
+                                             "Double-click a file for its description.", rows))
     run_bg(lambda: content.archive_software(q), done)
+
+
+def file_description(link, r):
+    """A File Search hit: description, its downloadable files, and Download Now (services/xfer.py)."""
+    from . import xfer
+    ident = r["link"].rstrip("/").rsplit("/", 1)[-1]
+
+    def done(info):
+        files = (info or {}).get("files", [])[:20]
+        text = (r.get("summary") or "(No description available.)")[:1500]
+        if files:
+            text += f"\r\rDownload Now sends {files[0]['name']} ({files[0]['size']:,} bytes).  " \
+                    "Double-click another file below to download it instead."
+        else:
+            text += "\r\rThis item has no file small enough to download online."
+        rows = [(f"{f['name']}  ({f['size']:,} bytes)", _item(link, ("ia_download", ident, f["name"]))) for f in files]
+        buttons = [("Download Now", '          sm_send_token_arg <"zA", %d>' % _item(link, ("ia_download", ident)))] \
+            if files else []
+        link.send_stream(screens.list_window(r["title"][:60], text, rows, buttons=buttons, width=60))
+
+    def work():
+        try:
+            return xfer.archive_files(ident)
+        except Exception as e:
+            print(f"      file description {ident} failed: {e}")
+    run_bg(work, done)
 
 
 def url_request(link, stream_id, body):
