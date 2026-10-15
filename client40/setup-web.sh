@@ -18,7 +18,7 @@ export WINEPREFIX="$HOME/.wine-aol4" WINEDEBUG=-all
 if [ ! -x "$ROOT/vendor/wrp/wrp" ]; then
   mkdir -p "$ROOT/vendor"
   [ -d "$ROOT/vendor/wrp" ] || git clone -q --depth 1 https://github.com/tenox7/wrp "$ROOT/vendor/wrp"
-  (cd "$ROOT/vendor/wrp" && GOFLAGS=-p=2 go build -o wrp .)
+  (cd "$ROOT/vendor/wrp" && git apply "$ROOT/client40/wrp-nav-timeout.patch" && GOFLAGS=-p=2 go build -o wrp .)
 fi
 mkdir -p "$HOME/.config/systemd/user"
 cp "$ROOT/run/aol-wrp.service" "$HOME/.config/systemd/user/"
@@ -45,6 +45,11 @@ for view in /reg:32 /reg:64; do
   "$WINE" reg add "$R" /v ProxyEnable /t REG_DWORD /d 1 /f $view >/dev/null
   "$WINE" reg add "$R" /v ProxyServer /t REG_SZ /d "http=127.0.0.1:8098" /f $view >/dev/null
   "$WINE" reg add "$R" /v ProxyOverride /t REG_SZ /d "<local>" /f $view >/dev/null
+done
+
+# Home page through WRP (Wine's default is https://www.winehq.org, which bypasses WRP)
+for view in /reg:32 /reg:64; do
+  "$WINE" reg add 'HKCU\Software\Microsoft\Internet Explorer\Main' /v "Start Page" /t REG_SZ /d "http://www.aol.com/" /f $view >/dev/null
 done
 
 # 4. AOL's browser engine treats Wine's stubbed FreezeEvents as fatal

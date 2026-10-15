@@ -1,0 +1,21 @@
+diff --git i/ismap.go w/ismap.go
+index 5b7101a..ce01491 100644
+--- i/ismap.go
++++ w/ismap.go
+@@ -173,7 +173,15 @@ func (rq *wrpReq) action() chromedp.Action {
+ // Navigate to the desired URL, returns the downloaded file if one was triggered.
+ func (rq *wrpReq) navigate() *dlFile {
+ 	resetDownloadState()
+-	ctxErr(chromedp.Run(brCtx(), rq.action()), rq.w)
++	// some sites never fire "load" (ads, trackers): give up waiting after 20s and show
++	// whatever has rendered, instead of holding the one shared browser forever
++	ctx, cancel := context.WithTimeout(brCtx(), 20*time.Second)
++	defer cancel()
++	if err := chromedp.Run(ctx, rq.action()); err != nil && ctx.Err() == context.DeadlineExceeded {
++		log.Printf("%s Navigate timed out after 20s, capturing anyway\n", rq.r.RemoteAddr)
++	} else {
++		ctxErr(err, rq.w)
++	}
+ 	return waitForDownload()
+ }
+ 
