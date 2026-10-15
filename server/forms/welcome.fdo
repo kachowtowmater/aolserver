@@ -1,0 +1,23 @@
+uni_start_stream <00x>
+  man_start_object <ind_group, "Welcome, {{name}}!">
+    mat_orientation <vcf>
+    mat_position <center_center>
+    man_start_object <ornament, "">
+      mat_art_id <1-0-21743>
+    man_start_sibling <view, "">
+      mat_size <40, 6>
+      mat_relative_tag <1>
+      man_append_data <"Welcome to America Online, {{name}}!  This host was rebuilt from scratch in 2026.">
+      man_end_data
+    man_start_sibling <org_group, "">
+      mat_orientation <hcf>
+      man_start_object <trigger, "Read Mail">
+        mat_relative_tag <2>
+      man_start_sibling <trigger, "People Connection">
+        mat_relative_tag <3>
+      man_start_sibling <trigger, "Keyword">
+        mat_relative_tag <4>
+      man_end_object
+    man_end_object
+  man_update_display
+uni_end_stream <00x>

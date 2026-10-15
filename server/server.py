@@ -1,15 +1,40 @@
-"""Stage 2 AOL host: P3 link layer for AOL 3.0 clients on :5190.
+"""AOL host: P3 link layer for AOL 3.0 clients on :5190.
 
-Handles the INIT->ACK handshake, heartbeats, sequencing and ACKs, and logs
-every frame (both directions) to captures/*.jsonl for the next stage.
+Handles the INIT->ACK handshake, heartbeats, sequencing and ACKs, logs every
+frame to captures/*.jsonl, and hands DATA tokens to host.py, which is
+hot-reloaded whenever it changes on disk.
+
+Admin console on 127.0.0.1:5191 (one Python expression per line, evaluated
+with `link` = newest client and fdo.codec helpers in scope), e.g.
+    link.send_data(b"AT", 0, stream(atom("async_alert", b"\x01Hi")))
 Run: python3 server.py
 """
 import asyncio
+import importlib
 import json
 import time
+import traceback
 from pathlib import Path
 
+import host
 import p3
+from fdo import codec
+
+LINKS: list["Link"] = []
+_host_mtime = Path(host.__file__).stat().st_mtime
+
+
+def current_host():
+    global _host_mtime
+    m = Path(host.__file__).stat().st_mtime
+    if m != _host_mtime:
+        _host_mtime = m
+        try:
+            importlib.reload(host)
+            print("  (host.py reloaded)")
+        except Exception:
+            traceback.print_exc()
+    return host
 
 LOG = Path(__file__).parent / "captures"
 LOG.mkdir(exist_ok=True)
@@ -21,6 +46,7 @@ class Link:
         self.reader, self.writer = reader, writer
         self.peer = "%s:%d" % writer.get_extra_info("peername")[:2]
         self.tx = self.rx = p3.SEQ_MAX  # last seq we sent / last seq we accepted
+        self.session = {}  # per-connection state owned by host.py
         self.log = (LOG / f"{time.strftime('%Y%m%d-%H%M%S')}-{self.peer.replace(':', '_')}.jsonl").open("w")
 
     def record(self, direction, f: p3.Frame, raw: bytes):
@@ -28,8 +54,15 @@ class Link:
         self.log.write(json.dumps({"t": time.time(), "dir": direction, "type": f.name, "tx": f.tx, "rx": f.rx,
                                    "token": tok, "stream": f.stream, "crc_ok": f.crc_ok, "hex": raw.hex()}) + "\n")
         self.log.flush()
-        print(f"  {direction} {f.name:6} tx={f.tx:3} rx={f.rx:3} tok={tok} crc={'ok' if f.crc_ok else 'BAD'} "
-              f"{f.payload[4 if tok else 0:40]!r}")
+        if f.name in ("ACK", "HBEAT"):
+            return
+        print(f"  {direction} {f.name:6} tx={f.tx:3} rx={f.rx:3} tok={tok} stream={f.stream}")
+        if tok and len(f.payload) > 4:
+            try:
+                for a in codec.decode(f.payload[4:]):
+                    print(f"      {a!r}")
+            except Exception:
+                print(f"      raw {f.payload[4:80].hex(' ')}")
 
     def send(self, type_: int, payload: bytes = b""):
         if type_ == p3.DATA:
@@ -41,6 +74,11 @@ class Link:
 
     def send_data(self, token: bytes, stream: int, body: bytes = b""):
         self.send(p3.DATA, token + stream.to_bytes(2, "big") + body)
+
+    def send_stream(self, atoms: bytes):
+        """Run an atom stream on the client. 'aT' carries no stream id; the
+        2-byte-id 'AT' form is silently ignored by the 3.0 client."""
+        self.send(p3.DATA, b"aT" + atoms)
 
     def on_frame(self, f: p3.Frame):
         if not f.crc_ok:
@@ -58,10 +96,14 @@ class Link:
             self.on_data(f)
 
     def on_data(self, f: p3.Frame):
-        pass  # stage 3: sign-on tokens go here
+        try:
+            current_host().on_data(self, f.token, f.stream, f.payload[4:])
+        except Exception:
+            traceback.print_exc()
 
     async def run(self):
         print(f"[+] {self.peer} connected")
+        LINKS.append(self)
         buf = bytearray()
         try:
             while chunk := await self.reader.read(4096):
@@ -80,15 +122,32 @@ class Link:
                 await self.writer.drain()
         finally:
             print(f"[-] {self.peer} disconnected")
+            LINKS.remove(self)
             self.log.close()
             self.writer.close()
 
 
+async def admin(reader: asyncio.StreamReader, writer: asyncio.StreamWriter):
+    scope = {k: getattr(codec, k) for k in dir(codec) if not k.startswith("_")}
+    while line := (await reader.readline()).decode().strip():
+        scope.update(link=LINKS[-1] if LINKS else None, links=LINKS, host=current_host())
+        try:
+            out = eval(line, scope)
+            for l in LINKS:
+                await l.writer.drain()
+            writer.write(f"{out!r}\n".encode())
+        except Exception as e:
+            writer.write(f"error: {e!r}\n".encode())
+        await writer.drain()
+    writer.close()
+
+
 async def main(port: int = 5190):
     srv = await asyncio.start_server(lambda r, w: Link(r, w).run(), "0.0.0.0", port)
-    print(f"AOL host listening on :{port}")
-    async with srv:
-        await srv.serve_forever()
+    adm = await asyncio.start_server(admin, "127.0.0.1", port + 1)
+    print(f"AOL host listening on :{port} (admin on 127.0.0.1:{port + 1})")
+    async with srv, adm:
+        await asyncio.gather(srv.serve_forever(), adm.serve_forever())
 
 
 if __name__ == "__main__":

@@ -1,16 +1,20 @@
 # AOL's own software and anything derived from it stays local
-disc/
-re/codemap/
-# third-party reference repos (cloned separately, see README)
-wiretap/
 atomforge/
-Retro-AOL-client/
-# local runtime state
-.venv/
-__pycache__/
-server/captures/
-run/shots/
-run/*.log
-run/disabled-tools/
+disc/
 *.exe
+# local runtime state
+__pycache__/
+pyol/
 re/*.asm
+re/codemap/
+ref/
+re/idb/
+Retro-AOL-client/
+run/disabled-tools/
+run/fdotools/
+run/*.log
+run/shots/
+server/captures/
+# third-party reference repos (cloned separately, see README)
+.venv/
+wiretap/
