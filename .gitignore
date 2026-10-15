@@ -26,3 +26,5 @@ run/disabled-tools-40/
 client40/*.aol*
 tools/__pycache__/
 re/idb40/
+vendor/
+run/wrp-profile/

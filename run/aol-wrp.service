@@ -1,0 +1,11 @@
+[Unit]
+Description=AOL revival: Web Rendering Proxy (modern Chromium renders 2026 pages for AOL 4.0's browser)
+
+[Service]
+WorkingDirectory=%h/aol-revival/vendor/wrp
+ExecStart=%h/aol-revival/vendor/wrp/wrp -l 127.0.0.1:8098 -b /usr/bin/chromium -t jpg -q 70 -g 1024x0x216 -ua "" -profile %h/aol-revival/run/wrp-profile
+Restart=on-failure
+MemoryMax=2G
+
+[Install]
+WantedBy=default.target
