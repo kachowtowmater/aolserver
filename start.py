@@ -62,7 +62,8 @@ def main():
 
     server = subprocess.Popen([sys.executable, "server.py"], cwd=ROOT / "server")
     procs.append(server)
-    print("aolserver host on :5190 (admin console 127.0.0.1:5191).  Ctrl+C to stop.")
+    port = int(os.environ.get("AOL_PORT", "5190"))
+    print(f"aolserver host on :{port} (admin console 127.0.0.1:{port + 1}).  Ctrl+C to stop.")
     try:
         while all(p.poll() is None for p in procs):
             time.sleep(1)
