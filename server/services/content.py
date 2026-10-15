@@ -33,13 +33,18 @@ FEEDS = {
     "music": ["https://feeds.npr.org/1039/rss.xml"],
     "style": ["https://rss.nytimes.com/services/xml/rss/nyt/FashionandStyle.xml"],
     "education": ["https://feeds.npr.org/1013/rss.xml"],
+    "deals": ["https://slickdeals.net/newsearch.php?mode=frontpage&searcharea=deals&searchin=first&rss=1"],
 }
 NEWS_TTL = 600
 QUOTE_TTL = 60
 
 
-def _get(url: str, timeout=8) -> bytes:
-    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout) as r:
+BROWSER = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                         "Chrome/141.0 Safari/537.36", "Accept-Language": "en-US,en;q=0.9"}
+
+
+def _get(url: str, timeout=8, headers=None) -> bytes:
+    with urllib.request.urlopen(urllib.request.Request(url, headers=headers or UA), timeout=timeout) as r:
         return r.read()
 
 
@@ -121,3 +126,105 @@ def weather(place: str) -> dict | None:
         return {"place": f"{r['name']}, {r.get('admin1') or r.get('country', '')}", "current": w["current"],
                 "daily": w["daily"]}
     return _cached(f"wx:{place.lower()}", NEWS_TTL, fetch)
+
+
+# ---------- reference / web / files ----------
+
+def wiki_search(q: str) -> list[str]:
+    url = "https://en.wikipedia.org/w/api.php?action=opensearch&limit=15&format=json&search=" + urllib.parse.quote(q)
+    return _cached(f"wikis:{q.lower()}", NEWS_TTL, lambda: json.loads(_get(url))[1]) or []
+
+
+def wiki_summary(title: str) -> dict | None:
+    url = "https://en.wikipedia.org/api/rest_v1/page/summary/" + urllib.parse.quote(title.replace(" ", "_"))
+    def fetch():
+        d = json.loads(_get(url))
+        return {"title": d.get("title", title), "text": d.get("extract", ""),
+                "link": d.get("content_urls", {}).get("desktop", {}).get("page", "")}
+    return _cached(f"wiki:{title.lower()}", NEWS_TTL, fetch)
+
+
+def web_search(q: str) -> list[dict]:
+    def fetch():
+        page = _get("https://html.duckduckgo.com/html/?q=" + urllib.parse.quote(q), headers=BROWSER).decode("utf-8", "replace")
+        out = []
+        for m in re.finditer(r'class="result__a"[^>]*href="([^"]+)"[^>]*>(.*?)</a>.*?'
+                             r'class="result__snippet"[^>]*>(.*?)</a>', page, re.S):
+            href = html.unescape(m.group(1))
+            href = "https:" + href if href.startswith("//") else href
+            target = urllib.parse.parse_qs(urllib.parse.urlparse(href).query).get("uddg", [href])[0]
+            out.append({"title": _clean(m.group(2)), "link": target, "summary": _clean(m.group(3))})
+        return out[:20]
+    return _cached(f"web:{q.lower()}", NEWS_TTL, fetch) or []
+
+
+class _Text(__import__("html.parser").parser.HTMLParser):
+    SKIP = {"script", "style", "noscript", "svg", "nav", "footer", "header", "form", "aside"}
+    BLOCK = {"p", "div", "br", "li", "h1", "h2", "h3", "h4", "tr", "section", "article", "blockquote"}
+
+    def __init__(self, base):
+        super().__init__(convert_charrefs=True)
+        self.base, self.out, self.links, self.skip, self.href, self.title, self.in_title = base, [], [], 0, None, "", False
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if tag in self.SKIP:
+            self.skip += 1
+        elif tag == "title":
+            self.in_title = True
+        elif tag == "a" and a.get("href") and not a["href"].startswith(("#", "javascript:", "mailto:")):
+            self.href, self.link_text = urllib.parse.urljoin(self.base, a["href"]), []
+        if tag in self.BLOCK:
+            self.out.append("\n")
+
+    def handle_endtag(self, tag):
+        if tag in self.SKIP and self.skip:
+            self.skip -= 1
+        elif tag == "title":
+            self.in_title = False
+        elif tag == "a" and self.href:
+            text = " ".join("".join(self.link_text).split())
+            if text and len(text) > 2:
+                self.links.append({"title": text[:80], "link": self.href})
+            self.href = None
+        if tag in self.BLOCK:
+            self.out.append("\n")
+
+    def handle_data(self, data):
+        if self.in_title:
+            self.title += data
+        if self.skip:
+            return
+        self.out.append(data)
+        if self.href:
+            self.link_text.append(data)
+
+
+def web_page(url: str) -> dict:
+    if not re.match(r"^https?://", url):
+        url = "http://" + url
+    def fetch():
+        raw = _get(url, timeout=12, headers=BROWSER)
+        p = _Text(url)
+        p.feed(raw.decode("utf-8", "replace"))
+        lines = [" ".join(l.split()) for l in "".join(p.out).split("\n")]
+        text = "\n".join(l for l in lines if len(l) > 1)
+        seen, links = set(), []
+        for l in p.links:
+            if l["link"] not in seen:
+                seen.add(l["link"])
+                links.append(l)
+        return {"title": " ".join(p.title.split()) or url, "text": text[:6000], "links": links[:60], "url": url}
+    return _cached(f"page:{url}", NEWS_TTL, fetch) or {"title": url, "text": "This page could not be loaded.", "links": [], "url": url}
+
+
+def archive_software(q: str) -> list[dict]:
+    def fetch():
+        url = ("https://archive.org/advancedsearch.php?fl[]=identifier&fl[]=title&fl[]=description&fl[]=year"
+               "&rows=20&output=json&q=" + urllib.parse.quote(f"({q}) AND mediatype:software"))
+        docs = json.loads(_get(url))["response"]["docs"]
+        return [{"title": f"{d.get('title', d['identifier'])}" + (f" ({d['year']})" if d.get("year") else ""),
+                 "summary": _clean(d.get("description", "") if isinstance(d.get("description"), str)
+                                   else " ".join(d.get("description") or [])),
+                 "link": f"https://archive.org/details/{d['identifier']}", "source": "Internet Archive"} for d in docs]
+    return _cached(f"files:{q.lower()}", NEWS_TTL, fetch) or []

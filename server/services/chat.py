@@ -31,6 +31,10 @@ def _send_line(link, who: str, text: str):
 
 
 def broadcast_line(room, who: str, text: str):
+    import time
+    room.setdefault("history", []).append((who, text))
+    del room["history"][:-40]
+    room["last_line"] = time.time()
     for member in room["slots"]:
         _send_line(member, who, text)
 
@@ -38,6 +42,9 @@ def broadcast_line(room, who: str, text: str):
 def join(link, room_name: str):
     leave(link)
     room = state.ROOMS.setdefault(room_name, {"slots": {}, "next": 1})
+    from . import regulars
+    regulars.populate(room_name, room)
+    regulars.ensure_running()
     slot = room["next"]
     room["next"] += 1
     room["slots"][link] = slot
@@ -66,16 +73,20 @@ def leave(link):
 
 def enter_people_connection(link, stream_id, body):
     n = 1
-    while len(state.ROOMS.get(f"Lobby {n}", {}).get("slots", {})) >= ROOM_SIZE:
+    while len(state.ROOMS.get(f"Lobby {n}", {}).get("slots", {})) >= ROOM_SIZE:  # regulars count too, like AOL
         n += 1
     join(link, f"Lobby {n}")
 
 
 def chat_line(link, stream_id, body):
     room = _room_of(link)
-    text = body.split(b"\x00")[0].decode("latin1").strip()
+    from .util import request
+    texts = request(body)["texts"]
+    text = (texts[0] if texts else "").strip()
     if room and text:
         broadcast_line(room, name_of(link), text)
+        from . import regulars
+        regulars.heard(link.session.get("room"), room, name_of(link), text)
 
 
 def list_rooms(link, stream_id, body):

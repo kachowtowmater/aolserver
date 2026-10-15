@@ -50,6 +50,8 @@ def request(body: bytes) -> dict:
     for a in atoms(body):
         if a.name == "man_set_response_id":
             out["response_id"] = a.args
+        elif a.proto == 0 and a.num == 14 and len(a.args) == 3:  # buf_add_atom_data <gid>
+            out["gid"] = f"{a.args[0]}-{int.from_bytes(a.args[1:], 'big')}"
         elif a.name == "de_data":
             if len(a.args) == 4 and not all(32 <= c < 127 for c in a.args):
                 out["gid"] = gid_arg(a.args)

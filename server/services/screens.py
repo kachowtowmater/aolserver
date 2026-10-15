@@ -5,7 +5,8 @@ TEXT_CHUNK = 200
 
 
 def _appends(text: str) -> str:
-    text = text.replace("\n", "\r")
+    # the client swallows the byte after a CR, so lines end CR LF like DOS text
+    text = text.replace("\r\n", "\n").replace("\r", "\n").replace("\n", "\r\n")
     return "\n".join(f'      man_append_data <"{fdo_text(text[i:i + TEXT_CHUNK])}">'
                      for i in range(0, len(text), TEXT_CHUNK))
 
@@ -83,3 +84,20 @@ def input_window(title: str, prompt: str, button: str, token: str, intro: str = 
         "            buf_close_buffer\n          uni_end_stream\n          >",
         "    man_end_object"])
     return _wrap(body, response_id)
+
+
+def page_window(title: str, text: str, links: list[tuple[str, int]], response_id=None) -> bytes:
+    """Text pane on top, clickable links list (zA) underneath: the 2026 web, 1997 window."""
+    lines = ['  man_start_object <ind_group, "%s">' % fdo_text(title[:60]),
+             "    mat_orientation <vcf>", "    mat_position <center_center>",
+             '    man_start_object <view, "">', "      mat_size <64, 13>", _appends(text), "      man_end_data"]
+    if links:
+        lines += ['    man_start_sibling <dss_list, "Links on this page:">', "      mat_size <64, 6>",
+                  "      mat_title_pos <left | top_or_left>", "      mat_bool_default_send <no>"]
+        for i, (label, n) in enumerate(links):
+            verb = "man_start_object" if i == 0 else "man_start_sibling"
+            lines += [f'      {verb} <trigger, "{fdo_text(label[:80])}">', "        act_replace_select_action",
+                      f'          <\n          uni_start_stream_wait_on <00x>\n          sm_send_token_arg <"zA", {n}>\n          >']
+        lines.append("      man_end_object")
+    lines.append("    man_end_object")
+    return _wrap("\n".join(lines), response_id)

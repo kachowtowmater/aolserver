@@ -20,6 +20,8 @@ GID_AREAS = {
     "17-35616": "musicspace", "4-63728": "reference", "40-39017": "style", "17-38784": "travel",
     "17-35059": "presenting", "40-4218": "member services", "40-3760": "aol live", "40-4408": "my aol",
     "17-35044": "find", "3-4604": "what's hot", "19-7766": "www",
+    "8-62": "room:Center Stage", "8-20": "room:PC Studio",
+    "8-11975": "file search", "8-63415": "finance", "8-16035": "clock", "": "what's hot",
 }
 
 NEWS_AREAS = {  # area -> (window title, intro, feed topic)
@@ -41,6 +43,7 @@ NEWS_AREAS = {  # area -> (window title, intro, feed topic)
     "what's hot": ("What's Hot", "The most talked-about stories right now.", "top"),
     "presenting": ("Presenting...", "Featured stories.", "entertainment"),
     "business": ("Business News", "Markets, companies and the economy.", "business"),
+    "marketplace": ("Marketplace", "Today's best deals from around the Web.", "deals"),
 }
 
 KEYWORDS = {  # keyword -> area (case/space-insensitive)
@@ -51,6 +54,10 @@ KEYWORDS = {  # keyword -> area (case/space-insensitive)
     "online clock": "clock", "chat": "people connection", "people connection": "people connection",
     "pc": "people connection", "lobby": "people connection", "channels": "channels", "welcome": "welcome",
     "help": "member services", "member services": "member services", "business": "business",
+    "web": "www", "www": "www", "internet": "www", "browser": "www", "search": "find", "find": "find",
+    "reference": "reference", "encyclopedia": "reference", "wikipedia": "reference", "files": "file search",
+    "file search": "file search", "software": "file search", "download": "file search", "shopping": "marketplace",
+    "deals": "marketplace", "my aol": "my aol", "aol live": "aol live", "live": "aol live",
 }
 
 
@@ -167,12 +174,66 @@ def clock(link, rid=None):
     link.send_stream(stream(atom("uni_wait_off")))
 
 
+INFO = {
+    "member services": ("Member Services", [
+        "Welcome to Member Services.", "",
+        "This America Online host was rebuilt from scratch in 2026 for the original AOL 3.0 for Windows 95 "
+        "software.  Everything you see is the real 1997 client; the content behind it is live.", "",
+        "GETTING AROUND", "  Keyword (Ctrl+K): type a keyword such as NEWS, STOCKS, WEATHER, SPORTS, WEB, "
+        "REFERENCE, FILES, CHAT or TIME.", "  Channels: browse every area by subject.",
+        "  People Connection: chat live in the lobbies and public rooms.",
+        "  Instant Messages (Ctrl+I): talk privately with anyone signed on.", "",
+        "THE WORLD WIDE WEB", "  Keyword WEB lets you visit any 2026 Web page as plain text, or search the Web.",
+        "", "Have fun, and remember: you've got mail!"]),
+    "aol live": ("AOL Live!", [
+        "AOL Live! -- events in the People Connection auditoriums.", "",
+        "Center Stage: open chat all day.  Go there from any chat room with the Center Stage button.",
+        "PC Studio: hang out with the regulars.", "",
+        "Today's hot topics in the lobbies come straight from the day's headlines."]),
+}
+
+
+def info_area(link, area, rid=None):
+    title, lines = INFO[area]
+    link.send_stream(screens.text_window(title, "\r".join(lines), rid, width=60, height=14))
+
+
+def my_aol(link, rid=None):
+    name = name_of(link)
+    mins = int((time.time() - link.session.get("signed_on", time.time())) // 60)
+    rows = [("Today's News", _item(link, ("area", "news"))), ("Stock Quotes", _item(link, ("quote_box",))),
+            ("Weather", _item(link, ("area", "weather"))), ("People Connection", _item(link, ("area", "people connection"))),
+            ("World Wide Web", _item(link, ("area", "www"))), ("Member Services", _item(link, ("area", "member services")))]
+    link.send_stream(screens.list_window("My AOL", f"Screen name: {name}.  Online for {mins} minutes.  "
+                                         "Your favorite places:", rows, response_id=rid, width=40))
+
+
+def ask(link, title, prompt, button, token, intro, rid=None):
+    link.send_stream(screens.input_window(title, prompt, button, token, intro, response_id=rid))
+
+
 def open_area(link, area: str, rid=None):
+    if area in INFO:
+        return info_area(link, area, rid)
+    if area == "my aol":
+        return my_aol(link, rid)
+    if area in ("www", "internet"):
+        return ask(link, "World Wide Web", "Address:", "Go", "zU",
+                   "Type a Web address (like www.npr.org) or words to search the Web.", rid)
+    if area == "find":
+        return ask(link, "Find", "Find:", "Search", "zU", "Search the Web, members and AOL areas.", rid)
+    if area == "reference":
+        return ask(link, "Reference Desk", "Look up:", "Look Up", "zR", "Search the encyclopedia.", rid)
+    if area == "file search":
+        return ask(link, "File Search", "Search for:", "List Files", "zF",
+                   "Search thousands of files and software in the Internet Archive.", rid)
+    if area.startswith("room:"):
+        return chat.join(link, area[5:])
     if area in NEWS_AREAS:
         return news_area(link, area, rid)
     if area == "finance":
         return finance_area(link, rid)
-    if area in ("weather", "digital city"):
+    if area in ("weather", "digital city"):  # Digital City = your local news & weather
         return weather_box(link, rid)
     if area == "clock":
         return clock(link, rid)
@@ -202,7 +263,7 @@ def keyword(link, stream_id, body):
 def by_gid(link, stream_id, body):
     req = request(body)
     print(f"      area request gid={req['gid']} rid={req['response_id']!r}")
-    area = GID_AREAS.get(req["gid"] or "")
+    area = GID_AREAS.get(req["gid"] or "")  # K1 with no gid = What's Hot (magic-token button)
     if area:
         return open_area(link, area, req["response_id"])
     link.send_stream(stream(atom("uni_wait_off")))
@@ -226,9 +287,63 @@ def item(link, stream_id, body):
         quote_box(link)
     elif kind == "room":
         chat.join(link, payload[1])
+    elif kind == "web":
+        show_page(link, payload[1])
+    elif kind == "wiki":
+        show_wiki(link, payload[1])
     else:
         link.send_stream(stream(atom("uni_wait_off")))
 
 
-TOKENS = {b"Kk": keyword, b"K1": by_gid, b"k1": by_gid, b"f1": by_gid,
+def show_page(link, url):
+    def done(p):
+        rows = [(l["title"], _item(link, ("web", l["link"]))) for l in p["links"]]
+        link.send_stream(screens.page_window(p["title"], p["url"] + "\r\r" + p["text"], rows))
+    run_bg(lambda: content.web_page(url), done)
+
+
+def web(link, stream_id, body):
+    q = (request(body)["texts"] or [""])[0].strip()
+    if not q:
+        return link.send_stream(stream(atom("uni_wait_off")))
+    if "." in q and " " not in q:
+        return show_page(link, q)
+
+    def done(results):
+        rows = [(r["title"], _item(link, ("web", r["link"]))) for r in results]
+        link.send_stream(screens.list_window(f"Search: {q}", f"{len(rows)} matches.  Double-click to visit.", rows))
+    run_bg(lambda: content.web_search(q), done)
+
+
+def show_wiki(link, title):
+    def done(w):
+        if not w:
+            return alert(link, "That article is not available.")
+        link.send_stream(screens.text_window(w["title"], w["text"] + "\r\r" + w["link"], width=60, height=14))
+    run_bg(lambda: content.wiki_summary(title), done)
+
+
+def reference(link, stream_id, body):
+    q = (request(body)["texts"] or [""])[0].strip()
+    if not q:
+        return link.send_stream(stream(atom("uni_wait_off")))
+
+    def done(titles):
+        rows = [(t, _item(link, ("wiki", t))) for t in titles]
+        link.send_stream(screens.list_window(f"Reference: {q}", "Double-click an article.", rows, width=44))
+    run_bg(lambda: content.wiki_search(q), done)
+
+
+def files(link, stream_id, body):
+    q = (request(body)["texts"] or [""])[0].strip()
+    if not q:
+        return link.send_stream(stream(atom("uni_wait_off")))
+
+    def done(results):
+        rows = [(r["title"], _item(link, ("article", r))) for r in results]
+        link.send_stream(screens.list_window(f"File Search: {q}", f"{len(rows)} files found.", rows))
+    run_bg(lambda: content.archive_software(q), done)
+
+
+TOKENS = {b"zU": web, b"zR": reference, b"zF": files, b"Kk": keyword, b"K1": by_gid, b"k1": by_gid, b"f1": by_gid,
           b"zA": item, b"zQ": get_quote, b"zW": get_weather}

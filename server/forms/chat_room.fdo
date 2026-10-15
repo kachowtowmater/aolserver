@@ -1,5 +1,12 @@
 uni_start_stream <00x>
+  man_preset_gid <51-0-1>
+  if_last_return_true_then <1, 2>
+    man_close
+    man_update_display
+  uni_sync_skip <1>
+  uni_sync_skip <2>
   man_preset_title <"{{room}}">
+  man_preset_gid <51-0-1>
   uni_invoke_local <32-117>
   var_number_set <A, 1>
   var_number_save <A, 65537>

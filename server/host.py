@@ -16,6 +16,8 @@ def load():
     importlib.reload(fdo.compiler)  # escaping/compile helpers change often
     for name in [m for m in sys.modules if m.startswith("services.")]:
         del sys.modules[name]
+        # `from . import x` reads the package attribute first, so drop that too
+        services.__dict__.pop(name.split(".", 1)[1], None)
     mods, handlers = [], {}
     for info in pkgutil.iter_modules(services.__path__):
         mod = importlib.import_module(f"services.{info.name}")
