@@ -5,7 +5,7 @@ zH = add/update a holding (symbol, shares; 0 shares removes it).
 from datetime import datetime
 
 from . import content, screens, store
-from .util import alert, name_of, request, run_bg
+from .util import fmt_time, alert, name_of, request, run_bg
 
 
 def show(link, rid=None):
@@ -26,7 +26,7 @@ def show(link, rid=None):
             sign = "+" if q["change"] >= 0 else ""
             lines.append(f"{sym}\t{shares:g} sh\t${q['price']:,.2f}\t{sign}{q['pct']:.2f}%\t${value:,.2f}")
         head = (f"Portfolio value ${total:,.2f}   Today {'+' if day >= 0 else ''}{day:,.2f}   "
-                f"{datetime.now().strftime('%-I:%M %p %b %-d')}") if rows else "Your portfolio is empty."
+                f"{fmt_time(datetime.now(), '%-I:%M %p %b %-d')}") if rows else "Your portfolio is empty."
         text = head + "\r\r" + ("\r".join(lines) if lines else "Click Add Stock to track a symbol.") + \
             "\r\rQuotes delayed.  Not investment advice -- it's 1997 in here."
         link.send_stream(screens.text_window(f"{name_of(link)}'s Portfolio", text, response_id=rid, width=60,

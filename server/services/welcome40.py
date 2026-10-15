@@ -14,7 +14,7 @@ on the right) is the client's own art and actions.
 """
 from datetime import datetime
 
-from .util import compile_fdo, fdo_text, run_bg
+from .util import fmt_time, compile_fdo, fdo_text, run_bg
 
 WINDOW = "32-30"
 
@@ -53,7 +53,7 @@ def fill(link, rid=None):
     def done(result):
         heads, feature, dow = result or ([], [], None)
         item = areas._item
-        parts = [_text(40, datetime.now().strftime("%a, %b %-d"))]
+        parts = [_text(40, fmt_time(datetime.now(), "%a, %b %-d"))]
         if feature:  # "on AOL Today": something fun from entertainment/tech
             f = feature[0]
             n = item(link, ("article", f))

@@ -1,0 +1,514 @@
+uni_start_stream
+  man_start_object <dss_list, "">
+    mat_relative_tag <122>
+    mat_bool_popup_menu <yes>
+    mat_shortcut_key <"P">
+    man_start_object <trigger, "People Connection">
+      mat_shortcut_key <"P">
+      mat_relative_tag <209>
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on <00x>
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+          sm_enter_paid
+          buf_start_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+          buf_set_token <"CJ">
+          buf_close_buffer
+        uni_end_stream
+        >
+    man_start_sibling <ornament, "">
+    man_start_sibling <trigger, "Chat Now">
+      mat_shortcut_key <"C">
+      mat_relative_tag <210>
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+          sm_enter_paid
+        sm_send_k1 <14-14902>
+        >
+    man_start_sibling <trigger, "Find a Chat">
+      mat_shortcut_key <"F">
+      mat_relative_tag <211>
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on <00x>
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+          sm_enter_paid
+        sm_send_k1 <14-14903>
+        >
+    man_start_sibling <trigger, "Start Your Own Chat">
+      mat_shortcut_key <"S">
+      mat_relative_tag <212>
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+        sm_send_k1 <14-16393>
+        >
+    man_start_sibling <ornament, "">
+    man_start_sibling <trigger, "AOL Live">
+      mat_shortcut_key <"A">
+      mat_relative_tag <213>
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on <00x>
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+          sm_enter_paid
+        sm_send_f1 <40-3760>
+        >
+    man_start_sibling <ornament, "">
+    man_start_sibling <trigger, "Instant Message">
+      mat_command_key <49x>
+      mat_shortcut_key <"I">
+      mat_relative_tag <214>
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+          man_do_magic_response_id <8417>
+          uni_invoke_no_context <32-225>
+        uni_wait_off_end_stream
+        >
+    man_start_sibling <trigger, "View Buddy List">
+      mat_shortcut_key <"V">
+      mat_relative_tag <215>
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on <00x>
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+          sm_enter_paid
+        sm_send_k1 <17-22746>
+        >
+    man_start_sibling <trigger, "Send Message to Pager">
+      mat_shortcut_key <"E">
+      mat_relative_tag <216>
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on <00x>
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+          sm_enter_paid
+        sm_send_k1 <17-37346>
+        >
+    man_start_sibling <ornament, "">
+    man_start_sibling <trigger, "Search AOL Member Directory">
+      mat_shortcut_key <"D">
+      mat_relative_tag <217>
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on <00x>
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+          sm_enter_paid
+          man_do_magic_token_arg <"f1", 40-25172>
+          if_last_return_false_then <1>
+          buf_start_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+          buf_set_token <"K1">
+          buf_add_atom_data <542055>
+          buf_close_buffer
+          uni_sync_skip <1>
+        uni_end_stream
+        >
+    man_start_sibling <trigger, "Locate AOL Member Online">
+      mat_command_key <4cx>
+      mat_shortcut_key <"L">
+      mat_relative_tag <218>
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+          man_do_magic_response_id <8416>
+          uni_invoke_no_context <32-224>
+        uni_wait_off_end_stream
+        >
+    man_start_sibling <trigger, "Get AOL Member Profile">
+      mat_command_key <47x>
+      mat_shortcut_key <"G">
+      mat_relative_tag <219>
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+          sm_enter_paid
+          man_do_magic_response_id <2104838>
+          uni_invoke_no_context <32-486>
+        uni_wait_off_end_stream
+        >
+    man_start_sibling <trigger, "Internet White Pages">
+      mat_shortcut_key <"W">
+      mat_relative_tag <220>
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on <00x>
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+          sm_enter_paid
+        sm_send_k1 <17-61845>
+        >
+    man_end_object
+  man_end_object
+  man_start_object <dss_list, "">
+    mat_relative_tag <124>
+    mat_bool_popup_menu <yes>
+    man_start_object <trigger, "Mail Center">
+      mat_bool_disabled <yes>
+      mat_bool_active_online <yes>
+      mat_shortcut_key <"M">
+      mat_relative_tag <221>
+      act_replace_select_action
+          <
+          uni_start_stream
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+          sm_enter_paid
+        sm_send_k1 <19-6341>
+        >
+    man_start_sibling <ornament, "">
+    man_start_sibling <trigger, "Read Mail">
+      mat_shortcut_key <"R">
+      mat_command_key <52x>
+      mat_bool_disabled <yes>
+      mat_bool_active_online <yes>
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on
+            if_offline_then <1>
+            uni_wait_off
+          uni_abort_stream
+          uni_sync_skip <1>
+          sm_enter_paid
+          mip_action_command <1dx>
+        uni_end_stream
+        >
+    man_start_sibling <trigger, "Write Mail">
+      mat_command_key <4dx>
+      mat_shortcut_key <"W">
+      act_replace_select_action
+          <
+          uni_start_stream_wait_on
+            sm_enter_paid
+            mip_display_mail_form <0>
+          uni_wait_off_end_stream
+          >
+      man_start_sibling <trigger, "Old Mail">
+        mat_bool_disabled <yes>
+        mat_bool_active_online <yes>
+        mat_shortcut_key <"O">
+        act_replace_select_action
+            <
+            uni_start_stream_wait_on
+              if_offline_then <1>
+              uni_wait_off
+            uni_abort_stream
+            uni_sync_skip <1>
+            sm_enter_paid
+            mip_action_command <1ex>
+          uni_end_stream
+          >
+      man_start_sibling <trigger, "Sent Mail">
+        mat_bool_disabled <yes>
+        mat_bool_active_online <yes>
+        mat_shortcut_key <"S">
+        act_replace_select_action
+            <
+            uni_start_stream_wait_on
+              if_offline_then <1>
+              uni_wait_off
+            uni_abort_stream
+            uni_sync_skip <1>
+            sm_enter_paid
+            mip_action_command <1fx>
+          uni_end_stream
+          >
+      man_start_sibling <ornament, "">
+      man_start_sibling <trigger, "Address Book">
+        mat_shortcut_key <"A">
+        act_replace_select_action
+            <
+            uni_start_stream_wait_on
+              sm_enter_paid
+              uni_invoke_no_context <41-6139>
+            uni_wait_off_end_stream
+            >
+        man_start_sibling <trigger, "Mail Preferences">
+          mat_shortcut_key <"P">
+          mat_relative_tag <222>
+          act_replace_select_action
+              <
+              uni_start_stream
+                man_preset_gid <32-4651>
+                if_last_return_true_then <1, 2>
+                man_make_focus
+                man_update_display
+                uni_sync_skip <1>
+                uni_wait_on
+                uni_invoke_no_context <32-4651>
+                uni_sync_skip <2>
+              uni_end_stream
+              >
+          man_start_sibling <trigger, "Mail Controls">
+            mat_bool_disabled <yes>
+            mat_bool_active_online <yes>
+            mat_shortcut_key <"C">
+            mat_relative_tag <223>
+            act_replace_select_action
+                <
+                uni_start_stream
+                  if_offline_then <1>
+                  uni_wait_off
+                uni_abort_stream
+                uni_sync_skip <1>
+                sm_enter_paid
+              sm_send_k1 <5-1479>
+              >
+            uni_wait_off
+          man_start_sibling <trigger, "Mail Extras">
+            mat_bool_disabled <yes>
+            mat_bool_active_online <yes>
+            mat_shortcut_key <"E">
+            mat_relative_tag <224>
+            act_replace_select_action
+                <
+                uni_start_stream_wait_on
+                  if_offline_then <1>
+                  uni_wait_off
+                uni_abort_stream
+                uni_sync_skip <1>
+              sm_send_k1 <17-58141>
+              >
+            uni_wait_off
+          man_start_sibling <ornament, "">
+          man_start_sibling <trigger, "Set up Automatic AOL (Flashsessions)">
+            mat_shortcut_key <"T">
+            mat_relative_tag <225>
+            act_replace_select_action
+                <
+                uni_start_stream
+                  idb_exists <20-0-62>
+                  if_last_return_true_then <1, 2>
+                  man_do_magic_response_id <2099658>
+                  uni_invoke_no_context <32-2506>
+                  uni_sync_skip <1>
+                  uni_invoke_no_context <32-2507>
+                  uni_sync_skip <2>
+                uni_end_stream
+                >
+            man_start_sibling <trigger, "Run Automatic AOL (Flashsessions) Now">
+              mat_shortcut_key <"U">
+              mat_relative_tag <226>
+              act_replace_select_action
+                  <
+                  uni_start_stream
+                    idb_exists <20-0-62>
+                    if_last_return_true_then <1, 2>
+                    man_do_magic_response_id <2099658>
+                    uni_invoke_no_context <32-2522>
+                    uni_sync_skip <1>
+                    uni_invoke_no_context <32-2507>
+                    uni_sync_skip <2>
+                  uni_end_stream
+                  >
+              man_start_sibling <ornament, "">
+              man_start_sibling <dss_list, "Read Offline Mail">
+                mat_relative_tag <99>
+                mat_bool_inactive_for_guest <yes>
+                mat_shortcut_key <"D">
+                man_start_object <trigger, "Incoming/Saved Mail">
+                  act_replace_select_action
+                      <
+                      uni_start_stream
+                        sm_enter_paid
+                        uni_invoke_no_context <32-6608>
+                      uni_end_stream
+                      >
+                  man_end_object
+                  man_start_object <trigger, "Mail Waiting to be Sent">
+                    mat_relative_tag <263>
+                    act_replace_select_action
+                        <
+                        uni_start_stream
+                          sm_enter_paid
+                          uni_invoke_no_context <32-4635>
+                        uni_end_stream
+                        >
+                    man_end_object
+                    man_start_object <trigger, "Copies of Mail You've Sent">
+                      act_replace_select_action
+                          <
+                          uni_start_stream
+                            sm_enter_paid
+                            uni_invoke_no_context <32-6609>
+                          uni_end_stream
+                          >
+                      man_end_object
+                    man_end_object
+                  man_end_object
+                  man_start_object <dss_list, "">
+                    mat_relative_tag <126>
+                    mat_bool_popup_menu <yes>
+                    mat_shortcut_key <"I">
+                    man_start_object <trigger, "Internet Connection">
+                      mat_bool_disabled <yes>
+                      mat_bool_active_online <yes>
+                      mat_shortcut_key <"I">
+                      mat_relative_tag <227>
+                      act_replace_select_action
+                          <
+                          uni_start_stream_wait_on
+                            if_offline_then <1>
+                            uni_wait_off
+                          uni_abort_stream
+                          uni_sync_skip <1>
+                          sm_enter_paid
+                        sm_send_k1 <17-63472>
+                        >
+                      uni_wait_off
+                    man_start_sibling <ornament, "">
+                    man_start_sibling <trigger, "Go to the Web">
+                      mat_bool_disabled <yes>
+                      mat_bool_active_online <yes>
+                      mat_shortcut_key <"G">
+                      mat_relative_tag <228>
+                      act_replace_select_action
+                          <
+                          uni_start_stream_wait_on
+                            if_offline_then <1>
+                            uni_wait_off
+                          uni_abort_stream
+                          uni_sync_skip <1>
+                          buf_use_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+                          buf_set_token <"f1">
+                          buf_add_atom_data <2101876>
+                          buf_close_buffer
+                          man_preset_gid <32-4705>
+                          if_last_return_true_then <120, 121>
+                            man_end_context
+                            man_set_context_globalid <32-4705>
+                            man_make_focus
+                            man_set_context_relative <1>
+                            www_load_url <"http://www.aol.com">
+                            man_end_context
+                            man_update_display
+                            man_end_context
+                          uni_sync_skip <120>
+                          www_browse <"http://www.aol.com">
+                          uni_sync_skip <121>
+                        uni_end_stream
+                        >
+                    man_start_sibling <trigger, "AOL Netfind">
+                      mat_bool_disabled <yes>
+                      mat_bool_active_online <yes>
+                      mat_shortcut_key <"A">
+                      mat_relative_tag <229>
+                      act_replace_select_action
+                          <
+                          uni_start_stream_wait_on
+                            if_offline_then <1>
+                            uni_wait_off
+                          uni_abort_stream
+                          uni_sync_skip <1>
+                        sm_send_k1 <17-58306>
+                        >
+                      uni_wait_off
+                    man_start_sibling <ornament, "">
+                    man_start_sibling <trigger, "Newsgroups">
+                      mat_bool_disabled <yes>
+                      mat_bool_active_online <yes>
+                      mat_shortcut_key <"N">
+                      mat_relative_tag <230>
+                      act_replace_select_action
+                          <
+                          uni_start_stream_wait_on <00x>
+                            if_offline_then <1>
+                            uni_wait_off
+                          uni_abort_stream
+                          uni_sync_skip <1>
+                          sm_enter_paid
+                        sm_send_k1 <4-12887>
+                        >
+                      uni_wait_off
+                    man_start_sibling <trigger, "FTP (File Transfer)">
+                      mat_bool_disabled <yes>
+                      mat_bool_active_online <yes>
+                      mat_shortcut_key <"F">
+                      mat_relative_tag <232>
+                      act_replace_select_action
+                          <
+                          uni_start_stream_wait_on <00x>
+                            if_offline_then <1>
+                            uni_wait_off
+                          uni_abort_stream
+                          uni_sync_skip <1>
+                          sm_enter_paid
+                        sm_send_k1 <17-52071>
+                        >
+                      uni_wait_off
+                    man_start_sibling <trigger, "Internet White Pages">
+                      mat_bool_disabled <yes>
+                      mat_bool_active_online <yes>
+                      mat_shortcut_key <"W">
+                      mat_relative_tag <260>
+                      act_replace_select_action
+                          <
+                          uni_start_stream_wait_on <00x>
+                            if_offline_then <1>
+                            uni_wait_off
+                          uni_abort_stream
+                          uni_sync_skip <1>
+                        sm_send_k1 <17-61845>
+                        >
+                      uni_wait_off
+                    man_start_sibling <trigger, "Internet Yellow Pages">
+                      mat_bool_disabled <yes>
+                      mat_bool_active_online <yes>
+                      mat_relative_tag <261>
+                      mat_shortcut_key <"Y">
+                      act_replace_select_action
+                          <
+                          uni_start_stream_wait_on <00x>
+                            if_offline_then <1>
+                            uni_wait_off
+                          uni_abort_stream
+                          uni_sync_skip <1>
+                        sm_send_k1 <14-19935>
+                        >
+                      uni_wait_off
+                    man_end_object
+                  man_end_object
+                uni_end_stream

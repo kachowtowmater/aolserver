@@ -175,6 +175,10 @@ def web(args):
         for key, name, kind, data in values:
             subprocess.run([args.wine, "reg", "add", key, "/v", name, "/t", kind, "/d", data, "/f", view],
                            env=env, check=True, capture_output=True)
+    # crash-safe Wine Gecko settings (no JavaScript JITs under x86 emulation), every installed version
+    import glob
+    for d in glob.glob(str(Path(args.wine_prefix).expanduser() / "drive_c/windows/*/gecko/*/wine_gecko/defaults/pref")):
+        shutil.copy2(HERE / "gecko-aol.js", d)
     print(f"AOL's browser now renders http pages through WRP at {args.proxy} (restart AOL).")
     print("WRP must be running there: python start.py on the server, or on this machine.")
 

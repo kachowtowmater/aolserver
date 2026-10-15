@@ -76,3 +76,10 @@ def request(body: bytes) -> dict:
     if not out["texts"] and body and all(32 <= c < 127 or c in (0, 13) for c in body):
         out["texts"] = [body.strip(b"\0\r").decode("latin1")]
     return out
+
+
+def fmt_time(dt, fmt: str) -> str:
+    """strftime with %-d / %-I (no leading zero) on every platform: Windows' C library has
+    no '-' flag."""
+    fmt = fmt.replace("%-d", str(dt.day)).replace("%-I", str(int(dt.strftime("%I"))))
+    return dt.strftime(fmt)

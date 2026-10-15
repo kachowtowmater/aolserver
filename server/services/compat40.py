@@ -1,4 +1,6 @@
 """AOL 4.0 (and some 3.0 menu) tokens that map onto existing features."""
+import os
+
 from . import areas, chat, members
 from .util import alert, request
 
@@ -38,6 +40,36 @@ def fetch_form(link, stream_id, body):
         return areas.open_area(link, area)
     areas._note_unmapped("form", gid)
     areas.open_area(link, "what's hot")
+
+
+# Under Wine, Wine Gecko (the web engine behind AOL 4.0's World Wide Web window) only works on
+# the first thread that used it, and AOL runs each browser window on its own thread: a second
+# browser window (or any after the first was closed) stays blank until AOL restarts.  So Wine
+# clients get their own browser forms with one change: a single World Wide Web window (fixed id
+# 32-4705, no close box -- minimize it instead) that the address bar, Go to the Web and the host
+# all load pages into.  Real Windows (native IE)
+# doesn't need this: set AOL_WINE_BROWSER_FIX=0 for a host whose members all run Windows.
+WINE_BROWSER_FIX = os.environ.get("AOL_WINE_BROWSER_FIX", "1") != "0"
+
+
+def push_form(link, gid_bytes: bytes, fdo_name: str):
+    """Store a form in the client's database (as AOL's host did for form updates)."""
+    from fdo.codec import atom, stream
+    from .util import render
+    rec = render(fdo_name)
+    link.send_stream(stream(atom("idb_start_obj", b"a"), atom("idb_atr_globalid", gid_bytes),
+                            *[atom("idb_append_data", rec[i:i + 900]) for i in range(0, len(rec), 900)],
+                            atom("idb_end_obj")))
+
+
+def sign_on_forms(link):
+    """tools/make_forms40.py builds these from the client's own forms: one reusable browser."""
+    def gid_bytes(name):  # form ids are two-part: type-id
+        t, i = (int(p) for p in name.split("-"))
+        return bytes([0, t]) + i.to_bytes(2, "big")
+    if WINE_BROWSER_FIX:
+        for gid, form in (("32-4705", "www40"), ("41-19051", "addr40"), ("41-27066", "menu40")):
+            push_form(link, gid_bytes(gid), form)
 
 
 TOKENS = {

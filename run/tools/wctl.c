@@ -116,6 +116,16 @@ int main(int argc, char **argv) {
         }
         printf("postat %p %s,%s\n", (void *)h, argv[3], argv[4]); return 0;
     }
+    if (argc >= 4 && !strcmp(argv[1], "type")) {
+        HWND h = (HWND)(ULONG_PTR)strtoull(argv[2], NULL, 16);
+        SendMessageA(h, WM_SETTEXT, 0, (LPARAM)"");
+        for (const char *c = argv[3]; *c; c++) { PostMessageA(h, WM_CHAR, (WPARAM)(unsigned char)*c, 1); Sleep(20); }
+        printf("typed %p\n", (void *)h); return 0;
+    }
+    if (argc >= 3 && !strcmp(argv[1], "xclose")) {
+        HWND h = (HWND)(ULONG_PTR)strtoull(argv[2], NULL, 16);
+        PostMessageA(h, WM_SYSCOMMAND, SC_CLOSE, 0); printf("xclose %p\n", (void *)h); return 0;
+    }
     if (argc >= 4 && !strcmp(argv[1], "shot")) {
         HWND h = (HWND)(ULONG_PTR)strtoull(argv[2], NULL, 16); RECT r; GetWindowRect(h, &r);
         int w = r.right - r.left, ht = r.bottom - r.top;

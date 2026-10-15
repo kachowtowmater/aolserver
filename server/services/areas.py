@@ -9,7 +9,7 @@ from datetime import datetime
 from fdo.codec import atom, gid, stream
 
 from . import art, chat, content, screens
-from .util import alert, name_of, request, run_bg
+from .util import fmt_time, alert, name_of, request, run_bg
 
 # Channel / toolbar GIDs from the client's own Channels (32-5483) and toolbar (32-4650) forms.
 GID_AREAS = {
@@ -137,7 +137,7 @@ def news_area(link, area: str, rid=None):
         if not items:
             return link.send_stream(screens.text_window(title, "This area is temporarily unavailable.", rid))
         rows = [(f"{h['title']}", _item(link, ("article", h))) for h in items]
-        when = datetime.now().strftime("%A, %B %-d, %Y  %-I:%M %p")
+        when = fmt_time(datetime.now(), "%A, %B %-d, %Y  %-I:%M %p")
         art.ensure_art(link, [AREA_ART[area]] if AREA_ART.get(area) else [])
         link.send_stream(screens.list_window(title, f"{intro}  {when}.  Double-click a headline to read it.",
                                              rows, response_id=rid, art=AREA_ART.get(area), window=area))
@@ -170,7 +170,7 @@ def finance_area(link, rid=None):
     def done(rows):
         lines = [f"{name:<14} {q['price']:>12,.2f}  {'+' if q['change'] >= 0 else ''}{q['change']:,.2f} "
                  f"({'+' if q['pct'] >= 0 else ''}{q['pct']:.2f}%)" for name, q in rows if q]
-        intro = "Market summary  " + datetime.now().strftime("%-I:%M %p %b %-d") + "\r" + "\r".join(lines)
+        intro = "Market summary  " + fmt_time(datetime.now(), "%-I:%M %p %b %-d") + "\r" + "\r".join(lines)
         link.send_stream(screens.list_window(
             "Personal Finance", intro, art=AREA_ART.get("finance"), window="finance", items= [("Business news", _item(link, ("area", "business")))],
             buttons=[("Stock Quotes", '          sm_send_token_arg <"zA", %d>' % _item(link, ("quote_box",)))],
@@ -213,7 +213,7 @@ def get_weather(link, stream_id, body):
         lines = [w["place"], "", f"Now: {content.WMO.get(c['weather_code'], '')}, {c['temperature_2m']:.0f} F, "
                  f"humidity {c['relative_humidity_2m']}%, wind {c['wind_speed_10m']:.0f} mph", "", "Forecast:"]
         for day, code, hi, lo in zip(d["time"], d["weather_code"], d["temperature_2m_max"], d["temperature_2m_min"]):
-            lines.append(f"{datetime.fromisoformat(day).strftime('%a %b %-d')}:  "
+            lines.append(f"{fmt_time(datetime.fromisoformat(day), '%a %b %-d')}:  "
                          f"{content.WMO.get(code, ''):<14} High {hi:.0f}  Low {lo:.0f}")
         link.send_stream(screens.text_window(f"Weather: {w['place']}", "\r".join(lines), width=56, height=12))
     run_bg(lambda: content.weather(place), done)
@@ -221,7 +221,7 @@ def get_weather(link, stream_id, body):
 
 def clock(link, rid=None):
     mins = int((time.time() - link.session.get("signed_on", time.time())) // 60)
-    alert(link, datetime.now().strftime("It's %A, %B %-d, %Y %-I:%M %p.  ")
+    alert(link, fmt_time(datetime.now(), "It's %A, %B %-d, %Y %-I:%M %p.  ")
           + f"You have been online for {mins} minute{'s' if mins != 1 else ''}.")
     link.send_stream(stream(atom("uni_wait_off")))
 
@@ -405,6 +405,8 @@ def keyword(link, stream_id, body):
     area = KEYWORDS.get(word) or KEYWORDS.get(word.replace(" ", ""))
     if area:
         return open_area(link, area)
+    if raw.lower().startswith("aol://"):  # an AOL location typed into the address bar
+        return url_request(link, stream_id, atom("de_data", raw.encode("latin1", "replace")))
     if looks_like_url(raw):
         return open_url(link, raw)
     _note_unmapped("keyword", word)
@@ -486,8 +488,16 @@ def open_url(link, url: str):
     elif not url.lower().startswith("http://"):
         url = "http://" + url
     from .util import compile_fdo, fdo_text
-    link.send_stream(compile_fdo(f'uni_start_stream <00x>\n  www_browse <"{fdo_text(url)}">\n  uni_wait_off\n'
-                                 'uni_end_stream <00x>'))
+    from . import compat40
+    u = fdo_text(url)
+    if compat40.WINE_BROWSER_FIX:  # load into the one browser window if it's open (see compat40)
+        body = (f"  man_preset_gid <32-4705>\n  if_last_return_true_then <1, 2>\n    man_end_context\n"
+                f"    man_set_context_globalid <32-4705>\n    man_make_focus\n    man_set_context_relative <1>\n"
+                f'    www_load_url <"{u}">\n    man_end_context\n    man_update_display\n    man_end_context\n'
+                f'  uni_sync_skip <1>\n  www_browse <"{u}">\n  uni_sync_skip <2>\n')
+    else:
+        body = f'  www_browse <"{u}">\n'
+    link.send_stream(compile_fdo(f"uni_start_stream <00x>\n{body}  uni_wait_off\nuni_end_stream <00x>"))
 
 
 def looks_like_url(text: str) -> bool:

@@ -1,0 +1,293 @@
+uni_start_stream <00x>
+  sm_enter_paid
+  man_start_object <ind_group, "World Wide Web">
+    mat_style_id <32-4705>
+    sm_set_plus_group <22x, c9x>
+    mat_orientation <vff>
+    mat_color_face <255, 251, 240>
+    mat_style_id <32-4705>
+    mat_bool_auto_closeable <no>
+    mat_bool_non_closeable <yes>
+    mat_object_id <32-4705>
+    man_get_display_characteristics <height>
+    uni_use_last_atom_value <mat_height>
+    var_number_set <A, 640>
+    man_get_display_characteristics <horzres>
+    var_number_set_from_atom <B>
+    if_numa_eq_numb_then <1, 2>
+    mat_width <610>
+    uni_sync_skip <1>
+    man_get_display_characteristics <width, 86>
+    uni_use_last_atom_value <mat_width>
+    uni_sync_skip <2>
+    act_set_criterion <24>
+    act_append_action
+      <
+      uni_start_stream
+        man_set_context_globalid <3>
+        act_do_action <75>
+        man_end_context
+        man_check_and_set_context_rid <1>
+        if_last_return_true_then <86>
+        var_lookup_by_id <A, 202>
+        man_set_context_globalid <3>
+        man_set_context_relative <21>
+        if_numa_true_then <85, 87>
+        act_do_action <64>
+        uni_sync_skip <85>
+        act_do_action <63>
+        uni_sync_skip <87>
+        man_end_context
+        man_end_context
+        man_end_context
+        uni_sync_skip <86>
+      uni_end_stream
+      >
+    act_set_criterion <25>
+    act_append_action
+      <
+      uni_start_stream
+        man_set_context_globalid <3>
+        act_do_action <76>
+        man_end_context
+      uni_end_stream
+      >
+    act_set_criterion <201>
+    act_replace_action
+        <
+        uni_start_stream
+          sm_check_plus_group
+          man_set_context_relative <1>
+          act_get_db_value <14x, 00x, 00x, d1x>
+          if_last_return_false_then <2>
+          lm_table_use_table <20-0-71>
+          async_get_screen_name
+          uni_use_last_atom_string <lm_table_use_key>
+          lm_table_get_item
+          uni_save_result
+          if_last_return_false_then <1>
+          idb_set_context <20-0-78>
+          idb_atr_offset <0>
+          idb_get_string
+          var_string_set_from_atom <A>
+          idb_end_context
+          var_string_get <A>
+          uni_save_result
+          uni_use_last_atom_string <lm_table_set_item>
+          uni_sync_skip <1>
+          uni_get_result
+          uni_use_last_atom_string <www_load_url>
+          var_data_set <00x, 00x>
+          if_data_neq_zero_then <3>
+          uni_sync_skip <2>
+          www_load_url <"x-$home$://">
+          uni_sync_skip <3>
+          man_end_context
+        uni_end_stream
+        >
+      mat_horizontal_spacing <0>
+      mat_vertical_spacing <0>
+      mat_position <center_center>
+      mat_bool_background_flood <yes>
+      man_start_object <org_group, "">
+        mat_orientation <hlc>
+        man_start_object <org_group, "">
+          mat_orientation <vlf>
+        man_end_object
+      man_start_sibling <org_group, "">
+        mat_orientation <hlf>
+        man_start_object <view, "">
+          mat_size <50, 19>
+          mat_relative_tag <1>
+          www_manage
+          mat_width <610>
+          mat_height <302>
+          mat_bool_exportable <yes>
+          mat_bool_importable <yes>
+          var_number_set <A, 0>
+          var_number_save <A, 202>
+          act_set_criterion <134>
+          act_replace_action
+              <
+              uni_start_stream
+                man_set_context_relative <1>
+                var_number_set <A, 1>
+                var_number_save <A, 202>
+                man_end_context
+                man_set_context_globalid <3>
+                act_do_action <78>
+                man_end_context
+              uni_end_stream
+              >
+            act_set_criterion <135>
+            act_replace_action
+                <
+                uni_start_stream
+                  man_set_context_relative <1>
+                  var_number_set <A, 0>
+                  var_number_save <A, 202>
+                  man_end_context
+                  man_set_context_globalid <3>
+                  act_do_action <79>
+                  man_end_context
+                uni_end_stream
+                >
+              act_set_criterion <132>
+              act_replace_action
+                  <
+                  uni_start_stream
+                    man_set_context_relative <1>
+                    www_get_current_title
+                    uni_save_result
+                    man_end_context
+                    uni_get_result
+                    uni_use_last_atom_string <mat_title>
+                    man_set_context_relative <1>
+                    www_get_current_url
+                    uni_save_result
+                    man_end_context
+                    uni_get_result
+                    uni_use_last_atom_string <mat_url>
+                    man_update_display
+                  uni_end_stream
+                  >
+                act_set_criterion <128>
+                act_replace_action
+                    <
+                    uni_start_stream
+                      man_set_context_relative <1>
+                      www_get_current_url
+                      uni_save_result
+                      man_end_context
+                      uni_get_result
+                      uni_use_last_atom_string <mat_url>
+                      man_update_display
+                      man_set_context_globalid <3>
+                      act_do_action <77>
+                      man_end_context
+                    uni_end_stream
+                    >
+                  act_set_criterion <129>
+                  act_replace_action
+                      <
+                      uni_start_stream
+                        man_set_context_relative <1>
+                        www_get_current_link
+                        uni_save_result
+                        man_end_context
+                        man_set_context_relative <3>
+                        uni_get_result
+                        uni_use_last_atom_string <mat_title>
+                        man_update_display
+                        man_end_context
+                      uni_end_stream
+                      >
+                    act_set_criterion <130>
+                    act_replace_action
+                        <
+                        uni_start_stream
+                          man_set_context_relative <1>
+                          www_get_parts_complete
+                          uni_save_result
+                          man_end_context
+                          man_set_context_relative <4>
+                          uni_get_result
+                          if_last_return_true_then <1, 2>
+                          uni_get_result
+                          uni_use_last_atom_value <mat_value>
+                          mat_bool_hidden <no>
+                          uni_sync_skip <1>
+                          mat_bool_hidden <yes>
+                          uni_sync_skip <2>
+                          man_update_display
+                          man_end_context
+                        uni_end_stream
+                        >
+                      act_set_criterion <137>
+                      act_replace_action
+                          <
+                          uni_start_stream
+                            man_set_context_relative <1>
+                            www_get_status_msg
+                            uni_save_result
+                            man_end_context
+                            man_set_context_relative <3>
+                            uni_get_result
+                            uni_use_last_atom_string <mat_title>
+                            man_update_display
+                            man_end_context
+                          uni_end_stream
+                          >
+                        act_set_criterion <138>
+                        act_replace_action
+                            <
+                            uni_start_stream
+                              man_set_context_relative <20>
+                              mat_bool_hidden <no>
+                              man_end_context
+                              man_update_display
+                            uni_end_stream
+                            >
+                          act_set_criterion <139>
+                          act_replace_action
+                              <
+                              uni_start_stream
+                                man_set_context_relative <20>
+                                mat_bool_hidden <yes>
+                                man_end_context
+                                man_update_display
+                              uni_end_stream
+                              >
+                            mat_horizontal_spacing <0>
+                            mat_vertical_spacing <0>
+                            mat_bool_writeable <yes>
+                          man_end_object
+                        man_start_sibling <org_group, "">
+                          mat_orientation <hfb>
+                          man_start_object <ornament, "">
+                            mat_size <52, 1>
+                            mat_relative_tag <3>
+                            mat_bool_precise <no>
+                            mat_vertical_spacing <0>
+                            mat_font_id <ms_sans_serif>
+                            mat_font_size <9>
+                          man_end_object
+                          man_start_object <org_group, "">
+                            mat_orientation <hrf>
+                            man_start_object <range, "">
+                              mat_relative_tag <4>
+                              mat_bool_precise <yes>
+                              mat_precise_width <100>
+                              mat_precise_height <8>
+                              mat_frame_style <pop_in>
+                              mat_maximum <100>
+                            man_end_object
+                            man_start_object <ornament, "">
+                              mat_bool_disabled <yes>
+                              mat_relative_tag <20>
+                              mat_art_id <1-1-28113>
+                              mat_precise_width <14>
+                              mat_precise_height <14>
+                              mat_bool_hidden <yes>
+                            man_end_object
+                          man_end_object
+                        man_end_object
+                        man_update_display
+                        man_set_context_globalid <1>
+                        var_string_null <A>
+                        var_lookup_by_id <A, 310>
+                        var_string_null <B>
+                        var_string_save <B, 310>
+                        man_end_context
+                        if_stra_neq_null_then <1, 2>
+                        man_set_context_relative <1>
+                        var_string_get <A>
+                        uni_use_last_atom_string <www_load_url>
+                        man_end_context
+                        uni_sync_skip <1>
+                        act_do_action <201>
+                        uni_sync_skip <2>
+                        uni_start_stream
+                        sm_send_f1 <32-5846>
+                        uni_wait_off
+                      uni_end_stream <00x>

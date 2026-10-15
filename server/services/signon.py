@@ -42,8 +42,10 @@ def go_online(link, name: str):
         buddy.announce(name, True)
     link.send_stream(stream(atom("async_online"), atom("uni_invoke_local", gid("32-296"))))
     if name.lower() != NEW_USER:
-        from . import art
+        from . import art, compat40
         art.preload(link)
+        if art.version(link) == "40":
+            compat40.sign_on_forms(link)
 
 
 def sign_on(link, stream_id, body):

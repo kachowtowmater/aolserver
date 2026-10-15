@@ -5,7 +5,7 @@ Keyword BOARDS / MESSAGE BOARDS.  zT = create topic, zM = post reply (forms).
 from datetime import datetime
 
 from . import screens, store
-from .util import name_of, request
+from .util import fmt_time, name_of, request
 
 BOARDS = ["General Discussion", "Remember the 90s?", "Tech Talk", "News & Politics", "Sports Talk",
           "Movies, TV & Music", "Help & Questions"]
@@ -50,7 +50,7 @@ def topic(link, topic_id):
         return
     parts = []
     for p in store.posts(topic_id):
-        when = datetime.fromtimestamp(p["posted"]).strftime("%a, %b %-d, %Y %-I:%M %p")
+        when = fmt_time(datetime.fromtimestamp(p["posted"]), "%a, %b %-d, %Y %-I:%M %p")
         parts += [f"Subject:  {p['subject']}", f"From:  {p['author']}", f"Date:  {when}", "", p["body"], "",
                   "-" * 50, ""]
     link.session["reply_topic"] = topic_id

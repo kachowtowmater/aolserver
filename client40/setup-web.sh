@@ -47,6 +47,11 @@ for view in /reg:32 /reg:64; do
   "$WINE" reg add "$R" /v ProxyOverride /t REG_SZ /d "<local>" /f $view >/dev/null
 done
 
+# Crash-safe Gecko settings: no JavaScript JITs (they crashed xul.dll under x86 emulation)
+for d in "$WINEPREFIX"/drive_c/windows/*/gecko/*/wine_gecko/defaults/pref; do
+  [ -d "$d" ] && cp "$ROOT/client40/gecko-aol.js" "$d/"
+done
+
 # Home page through WRP (Wine's default is https://www.winehq.org, which bypasses WRP)
 for view in /reg:32 /reg:64; do
   "$WINE" reg add 'HKCU\Software\Microsoft\Internet Explorer\Main' /v "Start Page" /t REG_SZ /d "http://www.aol.com/" /f $view >/dev/null

@@ -16,7 +16,7 @@ import state
 from fdo.codec import atom, stream
 
 from . import screens, store
-from .util import alert, atoms, name_of, request
+from .util import fmt_time, alert, atoms, name_of, request
 
 
 def _body_text(parts: list[str]) -> str:
@@ -126,7 +126,7 @@ def open_message(link, mid: int):
     m = store.get(mid)
     if not m or m["owner"] != store.key(name_of(link)):
         return link.send_stream(stream(atom("uni_wait_off")))
-    when = datetime.fromtimestamp(m["sent"]).strftime("%a, %b %-d, %Y %-I:%M:%S %p")
+    when = fmt_time(datetime.fromtimestamp(m["sent"]), "%a, %b %-d, %Y %-I:%M:%S %p")
     head = [f"Subj:  {m['subject']}", f"Date:  {when}", f"From:  {m['sender']}", f"To:    {m['recipients']}"]
     if m["cc"]:
         head.append(f"CC:    {m['cc']}")
