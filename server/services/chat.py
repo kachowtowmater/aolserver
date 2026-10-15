@@ -96,7 +96,7 @@ def list_rooms(link, stream_id, body):
     from . import areas, screens
     for name in ("Lobby 1", "Romance", "Thirtysomething", "Nineties Kids", "Tech Talk", "News Talk", "Sports Arena"):
         state.ROOMS.setdefault(name, {"slots": {}, "next": 1})
-    rows = [(f"{name:<24}{len(r['slots']):>3}", areas._item(link, ("room", name)))
+    rows = [(f"{len(r['slots'])}\t{name}", areas._item(link, ("room", name)))
             for name, r in sorted(state.ROOMS.items(), key=lambda kv: (not kv[0].startswith("Lobby"), kv[0]))]
     link.send_stream(screens.list_window(
         "Public Rooms", "Double-click a room to go there.  Number of people in each room is shown.", rows,

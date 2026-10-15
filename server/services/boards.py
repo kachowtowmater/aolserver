@@ -28,7 +28,7 @@ def _item(link, payload):
 
 def board_list(link, rid=None):
     _seed()
-    rows = [(f"{b:<26}{len(store.topics(b)):>4} topics", _item(link, ("board", b))) for b in BOARDS]
+    rows = [(f"{len(store.topics(b))} topics\t{b}", _item(link, ("board", b))) for b in BOARDS]
     link.send_stream(screens.list_window("Message Boards", "Choose a board.  Double-click to see its topics.",
                                          rows, response_id=rid, width=40, window="boards"))
 
@@ -37,9 +37,9 @@ def board(link, name):
     rows = []
     for t in store.topics(name):
         when = datetime.fromtimestamp(t["last"] or t["created"]).strftime("%m/%d/%y")
-        rows.append((f"{t['title'][:40]:<40} {t['n']:>3}  {when}", _item(link, ("topic", t["id"]))))
+        rows.append((f"{t['n']} posts\t{when}\t{t['title'][:50]}", _item(link, ("topic", t["id"]))))
     link.send_stream(screens.list_window(
-        name, "Topic                                     Posts  Latest", rows,
+        name, "Posts, latest date and topic.  Double-click a topic to read it.", rows,
         buttons=[("Create Topic", '          sm_send_token_arg <"zA", %d>' % _item(link, ("new_topic", name)))],
         width=56, window="board"))
 

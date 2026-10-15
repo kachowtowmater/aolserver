@@ -71,8 +71,11 @@ def read_new_mail(link, stream_id, body=b"", folder="new"):
     if not rows and folder == "new":
         link.send_stream(stream(atom("uni_wait_off")))
         return alert(link, "You have no new mail.")
-    entries = [(f"{datetime.fromtimestamp(r['sent']).strftime('%m/%d/%y')}  "
-                f"{(r['recipients'] if folder == 'sent' else r['sender'])[:12]:<12}  {r['subject'][:44]}",
+    def who(r):
+        n = (r["recipients"] if folder == "sent" else r["sender"])[:16]
+        return n + ("\t" if len(n) < 8 else "")  # second tab keeps short names in the column
+
+    entries = [(f"{datetime.fromtimestamp(r['sent']).strftime('%m/%d/%y')}\t{who(r)}\t{r['subject'][:44]}",
                 item(link, ("mail", r["id"]))) for r in rows]
     buttons = [("Old Mail", '          sm_send_token_arg <"zA", %d>' % item(link, ("mailbox", "old"))),
                ("Sent Mail", '          sm_send_token_arg <"zA", %d>' % item(link, ("mailbox", "sent")))]
