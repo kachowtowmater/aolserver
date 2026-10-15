@@ -83,4 +83,8 @@ def dod_request(link, stream_id, body):
         push(link, name)
 
 
-TOKENS = {b"fh": dod_request}
+def dod_closed(link, stream_id, body):
+    """ff: a form that was waiting on DOD art was closed -- nothing to do."""
+
+
+TOKENS = {b"fh": dod_request, b"ff": dod_closed}

@@ -122,3 +122,22 @@ def gid(text: str) -> bytes:
     if len(parts) == 2:
         return bytes([parts[0]]) + u16(parts[1])
     return bytes([parts[0], parts[1]]) + u16(parts[2])
+
+
+def top_level_streams(data: bytes) -> list[bytes]:
+    """Split back-to-back uni_start_stream..uni_end_stream blocks so each can go in its own packet."""
+    out, depth, start = [], 0, 0
+    for off, a in decode_offsets(data):
+        if a.name == "uni_start_stream":
+            if depth == 0:
+                start = off
+            depth += 1
+        elif a.name == "uni_end_stream":
+            depth -= 1
+            if depth == 0:
+                nxt = off + len(atom("uni_end_stream", a.args))
+                out.append(data[start:nxt])
+                start = nxt
+    if start < len(data):
+        out.append(data[start:])
+    return [x for x in out if x] or [data]

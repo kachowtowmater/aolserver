@@ -19,6 +19,7 @@ def db():
     CREATE TABLE IF NOT EXISTS topic(id INTEGER PRIMARY KEY, board TEXT, title TEXT, author TEXT, created REAL);
     CREATE TABLE IF NOT EXISTS post(id INTEGER PRIMARY KEY, topic INTEGER, author TEXT, subject TEXT,
                                     body TEXT, posted REAL);
+    CREATE TABLE IF NOT EXISTS holding(owner TEXT, symbol TEXT, shares REAL, PRIMARY KEY(owner, symbol));
     CREATE TABLE IF NOT EXISTS buddy(owner TEXT, buddy TEXT, PRIMARY KEY(owner, buddy));
     CREATE TABLE IF NOT EXISTS profile(
         key TEXT PRIMARY KEY, realname TEXT, location TEXT, birthday TEXT, sex TEXT,
@@ -171,3 +172,16 @@ def reply(topic_id, author, subject, body):
     with db() as con:
         con.execute("INSERT INTO post(topic,author,subject,body,posted) VALUES(?,?,?,?,?)",
                     (topic_id, author, subject, body, time.time()))
+
+
+def holdings(owner: str):
+    with db() as con:
+        return con.execute("SELECT symbol, shares FROM holding WHERE owner=? ORDER BY symbol", (key(owner),)).fetchall()
+
+
+def set_holding(owner: str, symbol: str, shares: float):
+    with db() as con:
+        if shares:
+            con.execute("INSERT OR REPLACE INTO holding(owner,symbol,shares) VALUES(?,?,?)", (key(owner), symbol, shares))
+        else:
+            con.execute("DELETE FROM holding WHERE owner=? AND symbol=?", (key(owner), symbol))

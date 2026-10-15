@@ -294,9 +294,22 @@ def open_area(link, area: str, rid=None):
     alert(link, f"{area.title()} is not currently available.  Please try again later.")
 
 
+def _module_areas():
+    """Other service modules can add keywords/areas: AREAS = {"keyword": handler(link, rid)}."""
+    import sys
+    found = {}
+    for name, mod in list(sys.modules.items()):
+        if name.startswith("services.") and isinstance(getattr(mod, "AREAS", None), dict):
+            found.update(mod.AREAS)
+    return found
+
+
 def keyword(link, stream_id, body):
     word = _norm(" ".join(request(body)["texts"]))
     print(f"      keyword: {word!r}")
+    extra = _module_areas().get(word) or _module_areas().get(word.replace(" ", ""))
+    if extra:
+        return extra(link, None)
     area = KEYWORDS.get(word) or KEYWORDS.get(word.replace(" ", ""))
     if area:
         return open_area(link, area)

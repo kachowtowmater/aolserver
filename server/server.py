@@ -92,6 +92,11 @@ class Link:
         """Run an atom stream on the client. 'aT' carries no stream id; the
         2-byte-id 'AT' form is silently ignored by the 3.0 client. Streams too
         big for one packet go out as 'at' chunks sharing a 4-byte stream id."""
+        parts = codec.top_level_streams(atoms)
+        if len(parts) > 1:  # e.g. close-old-window then open-new: each runs as its own stream
+            for part in parts:
+                self.send_stream(part)
+            return
         if len(atoms) <= CHUNK:
             return self.send(p3.DATA, b"aT" + atoms)
         self.stream_seq += 1

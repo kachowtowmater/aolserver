@@ -11,7 +11,7 @@ The room window itself is the client's own form 32-117 with the title preset.
 import state
 from fdo.codec import atom, stream
 
-from . import art
+from . import art, screens
 from .util import compile_fdo, fdo_text, FORMS_DIR, name_of
 
 ROOM_SIZE = 23  # AOL lobbies held 23 people
@@ -53,9 +53,9 @@ def join(link, room_name: str):
     users = "\n".join(f'  chat_add_user <"{fdo_text(name_of(m))}">' for m in room["slots"])
     form = "43-22783" if art.version(link) == "40" else "32-117"
     src = (FORMS_DIR / "chat_room.fdo").read_text().replace("{{room}}", fdo_text(room_name)).replace(
-        "{{users}}", users).replace("{{form}}", form)
+        "{{users}}", users).replace("{{form}}", form).replace("{{gid}}", screens.window_gid("chatroom"))
     art.ensure_form(link, form)
-    link.send_stream(compile_fdo(src))
+    link.send_stream(screens.close_window("chatroom") + compile_fdo(src))  # one room window at a time
     for other in room["slots"]:
         if other is not link:
             other.send_data_raw(b"CA", bytes([slot]) + me.encode("latin1") + b"\x00")

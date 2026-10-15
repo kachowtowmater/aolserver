@@ -15,17 +15,19 @@ def window_gid(key: str) -> str:
     """Stable global id per window kind ('signup', 'quote', ...) so a re-send replaces it.
     Derived from the name (not a counter) so hot reloads never reshuffle ids."""
     import zlib
-    return f"52-0-{1 + zlib.crc32(key.encode()) % 60000}"
+    return f"32-{50000 + zlib.crc32(key.encode()) % 15000}"  # form-style id, above any real AOL form
 
 
 def _wrap(body: str, response_id: bytes | None, window: str | None = None) -> bytes:
     rid = f"  man_set_response_id <{int.from_bytes(response_id, 'big')}>\n" if response_id else ""
-    pre = ""
+    pre, close = "", b""
     if window:
-        g = window_gid(window)
-        pre = (f"  man_preset_gid <{g}>\n  if_last_return_true_then <1, 2>\n    man_close\n    man_update_display\n"
-               f"  uni_sync_skip <1>\n  uni_sync_skip <2>\n  man_preset_gid <{g}>\n")
-    return compile_fdo(f"uni_start_stream <00x>\n{rid}{pre}{body}\n  man_update_display\n  uni_wait_off\nuni_end_stream <00x>")
+        # closing the old copy must be its own stream: a close takes effect only after the
+        # stream ends, so presetting the same id in that stream would nest inside the old one
+        close = close_window(window)
+        pre = f"  man_preset_gid <{window_gid(window)}>\n"
+    return close + compile_fdo(
+        f"uni_start_stream <00x>\n{rid}{pre}{body}\n  man_update_display\n  uni_wait_off\nuni_end_stream <00x>")
 
 
 def list_window(title: str, intro: str, items: list[tuple[str, int]], buttons=(), art: str | None = None,
@@ -141,37 +143,7 @@ def form_window(title: str, intro: str, fields: list[tuple[str, int, str]], butt
 
 
 def close_window(window: str) -> bytes:
-    g = window_gid(window)
-    return compile_fdo(f"uni_start_stream <00x>\n  man_preset_gid <{g}>\n  if_last_return_true_then <1, 2>\n"
-                       f"    man_close\n    man_update_display\n  uni_sync_skip <1>\n  uni_sync_skip <2>\nuni_end_stream <00x>")
-
-
-def welcome_window(name: str, mail_count: int, headlines: list[tuple[str, int]]) -> bytes:
-    """The host-drawn Welcome screen: mail button, today's top stories, quick buttons."""
-    mail = f"You have {mail_count} new message{'s' if mail_count != 1 else ''}!" if mail_count else "No new mail"
-    lines = ['  man_start_object <ind_group, "Welcome, %s!">' % fdo_text(name), "    mat_orientation <vcf>",
-             "    mat_position <center_center>",
-             '    man_start_object <org_group, "">', "      mat_orientation <hcf>",
-             '      man_start_object <trigger, "">', "        mat_art_id <1-0-24836>",
-             "        mat_trigger_style <picture>",
-             '        act_replace_select_action\n          <\n          uni_start_stream_wait_on <00x>\n'
-             '          sm_send_token_raw <"eL">\n          >',
-             f'      man_start_sibling <ornament, "{fdo_text(mail)}">', "        mat_font_sis <arial, 10, bold>",
-             "      man_end_object",
-             '    man_start_sibling <dss_list, "Today\x27s Top News:">', "      mat_size <48, 5>",
-             "      mat_title_pos <left | top_or_left>", "      mat_bool_default_send <no>"]
-    for i, (label, n) in enumerate(headlines):
-        verb = "man_start_object" if i == 0 else "man_start_sibling"
-        lines += [f'      {verb} <trigger, "{fdo_text(label[:80])}">', "        act_replace_select_action",
-                  f'          <\n          uni_start_stream_wait_on <00x>\n          sm_send_token_arg <"zA", {n}>\n          >']
-    if headlines:
-        lines.append("      man_end_object")
-    buttons = [("People Connection", 'sm_send_token_raw <"CJ">'), ("Channels", "uni_invoke_local <32-5483>"),
-               ("Keyword", "uni_invoke_no_context <40-5792>"), ("Top News", 'sm_send_k1 <40-37744>')]
-    lines += ['    man_start_sibling <org_group, "">', "      mat_orientation <hcf>"]
-    for i, (label, action) in enumerate(buttons):
-        verb = "man_start_object" if i == 0 else "man_start_sibling"
-        lines += [f'      {verb} <trigger, "{label}">', "        act_replace_select_action",
-                  f"          <\n          uni_start_stream <00x>\n          {action}\n          >"]
-    lines += ["      man_end_object", "    man_end_object"]
-    return _wrap("\n".join(lines), None, "welcome")
+    """Close a host window: set context to its global id, man_close (man_close <gid> doesn't
+    close host-built windows; this is safe when the window doesn't exist)."""
+    return compile_fdo(f"uni_start_stream <00x>\n  man_set_context_globalid <{window_gid(window)}>\n  man_close\n"
+                       "  man_update_display\nuni_end_stream <00x>")
