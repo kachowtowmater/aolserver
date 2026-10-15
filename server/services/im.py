@@ -35,10 +35,15 @@ def deliver(sender: str, recipient: str, text: str) -> bool:
     return True
 
 
-def _im_stream(link, sender, text):
+def _im_stream(link, sender, text, partner=None):
+    """`partner` picks the conversation window (defaults to the sender's)."""
     from . import art
     form = "im40" if art.version(link) == "40" else "im"
-    return render(form, gid=_conversation_gid(link, sender), sender=sender, text=text)
+    if form == "im":  # 3.0 shows 4.0's HTML IMs as plain text
+        import re
+        text = re.sub(r"<[^>]*>", "", text).replace("\x7f", " ")
+    partner = partner or sender
+    return render(form, gid=_conversation_gid(link, partner), sender=sender, partner=partner, text=text)
 
 
 def send_im(link, stream_id, body):
@@ -48,19 +53,25 @@ def send_im(link, stream_id, body):
         return
     to, text = fields[0].strip(), fields[-1]
     me = name_of(link)
+    from . import regulars
+    regular = regulars.regular_named(to)
+    if regular and not state.ONLINE.get(to.lower().replace(" ", "")):
+        link.send_stream(_im_stream(link, me, text, partner=regular))
+        return regulars.im_to_regular(link, regular, text)
     if not deliver(me, to, text):
         alert(link, f"{to} is not currently signed on.")
         return
     # echo into the sender's own conversation window, like AOL 3.0
     deliver_to_self = state.ONLINE.get(me.lower().replace(" ", ""))
     if deliver_to_self is link:
-        link.send_stream(_im_stream(link, me, text))
+        link.send_stream(_im_stream(link, me, text, partner=to))
 
 
 def available(link, stream_id, body):
     fields = _fields(body)
     who = fields[0].strip() if fields else ""
-    online = who.lower().replace(" ", "") in state.ONLINE
+    from . import regulars
+    online = who.lower().replace(" ", "") in state.ONLINE or bool(regulars.regular_named(who))
     alert(link, f"{who} is online and able to receive Instant Messages." if online
           else f"{who} is not currently signed on.")
 

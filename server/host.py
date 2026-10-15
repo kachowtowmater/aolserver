@@ -35,6 +35,9 @@ def on_data(link, token: bytes, stream_id: int, body: bytes):
     if token not in PRE_SIGNON and "name" not in link.session:
         print(f"      (ignoring {token!r} before sign-on)")
         return
+    body = _reassemble(link, token, stream_id, body)
+    if body is None:
+        return
     handler = HANDLERS.get(token)
     if handler:
         handler(link, stream_id, body)
@@ -43,6 +46,27 @@ def on_data(link, token: bytes, stream_id: int, body: bytes):
         print(f"      (no handler for token {token!r})")
         from fdo.codec import atom, stream
         link.send_stream(stream(atom("uni_wait_off")))
+
+
+def _reassemble(link, token: bytes, stream_id: int, body: bytes):
+    """AOL 4.0 splits a long stream (an IM, a mail) over several packets with the same token and
+    stream id: hold the pieces until the one carrying uni_end_stream arrives, then hand on the whole."""
+    from fdo import codec
+    parts = link.session.setdefault("partial", {})
+    key = (token, stream_id)
+    try:
+        names = [a.name for a in codec.decode(body)]
+    except Exception:
+        names = []
+    if key in parts:
+        parts[key] += body
+        if "uni_end_stream" not in names:
+            return None
+        return parts.pop(key)
+    if names and names[0] == "uni_start_stream" and "uni_end_stream" not in names and stream_id:
+        parts[key] = body
+        return None
+    return body
 
 
 def on_disconnect(link):

@@ -61,6 +61,7 @@ def join(link, room_name: str):
             other.send_data_raw(b"CA", bytes([slot]) + me.encode("latin1") + b"\x00")
     link.send_stream(stream(atom("uni_wait_off")))
     _send_line(link, "OnlineHost", f"*** You are in \"{room_name}\". ***")
+    regulars.maybe_open_im(link, room)
 
 
 def leave(link):

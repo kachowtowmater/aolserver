@@ -3,7 +3,7 @@ uni_start_stream <00x>
   if_last_return_true_then <1, 2>
     man_end_context
   uni_sync_skip <1>
-    man_preset_title <"Instant Message From: {{sender}}">
+    man_preset_title <"Instant Message From: {{partner}}">
     man_preset_gid <{{gid}}>
     uni_invoke_local <32-6736>
   uni_sync_skip <2>
@@ -18,6 +18,9 @@ uni_start_stream <00x>
   man_end_data
   man_end_context
   act_do_action <351>
+  man_set_context_relative <1>
+  man_replace_data <"{{partner}}">
+  man_end_context
   man_end_context
   man_update_display
   uni_wait_off

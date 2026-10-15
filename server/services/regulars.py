@@ -148,3 +148,81 @@ def ensure_running():
     task = state.__dict__.get("REGULARS_TASK")
     if task is None or task.done():
         state.REGULARS_TASK = asyncio.get_running_loop().create_task(_idle_loop())
+
+
+# ---------- Instant Messages ----------
+
+def regular_named(name: str) -> str | None:
+    """The persona's proper screen name, if `name` is one of the regulars."""
+    key = name.lower().replace(" ", "")
+    return next((p for p in PERSONAS if p.lower() == key), None)
+
+
+def _im_llm(name: str, partner: str, history: list) -> str | None:
+    convo = "\n".join(f"{w}: {t}" for w, t in history[-12:])
+    system = (f"You are {name}, {PERSONAS[name]}, chatting one-on-one with {partner} over AOL Instant "
+              "Messages. The client software and vibe are 1997 AOL, but the real date is October 2026 and "
+              "you know current events. Reply with ONE short IM (max 25 words), casual, no emoji, no quotes, "
+              "no name prefix. Be friendly; never be explicit or hateful, and never ask for passwords or "
+              "personal details beyond a/s/l banter.")
+    body = json.dumps({"model": LLM_MODEL, "max_tokens": 60, "temperature": 0.9,
+                       "messages": [{"role": "system", "content": system},
+                                    {"role": "user", "content": f"Conversation so far:\n{convo}\n\nYour reply:"}]}).encode()
+    try:
+        req = urllib.request.Request(LLM_URL, data=body, headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=25) as r:
+            text = json.loads(r.read())["choices"][0]["message"]["content"]
+    except Exception as e:
+        print(f"      regulars: im llm unavailable ({e})")
+        return None
+    line = text.strip().splitlines()[0].strip().strip('"')
+    if line.lower().startswith(name.lower() + ":"):
+        line = line[len(name) + 1:].strip()
+    return line[:200] or None
+
+
+IM_CANNED = ["hey whats up", "lol", "a/s/l?", "brb phone", "hehe ya", "kewl", "where u from?",
+             "sry was afk", "omg same", "haha ok", "u in the lobby a lot?"]
+
+
+def _im_log(member_link, name: str) -> list:
+    return member_link.session.setdefault("regular_ims", {}).setdefault(name, [])
+
+
+async def _im_send(member_link, name: str, opener: bool = False):
+    """Have regular `name` IM `member_link` (an answer, or an opener out of the blue)."""
+    me = member_link.session.get("name", "")
+    log = _im_log(member_link, name)
+    if opener:
+        log.append((me, "(you just noticed them in the chat room and decide to IM them first)"))
+    line = await asyncio.get_running_loop().run_in_executor(None, _im_llm, name, me, list(log))
+    if opener:
+        log.pop()
+    if not line:
+        line = random.choice(IM_CANNED)
+    if state.ONLINE.get(me.lower().replace(" ", "")) is not member_link:
+        return  # signed off meanwhile
+    log.append((name, line))
+    sys.modules["services.im"].deliver(name, me, line)
+
+
+def im_to_regular(member_link, name: str, text: str):
+    """A member IM'd a regular: it 'types' for a few seconds, then answers."""
+    import re
+    text = re.sub(r"<[^>]*>", "", text).replace("\x7f", " ").strip()  # 4.0 sends its IMs as HTML
+    _im_log(member_link, name).append((member_link.session.get("name", ""), text))
+    delay = random.uniform(4, 9) + min(len(text), 120) / 40
+    asyncio.get_running_loop().call_later(
+        delay, lambda: asyncio.ensure_future(sys.modules["services.regulars"]._im_send(member_link, name)))
+
+
+def maybe_open_im(member_link, room: dict, chance: float = 0.5):
+    """Sometimes a regular in the room IMs a newcomer first, like 1997 lobbies did."""
+    regs = room.get("regulars") or []
+    if not regs or member_link.session.get("im_opened") or random.random() > chance:
+        return
+    member_link.session["im_opened"] = True
+    name = random.choice(regs).session["name"]
+    asyncio.get_running_loop().call_later(
+        random.uniform(20, 60),
+        lambda: asyncio.ensure_future(sys.modules["services.regulars"]._im_send(member_link, name, opener=True)))

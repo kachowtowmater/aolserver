@@ -26,6 +26,27 @@ GID_AREAS = {
     "40-25172": "member directory", "40-4391": "mail", "8-53727": "news search", "32-322": "find",
     "2-15919": "parental control", "32-1163": "internet mail", "2-43263": "internet mail", "2-1921": "news",
     "32-384": "screen names",
+    # AOL 4.0 (1998): Channels screen and its menu (32-5483 / 41-29213)
+    "32-6468": "aol today", "32-6469": "computing", "32-6470": "entertainment", "32-6471": "families",
+    "32-6472": "games", "32-6473": "health", "32-6474": "influence", "32-6475": "interests",
+    "32-6476": "international", "32-6477": "kids only", "32-6478": "lifestyles", "32-6479": "digital city",
+    "32-6480": "news", "32-6481": "finance", "32-6482": "research & learn", "32-6483": "marketplace",
+    "32-6484": "sports", "32-6485": "travel", "32-6486": "workplace", "32-6490": "find", "32-6574": "find",
+    "32-6583": "www", "32-6575": "my aol", "17-40111": "channels", "17-42525": "member services",
+    "17-52234": "find",
+    # 4.0 toolbar menus (41-27066, 41-34774, 41-11346) and Help menu (32-4628)
+    "14-14902": "people connection", "14-14903": "room list", "14-16393": "create room",
+    "17-37346": "pager", "17-61845": "member directory", "14-19935": "find", "19-6341": "mail",
+    "5-1479": "mail controls", "17-58141": "mail extras", "17-63472": "www", "17-58306": "find",
+    "4-12887": "boards", "17-52071": "file search", "17-35043": "my aol", "17-38133": "reminders",
+    "17-48132": "news", "41-31864": "news", "17-48638": "my profile", "32-383": "passwords",
+    "40-50989": "member services", "17-59110": "marketplace", "17-64133": "weather",
+    "17-45749": "member services", "17-47868": "access numbers", "17-7409": "reference",
+    "19-2226": "reference", "2-23810": "member services", "40-22494": "billing", "32-377": "what's hot",
+    "8-49074": "member services", "8-50600": "member services", "8-50934": "member services",
+    # 4.0 Welcome screen (32-6442) promo spots: today's stories
+    "17-65227": "what's hot", "17-35040": "what's hot", "32-6450": "news", "32-6451": "entertainment",
+    "32-6452": "finance", "32-6454": "sports", "32-4724": "browser",  # Go to the Web: the client opens its own browser right after
 }
 
 import json as _json
@@ -59,6 +80,12 @@ NEWS_AREAS = {  # area -> (window title, intro, feed topic)
     "what's hot": ("What's Hot", "The most talked-about stories right now.", "top"),
     "presenting": ("Presenting...", "Featured stories.", "entertainment"),
     "business": ("Business News", "Markets, companies and the economy.", "business"),
+    "aol today": ("AOL Today", "Today's top stories, all in one place.", "top"),
+    "families": ("Families", "Parenting, schools and family life.", "education"),
+    "influence": ("Influence", "Culture, celebrity and the people shaping it.", "entertainment"),
+    "interests": ("Interests", "Science, hobbies and the world around you.", "science"),
+    "workplace": ("WorkPlace", "Business news for working people.", "business"),
+    "research & learn": ("Research & Learn", "Education, science and culture.", "education"),
     "marketplace": ("Marketplace", "Today's best deals from around the Web.", "deals"),
 }
 
@@ -76,7 +103,10 @@ KEYWORDS = {  # keyword -> area (case/space-insensitive)
     "deals": "marketplace", "my aol": "my aol", "aol live": "aol live", "live": "aol live",
     "mail": "mail", "read mail": "mail", "mailbox": "mail", "new mail": "mail",
     "boards": "boards", "message boards": "boards", "board": "boards", "bbs": "boards",
-    "buddy": "buddy list", "buddies": "buddy list", "buddy list": "buddy list", "buddy view": "buddy list",
+    "buddy": "buddy list", "aol today": "aol today", "families": "families", "influence": "influence",
+    "interests": "interests", "workplace": "workplace", "research": "research & learn", "local": "digital city",
+    "mail center": "mail", "newsgroups": "boards", "ftp": "file search", "netfind": "find",
+    "profile": "my profile", "passwords": "passwords", "billing": "billing", "perks": "marketplace", "buddies": "buddy list", "buddy list": "buddy list", "buddy view": "buddy list",
 }
 
 
@@ -215,6 +245,29 @@ INFO = {
         "  Instant Messages (Ctrl+I): talk privately with anyone signed on.", "",
         "THE WORLD WIDE WEB", "  Keyword WEB lets you visit any 2026 Web page as plain text, or search the Web.",
         "", "Have fun, and remember: you've got mail!"]),
+    "pager": ("Send Message to Pager", [
+        "Pagers went the way of the dial tone.", "",
+        "To reach a member right now, send an Instant Message (Ctrl+I), or leave them mail."]),
+    "mail controls": ("Mail Controls", [
+        "Mail Controls let you block mail from people you don't want to hear from.", "",
+        "Every message on this host comes from another member, so there is nothing to block yet."]),
+    "mail extras": ("Mail Extras", [
+        "Mail Extras", "", "  Colors and styles: use the toolbar in Write Mail.",
+        "  Attachments: attach a file in Write Mail and it is delivered with your message.",
+        "  Address Book: keep the screen names you write to most."]),
+    "reminders": ("Reminder Service", [
+        "The Reminder Service mails you a note before birthdays and holidays.", "",
+        "It isn't running on this host yet."]),
+    "passwords": ("Passwords", [
+        "Your password keeps your account safe.  AOL staff will NEVER ask for your password or billing "
+        "information.", "",
+        "To change it, sign off and sign on again choosing the same screen name; contact the host "
+        "operator if you've forgotten it."]),
+    "access numbers": ("AOL Access Numbers", [
+        "This host is reached over TCP/IP, not by modem, so no phone number is needed.", "",
+        "Your Setup should use the TCP/IP connection."]),
+    "billing": ("Accounts and Billing", [
+        "Your account is free.  No hourly charges, no monthly fee, and no surprise bill."]),
     "aol live": ("AOL Live!", [
         "AOL Live! -- events in the People Connection auditoriums.", "",
         "Center Stage: open chat all day.  Go there from any chat room with the Center Stage button.",
@@ -261,6 +314,18 @@ def open_area(link, area: str, rid=None):
         return info_area(link, area, rid)
     if area == "my aol":
         return my_aol(link, rid)
+    if area == "browser":
+        return link.send_stream(stream(atom("uni_wait_off")))
+    if area == "room list":
+        link.send_stream(stream(atom("uni_wait_off")))
+        return chat.list_rooms(link, 0, b"")
+    if area == "create room":
+        link.send_stream(stream(atom("uni_wait_off")))
+        return chat.create_room_form(link)
+    if area == "my profile":
+        from . import members
+        link.send_stream(stream(atom("uni_wait_off")))
+        return members.edit_profile(link, 0, b"")
     if area in ("www", "internet"):
         return ask(link, "World Wide Web", "Address:", "Go", "zU",
                    "Type a Web address (like www.npr.org) or words to search the Web.", rid)

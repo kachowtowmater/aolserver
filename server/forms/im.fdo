@@ -6,9 +6,9 @@ uni_start_stream <00x>
     uni_invoke_local <32-223>
     man_set_context_globalid <0-223>
     mat_object_id <{{gid}}>
-    mat_title <"Instant Message From: {{sender}}">
+    mat_title <"Instant Message From: {{partner}}">
     man_set_context_relative <1>
-    man_append_data <"{{sender}}">
+    man_append_data <"{{partner}}">
     man_end_context
     man_end_context
   uni_sync_skip <2>

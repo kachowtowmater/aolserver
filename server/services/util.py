@@ -4,10 +4,25 @@ from fdo.compiler import FORMS as FORMS_DIR, compile_fdo, fdo_text, plain, rende
 
 
 def atoms(body: bytes):
+    """Decoded atoms; a large atom (uni_start_large_atom <proto num> + segments + end, which
+    AOL 4.0 uses for long fields such as an IM's text) comes back as the one atom it carries."""
     try:
-        return codec.decode(body)
+        raw = codec.decode(body)
     except Exception:
         return []
+    out, big = [], None
+    for a in raw:
+        if a.name == "uni_start_large_atom" and len(a.args) >= 2:
+            big = codec.Atom(a.args[0], a.args[1], b"")
+        elif big is not None and a.name == "uni_large_atom_segment":
+            big.args += a.args
+        elif big is not None and a.name == "uni_end_large_atom":
+            big.args += a.args
+            out.append(big)
+            big = None
+        else:
+            out.append(a)
+    return out
 
 
 def de_strings(body: bytes) -> list[str]:
