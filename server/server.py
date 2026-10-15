@@ -183,4 +183,5 @@ async def main(port: int = 5190):
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    import os
+    asyncio.run(main(int(os.environ.get("AOL_PORT", "5190"))))  # admin console is AOL_PORT + 1
