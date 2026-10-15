@@ -7,6 +7,7 @@ DB = Path(__file__).resolve().parent.parent / "var" / "aol.db"
 
 
 def db():
+    DB.parent.mkdir(exist_ok=True)  # server/var isn't in git: a fresh checkout starts empty
     con = sqlite3.connect(DB)
     con.row_factory = sqlite3.Row
     con.executescript("""
