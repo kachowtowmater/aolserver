@@ -52,6 +52,10 @@ for view in /reg:32 /reg:64; do
   "$WINE" reg add 'HKCU\Software\Microsoft\Internet Explorer\Main' /v "Start Page" /t REG_SZ /d "http://www.aol.com/" /f $view >/dev/null
 done
 
+# Stand-in inetcpl.cpl: AOL's WWW preferences ask it for IE's settings pages, which Wine
+# lacks (crashes the client).  run/wine-aol4 sets inetcpl.cpl=n,b so this copy is used.
+cp "$ROOT/client40/inetcpl/inetcpl.cpl" "$WINEPREFIX/drive_c/America Online 4.0/inetcpl.cpl"
+
 # 4. AOL's browser engine treats Wine's stubbed FreezeEvents as fatal
 "$ROOT/client40/patch-iwengx32.sh"
 echo "AOL 4.0 web set up.  Restart the 4.0 client (run/aol4.sh) to pick it up."
