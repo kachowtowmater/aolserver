@@ -149,7 +149,7 @@ setup_domain() {
         2)
             echo
             bold "Running mail setup wizard..."
-            cd "$INSTALL_DIR" && $PYTHON server/mailsetup.py
+            $PYTHON "$INSTALL_DIR/server/mailsetup.py"
             ;;
         3)
             echo
@@ -180,19 +180,19 @@ setup_domain() {
                     echo -n "$(bold "SMTP password:") "
                     read -rs SMTP_PASS
                     echo
-                    echo "$SMTP_PASS" | $PYTHON server/mailsetup.py \
+                    echo "$SMTP_PASS" | $PYTHON "$INSTALL_DIR/server/mailsetup.py" \
                         --mode domain --domain "$DOMAIN" --listen-port "$listen_port" \
                         --outbound relay --smtp-host "$SMTP_HOST" --smtp-port "$SMTP_PORT" \
                         --smtp-user "$SMTP_USER" --password-stdin
                 else
-                    $PYTHON server/mailsetup.py \
+                    $PYTHON "$INSTALL_DIR/server/mailsetup.py" \
                         --mode domain --domain "$DOMAIN" --listen-port "$listen_port" \
                         --outbound direct
                 fi
 
                 echo
                 bold "DNS records to create:"
-                $PYTHON server/mailsetup.py --dns
+                $PYTHON "$INSTALL_DIR/server/mailsetup.py" --dns
             fi
             ;;
         *)
