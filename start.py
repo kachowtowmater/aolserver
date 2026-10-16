@@ -19,13 +19,10 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-EXE = ".exe" if os.name == "nt" else ""
-CHROME_UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
-             "Chrome/140.0.0.0 Safari/537.36")
 
 
 def find_browser() -> str | None:
-    """Chrome-family browser for WRP to drive (it also finds one itself; this just lets us say so)."""
+    """Chrome-family browser for the host-side web renderer (services/webview.py)."""
     for name in ("chromium", "chromium-browser", "google-chrome", "google-chrome-stable", "chrome", "msedge"):
         if p := shutil.which(name):
             return p

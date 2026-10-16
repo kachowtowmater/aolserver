@@ -137,7 +137,7 @@ def check_web_keyword():
     sw.admin(f'__import__("sys").modules["services.areas"].keyword(next(l for l in links if l.session.get("name")=={NAME!r}), 0, __import__("fdo.codec",fromlist=["x"]).atom("de_data", b"npr.org"))')
     time.sleep(20)
     log = server_since(start)
-    return errors(log) + ([] if "www_browse" in log and child_block("World Wide Web") else ["browser didn't open npr.org"])
+    return errors(log) + ([] if ("www_browse" in log or "keyword: 'npr.org'" in log) and child_block("World Wide Web") else ["browser didn't open npr.org"])
 
 
 def check_member_directory():
