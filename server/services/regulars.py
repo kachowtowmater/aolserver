@@ -2,11 +2,13 @@
 
 Each public room gets a few personas who show up in the people list, chat
 among themselves now and then (often about today's real headlines) and answer
-people who talk to the room. Lines come from the local LLM on mcqueen
-(OpenAI-compatible); if it's unreachable the regulars simply stay quiet.
+people who talk to the room. Lines come from any OpenAI-compatible LLM
+endpoint; if it's unreachable the regulars simply stay quiet.
+Set LLM_URL and LLM_MODEL below (or via environment variables).
 """
 import asyncio
 import json
+import os
 import random
 import sys
 import time
@@ -14,8 +16,8 @@ import urllib.request
 
 import state
 
-LLM_URL = "http://100.64.17.32:8095/v1/chat/completions"
-LLM_MODEL = "glm-5.3-flash"
+LLM_URL = os.environ.get("LLM_URL", "http://127.0.0.1:8080/v1/chat/completions")
+LLM_MODEL = os.environ.get("LLM_MODEL", "default")
 PERSONAS = {
     "kewlguy97": "a 16-year-old skater who types in lowercase, says 'phat', 'da bomb', asks a/s/l",
     "SkaterGrrl": "a sarcastic 17-year-old girl into grunge and zines",

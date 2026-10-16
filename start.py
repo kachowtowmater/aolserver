@@ -8,7 +8,7 @@ Needs Python 3.10+.  The World Wide Web window is rendered server-side by headle
 (Chromium/Chrome/Edge; optional -- without it, web pages are shown as text).
 Ctrl+C stops everything.
 For running as a service instead: run/aol-server.service (Linux systemd),
-run/macos/*.plist (launchd), run/windows/install-tasks.ps1 (Task Scheduler).
+run/macos/*.plist (launchd), run/windows/install-task.ps1 (Task Scheduler).
 """
 import argparse
 import os

@@ -1,33 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
 # AOL's own software and anything derived from it stays local
 atomforge/
 disc/
 *.exe
+aol40-cd/
+
 # local runtime state
-__pycache__/
-pyol/
-re/*.asm
-re/codemap/
-ref/
-Retro-AOL-client/
-run/disabled-tools/
-run/fdotools/
+server/var/
+server/captures/
 run/*.log
 run/shots/
-server/captures/
-# third-party reference repos (cloned separately, see README)
-.venv/
-wiretap/
-re/*.txt
-server/var/
-re/codemap40/
-run/disabled-tools-40/
-client40/*.aol*
-tools/__pycache__/
-vendor/
-run/wrp-profile/
 run/unmapped.log
+run/disabled-tools/
+run/disabled-tools-40/
+run/fdotools/
+run/wrp-profile/
 run/sweep40.json
 run/sweep40.log
 run/areas40.json
 run/areas40.log
 run/waol4-*.log
+
+# reverse engineering working files
+re/*.asm
+re/*.txt
+re/codemap/
+re/codemap40/
+
+# client working files
+client40/*.aol*
+
+# third-party reference repos
+ref/
+Retro-AOL-client/
+wiretap/
+pyol/
+vendor/

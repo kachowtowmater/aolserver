@@ -1,27 +1,29 @@
 # Setting up aolserver
 
-**Quick start** (Linux/macOS): `curl -fsSL https://raw.githubusercontent.com/kachowtowmater/aolserver/main/install.sh | bash`
+**Linux / macOS:** `curl -fsSL https://raw.githubusercontent.com/kachowtowmater/aolserver/main/install.sh | bash`
 
-Two halves: the **host** (this repo's Python server, runs anywhere) and the **client**
+**Windows (PowerShell):** `git clone https://github.com/kachowtowmater/aolserver.git && cd aolserver && powershell -ExecutionPolicy Bypass -File install.ps1`
+
+Two halves: the **host** (this repo's Python server, runs on any modern OS) and the **client**
 (the original 1998 *AOL 4.0 for Windows*, unmodified except for a few bytes, pointed at
 your host). AOL 3.0 works too; 4.0 is the main target.
 
-| | Windows 10/11 | macOS | Linux |
-|---|---|---|---|
-| Host (`start.py`) | Python 3.10+ | Python 3.10+ | Python 3.10+ |
-| Web pages in AOL (optional) | Chrome/Edge | Chrome/Chromium | Chrome/Chromium |
-| AOL 4.0 client | runs natively | under Wine (or CrossOver) | under Wine |
+| | Windows 10/11 | Windows 98/XP/2000 | macOS | Linux |
+|---|---|---|---|---|
+| Host (`start.py`) | Python 3.10+ | no (run host elsewhere) | Python 3.10+ | Python 3.10+ |
+| Web pages in AOL (optional) | Chrome/Edge | n/a | Chrome/Chromium | Chrome/Chromium |
+| AOL 4.0 client | runs natively | **runs natively** | under Wine (or CrossOver) | under Wine |
 
-> Status: everything below is used daily on Linux (aarch64, Wine + FEX). The Windows and
-> macOS steps use the same scripts but haven't been run on real Windows/Mac hardware yet;
-> please report what you hit.
+> Old Windows (98/XP/2000) machines run the AOL 4.0 client as it was designed — no Wine, no
+> patches.  The server needs Python 3.10+, so host it on a modern machine on your LAN and
+> point the old Windows client at it.
 
 ## 1. The host
 
 ```sh
-git clone git@github.com:kachowtowmater/aolserver.git
+git clone https://github.com/kachowtowmater/aolserver.git
 cd aolserver
-python start.py            # Windows: run\windows\start-server.bat
+python start.py            # or: run\windows\start-server.bat on Windows
 ```
 
 That's the whole host: AOL clients connect to TCP **5190** (open it in your firewall/router
@@ -31,7 +33,7 @@ library. Data lives in `server/var/` (SQLite: accounts, mail, boards...).
 Run it as a service instead:
 - **Linux** (systemd user units): `cp run/aol-server.service ~/.config/systemd/user/ && systemctl --user enable --now aol-server`
 - **macOS**: edit `REPO` in `run/macos/com.aolserver.host.plist`, copy it to `~/Library/LaunchAgents/`, `launchctl load` it.
-- **Windows**: `powershell -ExecutionPolicy Bypass -File run\windows\install-task.ps1`
+- **Windows**: `powershell -ExecutionPolicy Bypass -File run\windows\install-task.ps1` (or the full wizard: `powershell -ExecutionPolicy Bypass -File install.ps1`)
 
 Admin console (local only): `run/admin '<python expression>'`, e.g. `run/admin '[l.session["name"] for l in links]'`.
 
@@ -44,7 +46,7 @@ Optional extras:
 
 The World Wide Web window is rendered server-side: the host runs a headless Chrome/Chromium,
 screenshots each page, and sends it to the client as a clickable picture with Back, Forward,
-Reload, Home, Page Up/Down and an address bar. No WRP, no Wine Gecko.
+Reload, Home, Page Up/Down and an address bar.
 
 Install Chrome or Chromium on the host machine; the server finds it automatically.
 Without a browser installed, web pages are shown as text (links still work).
@@ -78,6 +80,23 @@ WINEDLLOVERRIDES="mscoree=;inetcpl.cpl=n,b" wine "C:\\America Online 4.0\\waol.e
 Install Wine (e.g. `brew install --cask --no-quarantine wine-stable`, or use CrossOver), then
 follow the Linux steps with the same commands. Apple-silicon Macs need Rosetta 2 installed
 (Wine runs the x86 client through it); Intel Macs run it directly.
+
+### Old Windows (98 / ME / 2000 / XP)
+AOL 4.0 was made for Windows 98 — it runs natively with no emulation, no patches, no
+compatibility settings. This is the authentic experience.
+
+1. Get the AOL 4.0 CD image (`aol40_client.py fetch` on a modern machine, then copy the
+   `aol40-cd` folder to the old PC — via USB, SMB, burned CD, etc.).
+2. Run `SETUP.EXE` from the CD. Decline the Internet Explorer 4 / extras offers.
+3. Edit `C:\America Online 4.0\csl\TCP.CSL` in Notepad: find the line with
+   `AmericaOnline.aol.com` and replace it with the IP or hostname of the machine running the
+   server (e.g. `192.168.1.50`). Save.
+4. Start AOL, go to **Setup**, make the location connect by **TCP/IP** (not modem).
+5. Sign on with *New User* to create a screen name.
+
+> The `configure` script needs Python 3, which old Windows doesn't have. Editing TCP.CSL by
+> hand is all you need — `configure` does the same thing plus disables the RSA handshake
+> (the client tolerates the missing handshake and falls through to sign-on).
 
 ### Notes
 - Use a host **name** in `--host` (the client mangles dotted IP addresses): `localhost`,

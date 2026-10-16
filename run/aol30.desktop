@@ -2,6 +2,6 @@
 Type=Application
 Name=America Online 3.0
 Comment=The real AOL 3.0 client on the rebuilt 2026 AOL host
-Exec=/home/chicken/aol-revival/run/aol.sh
-Icon=/home/chicken/.local/share/icons/aol-revival.png
+Exec=aol-revival/run/aol.sh
+Icon=aol-revival
 Categories=Network;

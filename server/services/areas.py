@@ -484,9 +484,9 @@ def item(link, stream_id, body):
 
 
 def open_url(link, url: str):
-    """A Web address: shown in the host's own World Wide Web window (services/webview.py, a
-    picture of the page from a modern Chrome with clickable links) -- or, with AOL_WEBVIEW=0,
-    AOL 4.0's IE window (through WRP) and AOL 3.0's text view."""
+    """A Web address: shown in the host's World Wide Web window (services/webview.py, a
+    picture of the page from headless Chrome with clickable links) -- or, with AOL_WEBVIEW=0,
+    AOL 4.0's own IE window and AOL 3.0's text view."""
     from . import art, webview
     if webview.ENABLED:
         return webview.open_url(link, url)

@@ -1,4 +1,4 @@
-# Run the aolserver host (+ WRP if built) at logon on Windows, via Task Scheduler.
+# Run the aolserver host at logon on Windows, via Task Scheduler.
 #   powershell -ExecutionPolicy Bypass -File run\windows\install-task.ps1          install
 #   powershell -ExecutionPolicy Bypass -File run\windows\install-task.ps1 -Remove  uninstall
 param([switch]$Remove)

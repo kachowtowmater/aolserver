@@ -1,4 +1,4 @@
 #!/bin/bash
-# Run the ARM Wine + FEX build (shared with OMS) against the separate AOL prefix.
+# Run Wine against a test AOL prefix (separate from the real one).  Set WINE_PATH to override.
 export WINEPREFIX="$HOME/.wine-aol-test" WINEDLLOVERRIDES="${WINEDLLOVERRIDES:-mscoree=;mshtml=}" WINEDEBUG="${WINEDEBUG:-err+all}"
-exec "$HOME/.local/opt/wine-oms/bin/${WINE_AOL_TOOL:-wine}" "$@"
+exec "${WINE_PATH:-wine}" "$@"

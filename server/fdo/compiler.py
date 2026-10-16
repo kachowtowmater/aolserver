@@ -5,9 +5,8 @@ as AOL's own compiler (Ada32.dll) -- checked against it on every client form and
 window the server builds (tools/fdo_corpus.py, server/test_fdo_compiler.py).  So the server
 needs no Wine and runs on Windows, macOS and Linux.
 
-AOL_FDO_DAEMON=1 compiles with the real Ada32 instead, through run/fdod.sh (fdo_daemon.exe
-under Wine on 127.0.0.1:8099); AOL_FDO_DAEMON=verify uses Python but logs any difference
-from Ada32.  Forms live in server/forms/*.fdo; {{var}} placeholders are filled with
+AOL_FDO_DAEMON=1 compiles with the real Ada32 instead (fdo_daemon.exe under Wine on
+127.0.0.1:8099); AOL_FDO_DAEMON=verify uses Python but logs any difference from Ada32.  Forms live in server/forms/*.fdo; {{var}} placeholders are filled with
 FDO-safe text before compiling.  Results are cached by source text.
 """
 import functools

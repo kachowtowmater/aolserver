@@ -6,12 +6,19 @@ the client from its 1997 install CD.
 
 ## Quick start
 
+**Linux / macOS:**
 ```sh
 curl -fsSL https://raw.githubusercontent.com/kachowtowmater/aolserver/main/install.sh | bash
 ```
 
-Or clone and run manually:
+**Windows (PowerShell):**
+```powershell
+git clone https://github.com/kachowtowmater/aolserver.git
+cd aolserver
+powershell -ExecutionPolicy Bypass -File install.ps1
+```
 
+**Or clone and run manually (any OS):**
 ```sh
 git clone https://github.com/kachowtowmater/aolserver.git
 cd aolserver
@@ -90,7 +97,10 @@ Tests: `cd server && python3 test_gateway.py` (local stand-ins, no real mail);
 original 4.0 client from archive.org and points it at your host (sets `csl/tcp.csl` --
 use a host name, a dotted IP gets mangled -- and turns off the RSA session handshake that
 only AOL's servers could answer). The World Wide Web window is rendered server-side by
-headless Chrome (no WRP or Wine Gecko needed), see SETUP.md.
+headless Chrome, see SETUP.md.
+
+**Old Windows (98/XP/2000):** The AOL 4.0 client runs natively — no Wine, no patches.
+Just run SETUP.EXE from the CD, point the TCP.CCL at your server, and sign on. See SETUP.md.
 
 ## Running the 3.0 client
 1. Get the AOL 3.0 CD (archive.org item
@@ -107,7 +117,6 @@ headless Chrome (no WRP or Wine Gecko needed), see SETUP.md.
 - Features that only existed on AOL's servers and have no 2026 equivalent show an
   explanation window (Pager, Reminder Service) or today's headlines; anything a button asks
   for that the host doesn't know is logged to `run/unmapped.log`.
-- Windows/macOS clients are documented in SETUP.md but so far only verified on Linux/Wine.
 
 ## References
 - WireTap / AtomForge: https://github.com/iconidentify (protocol tools)
