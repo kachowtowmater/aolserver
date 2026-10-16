@@ -29,7 +29,7 @@ for clients on other machines). Nothing to install: the host uses only Python's 
 library. Data lives in `server/var/` (SQLite: accounts, mail, boards...).
 
 Run it as a service instead:
-- **Linux** (systemd user units): `cp run/aol-server.service run/aol-wrp.service ~/.config/systemd/user/ && systemctl --user enable --now aol-server aol-wrp`
+- **Linux** (systemd user units): `cp run/aol-server.service ~/.config/systemd/user/ && systemctl --user enable --now aol-server`
 - **macOS**: edit `REPO` in `run/macos/com.aolserver.host.plist`, copy it to `~/Library/LaunchAgents/`, `launchctl load` it.
 - **Windows**: `powershell -ExecutionPolicy Bypass -File run\windows\install-task.ps1`
 
@@ -67,13 +67,12 @@ python client40/aol40_client.py fetch     # downloads the AOL 4.0 CD from archiv
 ### Linux (Wine)
 ```sh
 export WINEPREFIX=~/.wine-aol4
-wine aol40-cd/SETUP.EXE                       # let Wine install Gecko when it asks
+wine aol40-cd/SETUP.EXE
 python client40/aol40_client.py configure ~/.wine-aol4/drive_c/America\ Online\ 4.0 --host localhost --wine
-python client40/aol40_client.py web --wine-prefix ~/.wine-aol4      # if you run WRP
 WINEDLLOVERRIDES="mscoree=;inetcpl.cpl=n,b" wine "C:\\America Online 4.0\\waol.exe"
 ```
 `run/wine-aol4` + `run/aol4.sh` are the wrapper/launcher used here (they set those overrides;
-`AOL4_PREFIX` picks another prefix). `client40/setup-web.sh` does the WRP + Gecko steps in one go.
+`AOL4_PREFIX` picks another prefix).
 
 ### macOS (Wine)
 Install Wine (e.g. `brew install --cask --no-quarantine wine-stable`, or use CrossOver), then
@@ -100,7 +99,7 @@ prefix so it never disturbs a real user):
 - `server/` the host (stdlib Python): `server.py`, `p3.py` link layer, `host.py` dispatcher,
   `services/*` features (hot-reloaded), `fdo/` the client's form language, `forms/` templates,
   `art/` 16k original AOL art records + drawn stand-ins, `data/` client art indexes.
-- `client40/` client setup (`aol40_client.py`), Wine work-arounds, WRP patch.
+- `client40/` client setup (`aol40_client.py`) and Wine work-arounds.
 - `re/` protocol notes (`NOTES.md`) and the client's decoded forms (`idb40/`, `idb/`) used by the tools.
 - `tools/` checkers, art builders, the bot client.
 - `run/` launch wrappers and service files for Linux/macOS/Windows.

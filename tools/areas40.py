@@ -28,10 +28,10 @@ def windows():
     return re.findall(r'AOL Child\s+vis=1.*"(.*)"', sw.wctl("list") or "")
 
 
-def step(action):
+def step(action, wait=10):
     start, f0 = sw.LOG.stat().st_size, sw.faults()
     sw.run_action(NAME, action)
-    time.sleep(5)
+    time.sleep(wait)
     new = sw.LOG.read_bytes()[start:].decode("latin1", "replace")
     problems = sw.judge(new, sw.wctl("list"))
     problems += [f"unmapped: {u}" for u in re.findall(r"UNMAPPED (.*)", new)]
@@ -58,6 +58,9 @@ def main():
         before = item_seq()
         problems, _ = step(f"sm_send_k1 <{gid}>")
         opened = windows()
+        if not opened and not problems:
+            time.sleep(10)
+            opened = windows()
         if not opened and not problems:
             problems.append("no window opened")
         after = item_seq()
