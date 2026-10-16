@@ -48,7 +48,7 @@ GID_AREAS = {
     "14-8785": "private chat", "17-42646": "chat prefs", "43-16776": "aol live",
     "17-65227": "welcome content", "17-35040": "mail", "32-6450": "news", "32-6451": "entertainment",
     "32-6452": "finance", "32-6454": "sports", "40-47287": "finance", "32-222": "channels", "40-4979": "member services",  # 4.0 forms AOL's host sent (f2)
-    "32-4724": "browser", "32-5846": "browser",  # Go to the Web: the client opens its own browser right after
+    "32-4724": "browser", "32-5846": "ie window",  # Go to the Web / the client's IE window opening
 }
 
 import json as _json
@@ -329,8 +329,11 @@ def open_area(link, area: str, rid=None):
     if area == "welcome content":  # AOL 4.0's own Welcome screen asking for today's content
         from . import welcome40
         return welcome40.fill(link, rid)
-    if area == "browser":
+    if area == "ie window":
         return link.send_stream(stream(atom("uni_wait_off")))
+    if area == "browser":  # Go to the Web / Home: the client no longer opens its own IE window
+        from . import webview
+        return open_url(link, webview.HOME if webview.ENABLED else "http://www.aol.com/")
     if area == "room list":
         link.send_stream(stream(atom("uni_wait_off")))
         return chat.list_rooms(link, 0, b"")
@@ -472,14 +475,20 @@ def item(link, stream_id, body):
     elif kind == "ia_download":
         from . import xfer
         xfer.archive_download(link, *payload[1:])
+    elif kind == "webview":
+        from . import webview
+        webview.action(link, payload)
     else:
         link.send_stream(stream(atom("uni_wait_off")))
 
 
 def open_url(link, url: str):
-    """A Web address: AOL 4.0 opens it in its own browser, which reaches the 2026 Web through
-    WRP (http only -- WRP fetches the https site itself); AOL 3.0 gets the page as text."""
-    from . import art
+    """A Web address: shown in the host's own World Wide Web window (services/webview.py, a
+    picture of the page from a modern Chrome with clickable links) -- or, with AOL_WEBVIEW=0,
+    AOL 4.0's IE window (through WRP) and AOL 3.0's text view."""
+    from . import art, webview
+    if webview.ENABLED:
+        return webview.open_url(link, url)
     if art.version(link) != "40":
         return show_page(link, url)
     url = url.strip()

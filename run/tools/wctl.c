@@ -122,6 +122,11 @@ int main(int argc, char **argv) {
         for (const char *c = argv[3]; *c; c++) { PostMessageA(h, WM_CHAR, (WPARAM)(unsigned char)*c, 1); Sleep(20); }
         printf("typed %p\n", (void *)h); return 0;
     }
+    if (argc >= 7 && !strcmp(argv[1], "move")) {
+        HWND h = (HWND)(ULONG_PTR)strtoull(argv[2], NULL, 16);
+        SetWindowPos(h, NULL, atoi(argv[3]), atoi(argv[4]), atoi(argv[5]), atoi(argv[6]), SWP_NOZORDER);
+        printf("moved %p\n", (void *)h); return 0;
+    }
     if (argc >= 3 && !strcmp(argv[1], "xclose")) {
         HWND h = (HWND)(ULONG_PTR)strtoull(argv[2], NULL, 16);
         PostMessageA(h, WM_SYSCOMMAND, SC_CLOSE, 0); printf("xclose %p\n", (void *)h); return 0;

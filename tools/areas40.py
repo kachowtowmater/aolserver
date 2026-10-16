@@ -47,7 +47,7 @@ def main():
     only = sys.argv[sys.argv.index("--only") + 1] if "--only" in sys.argv else ""
     first_gid = {}
     for g, a in areas.GID_AREAS.items():
-        if g and a not in first_gid.values() and a not in ("browser", "welcome content"):
+        if g and a not in first_gid.values() and a not in ("ie window", "welcome content"):
             first_gid[g] = a
     results = []
     for gid, area in first_gid.items():

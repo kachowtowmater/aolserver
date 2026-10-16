@@ -42,13 +42,12 @@ def fetch_form(link, stream_id, body):
     areas.open_area(link, "what's hot")
 
 
-# Under Wine, Wine Gecko (the web engine behind AOL 4.0's World Wide Web window) only works on
-# the first thread that used it, and AOL runs each browser window on its own thread: a second
-# browser window (or any after the first was closed) stays blank until AOL restarts.  So Wine
-# clients get their own browser forms with one change: a single World Wide Web window (fixed id
-# 32-4705, no close box -- minimize it instead) that the address bar, Go to the Web and the host
-# all load pages into.  Real Windows (native IE)
-# doesn't need this: set AOL_WINE_BROWSER_FIX=0 for a host whose members all run Windows.
+# The World Wide Web goes through the host (services/webview.py draws it in an AOL window): the
+# client's address bar, Go to the Web and toolbar Home are pushed at sign-on in versions that hand
+# the address to the host instead of opening the client's own IE window (tools/make_forms40.py).
+# Under Wine that IE window is Wine Gecko, which only works on its first thread and crashes
+# navigating under x86 emulation.  With AOL_WEBVIEW=0 the IE window is used again; Wine clients
+# then also get a single, non-closeable IE window (AOL_WINE_BROWSER_FIX=0 turns that off too).
 WINE_BROWSER_FIX = os.environ.get("AOL_WINE_BROWSER_FIX", "1") != "0"
 
 
@@ -63,13 +62,18 @@ def push_form(link, gid_bytes: bytes, fdo_name: str):
 
 
 def sign_on_forms(link):
-    """tools/make_forms40.py builds these from the client's own forms: one reusable browser."""
+    """tools/make_forms40.py builds these from the client's own forms."""
     def gid_bytes(name):  # form ids are two-part: type-id
         t, i = (int(p) for p in name.split("-"))
         return bytes([0, t]) + i.to_bytes(2, "big")
-    if WINE_BROWSER_FIX:
-        for gid, form in (("32-4705", "www40"), ("41-19051", "addr40"), ("41-27066", "menu40")):
-            push_form(link, gid_bytes(gid), form)
+    from . import webview
+    forms = [("41-19051", "addr40"), ("41-27066", "menu40"), ("41-18931", "nav40")]
+    if webview.ENABLED:
+        forms.append(("32-4705", "wwwhost40"))  # the IE window never opens: its address goes to us
+    elif WINE_BROWSER_FIX:
+        forms.append(("32-4705", "www40"))
+    for gid, form in forms:
+        push_form(link, gid_bytes(gid), form)
 
 
 TOKENS = {

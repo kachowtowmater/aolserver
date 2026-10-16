@@ -1,0 +1,101 @@
+uni_start_stream <00x>
+  man_get_top_window
+  var_number_set_from_atom <B>
+  var_number_get <B>
+  if_last_return_true_then <1>
+  var_number_get <B>
+  uni_use_last_atom_value <man_set_context_globalid>
+  var_number_swap_between_regs <B, C>
+  var_number_set <B, 2101857>
+  man_get_attribute <mat_style_id>
+  var_number_set_from_atom <A>
+  if_numa_eq_numb_then <6>
+  man_set_context_relative <4>
+  man_is_rendered
+  if_last_return_false_then <10>
+  man_end_context
+  man_end_context
+uni_abort_stream
+uni_sync_skip <10>
+man_end_context
+man_set_context_relative <1>
+var_number_copy_between_regs <D, A>
+var_number_get <A>
+if_numa_eq_one_then <7, 8>
+www_reload
+uni_sync_skip <7>
+if_numa_gt_one_then <9, 8>
+uni_invoke_local <41-21556>
+uni_sync_skip <9>
+www_stop
+uni_sync_skip <8>
+man_end_context
+man_end_context
+uni_abort_stream
+uni_sync_skip <6>
+var_number_swap_between_regs <C, B>
+man_end_context
+man_set_context_relative <66>
+man_get_child_count
+var_number_set_from_atom <C>
+uni_start_loop
+var_number_get <C>
+if_last_return_true_then <4>
+var_number_get <C>
+uni_use_last_atom_value <man_set_context_index>
+var_number_set <A, 319>
+uni_invoke_local <41-18849>
+if_numa_eq_numb_then <5>
+var_number_set <A, 320>
+uni_invoke_local <41-18849>
+if_numa_true_then <5>
+var_number_copy_between_regs <A, C>
+var_number_set <A, 321>
+uni_invoke_local <41-18849>
+var_number_get <B>
+uni_use_last_atom_value <man_set_context_globalid>
+if_numa_true_then <11>
+var_number_get <A>
+uni_use_last_atom_value <man_set_context_relative>
+man_is_rendered
+if_last_return_false_then <12>
+man_end_context
+man_end_context
+man_end_context
+uni_abort_stream
+uni_sync_skip <12>
+man_end_context
+uni_sync_skip <11>
+var_number_get <C>
+uni_use_last_atom_value <man_set_context_relative>
+var_number_copy_between_regs <D, A>
+var_number_get <A>
+if_numa_eq_one_then <2, 3>
+www_reload
+uni_sync_skip <2>
+if_numa_gt_one_then <6, 3>
+uni_invoke_local <41-21556>
+uni_sync_skip <6>
+www_stop
+uni_sync_skip <3>
+man_end_context
+man_end_context
+man_end_context
+man_end_context
+uni_abort_stream
+uni_sync_skip <5>
+man_end_context
+var_number_decrement <C>
+uni_end_loop
+uni_sync_skip <4>
+var_number_copy_between_regs <D, A>
+var_number_get <A>
+if_numa_false_then <7>
+uni_cancel_action
+uni_sync_skip <7>
+if_numa_gt_one_then <8>
+sm_send_f1 <32-4724>
+uni_sync_skip <8>
+man_end_context
+uni_sync_skip <1>
+uni_end_stream

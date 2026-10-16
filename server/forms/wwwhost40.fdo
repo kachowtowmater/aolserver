@@ -1,0 +1,18 @@
+uni_start_stream <00x>
+  man_set_context_globalid <1>
+  var_string_null <A>
+  var_lookup_by_id <A, 310>
+  var_string_null <B>
+  var_string_save <B, 310>
+  man_end_context
+  if_stra_neq_null_then <1, 2>
+    buf_start_buffer <token_header | stream_id_header | host_bound | start_stream_header | end_stream_trailer | response_id_header>
+    buf_set_token <"Kk">
+    var_string_get <A>
+    uni_use_last_atom_string <buf_add_atom_pointer>
+    buf_close_buffer
+  uni_sync_skip <1>
+    sm_send_f1 <32-4724>
+  uni_sync_skip <2>
+  uni_wait_off
+uni_end_stream <00x>

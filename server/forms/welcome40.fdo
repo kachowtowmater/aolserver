@@ -431,19 +431,6 @@ uni_start_stream <00x>
                                             buf_set_token <"f1">
                                             buf_add_atom_data <2101876>
                                             buf_close_buffer
-                                            man_preset_gid <32-4705>
-                                            if_last_return_true_then <120, 121>
-                                              man_end_context
-                                              man_set_context_globalid <32-4705>
-                                              man_make_focus
-                                              man_set_context_relative <1>
-                                              www_load_url <"http://www.aol.com">
-                                              man_end_context
-                                              man_update_display
-                                              man_end_context
-                                            uni_sync_skip <120>
-                                            www_browse <"http://www.aol.com">
-                                            uni_sync_skip <121>
                                           uni_end_stream <00x>
                                           >
                                       man_start_sibling <trigger, "">
