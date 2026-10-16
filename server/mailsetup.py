@@ -204,7 +204,10 @@ def test(cfg: dict) -> bool:
         print("Internet mail is not set up (run mail-setup).")
         return False
     good = True
-    print(f"Mode: {s['mode']}" + (f", addresses like {gateway.member_address(s, 'YourName')}"))
+    print(f"Mode: {s['mode']}, addresses like {gateway.member_address(s, 'YourName')}")
+
+    # --- local checks (everything this host controls) ---
+    print("\n  Local checks (this host):")
     if s["mode"] == "mailbox" or s.get("outbound") == "relay":
         try:
             with gateway._smtp_login(s, timeout=20) as smtp:
@@ -224,40 +227,70 @@ def test(cfg: dict) -> bool:
         except Exception as e:
             good &= _ok(False, f"IMAP connection to {s.get('imap_host')}", repr(e))
         return good
+
     d = s["domains"][0]
     try:
         with socket.create_connection(("127.0.0.1", s["listen_port"]), timeout=5) as c:
             banner = c.recv(200)
             c.sendall(b"QUIT\r\n")
-        good &= _ok(banner.startswith(b"220"), f"mail receiver answering on port {s['listen_port']}")
+        good &= _ok(banner.startswith(b"220"), f"SMTP receiver on port {s['listen_port']}")
     except OSError as e:
-        good &= _ok(False, f"mail receiver on port {s['listen_port']}",
+        good &= _ok(False, f"SMTP receiver on port {s['listen_port']}",
                     f"{e} (is aol-server running? it starts the receiver within 5 s of saving)")
+    k = dkim.ensure_key()
+    good &= _ok(k and k["n"].bit_length() == 2048, "DKIM key (2048-bit RSA)")
+    msg = gateway.build_message(s, "TestUser", ["test@example.com"], [], "DKIM check", "test")
+    raw = msg.as_bytes()
+    if s.get("dkim"):
+        signed = dkim.sign(raw, d, s["dkim_selector"], k)
+        good &= _ok(dkim.verify(signed, k), "DKIM sign-then-verify")
+    good &= _ok(gateway.member_address(s, "TestUser") == f"testuser@{d}", "address generation")
+    store = sys.modules.get("services.store")
+    if store and store.account("TestUser"):
+        good &= _ok(gateway.owner_for(s, f"testuser@{d}") == "testuser", "inbound routing")
+
+    # --- DNS checks (need records published at your registrar) ---
+    print("\n  DNS checks (your domain's records):")
+    dns_ok = True
     try:
         mx = maildns.query(d, "MX")
-        good &= _ok(bool(mx), f"MX record for {d}", ", ".join(h for _, h in sorted(mx)) or "none -- see --dns")
+        dns_ok &= _ok(bool(mx), f"MX record for {d}",
+                       ", ".join(h for _, h in sorted(mx)) if mx else "not found -- see --dns")
         for _, host in sorted(mx)[:1]:
             ips = maildns.query(host, "A")
-            _ok(bool(ips), f"{host} has an address", ", ".join(ips) or "no A record")
+            _ok(bool(ips), f"A record for {host}", ", ".join(ips) or "not found")
         txts = maildns.query(d, "TXT")
-        good &= _ok(any(t.startswith("v=spf1") for t in txts), f"SPF record for {d}")
-        k = dkim.ensure_key()
+        dns_ok &= _ok(any(t.startswith("v=spf1") for t in txts), f"SPF record for {d}")
         dk = maildns.query(f"{s['dkim_selector']}._domainkey.{d}", "TXT")
-        good &= _ok(any(dkim.dns_record(k).split("p=")[1] in t.replace(" ", "") for t in dk),
-                    "DKIM record matches this host's key")
-        _ok(any(t.startswith("v=DMARC1") for t in maildns.query(f"_dmarc.{d}", "TXT")), "DMARC record (optional)")
+        dns_ok &= _ok(any(dkim.dns_record(k).split("p=")[1] in t.replace(" ", "") for t in dk),
+                      "DKIM record matches this host's key")
+        _ok(any(t.startswith("v=DMARC1") for t in maildns.query(f"_dmarc.{d}", "TXT")),
+            "DMARC record (optional)")
     except OSError as e:
-        good &= _ok(False, "DNS lookups", str(e))
+        dns_ok &= _ok(False, "DNS lookups", str(e))
+    if not dns_ok:
+        print("\n  DNS records not found. If you just created them, allow up to 48 hours for propagation.")
+        print(f"  Run: {sys.argv[0]} --dns   to see the records to create.")
+
+    # --- network checks (outbound reachability) ---
     if s.get("outbound") == "direct":
+        print("\n  Network checks:")
         try:
             with socket.create_connection((maildns.mx_hosts("gmail.com")[0], 25), timeout=8) as c:
                 ok = c.recv(100).startswith(b"220")
                 c.sendall(b"QUIT\r\n")
-            good &= _ok(ok, "outgoing port 25 is open (connected to Gmail's mail server, sent nothing)")
+            good &= _ok(ok, "outgoing port 25 (connected to Gmail's MX, sent nothing)")
         except OSError as e:
-            good &= _ok(False, "outgoing port 25", f"blocked? {e} -- use outbound relay instead")
-    print("\nFrom outside, also check that port 25 reaches this host (e.g. an online 'SMTP test' tool "
-          f"pointed at mail.{d}).")
+            good &= _ok(False, "outgoing port 25",
+                        f"blocked? {e} -- switch to a relay (mail-setup, option 1)")
+
+    local_pass = good
+    print(f"\n  Local: {'ALL OK' if local_pass else 'ISSUES FOUND'}"
+          f"   DNS: {'OK' if dns_ok else 'records missing (see --dns)'}")
+    if local_pass and not dns_ok:
+        print("  The server code is ready. Create the DNS records above and re-run --test.")
+    print(f"\n  From outside, also verify port 25 reaches this host (e.g. an online SMTP check tool"
+          f"\n  pointed at mail.{d}).")
     return good
 
 

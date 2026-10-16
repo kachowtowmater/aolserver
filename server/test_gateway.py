@@ -325,6 +325,57 @@ def test_info_lines():
     assert any("yourname@my90s.net" in l for l in gateway.info_lines())
 
 
+def test_full_domain_pipeline():
+    """End-to-end domain mode: inbound SMTP delivery + outbound relay with DKIM + mail-setup
+    local checks, all over real TCP against localhost stand-ins (no monkey patching)."""
+    cfg = {"mode": "domain", "domain": "my90s.net", "listen_port": 0, "outbound": "relay",
+           "dkim": True, "dkim_selector": "aol", "smtp_host": "127.0.0.1", "smtp_port": 0,
+           "smtp_security": "none", "smtp_password": ""}
+    use(cfg)
+    gateway._status()["rate"] = {}
+
+    outbox = []
+    relay_port = _smtp_sink(outbox)
+    cfg["smtp_port"] = relay_port
+
+    async def main():
+        srv = await asyncio.start_server(lambda r, w: smtpd.session(r, w, cfg), "127.0.0.1", 0, limit=1 << 16)
+        port = srv.sockets[0].getsockname()[1]
+        cfg["listen_port"] = port
+
+        def run():
+            with smtplib.SMTP("127.0.0.1", port) as s:
+                s.ehlo("test.example.org")
+                s.mail("outsider@example.org")
+                s.rcpt("rewind98@my90s.net")
+                s.data(b"From: Outsider <outsider@example.org>\r\nTo: rewind98@my90s.net\r\n"
+                       b"Subject: full pipeline\r\n\r\nHello from outside!\r\n")
+            gateway.send("Rewind98", ["friend@example.org"], [], "outbound test", "Sent via relay")
+
+        await asyncio.get_running_loop().run_in_executor(None, run)
+        srv.close()
+    asyncio.run(main())
+    row = store.mailbox("Rewind98")[0]
+    assert row["subject"] == "full pipeline" and "Hello from outside" in row["body"], "inbound delivery"
+    assert gateway.member_address(cfg, "Rewind98") == "rewind98@my90s.net", "address generation"
+    sent_raw = b"".join(l for l in outbox if not l.startswith(b"ENVELOPE"))
+    assert sent_raw.startswith(b"DKIM-Signature:"), "outbound is DKIM-signed"
+    assert dkim.verify(sent_raw, dkim.load()), "DKIM signature verifies"
+    assert b"From: Rewind98 <rewind98@my90s.net>" in sent_raw, "From uses domain address"
+    assert any(l.startswith(b"ENVELOPE RCPT TO:<friend@example.org>") for l in outbox), "relayed to recipient"
+
+
+def test_new_member_gets_domain_address():
+    """When someone signs up, their address is screenname@domain."""
+    cfg = {"mode": "domain", "domain": "my90s.net", "listen_port": 0}
+    use(cfg)
+    store.create_account("NewGuy99", "pw123456")
+    assert gateway.member_address(cfg, "NewGuy99") == "newguy99@my90s.net"
+    assert gateway.owner_for(cfg, "newguy99@my90s.net") == "newguy99"
+    with store.db() as con:
+        con.execute("DELETE FROM account WHERE key = 'newguy99'")
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in list(globals().items()):
