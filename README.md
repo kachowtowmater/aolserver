@@ -4,6 +4,20 @@ A from-scratch host for the original **AOL 4.0** (and 3.0) for Windows clients. 
 real servers were never released, so this one is rebuilt by reverse-engineering
 the client from its 1997 install CD.
 
+## Quick start
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/kachowtowmater/aolserver/main/install.sh | bash
+```
+
+Or clone and run manually:
+
+```sh
+git clone https://github.com/kachowtowmater/aolserver.git
+cd aolserver
+python start.py
+```
+
 ## Status
 Works with the real **AOL 3.0** (1996-98) and **AOL 4.0** (1998-99) Windows clients.
 - [x] P3 link layer (CRC-16/ARC; 4.0's '**' no-CRC TCP mode), sequencing, handshake
@@ -12,9 +26,12 @@ Works with the real **AOL 3.0** (1996-98) and **AOL 4.0** (1998-99) Windows clie
 - [x] People Connection: lobbies, room list, Center Stage, LLM-driven chat regulars
 - [x] Instant Messages (3.0 and 4.0 windows), Buddy List with live buddy in/out
 - [x] E-mail: send, New/Old/Sent mailboxes, You've Got Mail
-- [x] Internet mail: run `run/mail-setup` (see "Internet mail" below)
+- [x] Internet mail: `run/mail-setup` — host your own domain (`screenname@yourdomain.com`)
+      or use Gmail/Fastmail/iCloud (see "Internet mail" below)
+- [x] World Wide Web: headless Chrome renders pages as clickable pictures inside the AOL window,
+      with Back/Forward/Reload/Home, an address bar and page scrolling
 - [x] Keywords + every Channels/toolbar area with live 2026 content: news,
-      quotes, weather, the Web (as text), Wikipedia, files (Internet Archive), deals
+      quotes, weather, Wikipedia, files (Internet Archive), deals
 - [x] Profiles, Locate Member, Member Directory, Message Boards, Stock Portfolios
 - [x] File downloads (3.0 + 4.0, up to 15 MB): File Search -> Internet Archive -> the client's own Download Manager
 - [x] 16k original AOL art records harvested from 73 AOL CD images
@@ -72,8 +89,8 @@ Tests: `cd server && python3 test_gateway.py` (local stand-ins, no real mail);
 `python client40/aol40_client.py fetch` / `configure <AOL dir> --host <name>` gets the
 original 4.0 client from archive.org and points it at your host (sets `csl/tcp.csl` --
 use a host name, a dotted IP gets mangled -- and turns off the RSA session handshake that
-only AOL's servers could answer). AOL 4.0's World Wide Web window shows 2026 sites through
-WRP (a headless Chrome that renders pages as clickable pictures), see SETUP.md.
+only AOL's servers could answer). The World Wide Web window is rendered server-side by
+headless Chrome (no WRP or Wine Gecko needed), see SETUP.md.
 
 ## Running the 3.0 client
 1. Get the AOL 3.0 CD (archive.org item
@@ -84,10 +101,9 @@ WRP (a headless Chrome that renders pages as clickable pictures), see SETUP.md.
 4. Setup -> Edit Location -> Network: TCP/IP, then Sign On.
 
 ## Known issues (AOL 4.0)
-- World Wide Web under Wine: Wine Gecko (2016) occasionally crashes the client inside
-  `xul.dll` while browsing (not yet reproduced on demand). Pages go through WRP as pictures,
-  so typing into a site's own search/login boxes doesn't work; use Keyword or the Find box.
-- Some sites (e.g. CNN) block WRP's headless Chrome and show an error page.
+- World Wide Web: pages are rendered server-side as pictures, so typing into a site's own
+  search or login boxes doesn't work; use the AOL address bar or Keyword (Ctrl+K) instead.
+  Sites that block headless Chrome show an error.
 - Features that only existed on AOL's servers and have no 2026 equivalent show an
   explanation window (Pager, Reminder Service) or today's headlines; anything a button asks
   for that the host doesn't know is logged to `run/unmapped.log`.

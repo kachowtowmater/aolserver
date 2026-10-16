@@ -1,5 +1,7 @@
 # Setting up aolserver
 
+**Quick start** (Linux/macOS): `curl -fsSL https://raw.githubusercontent.com/kachowtowmater/aolserver/main/install.sh | bash`
+
 Two halves: the **host** (this repo's Python server, runs anywhere) and the **client**
 (the original 1998 *AOL 4.0 for Windows*, unmodified except for a few bytes, pointed at
 your host). AOL 3.0 works too; 4.0 is the main target.
@@ -7,7 +9,7 @@ your host). AOL 3.0 works too; 4.0 is the main target.
 | | Windows 10/11 | macOS | Linux |
 |---|---|---|---|
 | Host (`start.py`) | Python 3.10+ | Python 3.10+ | Python 3.10+ |
-| Web pages in AOL 4.0 (WRP, optional) | Go + Chrome/Edge | Go + Chrome | Go + Chrome/Chromium |
+| Web pages in AOL (optional) | Chrome/Edge | Chrome/Chromium | Chrome/Chromium |
 | AOL 4.0 client | runs natively | under Wine (or CrossOver) | under Wine |
 
 > Status: everything below is used daily on Linux (aarch64, Wine + FEX). The Windows and
@@ -38,20 +40,16 @@ Optional extras:
   `LLM_URL` / `LLM_MODEL` in `server/services/regulars.py` (they fall back to canned lines).
 - **Internet mail / your own domain**: `run/mail-setup` (see README "Internet mail").
 
-## 2. Web pages in AOL 4.0 (optional): WRP
+## 2. Web pages in AOL (optional)
 
-AOL 4.0's World Wide Web window is Internet Explorer's engine (on Wine: Wine Gecko, a 2016
-engine). To show 2026 sites it goes through **WRP** (Web Rendering Proxy): a headless modern
-Chrome loads the page and returns a clickable picture of it.
+The World Wide Web window is rendered server-side: the host runs a headless Chrome/Chromium,
+screenshots each page, and sends it to the client as a clickable picture with Back, Forward,
+Reload, Home, Page Up/Down and an address bar. No WRP, no Wine Gecko.
 
-```sh
-git clone --depth 1 https://github.com/tenox7/wrp vendor/wrp
-cd vendor/wrp && git apply ../../client40/wrp-nav-timeout.patch && go build -o wrp .   # wrp.exe on Windows
-cd ../.. && python start.py      # now also starts WRP on 127.0.0.1:8098
-```
-
-`start.py --web-listen 0.0.0.0:8098` lets clients on other machines use it (only do that on
-a trusted network: it fetches any URL it's asked for).
+Install Chrome or Chromium on the host machine; the server finds it automatically.
+Without a browser installed, web pages are shown as text (links still work).
+Set `AOL_WEBVIEW=0` to disable the host-side renderer and use the client's own browser
+(Wine Gecko under Wine, IE under Windows).
 
 ## 3. The AOL 4.0 client
 

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Start the aolserver host (and, if it's built, the WRP web renderer) on Windows, macOS or Linux.
+"""Start the aolserver host on Windows, macOS or Linux.
 
-  python start.py                 host on :5190 (+ WRP on 127.0.0.1:8098 if vendor/wrp is built)
-  python start.py --no-web        host only
-  python start.py --web-listen 0.0.0.0:8098   let AOL clients on other machines use this WRP
+  python start.py                 host on :5190
+  python start.py --no-web        disable the host-side web renderer (AOL_WEBVIEW=0)
 
-Needs Python 3.10+.  WRP (optional, for AOL 4.0's World Wide Web window) needs Go to build and
-Chrome/Chromium/Edge installed: see SETUP.md.  Ctrl+C stops everything.
-For running as a service instead: run/aol-server.service + run/aol-wrp.service (Linux systemd),
+Needs Python 3.10+.  The World Wide Web window is rendered server-side by headless Chrome
+(Chromium/Chrome/Edge; optional -- without it, web pages are shown as text).
+Ctrl+C stops everything.
+For running as a service instead: run/aol-server.service (Linux systemd),
 run/macos/*.plist (launchd), run/windows/install-tasks.ps1 (Task Scheduler).
 """
 import argparse
@@ -40,29 +40,20 @@ def find_browser() -> str | None:
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--no-web", action="store_true", help="don't start WRP")
-    ap.add_argument("--web-listen", default="127.0.0.1:8098")
+    ap.add_argument("--no-web", action="store_true", help="disable host-side web rendering (AOL_WEBVIEW=0)")
     args = ap.parse_args()
 
-    procs = []
-    wrp = ROOT / "vendor" / "wrp" / f"wrp{EXE}"
-    if not args.no_web:
-        browser = find_browser()
-        if not wrp.exists():
-            print("WRP not built (optional): see SETUP.md 'Web pages in AOL 4.0'.  Starting the host only.")
-        elif not browser:
-            print("WRP needs Chrome, Chromium or Edge installed.  Starting the host only.")
-        else:
-            profile = ROOT / "run" / "wrp-profile"
-            profile.mkdir(parents=True, exist_ok=True)
-            cmd = [str(wrp), "-l", args.web_listen, "-b", browser, "-t", "jpg", "-q", "70",
-                   "-g", "1024x4000x216", "-ua", CHROME_UA, "-profile", str(profile)]
-            procs.append(subprocess.Popen(cmd, cwd=wrp.parent))
-            print(f"WRP on {args.web_listen} using {browser}")
+    env = dict(os.environ)
+    if args.no_web:
+        env["AOL_WEBVIEW"] = "0"
+    elif not find_browser():
+        print("No Chrome/Chromium/Edge found: web pages will be shown as text inside AOL.")
+        print("Install chromium for full web page rendering.")
 
-    server = subprocess.Popen([sys.executable, "server.py"], cwd=ROOT / "server")
+    procs = []
+    server = subprocess.Popen([sys.executable, "server.py"], cwd=ROOT / "server", env=env)
     procs.append(server)
-    port = int(os.environ.get("AOL_PORT", "5190"))
+    port = int(env.get("AOL_PORT", "5190"))
     print(f"aolserver host on :{port} (admin console 127.0.0.1:{port + 1}).  Ctrl+C to stop.")
     try:
         while all(p.poll() is None for p in procs):
