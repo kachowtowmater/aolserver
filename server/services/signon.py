@@ -111,8 +111,14 @@ def register(link, stream_id, body):
     store_screen_name(link, name)
     go_online(link, name)
     link.send_stream(screens.close_window("signup"))
-    alert(link, f'Congratulations!  "{name}" is now your screen name.  It will appear in the Select Screen Name '
-                "list on the Welcome screen next time you sign on.")
+    from . import gateway
+    cfg = gateway.settings()
+    msg = f'Congratulations!  "{name}" is now your screen name.  It will appear in the Select Screen Name ' \
+          "list on the Welcome screen next time you sign on."
+    if cfg:
+        addr = gateway.member_address(cfg, name)
+        msg += f"\n\nYour Internet e-mail address is {addr} -- give it to friends so they can reach you!"
+    alert(link, msg)
     welcome(link)
 
 

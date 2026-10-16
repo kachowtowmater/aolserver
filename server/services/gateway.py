@@ -318,16 +318,16 @@ def poll_once(cfg=None):
 
 # ---------- status (AOL's Internet Mail window, mail-setup) ----------
 
-def info_lines() -> list[str]:
+def info_lines(screen_name: str = "") -> list[str]:
     cfg = settings()
     if not cfg:
         return ["Mail between members works right now: just address it to a screen name.", "",
                 "Internet mail (name@domain.com) is not set up on this host.  "
                 "The host's operator can turn it on with run/mail-setup."]
-    example = member_address(cfg, "YourName")
+    addr = member_address(cfg, screen_name) if screen_name else member_address(cfg, "YourName")
     lines = ["You can send and receive Internet mail!", "",
              "To send: address your mail to anyone's Internet address, like friend@example.com.",
-             f"To receive: give people your Internet address.  Yours is your screen name, like {example}.", ""]
+             f"To receive: give people your Internet address.  Yours is {addr}.", ""]
     st = _status()
     if cfg["mode"] == "domain":
         listening = st.get("listener") is not None

@@ -318,8 +318,9 @@ def open_area(link, area: str, rid=None):
         return mail.read_new_mail(link, 0)
     if area == "internet mail":  # says whether the host's operator has turned it on
         from . import gateway
-        return link.send_stream(screens.text_window("Internet Mail", "\r".join(gateway.info_lines()), rid,
-                                                    width=60, height=14))
+        return link.send_stream(screens.text_window("Internet Mail",
+                                                    "\r".join(gateway.info_lines(link.session.get("name", ""))),
+                                                    rid, width=60, height=14))
     if area in INFO:
         return info_area(link, area, rid)
     if area == "my aol":
