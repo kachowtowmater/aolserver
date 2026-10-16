@@ -1,4 +1,10 @@
 #!/bin/bash
 # Run Wine against a test AOL prefix (separate from the real one).  Set WINE_PATH to override.
 export WINEPREFIX="$HOME/.wine-aol-test" WINEDLLOVERRIDES="${WINEDLLOVERRIDES:-mscoree=;mshtml=}" WINEDEBUG="${WINEDEBUG:-err+all}"
+if [ -z "$WINE_PATH" ]; then
+  WINE_PATH="$(command -v wine 2>/dev/null)"
+  [ -z "$WINE_PATH" ] && for d in "$HOME/.local/opt"/wine*/bin "$HOME/.local/bin" /usr/local/bin /opt/wine*/bin; do
+    [ -x "$d/wine" ] && WINE_PATH="$d/wine" && break
+  done
+fi
 exec "${WINE_PATH:-wine}" "$@"

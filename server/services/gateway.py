@@ -183,7 +183,12 @@ def _send_direct(cfg, raw: bytes, mail_from: str, rcpts: list[str]) -> list[str]
     for domain, group in by_domain.items():
         for mx in maildns.mx_hosts(domain):
             try:
-                with smtplib.SMTP(mx, 25, timeout=30, local_hostname=helo) as s:
+                # Prefer IPv4 — many providers reject IPv6 without PTR
+                addrs = socket.getaddrinfo(mx, 25, socket.AF_INET, socket.SOCK_STREAM)
+                if not addrs:
+                    addrs = socket.getaddrinfo(mx, 25, 0, socket.SOCK_STREAM)
+                ip = addrs[0][4][0]
+                with smtplib.SMTP(ip, 25, timeout=30, local_hostname=helo) as s:
                     s.ehlo()
                     if s.has_extn("starttls"):
                         s.starttls(context=ssl.create_default_context())

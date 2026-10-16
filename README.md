@@ -110,6 +110,20 @@ Just run SETUP.EXE from the CD, point the TCP.CCL at your server, and sign on. S
 3. In `ccl/TCP.CCL`, change `AmericaOnline.aol.com` to the server address.
 4. Setup -> Edit Location -> Network: TCP/IP, then Sign On.
 
+## Let friends connect
+Friends don't need the repo or the server — just the AOL 4.0 client pointed at your host.
+
+1. **On a modern machine (Windows/macOS/Linux):** `python client40/aol40_client.py fetch`
+   grabs the client from archive.org, then `configure <AOL dir> --host <your-hostname>`
+   points it at your server. See SETUP.md for the full steps.
+2. **On the same LAN:** use your LAN hostname or IP as `--host`.
+3. **Over the internet:** put the server on a VPS with port 5190 open, or use
+   [Tailscale](https://tailscale.com/) (invite them to your tailnet — they connect by
+   machine name, no port forwarding needed), or port-forward 5190 on your router.
+
+The AOL client mangles dotted IP addresses, so use a hostname when possible (a free
+`*.duckdns.org` works if you don't have a domain).
+
 ## Known issues (AOL 4.0)
 - World Wide Web: pages are rendered server-side as pictures, so typing into a site's own
   search or login boxes doesn't work; use the AOL address bar or Keyword (Ctrl+K) instead.

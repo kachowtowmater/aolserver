@@ -114,6 +114,31 @@ prefix so it never disturbs a real user):
 - `python tools/mail_e2e.py` exercises member mail end to end; `python server/test_*.py` are
   the offline tests.
 
+## 5. Let friends connect
+
+Friends only need the AOL 4.0 client pointed at your server — they don't run the host.
+
+**Same LAN:** give them your machine's LAN hostname or address for `--host`.
+
+**Over the Internet:**
+- **Easiest:** put the server on a cheap VPS (any $5/mo box — the host is pure stdlib Python,
+  needs almost no resources), open port 5190, and give friends the IP or hostname.
+- **Tailscale:** invite friends to your tailnet. They use your Tailscale machine name as
+  `--host` — no port forwarding, no firewall changes.
+- **Port forward:** forward TCP 5190 on your router to the machine running the host.
+
+Use a hostname, not a dotted IP (`192.168...`), because the AOL client mangles raw IPs in
+some places. A free dynamic-DNS name (e.g. `*.duckdns.org`) works fine.
+
+**What friends do:**
+```sh
+git clone https://github.com/kachowtowmater/aolserver.git
+cd aolserver
+python client40/aol40_client.py fetch
+```
+Then follow the client setup (section 3) with `--host <your server's hostname>`.
+On first sign-on, choose *New User* to create a screen name on your server.
+
 ## What's in the repo
 - `server/` the host (stdlib Python): `server.py`, `p3.py` link layer, `host.py` dispatcher,
   `services/*` features (hot-reloaded), `fdo/` the client's form language, `forms/` templates,

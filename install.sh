@@ -12,7 +12,7 @@ bold() { printf "\033[1m%s\033[0m\n" "$*"; }
 green() { printf "\033[32m%s\033[0m\n" "$*"; }
 yellow() { printf "\033[33m%s\033[0m\n" "$*"; }
 red() { printf "\033[31m%s\033[0m\n" "$*"; }
-ask() { read -rp "$(bold "$1") " "$2"; }
+ask() { read -rp "$(bold "$1") " "$2" </dev/tty; }
 
 banner() {
     echo
@@ -178,7 +178,7 @@ setup_domain() {
                     SMTP_PORT="${SMTP_PORT:-587}"
                     ask "SMTP username:" SMTP_USER
                     echo -n "$(bold "SMTP password:") "
-                    read -rs SMTP_PASS
+                    read -rs SMTP_PASS </dev/tty
                     echo
                     echo "$SMTP_PASS" | $PYTHON "$INSTALL_DIR/server/mailsetup.py" \
                         --mode domain --domain "$DOMAIN" --listen-port "$listen_port" \

@@ -62,7 +62,7 @@ if ($browser) {
 Write-Host ""
 
 # --- clone / update ---
-if (Test-Path "$InstallDir\.git") {
+if (Test-Path (Join-Path $InstallDir ".git")) {
     Bold "Updating existing installation in $InstallDir..."
     git -C $InstallDir pull --ff-only 2>$null
     if ($LASTEXITCODE -ne 0) { git -C $InstallDir pull --rebase }
@@ -100,7 +100,7 @@ switch ($mailChoice) {
     "2" {
         Write-Host ""
         Bold "Running mail setup wizard..."
-        & $py "$InstallDir\server\mailsetup.py"
+        & $py (Join-Path $InstallDir "server" | Join-Path -ChildPath "mailsetup.py")
     }
     "3" {
         Write-Host ""
@@ -125,18 +125,21 @@ switch ($mailChoice) {
                 $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($smtpPass)
                 $plainPass = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($bstr)
                 [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr)
-                $plainPass | & $py "$InstallDir\server\mailsetup.py" `
+                $mailsetup = Join-Path $InstallDir "server" | Join-Path -ChildPath "mailsetup.py"
+                $plainPass | & $py $mailsetup `
                     --mode domain --domain $domain --listen-port $listenPort `
                     --outbound relay --smtp-host $smtpHost --smtp-port $smtpPort `
                     --smtp-user $smtpUser --password-stdin
             } else {
-                & $py "$InstallDir\server\mailsetup.py" `
+                $mailsetup = Join-Path $InstallDir "server" | Join-Path -ChildPath "mailsetup.py"
+                & $py $mailsetup `
                     --mode domain --domain $domain --listen-port $listenPort `
                     --outbound direct
             }
             Write-Host ""
             Bold "DNS records to create:"
-            & $py "$InstallDir\server\mailsetup.py" --dns
+            $mailsetup = Join-Path $InstallDir "server" | Join-Path -ChildPath "mailsetup.py"
+            & $py $mailsetup --dns
         } else {
             Yellow "No domain entered, skipping mail setup."
         }
@@ -154,7 +157,8 @@ Write-Host "Install a Task Scheduler job so aolserver starts automatically?"
 $installSvc = Ask "[Y/n]"
 if (-not $installSvc) { $installSvc = "y" }
 if ($installSvc -match "^[Yy]") {
-    $action = New-ScheduledTaskAction -Execute $py -Argument "`"$InstallDir\start.py`"" -WorkingDirectory $InstallDir
+    $startPy = Join-Path $InstallDir "start.py"
+    $action = New-ScheduledTaskAction -Execute $py -Argument "`"$startPy`"" -WorkingDirectory $InstallDir
     $trigger = New-ScheduledTaskTrigger -AtLogOn
     $settings = New-ScheduledTaskSettingsSet -RestartCount 3 -RestartInterval (New-TimeSpan -Minutes 1) -ExecutionTimeLimit 0
     Register-ScheduledTask -TaskName "aolserver" -Action $action -Trigger $trigger -Settings $settings -Force | Out-Null
